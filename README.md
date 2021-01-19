@@ -2,18 +2,19 @@
 
 ## Why read this book
 Software design is a craft not a science. To master it you cannot just study a book that explains comprehensively all the theory behind it.
-You have to read the literature of many great developers, looking for advices that repeat: that's what you then consider good software design.
+You have to read the literature of many great developers, looking for advices that repeat: that's what is currently considered good software design.
 However, the literature is vast, and it takes much time to get the big picture out of single sources.
 This book makes three promises:
   * to be a catalogue of everything that constitutes good software design
   * to be very succinct
-  * to mention trustworthy sources to go deeper 
+  * to provide trustworthy sources to go deeper 
 
 ## Who should read this book
 The book is intended mainly for people who just started their journey into software design or who are in the middle of it.
 If you have being seriously studying the topic for 5+ years, likely you are not going to find big surprises. However, I still 
 suggest you to go through the table of contents: you might find one or two learnings worth a quick read. 
-As a last consideration, the book is heavily skewed towards object-oriented programming though many advices apply to all [programming paradigms](http://www.cs.albany.edu/~sdc/CSI500/Downloads/ProgrammingParadigmsVanRoyChapter.pdf)
+As a last consideration, the book is heavily skewed towards object-oriented programming though many advices apply to all [programming paradigms](http://www.cs.albany.edu/~sdc/CSI500/Downloads/ProgrammingParadigmsVanRoyChapter.pdf).
+Code examples are written in Kotlin, but they are as basic as possible so you do not need any prior knowledge.
 
 ## Teach me back
 I really appreciate any feedback about the book and my current understanding of software design.
@@ -41,18 +42,61 @@ This book is divided in 4 sections: one for each the simple code rules.
 # Passes all tests
 
 ### Test pyramid
+There are different kinds of tests, each one meant for a different purpose. When describing them below, the expression
+_external dependencies_ means anything that is reached over the network like a database, another team REST endpoint, a queue, 
+third party apis, etc. For _service_ instead, we mean a bunch of code deployed as a whole.  
+
+* **Acceptance tests**  
+  A feature behaves as expected across all service layers (e.g. back end and front end) or even
+  across different services. External dependencies are replaced through libraries like LocalStack or Wiremock.
+  In a web application for instance, acceptance tests are defined with tools like Selenium or Cypress. 
+* **Functional tests**  
+  A feature behaves as expected considering a single layer of a service. For example, if a service have both back end and 
+  front end, there will be distinct component tests for the back end and front end. External dependencies are replaced either 
+  by libraries like LocalStack or by [doubles](### Mock vs stub vs spy). Functional tests are also called component tests.
+* **Integration tests**  
+  The service integrates correctly with external dependencies. External dependencies are replaced by libraries like 
+  LocalStack or Wiremock. If you use code [doubles](### Mock vs stub vs spy) for the external dependencies then it is a unit test.
+* **Unit tests**  
+  A class behaves as expected. Unit tests are most valuable when testing business logic: if a class is just a 
+  [delegator](https://en.wikipedia.org/wiki/Delegation_pattern) or just coordinates other classes (e.g. onion architecture use cases),  
+  do not use unit tests as functional tests already provide coverage.
+  If the class under test uses other classes whose construction is cumbersome, those can be [doubles](### Mock vs stub vs spy)  
+
+
+The above list is ordered by how much time a test takes to execute, from the slowest (acceptance) to the fastest (unit). 
+For this reason, it is recommended to have a pyramid of tests: a handful of acceptance tests, some functional and infrastructure
+tests and many unit tests. In particular:
+
+* **Acceptance tests**  
+  Only for default uses of a feature
+* **Component tests (also known as functional tests)**  
+  For both default and exceptional-erroneous uses of a feature
+* **Integration tests**
+  For both default and exceptional-erroneous integrations with external dependencies
+* **Unit tests**
+  For both default and exceptional-erroneous usage of a single class
+  
+
+[1] [Test Pyramid (in short) - Martin Fowler](https://martinfowler.com/bliki/TestPyramid.html)  
+[2] [Test Pyramid (in depth) - Ham Vocke](https://martinfowler.com/articles/practical-test-pyramid.html)  
+[3] [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)  
+[4] ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)  
+
+
+
 ### If testing is hard, inject state or collaborators
 ### Mock vs stub vs spy
 ### Test driven design (TDD)
 ### Test naming
 ### Test coverage is not enough: parameterised tests
 ### Tests must be reproducible (no Math.random() or LocalDate.now())
+### Do not test libraries
 ### Dry vs moist tests
 ### Outside-in vs inside-out TDD
 ### Classical vs mockist TDD
 ### Component tests vs end-to-end tests vs monitoring tradeoffs
 ### Contract testing
-### Wrap external library
 ### Do not use production constants
 ### Performance tests
 ### Linting
