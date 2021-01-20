@@ -53,15 +53,15 @@ third party apis, etc. For _service_ instead, we mean a bunch of code deployed a
 * **Functional tests**  
   A feature behaves as expected considering a single layer of a service. For example, if a service have both back end and 
   front end, there will be distinct component tests for the back end and front end. External dependencies are replaced either 
-  by libraries like LocalStack or by [doubles](### Mock vs stub vs spy). Functional tests are also called component tests.
+  by libraries like LocalStack or by [doubles](#Mock-vs-stub-vs-spy). Functional tests are also called component tests.
 * **Integration tests**  
   The service integrates correctly with external dependencies. External dependencies are replaced by libraries like 
-  LocalStack or Wiremock. If you use code [doubles](### Mock vs stub vs spy) for the external dependencies then it is a unit test.
+  LocalStack or Wiremock. If you use code [doubles](#Mock-vs-stub-vs-spy) for the external dependencies then it is a unit test.
 * **Unit tests**  
   A class behaves as expected. Unit tests are most valuable when testing business logic: if a class is just a 
   [delegator](https://en.wikipedia.org/wiki/Delegation_pattern) or just coordinates other classes (e.g. onion architecture use cases),  
   do not use unit tests as functional tests already provide coverage.
-  If the class under test uses other classes whose construction is cumbersome, those can be [doubles](### Mock vs stub vs spy)  
+  If the class under test uses other classes whose construction is cumbersome, those can be [doubles](#Mock-vs-stub-vs-spy)  
 
 
 The above list is ordered by how much time a test takes to execute, from the slowest (acceptance) to the fastest (unit). 
