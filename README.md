@@ -85,14 +85,91 @@ tests and many unit tests. In particular:
 
 
 
-### If testing is hard, inject state or collaborators
+### If testing is hard, inject what you need to check
+When you have a hard time testing something, the solution is usually to inject the thing you would like to check.  
+Suppose you have a car class storing passengers by their name.
+
+```
+class Car {
+  private val passengers: MutableSet<String> = HashSet()
+    
+  fun addPassenger(name: String) =
+    passengers.add(name)
+}
+```
+
+How to test that the method `addPassenger(name: String)` stores a name into the passenger set?
+The typical solution is to define a method to query the car about its passengers.
+
+```
+class Car {
+  private val passengers: MutableSet<String> = HashSet()
+    
+  fun addPassenger(name: String) =
+    passengers.add(name)
+       
+  fun containsPassenger(name: String) = 
+    passengers.contains(name)
+}
+```
+
+So we can write the following test
+
+```
+@Test
+fun 'stores the names of the passengers'() {
+  val car = Car()
+  
+  car.addPassenger("Andrea")
+
+  assertTrue(passengers.containsPassenger("Andrea"))
+}
+```
+
+However, this is already a disappointment because we are forced to write a public method just for the sake of testing.  
+Moreover, what if we must prevent any other code
+to query the passengers? The solution is to inject the passenger set a construction time.
+
+```
+class Car {
+  private val passengers: MutableSet<String>
+
+  constructor(initialPassengers: MutableSet<String>) {
+    passengers = initialPassengers
+  }
+
+  fun addPassenger(name: String) =
+    passengers.add(name)
+}
+```
+
+Now we can test like follows
+
+```
+@Test
+fun 'stores the names of the passengers'() {
+  val passengers = HashSet()
+  val car = Car(passengers)
+  
+  car.addPassenger("Andrea")
+
+  assertTrue(passengers.contains("Andrea"))
+}
+```
+
+Injecting the passengers set led to two benefits:
+* No public method needs to be defined just for testing purposes
+* The class becomes independent of the data structure used to store the passengers, making the code more modular
+
+[1] [Context independence section, chapter 6 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
+
 ### Mock vs stub vs spy
-### Test driven design (TDD)
 ### Test naming
 ### Test coverage is not enough: parameterised tests
 ### Tests must be reproducible (no Math.random() or LocalDate.now())
 ### Do not test libraries
 ### Dry vs moist tests
+### Test driven design (TDD)
 ### Outside-in vs inside-out TDD
 ### Classical vs mockist TDD
 ### Component tests vs end-to-end tests vs monitoring tradeoffs
