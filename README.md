@@ -39,6 +39,49 @@ Simple code:
 If a piece of code respects all those 4 rules then we can consider it good code.  
 This book is divided in 4 sections: one for each the simple code rules.
 
+# Tables of contents
+
+### Passes all tests
+##### [Test pyramid](#Test pyramid)
+#### [If testing is hard, inject what you need to check](#If-testing-is-hard,-inject-what-you-need-to-check)
+#### Mock vs stub vs spy
+#### Test naming
+#### Test coverage is not enough: parameterised tests
+#### Tests must be reproducible
+^ no Math.random() nor LocalDate.now()
+#### Do not test libraries
+#### Dry vs moist tests
+#### Test driven design (TDD)
+^ Here mention sources to Outside-in vs inside-out TDD and Classical vs mockist TDD
+#### Component tests vs end-to-end tests vs monitoring tradeoffs
+#### Contract testing
+#### Do not use production constants
+#### Performance tests
+#### Linting
+### Expresses intent
+#### [Naming](#Naming)
+#### [Deep and narrow classes](#Deep-and-narrow-classes)
+#### Small classes and short methods
+#### SOLID principles
+#### Usually composition is better than inheritance
+#### Generalise edge cases
+#### Immutability
+#### Comments the why
+#### Visual indentation
+^ Kevlin Henney talk
+#### Folder structure
+#### Encapsulation
+### Does not repeat itself
+#### One single authoritative knowledge representation
+#### Do not abstract by pattern matching
+#### Polymorphism
+### Does not contain superfluous parts
+#### If you need it tomorrow, then you need it
+^ Here discuss about obvious implementation and how playing it dumb can lead to substantial reworking when for instance
+the definition of a public interface is split between 2 user stories: happy path and sad paths
+#### Wrong abstraction is more costly than duplication
+#### Do not abuse design patterns
+
 # Passes all tests
 
 ### Test pyramid
@@ -72,9 +115,9 @@ tests and many unit tests. In particular:
   Only for default uses of a feature
 * **Component tests (also known as functional tests)**  
   For both default and exceptional-erroneous uses of a feature
-* **Integration tests**
+* **Integration tests**  
   For both default and exceptional-erroneous integrations with external dependencies
-* **Unit tests**
+* **Unit tests**  
   For both default and exceptional-erroneous usage of a single class
   
 
@@ -158,19 +201,6 @@ Injecting the passengers set led to two benefits:
 
 [1] [Context independence section, chapter 6 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 
-### Mock vs stub vs spy
-### Test naming
-### Test coverage is not enough: parameterised tests
-### Tests must be reproducible (no Math.random() nor LocalDate.now())
-### Do not test libraries
-### Dry vs moist tests
-### Test driven design (TDD)
-Here mention sources to Outside-in vs inside-out TDD and Classical vs mockist TDD
-### Component tests vs end-to-end tests vs monitoring tradeoffs
-### Contract testing
-### Do not use production constants
-### Performance tests
-### Linting
 
 # Expresses intent
 ### Naming
@@ -336,25 +366,8 @@ To summarise with a catchphrase, classes should be narrow and deep:
 [4. A web of objects, chapter 2 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 [5 Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
 
-### Small classes and short methods
-### SOLID principles
-### Usually composition is better than inheritance
-### Generalise edge cases
-### Immutability
-### Comments the why
-### Visual indentation
-Kevlin Henney talk
-### Folder structure
-### Encapsulation
 
 # Does not repeat itself
-### One single authoritative knowledge representation
-### Do not abstract by pattern matching
-### Polymorphism
 
 # Does not contain superfluous parts
-### Wrong abstraction is more costly than duplication
-### Do not abuse design patterns
-### If you need it tomorrow, then you need it
-Here discuss about obvious implementation and how playing it dumb can lead to substantial reworking when for instance
-the definition of a public interface is split between 2 user stories: happy path and sad paths
+
