@@ -42,8 +42,8 @@ This book is divided in 4 sections: one for each the simple code rules.
 # Tables of contents
 
 ### Passes all tests
-##### [Test pyramid](#Test pyramid)
-#### [If testing is hard, inject what you need to check](#If-testing-is-hard,-inject-what-you-need-to-check)
+#### [Test pyramid](#test-pyramid)
+#### [If testing is hard, inject what you need to check](#if-testing-is-hard-inject-what-you-need-to-check)
 #### Mock vs stub vs spy
 #### Test naming
 #### Test coverage is not enough: parameterised tests
@@ -59,8 +59,8 @@ This book is divided in 4 sections: one for each the simple code rules.
 #### Performance tests
 #### Linting
 ### Expresses intent
-#### [Naming](#Naming)
-#### [Deep and narrow classes](#Deep-and-narrow-classes)
+#### [Naming](#naming)
+#### [Deep and narrow classes](#deep-and-narrow-classes)
 #### Small classes and short methods
 #### SOLID principles
 #### Usually composition is better than inheritance
