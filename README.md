@@ -41,46 +41,46 @@ This book is divided in 4 sections: one for each the simple code rules.
 
 # Tables of contents
 
-### Passes all tests
-#### [Test pyramid](#test-pyramid)
-#### [If testing is hard, inject what you need to check](#if-testing-is-hard-inject-what-you-need-to-check)
-#### Mock vs stub vs spy
-#### Test naming
-#### Test coverage is not enough: parameterised tests
-#### Tests must be reproducible
+### 1. Passes all tests
+#### 1.1  [Test pyramid](#test-pyramid)
+#### 1.2  [If testing is hard, inject what you need to check](#if-testing-is-hard-inject-what-you-need-to-check)
+#### 1.3  Mock vs stub vs spy
+#### 1.4  Test naming
+#### 1.5  Test coverage is not enough: parameterised tests
+#### 1.6  Tests must be reproducible
 ^ no Math.random() nor LocalDate.now()
-#### Do not test libraries
-#### Dry vs moist tests
-#### Test driven design (TDD)
+#### 1.7  Do not test libraries
+#### 1.8  Dry vs moist tests
+#### 1.9  Test driven design (TDD)
 ^ Here mention sources to Outside-in vs inside-out TDD and Classical vs mockist TDD
-#### Component tests vs end-to-end tests vs monitoring tradeoffs
-#### Contract testing
-#### Do not use production constants
-#### Performance tests
-#### Linting
-### Expresses intent
-#### [Naming](#naming)
-#### [Deep and narrow classes](#deep-and-narrow-classes)
-#### Small classes and short methods
-#### SOLID principles
-#### Usually composition is better than inheritance
-#### Generalise edge cases
-#### Immutability
-#### Comments the why
-#### Visual indentation
+#### 1.10  Component tests vs end-to-end tests vs monitoring tradeoffs
+#### 1.11  Contract testing
+#### 1.12  Do not use production constants
+#### 1.13  Performance tests
+#### 1.14  Linting
+### 2. Expresses intent
+#### 2.1 [Naming](#naming)
+#### 2.2 [Deep and narrow classes](#deep-and-narrow-classes)
+#### 2.3 Small classes and short methods
+#### 2.4 SOLID principles
+#### 2.5 Usually composition is better than inheritance
+#### 2.6 Generalise edge cases
+#### 2.7 Immutability
+#### 2.8 Comments the why
+#### 2.9 Visual indentation
 ^ Kevlin Henney talk
-#### Folder structure
-#### Encapsulation
-### Does not repeat itself
-#### One single authoritative knowledge representation
-#### Do not abstract by pattern matching
-#### Polymorphism
-### Does not contain superfluous parts
-#### If you need it tomorrow, then you need it
+#### 2.10 Folder structure
+#### 2.11 Encapsulation
+### 3. Does not repeat itself
+#### 3.1 One single authoritative knowledge representation
+#### 3.2 Do not abstract by pattern matching
+#### 3.3 Polymorphism
+### 4. Does not contain superfluous parts
+#### 4.1 If you need it tomorrow, then you need it
 ^ Here discuss about obvious implementation and how playing it dumb can lead to substantial reworking when for instance
 the definition of a public interface is split between 2 user stories: happy path and sad paths
-#### Wrong abstraction is more costly than duplication
-#### Do not abuse design patterns
+#### 4.2 Wrong abstraction is more costly than duplication
+#### 4.3 Do not abuse design patterns
 
 # Passes all tests
 
@@ -201,6 +201,8 @@ Injecting the passengers set led to two benefits:
 
 [1] [Context independence section, chapter 6 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 
+
+### Mock vs stub vs spy
 
 # Expresses intent
 ### Naming
