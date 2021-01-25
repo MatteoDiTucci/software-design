@@ -131,12 +131,7 @@ Moreover, what if we must prevent any other code
 to query the passengers? The solution is to inject the passenger set a construction time.
 
 ```
-class Car {
-  private val passengers: MutableSet<String>
-
-  constructor(initialPassengers: MutableSet<String>) {
-    passengers = initialPassengers
-  }
+class Car(private val passengers: MutableSet<String>) {
 
   fun addPassenger(name: String) =
     passengers.add(name)
@@ -170,8 +165,7 @@ Injecting the passengers set led to two benefits:
 ### Do not test libraries
 ### Dry vs moist tests
 ### Test driven design (TDD)
-### Outside-in vs inside-out TDD
-### Classical vs mockist TDD
+Here mention sources to Outside-in vs inside-out TDD and Classical vs mockist TDD
 ### Component tests vs end-to-end tests vs monitoring tradeoffs
 ### Contract testing
 ### Do not use production constants
@@ -180,10 +174,72 @@ Injecting the passengers set led to two benefits:
 
 # Expresses intent
 ### Naming
+Great naming let us understand what the code means without inspecting its details. In fact, we should be able 
+to understand an entire codebase just reading the names of classes, methods and variables, never looking at what they contain.
+This clarity is reached by naming classes, methods and variables after what they do instead of how they do it.
+The how can be looked up later if more details are needed.   
+The benefits are two:
+* names do not contain any noise 
+* if implementation changes, the name remains relevant
+
+Let's consider the following class
+
+```
+class BiDimensionalCoordinates(private val x: Int, private val y: Int) {
+  
+  fun sumByXandY(addend: BiDimensionalCoordinates): BiDimensionalCoordinates {
+    return BiDimensionalCoordinates(x + addend.x, y + addend.y)
+  }
+}
+```
+
+In the above code, both class and method names leak the how. Given the distinction we made about the what and the how, 
+we can ask two questions. The first one is: if we remove the how from the `BiDimensionalCoordinates` names, does the class still express intent?
+
+```
+class Coordinates(private val x: Int, private val y: Int)
+  
+  fun sum(addend: Coordinates): Coordinates {
+    return Coordinates(x + addend.x, y + addend.y)
+  }
+}
+```
+
+The answer is yes, as the above class still expresses clear intent, but without bothering the reader with the noise of the how.
+The second questions is: would the naming in `BiDimensionalCoordinates` still make sense if we were to switch to three-dimensional coordinates?
+
+```
+class BiDimensionalCoordinates(private val x: Int, private val y: Int, private val z: Int) {
+  
+  fun sumByXandY(addend: BiDimensionalCoordinates): BiDimensionalCoordinates {
+    return BiDimensionalCoordinates(x + addend.x, y + addend.y, z + addend.z)
+  }
+}
+```
+
+The answer is no. `BiDimensionalCoordinates` does not express its intent anymore as it is lying to the reader: the names suggest a two dimensions representation
+when it is actually three. However, the `Coordinates` class would still express its intent as shown below.
+
+```
+class Coordinates(private val x: Int, private val y: Int, private val z: Int) {
+  
+  fun sum(addend: Coordinates): Coordinates {
+    return Coordinates(x + addend.x, y + addend.y, z + addend.z)
+  }
+}
+```
+
+
+[1 Names, section 1.1.1 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
+[2 Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
+[3 Meaningful Names, chapter 2 of Clean Code - Robert C. Martin](https://www.goodreads.com/book/show/3735293-clean-code)  
+[4 Developing a Ubiquitous Language, chapter 2 of Domain-Driven Design Distilled - Vaughn Vernon](https://www.barnesandnoble.com/w/domain-driven-design-distilled-vaughn-vernon/1124175630)  
+
+
 ### Deep and narrow classes
 We are doomed to write convoluted code when interacting with classes that have poor public methods. On the contrary, 
 we are brought to write readable code when interacting with classes that have great public methods.  
-Let's consider the following approach for the [FizzBuzz game](https://en.wikipedia.org/wiki/Fizz_buzz).
+Let's consider the following `play` public method for the [FizzBuzz game](https://en.wikipedia.org/wiki/Fizz_buzz).
 ```
 class FizzBuzz {
 
@@ -258,25 +314,27 @@ class App {
   fun main() {
   
     val fizzBuzz = FizzBuzz()
-
-    val result: List<String> = fizzBuzz.play(1, 100)        
+    val result = fizzBuzz.play(1, 100)        
   }
 }
 ```
 
-Now the code in `main` is more readable. Complexity (the for-loop) has not disappeared, it just moved from `App` to `FizzBuzz`.
-However, the change is remarkable if applied to a codebase with many classes:
+Now the code in `main` is more readable. Complexity (the for-loop) has not disappeared, it just moved from `App` to `FizzBuzz`.  
+However, such a shift becomes remarkable if applied to a codebase with many classes:
 * In the first approach, the for-cycle is repeated every time a piece of code interacts with `FizzBuzz`.  
   In the second approach, we are guaranteed the for-cycle is written only once, inside `FizzBuzz`.
-* If `main` interacted with 4 classes, each one using the first approach of `FizzBuzz`, `main` would contain 4 for-loops.  
+* If `main` interacted with 4 classes each one using the first approach of `FizzBuzz`, `main` would contain 4 for-loops.  
   If the 4 classes were to use the second approach, `main` will contain zero for-loops.
 
-In conclusion, classes should be deep and narrow: few public methods, with few input parameters, that handle as much complexity as possible for the caller.
+To summarise with a catchphrase, classes should be narrow and deep:
+* narrow means few public methods with few input parameters
+* deep means public methods handle as much complexity as possible for the caller
 
 [1 "Bad programmers worry about the code. Good programmers worry about data structures and their relationships" - Linus Torvalds](https://lwn.net/Articles/193245/)  
 [2 "Show me your tables, and I won't usually need your flowcharts; they'll be obvious.", chapter 9 of The Mythical Man-Month - Fred Brooks](https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month)  
 [3. Java and Unix I/O, section 4.7 of A Philosophy of Software Design - John Ousterhout](https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design)  
 [4. A web of objects, chapter 2 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
+[5 Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
 
 ### Small classes and short methods
 ### SOLID principles
@@ -284,15 +342,19 @@ In conclusion, classes should be deep and narrow: few public methods, with few i
 ### Generalise edge cases
 ### Immutability
 ### Comments the why
-### Visual indentation (kevlin Henney)
+### Visual indentation
+Kevlin Henney talk
 ### Folder structure
+### Encapsulation
 
 # Does not repeat itself
 ### One single authoritative knowledge representation
-### Encapsulation
 ### Do not abstract by pattern matching
 ### Polymorphism
 
 # Does not contain superfluous parts
 ### Wrong abstraction is more costly than duplication
 ### Do not abuse design patterns
+### If you need it tomorrow, then you need it
+Here discuss about obvious implementation and how playing it dumb can lead to substantial reworking when for instance
+the definition of a public interface is split between 2 user stories: happy path and sad paths
