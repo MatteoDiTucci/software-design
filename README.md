@@ -17,7 +17,7 @@ As a last consideration, the book is heavily skewed towards object-oriented prog
 Code examples are written in Kotlin, but they are as basic as possible so you do not need any prior knowledge.
 
 ### Who I am
-My name is Matteo Di Tucci, I currently work at ThoughtWorks.  
+My name is Matteo Di Tucci, I currently work at ThoughtWorks.
 I picked up coding in university because I did not know what to do when growing up.
 I still do not know, but along the way I pleasantly discovered I like software and its design.
 
@@ -72,8 +72,8 @@ This book is divided in 4 sections: one for each the simple code rules.
 #### 2.10 Folder structure
 #### 2.11 Encapsulation
 ### 3. Does not repeat itself
-#### 3.1 One single authoritative knowledge representation
-#### 3.2 Do not abstract by pattern matching
+#### 3.1 [One single authoritative knowledge representation](#One-single-authoritative-knowledge-representation)
+#### 3.2 [Do not abstract by visual pattern matching](#Do-not-abstract-by-visual-pattern-matching)
 #### 3.3 Polymorphism
 ### 4. Does not contain superfluous parts
 #### 4.1 If you need it tomorrow, then you need it
@@ -370,6 +370,122 @@ To summarise with a catchphrase, classes should be narrow and deep:
 
 
 # Does not repeat itself
+
+### One single authoritative knowledge representation
+Duplicated code is harmful because it makes changes expensive. Worse than that, it conceals the code intent.
+Let's take a look at the following code.
+
+```
+class Person(private val name: String) {
+
+  fun name(): String {
+    return name
+  }
+}
+
+class Job(private val name:String) {
+
+  fun name(): String {
+    return name
+  }
+}
+
+class App {
+
+  fun main() {
+    val person = Person("Andrea")
+    val job = Job("developer")
+
+    val result = person.name() + " is a " + job.name() //Andrea is a developer
+  }
+}
+```
+
+Now let's assume we want to have an ellipsis when `Person` or `Job` names are longer than 5 characters. One solution
+could be to modify the `name` method of both `Person` and `Job` like follows.
+
+```
+class Person(private val name: String) {
+
+  fun name(): String {
+    if (name.length > 5) {
+      return name.substring(0, 5) + "..."
+    }
+    return name
+  }
+}
+
+class Job(private val name:String) {
+
+  fun name(): String {
+    if (name.length > 5) {
+      return name.substring(0, 5) + "..."
+    }
+    return name
+  }
+}
+
+class App {
+
+  fun main() {
+    val person = Person("Andrea")
+    val job = Job("developer")
+
+    val result = person.name() + " is a " + job.name() //Andre... is a devel...
+  }
+}
+```
+
+
+In the above code, changing the ellipsis threshold from 5 to 10 characters will affect the `name` method of both `Person`and `Job` classes.
+This sounds trivial, but in a large codebase where duplication is widespread even small changes are expensive. Moreover,
+there is a risk to introduce bugs as changes might not be replicated across all classes by mistake. However, if duplication 
+is removed like in the following code, we are guaranteed all ellipsis related changes will always affect only one class.
+
+```
+class Person(private val name: String) {
+
+  fun name(): String {
+    return name
+  }
+}
+
+class Job(private val name:String) {
+
+  fun name(): String {
+    return name
+  }
+}
+
+class Formatter {
+
+  fun format(name: String): String {
+    if (name.length > 5) {
+      return name.substring(0, 5) + "..."
+    }
+    return name
+  }
+}
+
+class App {
+
+  fun main() {
+    val person = Person("Andrea")
+    val job = Job("developer")
+    val formatter = Formatter()
+
+    val formattedPerson = formatter.format(person.name())
+    val formattedJob = formatter.format(job.name())
+    
+    val result = formattedPerson + " is a " + formattedJob
+  }
+}
+```
+
+The above code has another benefit, more important than reducing the amount of work for future changes. It is now clear which class
+is responsible for the formatting knowledge. In this way the code intent is straightforward, making it easier to reason.
+
+### Do not abstract by visual pattern matching
 
 # Does not contain superfluous parts
 
