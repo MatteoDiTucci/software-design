@@ -14,7 +14,7 @@ The book is intended mainly for people who just started their journey into softw
 If you have being seriously studying the topic for 5+ years, likely you are not going to find big surprises. However, I still 
 suggest you to go through the table of contents: you might find one or two learnings worth a quick read. 
 As a last consideration, the book is heavily skewed towards object-oriented programming though many advices apply to all [programming paradigms](http://www.cs.albany.edu/~sdc/CSI500/Downloads/ProgrammingParadigmsVanRoyChapter.pdf).
-Code examples are written in Kotlin, but they are as basic as possible so you do not need any prior knowledge.
+Code examples are written in Kotlin, but they are very basic so you do not need any prior knowledge (Kotlin enthusiasts will forgive me some syntax choices :) ).
 
 ### Who I am
 My name is Matteo Di Tucci, I currently work at ThoughtWorks.
@@ -79,8 +79,7 @@ This book is divided in 4 sections: one for each the simple code rules.
 #### 4.1 If you need it tomorrow, then you need it
 ^ Here discuss about obvious implementation and how playing it dumb can lead to substantial reworking when for instance
 the definition of a public interface is split between 2 user stories: happy path and sad paths
-#### 4.2 Wrong abstraction is more costly than duplication
-#### 4.3 Do not abuse design patterns
+#### 4.2 Do not abuse design patterns
 
 # Passes all tests
 
@@ -124,7 +123,8 @@ tests and many unit tests. In particular:
 [1] [Test Pyramid (in short) - Martin Fowler](https://martinfowler.com/bliki/TestPyramid.html)  
 [2] [Test Pyramid (in depth) - Ham Vocke](https://martinfowler.com/articles/practical-test-pyramid.html)  
 [3] [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)  
-[4] ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)  
+[4] ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html) 
+[5] [Fixing a Test Hourglass, Google testing blog - Alan Myrvold](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html)
 
 
 
@@ -136,8 +136,9 @@ Suppose you have a car class storing passengers by their name.
 class Car {
   private val passengers: MutableSet<String> = HashSet()
     
-  fun addPassenger(name: String) =
+  fun addPassenger(name: String) {
     passengers.add(name)
+  }
 }
 ```
 
@@ -148,11 +149,13 @@ The typical solution is to define a method to query the car about its passengers
 class Car {
   private val passengers: MutableSet<String> = HashSet()
     
-  fun addPassenger(name: String) =
+  fun addPassenger(name: String) {
     passengers.add(name)
+  }
        
-  fun containsPassenger(name: String) = 
+  fun containsPassenger(name: String) { 
     passengers.contains(name)
+  }
 }
 ```
 
@@ -176,8 +179,9 @@ to query the passengers? The solution is to inject the passenger set a construct
 ```
 class Car(private val passengers: MutableSet<String>) {
 
-  fun addPassenger(name: String) =
+  fun addPassenger(name: String) {
     passengers.add(name)
+  }
 }
 ```
 
@@ -262,10 +266,10 @@ class Coordinates(private val x: Int, private val y: Int, private val z: Int) {
 ```
 
 
-[1 Names, section 1.1.1 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
-[2 Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
-[3 Meaningful Names, chapter 2 of Clean Code - Robert C. Martin](https://www.goodreads.com/book/show/3735293-clean-code)  
-[4 Developing a Ubiquitous Language, chapter 2 of Domain-Driven Design Distilled - Vaughn Vernon](https://www.barnesandnoble.com/w/domain-driven-design-distilled-vaughn-vernon/1124175630)  
+[1] [Names, section 1.1.1 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
+[2] [Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
+[3] [Meaningful Names, chapter 2 of Clean Code - Robert C. Martin](https://www.goodreads.com/book/show/3735293-clean-code)  
+[4] [Developing a Ubiquitous Language, chapter 2 of Domain-Driven Design Distilled - Vaughn Vernon](https://www.barnesandnoble.com/w/domain-driven-design-distilled-vaughn-vernon/1124175630)  
 
 
 ### Deep and narrow classes
@@ -362,11 +366,11 @@ To summarise with a catchphrase, classes should be narrow and deep:
 * narrow means few public methods with few input parameters
 * deep means public methods handle as much complexity as possible for the caller
 
-[1 "Bad programmers worry about the code. Good programmers worry about data structures and their relationships" - Linus Torvalds](https://lwn.net/Articles/193245/)  
-[2 "Show me your tables, and I won't usually need your flowcharts; they'll be obvious.", chapter 9 of The Mythical Man-Month - Fred Brooks](https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month)  
-[3. Java and Unix I/O, section 4.7 of A Philosophy of Software Design - John Ousterhout](https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design)  
-[4. A web of objects, chapter 2 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
-[5 Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
+[1] ["Bad programmers worry about the code. Good programmers worry about data structures and their relationships" - Linus Torvalds](https://lwn.net/Articles/193245/)  
+[2] ["Show me your tables, and I won't usually need your flowcharts; they'll be obvious.", chapter 9 of The Mythical Man-Month - Fred Brooks](https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month)  
+[3] [ Java and Unix I/O, section 4.7 of A Philosophy of Software Design - John Ousterhout](https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design)  
+[4] [ A web of objects, chapter 2 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
+[5] [Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
 
 
 # Does not repeat itself
@@ -485,7 +489,156 @@ class App {
 The above code has another benefit, more important than reducing the amount of work for future changes. It is now clear which class
 is responsible for the formatting knowledge. In this way the code intent is straightforward, making it easier to reason.
 
+[1] [DRY, The evils of duplication, topic 9 of The Pragmatic Programmer - David Thomas, Andrew Hunt](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer)
+[2] [Once and only once, Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)
+[3] [Don't Repeat Yourself, chapter 30 of 97 Things Every Programmer Should Know - Kevlin Henney](https://www.goodreads.com/book/show/7003902-97-things-every-programmer-should-know)
+
 ### Do not abstract by visual pattern matching
+Two pieces of code that are identical but represent two distinct concepts should stay separated: they are not duplication. 
+Let's consider the example from the previous section where both `Person` and `Job` classes introduced an ellipsis when their
+name was longer than 5 characters.
+
+```
+class Person(private val name: String) {
+
+  fun name(): String {
+    if (name.length > 5) {
+      return name.substring(0, 5) + "..."
+    }
+    return name
+  }
+}
+
+class Job(private val name:String) {
+
+  fun name(): String {
+    if (name.length > 5) {
+      return name.substring(0, 5) + "..."
+    }
+    return name
+  }
+}
+
+class App {
+
+  fun main() {
+    val person = Person("Andrea")
+    val job = Job("developer")
+
+    val result = person.name() + " is a " + job.name() //Andre... is a devel...
+  }
+}
+```
+
+When seeing a piece of like the above the immediate instinct is to remove duplication as was done in the previous section.
+
+```
+class Person(private val name: String) {
+
+  fun name(): String {
+    return name
+  }
+}
+
+class Job(private val name:String) {
+
+  fun name(): String {
+    return name
+  }
+}
+
+class Formatter {
+
+  fun format(name: String): String {
+    if (name.length > 5) {
+      return name.substring(0, 5) + "..."
+    }
+    return name
+  }
+}
+
+class App {
+
+  fun main() {
+    val person = Person("Andrea")
+    val job = Job("developer")
+    val formatter = Formatter()
+
+    val formattedPerson = formatter.format(person.name())
+    val formattedJob = formatter.format(job.name())
+    
+    val result = formattedPerson + " is a " + formattedJob
+  }
+}
+```
+
+Let's now assume `Job` needs the ellipsis after 3 characters instead of 5. How does the code change?
+`Formatter` needs to know if the name is coming from `Job` or `Person`to apply the ellipsis at 3 or 5 characters respectively.
+For instance, this piece of information can be passed as an input parameter of the `format` method like follows.
+
+```
+class Person(private val name: String) {
+
+  fun name(): String {
+    return name
+  }
+}
+
+class Job(private val name:String) {
+
+  fun name(): String {
+    return name
+  }
+}
+
+class Formatter {
+
+  fun format(name: String, isPerson: Boolean): String {
+    if (isPerson) {
+      return formatPersonName(name)
+    }
+
+    return formatJobName(name)
+  }
+
+  private fun formatJobName(name: String): String {
+    if (name.length > 3) {
+      return name.substring(0, 3) + "..."
+    }
+    return name
+  }
+
+  private fun formatPersonName(name: String): String {
+    if (name.length > 5) {
+      return name.substring(0, 5) + "..."
+    }
+    return name
+  }
+}
+
+class App {
+
+  fun main() {
+    val person = Person("Andrea")
+    val job = Job("developer")
+    val formatter = Formatter()
+
+    val formattedPerson = formatter.format(person.name(), true)
+    val formattedJob = formatter.format(job.name(), false)
+
+    val result = formattedPerson + " is a " + formattedJob
+  }
+}
+```
+
+In the above code, `Formatter` has a lot of if-else logic making it harder to understand. This complexity stems from 
+not foreseeing that the ellipsis rules for `Person` and `Job` were going to be different, even if they looked initially
+the same. In real life this kind of scenario can be hard to anticipate, especially if specifications are not entirely known.
+In doubt, the rule of thumb is to remove duplication only after it occurs more than two times.
+
+
+[1] ["duplication is far cheaper than the wrong abstraction", RailsConf 2014, all the little things talk - Sandy Metz](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)
+[1] [Rule of three, When we should Refactor? chapter of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)
 
 # Does not contain superfluous parts
 
