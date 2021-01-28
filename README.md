@@ -79,7 +79,7 @@ This book is divided in 4 sections: one for each the simple code rules.
 #### 4.1 If you need it tomorrow, then you need it
 ^ Here discuss about obvious implementation and how playing it dumb can lead to substantial reworking when for instance
 the definition of a public interface is split between 2 user stories: happy path and sad paths
-#### 4.2 Do not abuse design patterns
+#### 4.2 Do not abuse design patterns(#Do-not-abuse-design-patterns)
 
 # Passes all tests
 
@@ -642,3 +642,9 @@ In doubt, the rule of thumb is to remove duplication only after it occurs more t
 
 # Does not contain superfluous parts
 
+### Do not abuse design patterns
+Design patterns are great to codify recurring design problems and their typical solutions. However, design patterns by themselves 
+do not guarantee for simple code, and actually they can end up pushing in the opposite direction. They are just a tool that 
+has to be adapted to the context where they are used, not applied to the letter.
+
+[1] [Head First Design Patterns - Eric Freeman, Elisabeth Robson](https://www.goodreads.com/book/show/58128.Head_First_Design_Patterns)
