@@ -79,7 +79,7 @@ This book is divided in 4 sections: one for each the simple code rules.
 #### 4.1 If you need it tomorrow, then you need it
 ^ Here discuss about obvious implementation and how playing it dumb can lead to substantial reworking when for instance
 the definition of a public interface is split between 2 user stories: happy path and sad paths
-#### 4.2 Do not abuse design patterns(#Do-not-abuse-design-patterns)
+#### 4.2 [Do not abuse design patterns](#Do-not-abuse-design-patterns)
 
 # Passes all tests
 
