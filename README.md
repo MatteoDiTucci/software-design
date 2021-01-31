@@ -77,7 +77,7 @@ This book is divided in 4 sections, one for each the simple code rules.
 #### 3.3 Polymorphism
 ### 4. Does not contain superfluous parts
 ### 4.1 [You aren't going to need it](#You-aren't-going-to-need-it)
-#### 4.2 [Define what is superfluous](#Define-what-is-superfluous)
+#### 4.2 [Make what is superfluous explicit](#Make-what-is-superfluous-explicit)
 #### 4.3 [Do not abuse design patterns](#Do-not-abuse-design-patterns)
 
 # Passes all tests
@@ -651,9 +651,62 @@ In doubt, the rule of thumb is to remove duplication only after it occurs more t
 
 [1] [Refactoring, Architecture, and YAGNI, chapter 2 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  
 [2] [Chapter 17 of Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)  
+[3] [The full quote from Donald Knuth was: "We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. **Yet we should not pass up our opportunities in that critical 3%.**"](https://dl.acm.org/toc/csur/1974/6/4)
 
-### Define what is superfluous 
-Error handling (division by zero), performance.
+### Make what is superfluous explicit 
+Sometimes the [you aren't going to need it](#You-aren't-going-to-need-it) principle is abused leading to incomplete code.
+This usually happens in the form of assuming specifications. Let's consider the following example where we are required 
+to build a piece of code that:
+* stores fruits by their names
+* does not store a fruit name more than once
+* given a fruit name, returns true if it has been previously stored
+
+```
+class FruitInventory {
+  private val fruits = ArrayList<String>()
+
+  fun storeFruit(name: String) {
+    if (contains(name))
+      return
+    
+    fruits.add(name)
+  }
+
+  fun contains(name: String): Boolean {
+    for(fruit in fruits) {
+      if (name == fruit)
+        return true
+    }
+    return false
+  }
+}
+```
+
+The above code works just fine given the specifications. However, we might argue that `fruits` implemented as a list 
+is not very performant and that we could make both `contains` and `storeFruit` faster simply using a set.
+It is a mistake to dismiss such thought appealing to the [you aren't going to need it](#You-aren't-going-to-need-it) principle.
+In fact, we would be assuming a specification about performance that is currently unknown. We should instead clarify the 
+expected performance of `FruitInventory`: if we discover it is irrelevant then the code is as good as it is, otherwise
+we need to change it as follows.
+
+```
+class FruitInventory {
+  private val fruits = HashSet<String>()
+
+  fun storeFruit(name: String) {
+    fruits.add(name)
+  }
+  
+  fun contains(name: String): Boolean {
+    return fruits.contains(name)
+  }
+}
+```
+
+Performance specifications aside, the above code using `HashSet` is superior as it better expresses intent. We could even
+argue that `HashSet` approach satisfies the specifications just fine and  [we aren't going to need it](#You-aren't-going-to-need-it) 
+all the for-loop complexity introduced by the `ArrayList` approach.
+
 
 ### Do not abuse design patterns
 Design patterns are great to codify recurring design problems and their typical solutions. However, design patterns by themselves 
