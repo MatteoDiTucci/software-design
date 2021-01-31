@@ -12,7 +12,7 @@ This book makes three promises:
 ### Who should read this book
 The book is intended mainly for people who just started their journey into software design or who are in the middle of it.
 If you have being seriously studying the topic for 5+ years, likely you are not going to find big surprises. However, I still 
-suggest you to go through the table of contents: you might find one or two learnings worth a quick read. 
+suggest you to go through the table of contents: you might find one or two things worth a quick read. 
 As a last consideration, the book is heavily skewed towards object-oriented programming though many advices apply to all [programming paradigms](http://www.cs.albany.edu/~sdc/CSI500/Downloads/ProgrammingParadigmsVanRoyChapter.pdf).
 Code examples are written in Kotlin, but they are very basic so you do not need any prior knowledge (Kotlin enthusiasts will forgive me some syntax choices :) ).
 
@@ -27,7 +27,7 @@ You can share any feedback by creating a pull request.
 If you do not know what a pull request is, take a look [here](https://guides.github.com/activities/hello-world/#:~:text=Pull%20Requests%20are%20the%20heart,merge%20them%20into%20their%20branch.&text=You%20can%20even%20open%20pull,repository%20and%20merge%20them%20yourself.).
 
 ### Simple code
-It is hard to define what good design looks like: nobody was able to come up with an unambiguous definition so far. 
+It is hard to define what good design looks like: nobody was able to come up with a formal definition so far. 
 The thing that came closer to that is the [C2 Wiki](https://wiki.c2.com/?XpSimplicityRules) simple code rules.  
 Simple code:
 
@@ -37,13 +37,13 @@ Simple code:
 * Does not contain superfluous parts
 
 If a piece of code respects all those 4 rules then we can consider it good code.  
-This book is divided in 4 sections: one for each the simple code rules.
+This book is divided in 4 sections, one for each the simple code rules.
 
 # Tables of contents
 
 ### 1. Passes all tests
 #### 1.1  [Test pyramid](#test-pyramid)
-#### 1.2  [If testing is hard, inject what you need to check](#if-testing-is-hard-inject-what-you-need-to-check)
+#### 1.2  [If testing is hard, inject what you need to verify](#if-testing-is-hard-inject-what-you-need-to-verify)
 #### 1.3  Mock vs stub vs spy
 #### 1.4  Test naming
 #### 1.5  Test coverage is not enough: parameterised tests
@@ -76,34 +76,36 @@ This book is divided in 4 sections: one for each the simple code rules.
 #### 3.2 [Do not abstract by visual pattern matching](#Do-not-abstract-by-visual-pattern-matching)
 #### 3.3 Polymorphism
 ### 4. Does not contain superfluous parts
-#### 4.1 If you need it tomorrow, then you need it
-^ Here discuss about obvious implementation and how playing it dumb can lead to substantial reworking when for instance
-the definition of a public interface is split between 2 user stories: happy path and sad paths
-#### 4.2 [Do not abuse design patterns](#Do-not-abuse-design-patterns)
+### 4.1 [You aren't going to need it](#You-aren't-going-to-need-it)
+#### 4.2 [Define what is superfluous](#Define-what-is-superfluous)
+#### 4.3 [Do not abuse design patterns](#Do-not-abuse-design-patterns)
 
 # Passes all tests
 
 ### Test pyramid
-There are different kinds of tests, each one meant for a different purpose. When describing them below, the expression
-_external dependencies_ means anything that is reached over the network like a database, another team REST endpoint, a queue, 
-third party apis, etc. For _service_ instead, we mean a bunch of code deployed as a whole.  
+There are different kinds of tests, each one meant for a different purpose. Before describing the most common ones, let's 
+clarify in advance a couple of terms. For _service_ we mean a bunch of code deployed as a whole. For
+_external dependencies_ we mean anything that is reached over the network, like a database, another team REST endpoint, a queue, third party apis, etc.   
 
 * **Acceptance tests**  
-  A feature behaves as expected across all service layers (e.g. back end and front end) or even
-  across different services. External dependencies are replaced through libraries like LocalStack or Wiremock.
-  In a web application for instance, acceptance tests are defined with tools like Selenium or Cypress. 
+  Check that a feature behaves as expected across all service layers (e.g. back end and front end) or even
+  across different services. External dependencies are replaced through libraries like [LocalStack](https://github.com/localstack/localstack) 
+  or [Wiremock](http://wiremock.org/). In a web application for instance, acceptance tests are defined with tools like [Selenium](https://www.selenium.dev/) 
+  or [Cypress](https://www.cypress.io/).
 * **Functional tests**  
-  A feature behaves as expected considering a single layer of a service. For example, if a service have both back end and 
-  front end, there will be distinct component tests for the back end and front end. External dependencies are replaced either 
-  by libraries like LocalStack or by [doubles](#Mock-vs-stub-vs-spy). Functional tests are also called component tests.
+  Check that a feature behaves as expected considering a single layer of a service. For example, if a service have both back end and 
+  front end, there will be distinct functional tests for the back end and front end. External dependencies are replaced either 
+  by libraries like [LocalStack](https://github.com/localstack/localstack) or by [doubles](#Mock-vs-stub-vs-spy). 
+  Functional tests are also called component tests.
 * **Integration tests**  
-  The service integrates correctly with external dependencies. External dependencies are replaced by libraries like 
-  LocalStack or Wiremock. If you use code [doubles](#Mock-vs-stub-vs-spy) for the external dependencies then it is a unit test.
+  Check that the service integrates correctly with external dependencies. External dependencies are replaced by libraries like
+  [LocalStack](https://github.com/localstack/localstack) or [Wiremock](http://wiremock.org/). If you use code [doubles](#Mock-vs-stub-vs-spy)
+  for the external dependencies then it is a unit test.
 * **Unit tests**  
-  A class behaves as expected. Unit tests are most valuable when testing business logic: if a class is just a 
-  [delegator](https://en.wikipedia.org/wiki/Delegation_pattern) or just coordinates other classes (e.g. onion architecture use cases),  
-  do not use unit tests as functional tests already provide coverage.
-  If the class under test uses other classes whose construction is cumbersome, those can be [doubles](#Mock-vs-stub-vs-spy)  
+  Check that a class behaves as expected. Unit tests are most valuable when testing business logic: if a class is just a 
+  [delegator](https://en.wikipedia.org/wiki/Delegation_pattern) or just coordinates other classes, do not use unit tests
+  as functional tests already provide coverage. If the class under test uses other classes whose construction is cumbersome,
+  those can be replaced with   [doubles](#Mock-vs-stub-vs-spy)  
 
 
 The above list is ordered by how much time a test takes to execute, from the slowest (acceptance) to the fastest (unit). 
@@ -112,7 +114,7 @@ tests and many unit tests. In particular:
 
 * **Acceptance tests**  
   Only for default uses of a feature
-* **Component tests (also known as functional tests)**  
+* **Functional tests**  
   For both default and exceptional-erroneous uses of a feature
 * **Integration tests**  
   For both default and exceptional-erroneous integrations with external dependencies
@@ -123,38 +125,38 @@ tests and many unit tests. In particular:
 [1] [Test Pyramid (in short) - Martin Fowler](https://martinfowler.com/bliki/TestPyramid.html)  
 [2] [Test Pyramid (in depth) - Ham Vocke](https://martinfowler.com/articles/practical-test-pyramid.html)  
 [3] [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)  
-[4] ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html) 
+[4] ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)   
 [5] [Fixing a Test Hourglass, Google testing blog - Alan Myrvold](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html)
 
 
 
-### If testing is hard, inject what you need to check
-When you have a hard time testing something, the solution is usually to inject the thing you would like to check.  
+### If testing is hard, inject what you need to verify
+When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.  
 Suppose you have a car class storing passengers by their name.
 
 ```
 class Car {
   private val passengers: MutableSet<String> = HashSet()
     
-  fun addPassenger(name: String) {
+  fun storePassenger(name: String) {
     passengers.add(name)
   }
 }
 ```
 
-How to test that the method `addPassenger(name: String)` stores a name into the passenger set?
-The typical solution is to define a method to query the car about its passengers.
+How to test that the method `storePassenger(name: String)` stores a name into the `passengers` set?
+The typical solution is to define another method in `Car` to check if it contains a passenger.
 
 ```
 class Car {
   private val passengers: MutableSet<String> = HashSet()
     
-  fun addPassenger(name: String) {
+  fun storePassenger(name: String) {
     passengers.add(name)
   }
        
-  fun containsPassenger(name: String) { 
-    passengers.contains(name)
+  fun containsPassenger(name: String): Boolean { 
+    return passengers.contains(name)
   }
 }
 ```
@@ -166,20 +168,20 @@ So we can write the following test
 fun 'stores the names of the passengers'() {
   val car = Car()
   
-  car.addPassenger("Andrea")
+  car.storePassenger("Andrea")
 
   assertTrue(passengers.containsPassenger("Andrea"))
 }
 ```
 
 However, this is already a disappointment because we are forced to write a public method just for the sake of testing.  
-Moreover, what if we must prevent any other code
-to query the passengers? The solution is to inject the passenger set a construction time.
+Moreover, what if by specifications we must prevent any other code to query `Car` about its passengers? 
+The solution is to inject the `passengers` set a construction time.
 
 ```
 class Car(private val passengers: MutableSet<String>) {
 
-  fun addPassenger(name: String) {
+  fun storePassenger(name: String) {
     passengers.add(name)
   }
 }
@@ -193,15 +195,15 @@ fun 'stores the names of the passengers'() {
   val passengers = HashSet()
   val car = Car(passengers)
   
-  car.addPassenger("Andrea")
+  car.storePassenger("Andrea")
 
   assertTrue(passengers.contains("Andrea"))
 }
 ```
 
-Injecting the passengers set led to two benefits:
-* No public method needs to be defined just for testing purposes
-* The class becomes independent of the data structure used to store the passengers, making the code more modular
+Injecting the `passengers` set led to two benefits:
+* No code is written just for testing purposes
+* The class becomes independent of the data structure used to store the passengers, making the code more modular.
 
 [1] [Context independence section, chapter 6 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 
@@ -230,7 +232,8 @@ class BiDimensionalCoordinates(private val x: Int, private val y: Int) {
 ```
 
 In the above code, both class and method names leak the how. Given the distinction we made about the what and the how, 
-we can ask two questions. The first one is: if we remove the how from the `BiDimensionalCoordinates` names, does the class still express intent?
+we can ask two questions. The first one is: if we remove the how from the `BiDimensionalCoordinates` names, does the class 
+still express intent? Let's see.
 
 ```
 class Coordinates(private val x: Int, private val y: Int)
@@ -242,7 +245,8 @@ class Coordinates(private val x: Int, private val y: Int)
 ```
 
 The answer is yes, as the above class still expresses clear intent, but without bothering the reader with the noise of the how.
-The second questions is: would the naming in `BiDimensionalCoordinates` still make sense if we were to switch to three-dimensional coordinates?
+The second questions is: would the naming in `BiDimensionalCoordinates` still make sense if we were to switch to three-dimensional 
+coordinates? Let's see.
 
 ```
 class BiDimensionalCoordinates(private val x: Int, private val y: Int, private val z: Int) {
@@ -253,8 +257,9 @@ class BiDimensionalCoordinates(private val x: Int, private val y: Int, private v
 }
 ```
 
-The answer is no. `BiDimensionalCoordinates` does not express its intent anymore as it is lying to the reader: the names suggest a two dimensions representation
-when it is actually three. However, the `Coordinates` class would still express its intent as shown below.
+The answer is no. `BiDimensionalCoordinates` now does not express its intent anymore as it is lying to the reader: 
+the names suggest two dimensions coordinates when it is actually three. However, the `Coordinates` class would still express 
+its intent even when using three dimensions as shown below.
 
 ```
 class Coordinates(private val x: Int, private val y: Int, private val z: Int) {
@@ -355,7 +360,7 @@ class App {
 }
 ```
 
-Now the code in `main` is more readable. Complexity (the for-loop) has not disappeared, it just moved from `App` to `FizzBuzz`.  
+Now the `main` method is more readable. Complexity (the for-loop) has not disappeared, it just moved from `App` to `FizzBuzz`.  
 However, such a shift becomes remarkable if applied to a codebase with many classes:
 * In the first approach, the for-cycle is repeated every time a piece of code interacts with `FizzBuzz`.  
   In the second approach, we are guaranteed the for-cycle is written only once, inside `FizzBuzz`.
@@ -369,7 +374,7 @@ To summarise with a catchphrase, classes should be narrow and deep:
 [1] ["Bad programmers worry about the code. Good programmers worry about data structures and their relationships" - Linus Torvalds](https://lwn.net/Articles/193245/)  
 [2] ["Show me your tables, and I won't usually need your flowcharts; they'll be obvious.", chapter 9 of The Mythical Man-Month - Fred Brooks](https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month)  
 [3] [ Java and Unix I/O, section 4.7 of A Philosophy of Software Design - John Ousterhout](https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design)  
-[4] [ A web of objects, chapter 2 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
+[4] [ A web of objects, chapter 2 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)  
 [5] [Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
 
 
@@ -442,8 +447,8 @@ class App {
 
 
 In the above code, changing the ellipsis threshold from 5 to 10 characters will affect the `name` method of both `Person`and `Job` classes.
-This sounds trivial, but in a large codebase where duplication is widespread even small changes are expensive. Moreover,
-there is a risk to introduce bugs as changes might not be replicated across all classes by mistake. However, if duplication 
+This sounds trivial, but in a large codebase where duplication is widespread even small changes like this are expensive. 
+Moreover, there is a risk to introduce bugs as changes might not be replicated across all classes by mistake. However, if duplication 
 is removed like in the following code, we are guaranteed all ellipsis related changes will always affect only one class.
 
 ```
@@ -481,17 +486,17 @@ class App {
     val formattedPerson = formatter.format(person.name())
     val formattedJob = formatter.format(job.name())
     
-    val result = formattedPerson + " is a " + formattedJob
+    val result = formattedPerson + " is a " + formattedJob //Andre... is a devel...
   }
 }
 ```
 
-The above code has another benefit, more important than reducing the amount of work for future changes. It is now clear which class
-is responsible for the formatting knowledge. In this way the code intent is straightforward, making it easier to reason.
+The above code has another subtle benefit, more important than reducing the amount of work for future changes. It is now clear which class
+is responsible for the formatting knowledge like ellipsis. In this way the code intent is clearer, making it easier to reason about it.
 
-[1] [DRY, The evils of duplication, topic 9 of The Pragmatic Programmer - David Thomas, Andrew Hunt](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer)
-[2] [Once and only once, Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)
-[3] [Don't Repeat Yourself, chapter 30 of 97 Things Every Programmer Should Know - Kevlin Henney](https://www.goodreads.com/book/show/7003902-97-things-every-programmer-should-know)
+[1] [DRY, The evils of duplication, topic 9 of The Pragmatic Programmer - David Thomas, Andrew Hunt](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer)  
+[2] [Once and only once, Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)  
+[3] [Don't Repeat Yourself, chapter 30 of 97 Things Every Programmer Should Know - Kevlin Henney](https://www.goodreads.com/book/show/7003902-97-things-every-programmer-should-know)  
 
 ### Do not abstract by visual pattern matching
 Two pieces of code that are identical but represent two distinct concepts should stay separated: they are not duplication. 
@@ -567,12 +572,12 @@ class App {
     val formattedPerson = formatter.format(person.name())
     val formattedJob = formatter.format(job.name())
     
-    val result = formattedPerson + " is a " + formattedJob
+    val result = formattedPerson + " is a " + formattedJob //Andre... is a devel...
   }
 }
 ```
 
-Let's now assume `Job` needs the ellipsis after 3 characters instead of 5. How does the code change?
+However, let's now assume `Job` needs the ellipsis after 3 characters instead of 5. How does the code change?
 `Formatter` needs to know if the name is coming from `Job` or `Person`to apply the ellipsis at 3 or 5 characters respectively.
 For instance, this piece of information can be passed as an input parameter of the `format` method like follows.
 
@@ -637,14 +642,22 @@ the same. In real life this kind of scenario can be hard to anticipate, especial
 In doubt, the rule of thumb is to remove duplication only after it occurs more than two times.
 
 
-[1] ["duplication is far cheaper than the wrong abstraction", RailsConf 2014, all the little things talk - Sandy Metz](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)
-[1] [Rule of three, When we should Refactor? chapter of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)
+[1] ["duplication is far cheaper than the wrong abstraction", RailsConf 2014, all the little things talk - Sandy Metz](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)  
+[1] [Rule of three, When we should Refactor? chapter 2 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  
 
 # Does not contain superfluous parts
 
+### You aren't going to need it
+
+[1] [Refactoring, Architecture, and YAGNI, chapter 2 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  
+[2] [Chapter 17 of Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)  
+
+### Define what is superfluous 
+Error handling (division by zero), performance.
+
 ### Do not abuse design patterns
 Design patterns are great to codify recurring design problems and their typical solutions. However, design patterns by themselves 
-do not guarantee for simple code, and actually they can end up pushing in the opposite direction. They are just a tool that 
+do not guarantee simple code, and actually they can end up pushing in the opposite direction. They are just a tool that 
 has to be adapted to the context where they are used, not applied to the letter.
 
 [1] [Head First Design Patterns - Eric Freeman, Elisabeth Robson](https://www.goodreads.com/book/show/58128.Head_First_Design_Patterns)
