@@ -76,8 +76,8 @@ This book is divided in 4 sections, one for each the simple code rules.
 #### 3.2 [Do not abstract by visual pattern matching](#Do-not-abstract-by-visual-pattern-matching)
 #### 3.3 Polymorphism
 ### 4. Does not contain superfluous parts
-### 4.1 [You aren't going to need it](#You-aren't-going-to-need-it)
-#### 4.2 [Make what is superfluous explicit](#Make-what-is-superfluous-explicit)
+#### 4.1 [You aren't going to need it](#You-aren't-going-to-need-it)
+#### 4.2 [Clarify what is superfluous](#Clarify-what-is-superfluous)
 #### 4.3 [Do not abuse design patterns](#Do-not-abuse-design-patterns)
 
 # Passes all tests
@@ -653,7 +653,7 @@ In doubt, the rule of thumb is to remove duplication only after it occurs more t
 [2] [Chapter 17 of Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)  
 [3] [The full quote from Donald Knuth was: "We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. **Yet we should not pass up our opportunities in that critical 3%.**"](https://dl.acm.org/toc/csur/1974/6/4)
 
-### Make what is superfluous explicit 
+### Clarify what is superfluous 
 Sometimes the [you aren't going to need it](#You-aren't-going-to-need-it) principle is abused leading to incomplete code.
 This usually happens in the form of assuming specifications. Let's consider the following example where we are required 
 to build a piece of code that:
@@ -683,7 +683,7 @@ class FruitInventory {
 ```
 
 The above code works just fine given the specifications. However, we might argue that `fruits` implemented as a list 
-is not very performant and that we could make both `contains` and `storeFruit` faster simply using a set.
+is not very performant and that we could make both `contains` and `storeFruit` faster by simply using a set.
 It is a mistake to dismiss such thought appealing to the [you aren't going to need it](#You-aren't-going-to-need-it) principle.
 In fact, we would be assuming a specification about performance that is currently unknown. We should instead clarify the 
 expected performance of `FruitInventory`: if we discover it is irrelevant then the code is as good as it is, otherwise
