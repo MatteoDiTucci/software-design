@@ -3,7 +3,7 @@
 ### Why read this book
 Software design is a craft not a science. To master it you cannot just study a book that explains comprehensively all the theory behind it.
 You have to read the literature of many great developers, looking for advices that repeat: that's what is currently considered good software design.
-However, the literature is vast, and it takes much time to get the big picture out of single sources.
+However, the literature is vast and it takes much time to get the big picture out of single sources.
 This book makes three promises:
   * to be a catalogue of everything that constitutes good software design
   * to be very succinct
@@ -98,7 +98,7 @@ _external dependencies_ we mean anything that is reached over the network, like 
   by libraries like [LocalStack](https://github.com/localstack/localstack) or by [doubles](#Mock-vs-stub-vs-spy). 
   Functional tests are also called component tests.
 * **Integration tests**  
-  Check that the service integrates correctly with external dependencies. External dependencies are replaced by libraries like
+  Check that a service integrates correctly with external dependencies. External dependencies are replaced by libraries like
   [LocalStack](https://github.com/localstack/localstack) or [Wiremock](http://wiremock.org/). If you use code [doubles](#Mock-vs-stub-vs-spy)
   for the external dependencies then it is a unit test.
 * **Unit tests**  
@@ -132,7 +132,7 @@ tests and many unit tests. In particular:
 
 ### If testing is hard, inject what you need to verify
 When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.  
-Suppose you have a car class storing passengers by their name.
+Suppose you have a `Car` class storing passengers by their name.
 
 ```
 class Car {
@@ -174,7 +174,7 @@ fun 'stores the names of the passengers'() {
 }
 ```
 
-However, this is already a disappointment because we are forced to write a public method just for the sake of testing.  
+However, this is already a disappointment because we are forced to write a public method just for the sake of testing.
 Moreover, what if by specifications we must prevent any other code to query `Car` about its passengers? 
 The solution is to inject the `passengers` set a construction time.
 
@@ -187,7 +187,7 @@ class Car(private val passengers: MutableSet<String>) {
 }
 ```
 
-Now we can test like follows
+Now we can test like follows.
 
 ```
 @Test
@@ -244,7 +244,7 @@ class Coordinates(private val x: Int, private val y: Int)
 }
 ```
 
-The answer is yes, as the above class still expresses clear intent, but without bothering the reader with the noise of the how.
+The answer is yes, as the above class still expresses clear intent, without even bothering the reader with the noise of the how.
 The second questions is: would the naming in `BiDimensionalCoordinates` still make sense if we were to switch to three-dimensional 
 coordinates? Let's see.
 
@@ -258,7 +258,7 @@ class BiDimensionalCoordinates(private val x: Int, private val y: Int, private v
 ```
 
 The answer is no. `BiDimensionalCoordinates` now does not express its intent anymore as it is lying to the reader: 
-the names suggest two dimensions coordinates when it is actually three. However, the `Coordinates` class would still express 
+the names suggest two dimensions coordinates when they are actually three. However, the `Coordinates` class would still express 
 its intent even when using three dimensions as shown below.
 
 ```
@@ -316,7 +316,7 @@ class App {
 }
 ```
 
-Now, let's change the signature of the `play` method like it follows.
+Now, let's change the signature of the `play` method like follows.
 
 ```
 class FizzBuzz {
@@ -363,7 +363,7 @@ class App {
 Now the `main` method is more readable. Complexity (the for-loop) has not disappeared, it just moved from `App` to `FizzBuzz`.  
 However, such a shift becomes remarkable if applied to a codebase with many classes:
 * In the first approach, the for-cycle is repeated every time a piece of code interacts with `FizzBuzz`.  
-  In the second approach, we are guaranteed the for-cycle is written only once, inside `FizzBuzz`.
+  In the second approach, we are guaranteed the for-cycle is written only once: inside `FizzBuzz`.
 * If `main` interacted with 4 classes each one using the first approach of `FizzBuzz`, `main` would contain 4 for-loops.  
   If the 4 classes were to use the second approach, `main` will contain zero for-loops.
 
@@ -491,7 +491,7 @@ class App {
 }
 ```
 
-The above code has another subtle benefit, more important than reducing the amount of work for future changes. It is now clear which class
+The above code has another subtle benefit, which is more important than reducing the amount of work for future changes. It is now clear which class
 is responsible for the formatting knowledge like ellipsis. In this way the code intent is clearer, making it easier to reason about it.
 
 [1] [DRY, The evils of duplication, topic 9 of The Pragmatic Programmer - David Thomas, Andrew Hunt](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer)  
@@ -636,7 +636,7 @@ class App {
 }
 ```
 
-In the above code, `Formatter` has a lot of if-else logic making it harder to understand. This complexity stems from 
+In the above code, `Formatter` has a lot of if-else logic making its intent less clear. This complexity stems from 
 not foreseeing that the ellipsis rules for `Person` and `Job` were going to be different, even if they looked initially
 the same. In real life this kind of scenario can be hard to anticipate, especially if specifications are not entirely known.
 In doubt, the rule of thumb is to remove duplication only after it occurs more than two times.
@@ -716,8 +716,8 @@ using `LightBulb` is forced to perform a null check every time the `isSwitchedOn
 [3] [Incidental vs accidental complexity, No Silver Bullet paper - Fred Brooks](https://en.wikipedia.org/wiki/No_Silver_Bullet)   
 
 ### Clarify what is superfluous 
-Sometimes the [you aren't going to need it](#You-aren't-going-to-need-it) principle is abused, leading to incomplete code.
-This usually happens in the form of assuming specifications. Let's consider the following example where we are required 
+Sometimes the [you aren't going to need it](#You-aren't-going-to-need-it) principle is abused, leading to code that does 
+not pass all tests. This usually happens in the form of assuming specifications. Let's consider the following example where we are required 
 to build a piece of code that:
 * stores fruits by their names
 * does not store a fruit name more than once
@@ -748,8 +748,8 @@ The above code works just fine given the specifications. However, we might argue
 is not very performant and that we could make both `contains` and `storeFruit` faster by simply using a set.
 It is a mistake to dismiss such thought appealing to the [you aren't going to need it](#You-aren't-going-to-need-it) principle.
 In fact, we would be assuming a specification about performance that is currently unknown. We should instead clarify the 
-expected performance of `FruitInventory`: if we discover it is irrelevant then the code is as good as it is, otherwise
-we need to change it as follows.
+expected performance of `FruitInventory`: if it is irrelevant then the code is as good as it is, otherwise we need 
+to change it as follows.
 
 ```
 class FruitInventory {
@@ -766,13 +766,13 @@ class FruitInventory {
 ```
 
 Performance specifications aside, the above code using `HashSet` is superior as it better expresses intent. We could even
-argue that `HashSet` approach satisfies the specifications just fine and  [we aren't going to need it](#You-aren't-going-to-need-it) 
-all the for-loop complexity introduced by the `ArrayList` approach.
+argue that `HashSet` approach satisfies the specifications just fine and we aren't going to need all the for-loop complexity 
+introduced by the `ArrayList` approach.
 
 [1] [The full quote from Donald Knuth was: "We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%."](https://dl.acm.org/toc/csur/1974/6/4)
 
 ### Do not abuse design patterns
-Design patterns are great to codify recurring design problems and their typical solutions. However, design patterns by themselves 
+Design patterns are great to catalogue recurring design problems and their typical solutions. However, design patterns by themselves 
 do not guarantee simple code, and actually they can end up pushing in the opposite direction. They are just a tool that 
 has to be adapted to the context where they are used, not applied to the letter.
 
