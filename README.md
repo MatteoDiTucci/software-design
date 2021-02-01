@@ -648,13 +648,75 @@ In doubt, the rule of thumb is to remove duplication only after it occurs more t
 # Does not contain superfluous parts
 
 ### You aren't going to need it
+Writing code that is beyond specifications is not only a waste of time, but it also introduces unnecessary complexity. 
+This complexity consists mainly in more code and tests to understand and maintain. Worse than that, superfluous code can 
+make it harder to write code for future specifications. Let's consider the following example where we are required to 
+define a light bulb that can be on or off.
+
+```
+class LightBulb(private val switchedOn: Boolean) {
+
+  fun isSwitchedOn(): Boolean {
+    return switchedOn
+  }
+}
+```
+
+Now, we could go beyond specifications and assume that a light bulb can be not only on or off but also broken. We can
+easily model this third possibility making `switchedOn` nullable, meaning `switchedOn` can be either `true` or `false` or `null`. 
+In Kotlin this is done appending a `?` after the type, so a nullable `Boolean` is defined as `Boolean?`.
+
+```
+class LightBulb(private val switchedOn: Boolean?) {
+
+  fun isSwitchedOn(): Boolean? {
+    return switchedOn
+  }
+}
+```
+
+So far so good: going beyond the specification was not that costly. However, let's now assume we need to create two strings,
+either "Light bulb is on" or "Light bulb is off" depending on the state of the light bulb. The code will look like follows.
+
+```
+class Formatter {
+
+  fun format(lightBulb: LightBulb): String {
+    if (lightBulb.isSwitchedOn() == null) {
+      return "Light bulb is off"
+    }
+    if (lightBulb.isSwitchedOn() == true) {
+      return "Light bulb is on"
+    }
+    return "Light bulb is off"
+  }
+}
+```
+
+Now we see how introducing a possible `null` state next to `true` and `false` is making the code inside `Formatter` more complex.
+As a comparison, here it is like `Formatter` would look like if a light bulb could just be on or off.
+
+```
+class Formatter {
+
+  fun format(lightBulb: LightBulb): String {
+    if (lightBulb.isSwitchedOn()) {
+      return "Light bulb is on"
+    }
+    return "Light bulb is off"
+  }
+}
+```
+
+The difference might not seem much, but in a large code base having a nullable `switchedOn` would imply that any class 
+using `LightBulb` is forced to perform a null check every time the `isSwitchedOn` method is invoked.
 
 [1] [Refactoring, Architecture, and YAGNI, chapter 2 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  
 [2] [Chapter 17 of Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)  
-[3] [The full quote from Donald Knuth was: "We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. **Yet we should not pass up our opportunities in that critical 3%.**"](https://dl.acm.org/toc/csur/1974/6/4)
+[3] [Incidental vs accidental complexity, No Silver Bullet paper - Fred Brooks](https://en.wikipedia.org/wiki/No_Silver_Bullet)   
 
 ### Clarify what is superfluous 
-Sometimes the [you aren't going to need it](#You-aren't-going-to-need-it) principle is abused leading to incomplete code.
+Sometimes the [you aren't going to need it](#You-aren't-going-to-need-it) principle is abused, leading to incomplete code.
 This usually happens in the form of assuming specifications. Let's consider the following example where we are required 
 to build a piece of code that:
 * stores fruits by their names
@@ -707,6 +769,7 @@ Performance specifications aside, the above code using `HashSet` is superior as 
 argue that `HashSet` approach satisfies the specifications just fine and  [we aren't going to need it](#You-aren't-going-to-need-it) 
 all the for-loop complexity introduced by the `ArrayList` approach.
 
+[1] [The full quote from Donald Knuth was: "We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%."](https://dl.acm.org/toc/csur/1974/6/4)
 
 ### Do not abuse design patterns
 Design patterns are great to codify recurring design problems and their typical solutions. However, design patterns by themselves 
