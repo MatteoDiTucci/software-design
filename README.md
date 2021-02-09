@@ -107,10 +107,17 @@ _external dependencies_ we mean anything that is reached over the network, like 
   as functional tests already provide coverage. If the class under test uses other classes whose construction is cumbersome,
   those can be replaced with   [doubles](#Mock-vs-stub-vs-spy)  
 
+  I disagree with the first statement: "Check that a class behaves as
+  expected". Unit tests verify units of code, whether it is a class, a method
+  or part of a method. I don't think you mean that, but the statement makes it
+  look like there is a 1-to-1 correspondence of `Class <---> UnitTest`.
 
 The above list is ordered by how much time a test takes to execute, from the slowest (acceptance) to the fastest (unit). 
 For this reason, it is recommended to have a pyramid of tests: a handful of acceptance tests, some functional and infrastructure
 tests and many unit tests. In particular:
+
+What are "infrastructure tests"? Respect your previous terminology, if
+you called them "Integration tests", keep calling them like that here.
 
 * **Acceptance tests**  
   Only for default uses of a feature
@@ -205,6 +212,24 @@ Injecting the `passengers` set led to two benefits:
 * No code is written just for testing purposes
 * The class becomes independent of the data structure used to store the passengers, making the code more modular.
 
+The second point is not true, the data structure needs to be a Set nevertheless
+(specifically, a `MutableSet`, not a generic Set either, it's even more
+constrained), you can change which implementation of a Set you want to use, but
+the public interface needs to adhere to `MutableSet`.
+
+Does the `Car` class actually need to know if it is a set or not in your
+example? Consider instead:
+
+```kotlin
+class Car(private val passengets: MutableCollection<String>) {
+
+  fun storePassenger(name: String) {
+    passengets.add(name)
+  }
+
+}
+```
+
 [1] [Context independence section, chapter 6 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 
 
@@ -236,7 +261,7 @@ we can ask two questions. The first one is: if we remove the how from the `BiDim
 still express intent? Let's see.
 
 ```
-class Coordinates(private val x: Int, private val y: Int)
+class Coordinates(private val x: Int, private val y: Int) {
   
   fun sum(addend: Coordinates): Coordinates {
     return Coordinates(x + addend.x, y + addend.y)
@@ -245,6 +270,19 @@ class Coordinates(private val x: Int, private val y: Int)
 ```
 
 The answer is yes, as the above class still expresses clear intent, without even bothering the reader with the noise of the how.
+
+Would the `sum` work if you had a return type different than `Coordinates` for
+the method? Does the following signature express intent?
+
+```kotlin
+class Coordinates(private val x: Int, private val y: Int) {
+
+  fun sum(addend: Coordinates): Int {
+    // ...
+  }
+
+```
+
 The second questions is: would the naming in `BiDimensionalCoordinates` still make sense if we were to switch to three-dimensional 
 coordinates? Let's see.
 
@@ -361,6 +399,11 @@ class App {
 ```
 
 Now the `main` method is more readable. Complexity (the for-loop) has not disappeared, it just moved from `App` to `FizzBuzz`.  
+
+What do you mean by Complexity of the for-loop here? Cyclomatic complexity? Try
+introducing the concept of complexity (whichever definition(s) you prefer)
+before start to use it.
+
 However, such a shift becomes remarkable if applied to a codebase with many classes:
 * In the first approach, the for-cycle is repeated every time a piece of code interacts with `FizzBuzz`.  
   In the second approach, we are guaranteed the for-cycle is written only once: inside `FizzBuzz`.
@@ -383,6 +426,19 @@ To summarise with a catchphrase, classes should be narrow and deep:
 ### One single authoritative knowledge representation
 Duplicated code is harmful because it makes changes expensive. Worse than that, it conceals the code intent.
 Let's take a look at the following code.
+
+Duplicated **knowledge** is harmful. Code can, and will mostly be, duplicated
+because all our engineering tools require unnecessary boilerplate, and that is
+not bad just because we are duplicating the code. It only becomes expensive
+when the concept/knowledge is duplicated. The title is ok, those two line
+description of the problem move the problem to the code duplication, which for
+me is the wrong focus.
+
+From the original definition of DRY (The Pragmatic Programmer, Andy Hunt & Dave Thomas, 1999):
+> Every piece of knowledge must have a single, unambiguous, authoritative
+> representation within a system.
+
+Emphasize the **knowledge**, code repetition is a secondary and minor concern.
 
 ```
 class Person(private val name: String) {
@@ -493,6 +549,48 @@ class App {
 
 The above code has another subtle benefit, which is more important than reducing the amount of work for future changes. It is now clear which class
 is responsible for the formatting knowledge like ellipsis. In this way the code intent is clearer, making it easier to reason about it.
+
+I totally disagree with this. The problem here is that you are duplicating not
+the formatting logic, but the `name` concept. Consider instead extracting
+`name` to its own unique knowledge representation:
+
+```kotlin
+class Name(private val name: String) {
+
+  // The discussion of coupling a representation logic to the domain concept
+  // of Name can also be discussed, but it's not relevant for this DRY example
+  fun format(): String {
+    if (name.length > 5) {
+      return name.substring(0, 5) + "..."
+    }
+
+    return name
+  }
+
+}
+
+class Person(private val name: Name) { /* getter */ }
+class Job   (private val name: Name) { /* getter */ }
+
+class App {
+
+  fun main() {
+    val person = Person(Name("Andrea"))
+    val job = Job(Name("developer"))
+
+    // Demeter's Law, format can be added also to Person
+    val formattedPerson = person.name().format()
+    val formattedJob    = person.name().format()
+
+    val result = formattedPerson + " is a " + formattedJob //Andre... is a devel...
+  }
+
+}
+```
+
+That way, your `Name` concept is clearly identified and centralized into a
+single knowledge point.
+
 
 [1] [DRY, The evils of duplication, topic 9 of The Pragmatic Programmer - David Thomas, Andrew Hunt](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer)  
 [2] [Once and only once, Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)  
@@ -641,6 +739,56 @@ not foreseeing that the ellipsis rules for `Person` and `Job` were going to be d
 the same. In real life this kind of scenario can be hard to anticipate, especially if specifications are not entirely known.
 In doubt, the rule of thumb is to remove duplication only after it occurs more than two times.
 
+I have the same problem as before, the problem still is in the decentralized
+knowledge of `Name`. Moreover, you are adding a `boolean` flag to change
+behaviour, which is a very smelly case of **Asking** instead of **Telling**.
+
+The best option that I see here is making `Name` an interface (just for forcing
+the same API, the necessity of it can be further discussed) and having two
+instances of it:
+
+```kotlin
+interface Name { fun format(): String }
+
+class PersonName(private val firstName: String): Name {
+  override fun format(): String {
+    if (firstName.length > 5) {
+      return firstName.substring(0, 5) + "..."
+    }
+
+    return firstName
+  }
+}
+
+class JobName(private val jobName: String): Name {
+  override fun format(): String {
+    if (firstName.length > 3) {
+      return firstName.substring(0, 3) + "..."
+    }
+
+    return firstName
+  }
+}
+
+class Person(private val name: PersonName) { /* getter */ }
+class Job   (private val name: JobName)    { /* getter */ }
+
+class App {
+  val person    = Person(PersonName("Andrea"))
+  val job       = Job(JobName("developer"))
+
+  val formattedPerson = person.name().format()
+  val formattedJob    = job.name().format()
+
+  val result = formattedPerson + " is a " + formattedJob
+}
+```
+
+It could be also argued that a `fun format(length: Int): String` method and a
+single `Name` class could be used in this example. But that leaks the knowledge
+of how long should a person name or job name be to the caller, instead of a
+proper encapsulation of the implementation.
+
 
 [1] ["duplication is far cheaper than the wrong abstraction", RailsConf 2014, all the little things talk - Sandy Metz](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)  
 [1] [Rule of three, When we should Refactor? chapter 2 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  
@@ -710,6 +858,54 @@ class Formatter {
 
 The difference might not seem much, but in a large code base having a nullable `switchedOn` would imply that any class 
 using `LightBulb` is forced to perform a null check every time the `isSwitchedOn` method is invoked.
+
+This whole example has a clear case of
+[`UseEnumsNotBooleans`](https://wiki.c2.com/?UseEnumsNotBooleans).
+
+Consider the alternative:
+
+```kotlin
+
+enum class LightBulbStatus {
+  ON  { override fun format(): String = "Light bulb is on"  }
+  OFF { override fun format(): String = "Light bulb is off" }
+
+  abstract fun format(): String
+}
+
+data class LightBulb(val status: LightBulbStatus)
+
+class App {
+
+  fun main() {
+    val bulbOn  = LightBulb(LightBulbStatus.ON)
+    val bulbOff = LightBulb(LightBulbStatus.OFF)
+
+    bulbOn.status.format()  // "Light bulb is on"
+    bulbOff.status.format() // "Light bulb is off"
+  }
+}
+```
+
+I totally agree on the YAGNI über alles approach. The difference in the Boolean
+vs Enum encoding is that the Enum actually expresses the intent through proper
+naming (not `true` vs `false`), and if you need to extend it to more cases in
+the future (like your nullable three valued logic example), you can just add
+more properly named cases to the enum and that's it:
+
+```kotlin
+enum class LightBulbStatus {
+  ON  { override fun format(): String = "Light bulb is on"  }
+  OFF { override fun format(): String = "Light bulb is off" }
+
+  UNKNOWN { override fun format(): String = "Light bulb status is unknown" }
+  DIMMED  { override fun format(): String = "Light bulb is dimmed" }
+
+  abstract fun format(): String
+}
+
+data class LightBulb(val status: LightBulbStatus)
+```
 
 [1] [Refactoring, Architecture, and YAGNI, chapter 2 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  
 [2] [Chapter 17 of Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)  
