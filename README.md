@@ -5,7 +5,7 @@ Software design is a craft not a science. To master it you cannot just study a b
 You have to read the literature of many great developers, looking for advices that repeat: that's what is currently considered good software design.
 However, the literature is vast and it takes much time to get the big picture out of single sources.
 This book makes three promises:
-  * to be a catalogue of everything that constitutes good software design
+  * to be a catalogue of everything that contributes to good software design
   * to be very succinct
   * to provide trustworthy sources to go deeper 
 
