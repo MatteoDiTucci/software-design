@@ -58,16 +58,18 @@ This book is divided in 4 sections, one for each the simple code rules.
 #### 1.12  Do not use production constants
 #### 1.13  Performance tests
 #### 1.14  Linting
+#### 1.15  How to test UI (screenshot and snapshot testing)
 ### 2. Expresses intent
 #### 2.1 [Naming](#naming)
 #### 2.2 [Deep and narrow classes](#deep-and-narrow-classes)
-#### 2.3 Small classes and short methods
-#### 2.4 SOLID principles
-#### 2.5 Usually composition is better than inheritance
-#### 2.6 Generalise edge cases
-#### 2.7 Immutability
-#### 2.8 Comments the why
-#### 2.9 Visual indentation
+#### 2.3 Types
+#### 2.4 Small classes and short methods
+#### 2.5 SOLID principles
+#### 2.6 Usually composition is better than inheritance
+#### 2.7 Generalise edge cases
+#### 2.8 Immutability
+#### 2.9 Comments the why
+#### 2.10 Visual indentation
 ^ Kevlin Henney talk
 #### 2.10 Folder structure
 #### 2.11 Encapsulation
@@ -102,14 +104,14 @@ _external dependencies_ we mean anything that is reached over the network, like 
   [LocalStack](https://github.com/localstack/localstack) or [Wiremock](http://wiremock.org/). If you use code [doubles](#Mock-vs-stub-vs-spy)
   for the external dependencies then it is a unit test.
 * **Unit tests**  
-  Check that a class behaves as expected. Unit tests are most valuable when testing business logic: if a class is just a 
+  Check that code inside one class behaves as expected. Unit tests are most valuable when testing business logic: if a class is just a 
   [delegator](https://en.wikipedia.org/wiki/Delegation_pattern) or just coordinates other classes, do not use unit tests
   as functional tests already provide coverage. If the class under test uses other classes whose construction is cumbersome,
   those can be replaced with   [doubles](#Mock-vs-stub-vs-spy)  
 
 
 The above list is ordered by how much time a test takes to execute, from the slowest (acceptance) to the fastest (unit). 
-For this reason, it is recommended to have a pyramid of tests: a handful of acceptance tests, some functional and infrastructure
+For this reason, it is recommended to have a pyramid of tests: a handful of acceptance tests, some functional and integration
 tests and many unit tests. In particular:
 
 * **Acceptance tests**  
@@ -127,6 +129,7 @@ tests and many unit tests. In particular:
 [3] [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)  
 [4] ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)   
 [5] [Fixing a Test Hourglass, Google testing blog - Alan Myrvold](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html)
+[6] [Characterization tests, chapter 13 of Working Effectively with Legacy Code - Michael Feathers](https://www.goodreads.com/book/show/44919.Working_Effectively_with_Legacy_Code)
 
 
 
@@ -134,7 +137,7 @@ tests and many unit tests. In particular:
 When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.  
 Suppose you have a `Car` class storing passengers by their name.
 
-```
+```kotlin
 class Car {
   private val passengers: MutableSet<String> = HashSet()
     
@@ -147,7 +150,7 @@ class Car {
 How to test that the method `storePassenger(name: String)` stores a name into the `passengers` set?
 The typical solution is to define another method in `Car` to check if it contains a passenger.
 
-```
+```kotlin
 class Car {
   private val passengers: MutableSet<String> = HashSet()
     
@@ -163,9 +166,9 @@ class Car {
 
 So we can write the following test
 
-```
+```kotlin
 @Test
-fun 'stores the names of the passengers'() {
+fun `stores the names of the passengers`() {
   val car = Car()
   
   car.storePassenger("Andrea")
@@ -178,7 +181,7 @@ However, this is already a disappointment because we are forced to write a publi
 Moreover, what if by specifications we must prevent any other code to query `Car` about its passengers? 
 The solution is to inject the `passengers` set a construction time.
 
-```
+```kotlin
 class Car(private val passengers: MutableSet<String>) {
 
   fun storePassenger(name: String) {
@@ -189,9 +192,9 @@ class Car(private val passengers: MutableSet<String>) {
 
 Now we can test like follows.
 
-```
+```kotlin
 @Test
-fun 'stores the names of the passengers'() {
+fun `stores the names of the passengers`() {
   val passengers = HashSet()
   val car = Car(passengers)
   
@@ -201,9 +204,18 @@ fun 'stores the names of the passengers'() {
 }
 ```
 
-Injecting the `passengers` set led to two benefits:
-* No code is written just for testing purposes
-* The class becomes independent of the data structure used to store the passengers, making the code more modular.
+Injecting the `passengers` set, we can get rid of the useless `containsPassenger` method. Furthermore, we have now the 
+opportunity to make our code more modular, making `Car` independent of the data structure used to store the passengers. 
+For this, we can use `MutableCollection<String>` instead of `MutableSet<String>`
+
+```kotlin
+class Car(private val passengers: MutableCollection<String>) {
+
+  fun storePassenger(name: String) {
+    passengers.add(name)
+  }
+}
+```
 
 [1] [Context independence section, chapter 6 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 
@@ -222,7 +234,7 @@ The benefits are two:
 
 Let's consider the following class
 
-```
+```kotlin
 class BiDimensionalCoordinates(private val x: Int, private val y: Int) {
   
   fun sumByXandY(addend: BiDimensionalCoordinates): BiDimensionalCoordinates {
@@ -235,8 +247,8 @@ In the above code, both class and method names leak the how. Given the distincti
 we can ask two questions. The first one is: if we remove the how from the `BiDimensionalCoordinates` names, does the class 
 still express intent? Let's see.
 
-```
-class Coordinates(private val x: Int, private val y: Int)
+```kotlin
+class Coordinates(private val x: Int, private val y: Int) {
   
   fun sum(addend: Coordinates): Coordinates {
     return Coordinates(x + addend.x, y + addend.y)
@@ -248,7 +260,7 @@ The answer is yes, as the above class still expresses clear intent, without even
 The second questions is: would the naming in `BiDimensionalCoordinates` still make sense if we were to switch to three-dimensional 
 coordinates? Let's see.
 
-```
+```kotlin
 class BiDimensionalCoordinates(private val x: Int, private val y: Int, private val z: Int) {
   
   fun sumByXandY(addend: BiDimensionalCoordinates): BiDimensionalCoordinates {
@@ -261,7 +273,7 @@ The answer is no. `BiDimensionalCoordinates` now does not express its intent any
 the names suggest two dimensions coordinates when they are actually three. However, the `Coordinates` class would still express 
 its intent even when using three dimensions as shown below.
 
-```
+```kotlin
 class Coordinates(private val x: Int, private val y: Int, private val z: Int) {
   
   fun sum(addend: Coordinates): Coordinates {
@@ -281,7 +293,7 @@ class Coordinates(private val x: Int, private val y: Int, private val z: Int) {
 We are doomed to write convoluted code when interacting with classes that have poor public methods. On the contrary, 
 we are brought to write readable code when interacting with classes that have great public methods.  
 Let's consider the following `play` public method for the [FizzBuzz game](https://en.wikipedia.org/wiki/Fizz_buzz).
-```
+```kotlin
 class FizzBuzz {
 
   fun play(number: Int): String {
@@ -302,7 +314,7 @@ class FizzBuzz {
 
 The above signature of the `play` method leads to the following code when playing with the numbers between 1 and 100.
 
-```
+```kotlin
 class App {
 
   fun main() {
@@ -318,7 +330,7 @@ class App {
 
 Now, let's change the signature of the `play` method like follows.
 
-```
+```kotlin
 class FizzBuzz {
 
   fun play(from: Int, to: Int): List<String> {
@@ -349,7 +361,7 @@ class FizzBuzz {
 
 The above signature of the `play` method leads to the following code when playing with the numbers between 1 and 100.
 
-```
+```kotlin
 class App {
 
   fun main() {
@@ -360,7 +372,7 @@ class App {
 }
 ```
 
-Now the `main` method is more readable. Complexity (the for-loop) has not disappeared, it just moved from `App` to `FizzBuzz`.  
+Now the `main` method is more readable. The for-loop has not disappeared, it just moved from `App` to `FizzBuzz`.  
 However, such a shift becomes remarkable if applied to a codebase with many classes:
 * In the first approach, the for-cycle is repeated every time a piece of code interacts with `FizzBuzz`.  
   In the second approach, we are guaranteed the for-cycle is written only once: inside `FizzBuzz`.
@@ -369,7 +381,7 @@ However, such a shift becomes remarkable if applied to a codebase with many clas
 
 To summarise with a catchphrase, classes should be narrow and deep:
 * narrow means few public methods with few input parameters
-* deep means public methods handle as much complexity as possible for the caller
+* deep means public methods get a lot of things done for the caller
 
 [1] ["Bad programmers worry about the code. Good programmers worry about data structures and their relationships" - Linus Torvalds](https://lwn.net/Articles/193245/)  
 [2] ["Show me your tables, and I won't usually need your flowcharts; they'll be obvious.", chapter 9 of The Mythical Man-Month - Fred Brooks](https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month)  
@@ -381,10 +393,10 @@ To summarise with a catchphrase, classes should be narrow and deep:
 # Does not repeat itself
 
 ### One single authoritative knowledge representation
-Duplicated code is harmful because it makes changes expensive. Worse than that, it conceals the code intent.
+Duplicated knowledge is harmful because it makes changes expensive. Worse than that, it conceals the code intent.
 Let's take a look at the following code.
 
-```
+```kotlin
 class Person(private val name: String) {
 
   fun name(): String {
@@ -413,7 +425,7 @@ class App {
 Now let's assume we want to have an ellipsis when `Person` or `Job` names are longer than 5 characters. One solution
 could be to modify the `name` method of both `Person` and `Job` like follows.
 
-```
+```kotlin
 class Person(private val name: String) {
 
   fun name(): String {
@@ -447,28 +459,13 @@ class App {
 
 
 In the above code, changing the ellipsis threshold from 5 to 10 characters will affect the `name` method of both `Person`and `Job` classes.
-This sounds trivial, but in a large codebase where duplication is widespread even small changes like this are expensive. 
-Moreover, there is a risk to introduce bugs as changes might not be replicated across all classes by mistake. However, if duplication 
-is removed like in the following code, we are guaranteed all ellipsis related changes will always affect only one class.
+Moreover, there is a risk to introduce bugs as changes might not be replicated across both classes by mistake. The problem 
+is that the concept of name is spread across `Person` and `Job` instead if being a standalone class like follows.
 
-```
-class Person(private val name: String) {
+```kotlin
+class Name(private val name: String) {
 
-  fun name(): String {
-    return name
-  }
-}
-
-class Job(private val name:String) {
-
-  fun name(): String {
-    return name
-  }
-}
-
-class Formatter {
-
-  fun format(name: String): String {
+  fun format(): String {
     if (name.length > 5) {
       return name.substring(0, 5) + "..."
     }
@@ -476,23 +473,36 @@ class Formatter {
   }
 }
 
+class Person(private val name: Name) {
+
+  fun format(): String {
+    return name.format()
+  }
+}
+
+class Job(private val name:Name) {
+
+  fun format(): String {
+    return name.format()
+  }
+}
+
 class App {
 
   fun main() {
-    val person = Person("Andrea")
-    val job = Job("developer")
-    val formatter = Formatter()
+    val person = Person(Name("Andrea"))
+    val job = Job(Name("developer"))
 
-    val formattedPerson = formatter.format(person.name())
-    val formattedJob = formatter.format(job.name())
-    
-    val result = formattedPerson + " is a " + formattedJob //Andre... is a devel...
+    val result = person.format() + " is a " + job.format() //Andre... is a devel...
   }
 }
 ```
 
-The above code has another subtle benefit, which is more important than reducing the amount of work for future changes. It is now clear which class
-is responsible for the formatting knowledge like ellipsis. In this way the code intent is clearer, making it easier to reason about it.
+Now the intent is clearer, making it easier to reason about the code.
+
+As a final note, be mindful that knowledge duplication might be there even if the code looks different. The typical example
+is [object-relational mapping libraries](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping) and SQL 
+initialisation scripts: who of the two represents the knowledge of database tables creation?
 
 [1] [DRY, The evils of duplication, topic 9 of The Pragmatic Programmer - David Thomas, Andrew Hunt](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer)  
 [2] [Once and only once, Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)  
@@ -500,147 +510,41 @@ is responsible for the formatting knowledge like ellipsis. In this way the code 
 
 ### Do not abstract by visual pattern matching
 Two pieces of code that are identical but represent two distinct concepts should stay separated: they are not duplication. 
-Let's consider the example from the previous section where both `Person` and `Job` classes introduced an ellipsis when their
-name was longer than 5 characters.
+Let's consider the example where we are asked to calculate the perimeter of rectangles and rhombuses.
 
-```
-class Person(private val name: String) {
+```kotlin
+class Rhombus(private val width: Int, private val height: Int) {
 
-  fun name(): String {
-    if (name.length > 5) {
-      return name.substring(0, 5) + "..."
-    }
-    return name
+  fun perimeter(): Int {
+    return 2 * (width + height)
   }
 }
 
-class Job(private val name:String) {
+class Rectangle(private val width: Int, private val height: Int) {
 
-  fun name(): String {
-    if (name.length > 5) {
-      return name.substring(0, 5) + "..."
-    }
-    return name
-  }
-}
-
-class App {
-
-  fun main() {
-    val person = Person("Andrea")
-    val job = Job("developer")
-
-    val result = person.name() + " is a " + job.name() //Andre... is a devel...
+  fun perimeter(): Int {
+    return 2 * (width + height)
   }
 }
 ```
 
-When seeing a piece of like the above the immediate instinct is to remove duplication as was done in the previous section.
+When seeing a piece of code like the above, one might be tempted to remove the duplication of the `perimeter` method like follows.
 
-```
-class Person(private val name: String) {
+```kotlin
+class Shape(private val width: Int, private val height: Int) {
 
-  fun name(): String {
-    return name
-  }
-}
-
-class Job(private val name:String) {
-
-  fun name(): String {
-    return name
-  }
-}
-
-class Formatter {
-
-  fun format(name: String): String {
-    if (name.length > 5) {
-      return name.substring(0, 5) + "..."
-    }
-    return name
-  }
-}
-
-class App {
-
-  fun main() {
-    val person = Person("Andrea")
-    val job = Job("developer")
-    val formatter = Formatter()
-
-    val formattedPerson = formatter.format(person.name())
-    val formattedJob = formatter.format(job.name())
-    
-    val result = formattedPerson + " is a " + formattedJob //Andre... is a devel...
+  fun perimeter(): Int {
+    return 2 * (width + height)
   }
 }
 ```
 
-However, let's now assume `Job` needs the ellipsis after 3 characters instead of 5. How does the code change?
-`Formatter` needs to know if the name is coming from `Job` or `Person`to apply the ellipsis at 3 or 5 characters respectively.
-For instance, this piece of information can be passed as an input parameter of the `format` method like follows.
-
-```
-class Person(private val name: String) {
-
-  fun name(): String {
-    return name
-  }
-}
-
-class Job(private val name:String) {
-
-  fun name(): String {
-    return name
-  }
-}
-
-class Formatter {
-
-  fun format(name: String, isPerson: Boolean): String {
-    if (isPerson) {
-      return formatPersonName(name)
-    }
-
-    return formatJobName(name)
-  }
-
-  private fun formatJobName(name: String): String {
-    if (name.length > 3) {
-      return name.substring(0, 3) + "..."
-    }
-    return name
-  }
-
-  private fun formatPersonName(name: String): String {
-    if (name.length > 5) {
-      return name.substring(0, 5) + "..."
-    }
-    return name
-  }
-}
-
-class App {
-
-  fun main() {
-    val person = Person("Andrea")
-    val job = Job("developer")
-    val formatter = Formatter()
-
-    val formattedPerson = formatter.format(person.name(), true)
-    val formattedJob = formatter.format(job.name(), false)
-
-    val result = formattedPerson + " is a " + formattedJob
-  }
-}
-```
-
-In the above code, `Formatter` has a lot of if-else logic making its intent less clear. This complexity stems from 
-not foreseeing that the ellipsis rules for `Person` and `Job` were going to be different, even if they looked initially
-the same. In real life this kind of scenario can be hard to anticipate, especially if specifications are not entirely known.
-In doubt, the rule of thumb is to remove duplication only after it occurs more than two times.
-
+However, what happens if after some time we are asked to calculate the perimeter of a circle? Now the concept represented
+by `Shape` does not relate to circle, which is definitely a shape though. There are many ways to refactor this situation,
+for instance making shape an interface, but in a large codebase these refactorings are more expensive than leaving duplicated code
+until we understand it is duplicated knowledge. It is hard to build the right knowledge model, especially if specifications
+are not entirely known or the domain is complex. In doubt, the rule of thumb is to remove duplication only after it occurs
+more than two times.
 
 [1] ["duplication is far cheaper than the wrong abstraction", RailsConf 2014, all the little things talk - Sandy Metz](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)  
 [1] [Rule of three, When we should Refactor? chapter 2 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  
@@ -649,67 +553,78 @@ In doubt, the rule of thumb is to remove duplication only after it occurs more t
 
 ### You aren't going to need it
 Writing code that is beyond specifications is not only a waste of time, but it also introduces unnecessary complexity. 
-This complexity consists mainly in more code and tests to understand and maintain. Worse than that, superfluous code can 
-make it harder to write code for future specifications. Let's consider the following example where we are required to 
-define a light bulb that can be on or off.
+This complexity consists mainly in more code and tests to understand and maintain. Worse than that, superfluous code 
+makes it harder to change code in the future. Let's consider an example given the following specifications:
+* Create a pedestrian traffic light allowing to walk if green, denying it if red
+* The traffic light can change color from red to green and vice versa
 
-```
-class LightBulb(private val switchedOn: Boolean) {
+```kotlin
+class TrafficLight(private var colour: TrafficLightColour) {
 
-  fun isSwitchedOn(): Boolean {
-    return switchedOn
+  fun changeColour() {
+    colour = colour.changeColour()
   }
+
+  fun possibleToWalk(): Boolean {
+    return colour.possibleToWalk()
+  }
+}
+
+enum class TrafficLightColour {
+  RED {
+    override fun changeColour() = GREEN
+    override fun possibleToWalk() = false
+  },
+  GREEN {
+    override fun changeColour() = RED
+    override fun possibleToWalk() = true
+  };
+
+  abstract fun changeColour(): TrafficLightColour
+  abstract fun possibleToWalk(): Boolean
 }
 ```
 
-Now, we could go beyond specifications and assume that a light bulb can be not only on or off but also broken. We can
-easily model this third possibility making `switchedOn` nullable, meaning `switchedOn` can be either `true` or `false` or `null`. 
-In Kotlin this is done appending a `?` after the type, so a nullable `Boolean` is defined as `Boolean?`.
+The above code satisfies the specifications. However, one might say that traffic lights for pedestrians are usually timed: you press
+a button and it will take some seconds before the colour changes. This was not requested, but as it seems to be a more 
+faithful representation of a pedestrian traffic light, so one might decide to go ahead like follows.
 
-```
-class LightBulb(private val switchedOn: Boolean?) {
+```kotlin
+class TrafficLight(private var colour: TrafficLightColour) {
 
-  fun isSwitchedOn(): Boolean? {
-    return switchedOn
+  fun changeColour(milliSecondsToWait: Long) {
+    waitFor(milliSecondsToWait)
+    colour = colour.changeColour(colour)
   }
+
+  fun possibleToWalk(): Boolean {
+    return colour.possibleToWalk()
+  }
+
+  private fun waitFor(milliSecondsToWait: Long) {
+    Thread.sleep(milliSecondsToWait)
+  }
+}
+
+enum class TrafficLightColour {
+  RED {
+    override fun changeColour() = GREEN
+    override fun possibleToWalk() = false
+  },
+  GREEN {
+    override fun changeColour() = RED
+    override fun possibleToWalk() = true
+  };
+
+  abstract fun changeColour(): TrafficLightColour
+  abstract fun possibleToWalk(): Boolean
 }
 ```
 
-So far so good: going beyond the specification was not that costly. However, let's now assume we need to create two strings,
-either "Light bulb is on" or "Light bulb is off" depending on the state of the light bulb. The code will look like follows.
+Changing the behaviour of `changeColour` had no benefits for what we are concerned with the current specifications. However,
+it added useless code inside the `TrafficLight` class and it forced all callers of `changeColour` to provide a value for
+`milliSecondsToWait` which, given the current spec, will always be 0.
 
-```
-class Formatter {
-
-  fun format(lightBulb: LightBulb): String {
-    if (lightBulb.isSwitchedOn() == null) {
-      return "Light bulb is off"
-    }
-    if (lightBulb.isSwitchedOn() == true) {
-      return "Light bulb is on"
-    }
-    return "Light bulb is off"
-  }
-}
-```
-
-Now we see how introducing a possible `null` state next to `true` and `false` is making the code inside `Formatter` more complex.
-As a comparison, here it is like `Formatter` would look like if a light bulb could just be on or off.
-
-```
-class Formatter {
-
-  fun format(lightBulb: LightBulb): String {
-    if (lightBulb.isSwitchedOn()) {
-      return "Light bulb is on"
-    }
-    return "Light bulb is off"
-  }
-}
-```
-
-The difference might not seem much, but in a large code base having a nullable `switchedOn` would imply that any class 
-using `LightBulb` is forced to perform a null check every time the `isSwitchedOn` method is invoked.
 
 [1] [Refactoring, Architecture, and YAGNI, chapter 2 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  
 [2] [Chapter 17 of Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)  
@@ -723,7 +638,7 @@ to build a piece of code that:
 * does not store a fruit name more than once
 * given a fruit name, returns true if it has been previously stored
 
-```
+```kotlin
 class FruitInventory {
   private val fruits = ArrayList<String>()
 
@@ -751,7 +666,7 @@ In fact, we would be assuming a specification about performance that is currentl
 expected performance of `FruitInventory`: if it is irrelevant then the code is as good as it is, otherwise we need 
 to change it as follows.
 
-```
+```kotlin
 class FruitInventory {
   private val fruits = HashSet<String>()
 
