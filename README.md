@@ -44,7 +44,7 @@ This book is divided in 4 sections, one for each the simple code rules.
 ### 1. Passes all tests
 #### 1.1 [Test pyramid](#test-pyramid)
 #### 1.2 [If testing is hard, inject what you need to verify](#if-testing-is-hard-inject-what-you-need-to-verify)
-#### 1.3 Test doubles
+#### 1.3 [Test doubles](#test-doubles)
 #### 1.5 Test coverage is not enough: parameterised tests
 #### 1.6 Tests must be reproducible
 ^ no Math.random() nor LocalDate.now()
