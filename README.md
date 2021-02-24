@@ -42,37 +42,38 @@ This book is divided in 4 sections, one for each the simple code rules.
 # Tables of contents
 
 ### 1. Passes all tests
-#### 1.1  [Test pyramid](#test-pyramid)
-#### 1.2  [If testing is hard, inject what you need to verify](#if-testing-is-hard-inject-what-you-need-to-verify)
-#### 1.3  Mock vs stub vs spy
-#### 1.4  Test naming
-#### 1.5  Test coverage is not enough: parameterised tests
-#### 1.6  Tests must be reproducible
+#### 1.1 [Test pyramid](#test-pyramid)
+#### 1.2 [If testing is hard, inject what you need to verify](#if-testing-is-hard-inject-what-you-need-to-verify)
+#### 1.3 Test doubles
+#### 1.5 Test coverage is not enough: parameterised tests
+#### 1.6 Tests must be reproducible
 ^ no Math.random() nor LocalDate.now()
-#### 1.7  Do not test libraries
-#### 1.8  Dry vs moist tests
-#### 1.9  Test driven design (TDD)
+#### 1.7 Do not test libraries
+#### 1.8 Dry vs moist tests
+#### 1.9 Test driven design (TDD)
 ^ Here mention sources to Outside-in vs inside-out TDD and Classical vs mockist TDD
-#### 1.10  Component tests vs end-to-end tests vs monitoring tradeoffs
-#### 1.11  Contract testing
-#### 1.12  Do not use production constants
-#### 1.13  Performance tests
-#### 1.14  Linting
-#### 1.15  How to test UI (screenshot and snapshot testing)
+#### 1.10 Component tests vs end-to-end tests vs monitoring tradeoffs
+#### 1.11 Contract testing
+#### 1.12 Do not use production constants
+#### 1.13 Performance tests
+#### 1.14 Linting
+#### 1.15 How to test UI (screenshot and snapshot testing)
 ### 2. Expresses intent
 #### 2.1 [Naming](#naming)
 #### 2.2 [Deep and narrow classes](#deep-and-narrow-classes)
-#### 2.3 Types
-#### 2.4 Small classes and short methods
-#### 2.5 SOLID principles
-#### 2.6 Usually composition is better than inheritance
-#### 2.7 Generalise edge cases
-#### 2.8 Immutability
-#### 2.9 Comments the why
-#### 2.10 Visual indentation
+#### 2.3 Small classes and short methods
+#### 2.4 Low coupling, high cohesion
+#### 2.5 Encapsulation
+#### 2.7 Test naming
+^ Mention [1] [Characterization tests, chapter 13 of Working Effectively with Legacy Code - Michael Feathers](https://www.goodreads.com/book/show/44919.Working_Effectively_with_Legacy_Code)
+#### 2.8 SOLID principles
+#### 2.9 Usually composition is better than inheritance
+#### 2.10 Generalise edge cases
+#### 2.11 Immutability
+#### 2.12 Comments the why
+#### 2.13 Folder structure
+#### 2.14 Visual indentation
 ^ Kevlin Henney talk
-#### 2.10 Folder structure
-#### 2.11 Encapsulation
 ### 3. Does not repeat itself
 #### 3.1 [One single authoritative knowledge representation](#One-single-authoritative-knowledge-representation)
 #### 3.2 [Do not abstract by visual pattern matching](#Do-not-abstract-by-visual-pattern-matching)
@@ -97,17 +98,17 @@ _external dependencies_ we mean anything that is reached over the network, like 
 * **Functional tests**  
   Check that a feature behaves as expected considering a single layer of a service. For example, if a service have both back end and 
   front end, there will be distinct functional tests for the back end and front end. External dependencies are replaced either 
-  by libraries like [LocalStack](https://github.com/localstack/localstack) or by [doubles](#Mock-vs-stub-vs-spy). 
+  by libraries like [LocalStack](https://github.com/localstack/localstack) or by [doubles](#test-doubles). 
   Functional tests are also called component tests.
 * **Integration tests**  
   Check that a service integrates correctly with external dependencies. External dependencies are replaced by libraries like
-  [LocalStack](https://github.com/localstack/localstack) or [Wiremock](http://wiremock.org/). If you use code [doubles](#Mock-vs-stub-vs-spy)
+  [LocalStack](https://github.com/localstack/localstack) or [Wiremock](http://wiremock.org/). If you use code [doubles](#test-doubles)
   for the external dependencies then it is a unit test.
 * **Unit tests**  
   Check that code inside one class behaves as expected. Unit tests are most valuable when testing business logic: if a class is just a 
   [delegator](https://en.wikipedia.org/wiki/Delegation_pattern) or just coordinates other classes, do not use unit tests
   as functional tests already provide coverage. If the class under test uses other classes whose construction is cumbersome,
-  those can be replaced with   [doubles](#Mock-vs-stub-vs-spy)  
+  those can be replaced with   [doubles](#test-doubles)  
 
 
 The above list is ordered by how much time a test takes to execute, from the slowest (acceptance) to the fastest (unit). 
@@ -129,9 +130,6 @@ tests and many unit tests. In particular:
 [3] [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)  
 [4] ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)   
 [5] [Fixing a Test Hourglass, Google testing blog - Alan Myrvold](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html)
-[6] [Characterization tests, chapter 13 of Working Effectively with Legacy Code - Michael Feathers](https://www.goodreads.com/book/show/44919.Working_Effectively_with_Legacy_Code)
-
-
 
 ### If testing is hard, inject what you need to verify
 When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.  
@@ -220,7 +218,120 @@ class Car(private val passengers: MutableCollection<String>) {
 [1] [Context independence section, chapter 6 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 
 
-### Mock vs stub vs spy
+### Test doubles
+When testing a class, often we need to create a lot of objects just for the sake of the test. This happens for two reasons:
+* All those objects are needed to make the test run (e.g. they are required by the constructor of the class under test)
+* We want to verify how the class under test interacts with those objects (e.g. if the class under test calls the public method of another one)
+
+Because of the above, tests can become time-consuming and tedious, but we can remediate using test doubles. For the sake
+of development speed, test doubles are usually created via testing libraries. For instance, in Kotlin there is
+[MockK](https://mockk.io/) among others. Taking the following code as example, let's define the different types of test doubles 
+and how they look like in a test when using a library like MockK.
+
+```kotlin
+class Greeter(private val validator: Validator) {
+
+  fun greetings(): String {
+    return "Hello"
+  }
+
+  fun personalisedGreetings(name: String): String {
+    if (validator.isValid(name))
+      return "Hello $name"
+    
+    return "Not a valid name"
+  }
+}
+
+class Validator {
+
+  fun isValid(name: String): Boolean {
+    if (name.isEmpty())
+      return false
+    
+    return true
+  }
+}
+```
+
+**Stubs**  
+  They return a hardcoded response. In the following test, `validator` is a stub. Unfortunately mocks
+  and stubs in MockK are both defined as `mockk<>()` which makes it confusing for newcomers.
+
+```kotlin
+  @Test
+  fun `greets by name`() {
+    val validator = mockk<Validator>()
+    every{ validator.isValid("Andrea") } returns true
+    val controller = Greeter(validator)
+  
+    val result = controller.personalisedGreetings("Andrea")
+  
+    assertEquals("Hello Andrea", result)
+  }
+```  
+
+**Mocks**  
+They have two responsibilities: 
+* they return a hardcoded response 
+* the test checks that their public methods are called with specific input parameters
+
+In the following test,
+  `validator` is a mock.
+  
+```kotlin
+  @Test
+  fun `performs successful validation on the name`() {
+    val validator = mockk<Validator>()
+    every{ validator.isValid("Andrea") } returns true
+    val controller = Greeter(validator)
+  
+    controller.personalisedGreetings("Andrea")
+  
+    verify{ validator.isValid("Andrea") }
+  }
+```
+
+**Spies**  
+The test checks that their public methods are called with specific input parameters. In the 
+following test, `validator` is spy.
+  
+```kotlin
+  @Test
+  fun `performs validation on the name`() {
+    val name = "Andrea"
+    val validator = spyk<Validator>()
+    val controller = Greeter(validator)
+
+    controller.personalisedGreetings(name)
+
+    verify{ validator.isValid(name) }
+  }
+```
+**Dummies**  
+They are used to run the test but they do not take any part in it, meaning no public method of theirs is called.
+For instance, `validator` in the following test is a dummy as the method `greetings` does not interact with `validator`.
+  
+```kotlin
+  @Test
+  fun `greets by saying Hello`() {
+    val validator = mockk<Validator>()
+    val controller = Greeter(validator)
+
+    val result = controller.greetings()
+
+    assertEquals("Hello", result)
+  }
+```
+**Fakes**  
+An object with very limited capabilities compared to the real one but much faster to create. The typical example is
+an in memory database (e.g. H2) instead of a production one (e.g. PostgreSQL)
+  
+
+As a final note, test doubles are not used just for unit tests, but throughout the [whole pyramid](#test-pyramid).
+
+[1] [Mocks aren't stubs](https://martinfowler.com/articles/mocksArentStubs.html)  
+[2] [Only mock type that you own, chapter 8 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)]
 
 # Expresses intent
 ### Naming
@@ -282,6 +393,8 @@ class Coordinates(private val x: Int, private val y: Int, private val z: Int) {
 }
 ```
 
+As a final note for typed languages, be mindful that the return type of a method is part of its naming. A method `sum`
+does not clearly expresses intent if its signature is like the following: `fun sum(addend: Coordinates): Int`
 
 [1] [Names, section 1.1.1 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
 [2] [Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
