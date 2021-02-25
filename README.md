@@ -45,19 +45,19 @@ This book is divided in 4 sections, one for each the simple code rules.
 #### 1.1 [Test pyramid](#test-pyramid)
 #### 1.2 [If testing is hard, inject what you need to verify](#if-testing-is-hard-inject-what-you-need-to-verify)
 #### 1.3 [Test doubles](#test-doubles)
-#### 1.5 Test coverage is not enough: parameterised tests
+#### 1.4 [Test driven development](#test-driven-development)
+#### 1.5 [Test coverage is not enough](#test-coverage-is-not-enough)
+^ parameterised tests, mention mutation testing
 #### 1.6 Tests must be reproducible
 ^ no Math.random() nor LocalDate.now()
 #### 1.7 Do not test libraries
-#### 1.8 Dry vs moist tests
-#### 1.9 Test driven design (TDD)
 ^ Here mention sources to Outside-in vs inside-out TDD and Classical vs mockist TDD
-#### 1.10 Component tests vs end-to-end tests vs monitoring tradeoffs
-#### 1.11 Contract testing
-#### 1.12 Do not use production constants
-#### 1.13 Performance tests
-#### 1.14 Linting
-#### 1.15 How to test UI (screenshot and snapshot testing)
+#### 1.8 Component tests vs end-to-end tests vs monitoring tradeoffs
+#### 1.9 Contract testing
+#### 1.10 Do not use production constants
+#### 1.11 Performance tests
+#### 1.12 Linting
+#### 1.13 How to test UI (screenshot and snapshot testing)
 ### 2. Expresses intent
 #### 2.1 [Naming](#naming)
 #### 2.2 [Deep and narrow classes](#deep-and-narrow-classes)
@@ -66,13 +66,14 @@ This book is divided in 4 sections, one for each the simple code rules.
 #### 2.5 Encapsulation
 #### 2.7 Test naming
 ^ Mention [1] [Characterization tests, chapter 13 of Working Effectively with Legacy Code - Michael Feathers](https://www.goodreads.com/book/show/44919.Working_Effectively_with_Legacy_Code)
-#### 2.8 SOLID principles
-#### 2.9 Usually composition is better than inheritance
-#### 2.10 Generalise edge cases
-#### 2.11 Immutability
-#### 2.12 Comments the why
-#### 2.13 Folder structure
-#### 2.14 Visual indentation
+#### 2.8 Dry vs moist tests
+#### 2.9 SOLID principles
+#### 2.10 Usually composition is better than inheritance
+#### 2.11 Generalise edge cases
+#### 2.12 Immutability
+#### 2.13 Comments the why
+#### 2.14 Folder structure
+#### 2.15 Visual indentation
 ^ Kevlin Henney talk
 ### 3. Does not repeat itself
 #### 3.1 [One single authoritative knowledge representation](#One-single-authoritative-knowledge-representation)
@@ -127,9 +128,8 @@ tests and many unit tests. In particular:
 
 [1] [Test Pyramid (in short) - Martin Fowler](https://martinfowler.com/bliki/TestPyramid.html)  
 [2] [Test Pyramid (in depth) - Ham Vocke](https://martinfowler.com/articles/practical-test-pyramid.html)  
-[3] [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)  
-[4] ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)   
-[5] [Fixing a Test Hourglass, Google testing blog - Alan Myrvold](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html)
+[3] [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
+[4] [Fixing a Test Hourglass, Google testing blog - Alan Myrvold](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html)
 
 ### If testing is hard, inject what you need to verify
 When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.  
@@ -259,7 +259,7 @@ class Validator {
   and stubs in MockK are both defined as `mockk<>()` which makes it confusing for newcomers.
 
 ```kotlin
-  @Test
+@Test
   fun `greets by name`() {
     val validator = mockk<Validator>()
     every{ validator.isValid("Andrea") } returns true
@@ -280,7 +280,7 @@ In the following test,
   `validator` is a mock.
   
 ```kotlin
-  @Test
+@Test
   fun `performs successful validation on the name`() {
     val validator = mockk<Validator>()
     every{ validator.isValid("Andrea") } returns true
@@ -297,7 +297,7 @@ The test checks that their public methods are called with specific input paramet
 following test, `validator` is spy.
   
 ```kotlin
-  @Test
+@Test
   fun `performs validation on the name`() {
     val name = "Andrea"
     val validator = spyk<Validator>()
@@ -313,7 +313,7 @@ They are used to run the test but they do not take any part in it, meaning no pu
 For instance, `validator` in the following test is a dummy as the method `greetings` does not interact with `validator`.
   
 ```kotlin
-  @Test
+@Test
   fun `greets by saying Hello`() {
     val validator = mockk<Validator>()
     val controller = Greeter(validator)
@@ -332,6 +332,103 @@ As a final note, test doubles are not used just for unit tests, but throughout t
 
 [1] [Mocks aren't stubs](https://martinfowler.com/articles/mocksArentStubs.html)  
 [2] [Only mock type that you own, chapter 8 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)]
+
+
+### Test driven development
+Test driven development (TDD) is an approach to development where tests are written before the actual code. The core of TDD is a three 
+steps process:
+1. Write a failing test
+2. Make the test pass
+3. Refactor
+
+Let's go through each step using the following specification as example: create a calculator that performs the sum of two integers.
+
+**Write a failing test**  
+At this step we pick a single aspect of the specification we want to verify: the smallest the better. The common mistake
+here is to overthink it because we want to take into account all the specifications and their nuances. Don't do it now,
+the third step will take care of it. For now let's just write a test even if it seems silly for how simple it is. Moreover,
+don't focus on writing good code either: the third step will take care of this as well. Finally, remember to run the test
+and see it failing with the error we expect: we do not want to later discover that our code is passing tests by luck.
+
+```kotlin
+@Test
+  fun `summing 1 and 2 returns 3`() {
+    val integerCalculator = IntegerCalculator()
+
+    val result = integerCalculator.add(1, 2)
+
+    assertEquals(3, result)
+  }
+```
+
+
+**Make the test pass**  
+Now that we have a failing test we need to make it pass. Be mindful that compilation errors in the test is the same of 
+running it and see it fail. At this step as at the previous, let's not focus about writing good code, that's something for
+the third step: just make the test pass, whatever it takes.
+
+
+```kotlin
+class IntegerCalculator {
+  fun add(firstNumber: Int, secondNumber: Int): Int {
+    return 3
+  }
+}
+```
+
+**Refactor**  
+In this step we improve the test and the actual code we have written. Let's start from the naming.
+
+```kotlin
+@Test
+  fun `summing 1 and 2 returns 3`() {
+    val calculator = Calculator()
+
+    val result = calculator.sum(1, 2)
+
+    assertEquals(3, result)
+  }
+
+class Calculator {
+  fun sum(firstAddend: Int, secondAddend: Int): Int {
+    return 3
+  }
+}
+```
+
+Let's also generalise the body of the method `sum` for all integers as we already understand it won't work for another 
+pair of numbers.
+
+```kotlin
+class Calculator {
+  fun sum(firstAddend: Int, secondAddend: Int): Int {
+    return firstAddend + secondAddend
+  }
+}
+```
+
+The third step is also when look at the bigger picture. In this example there is little to do, but usually this is the moment
+when we pay attention on how the new code we are writing fits into the existing codebase (e.g. knowledge 
+duplication, edge cases for some other classes we did not think before, etc.). We do not need to address these concerns 
+right away, but it is good to note them down so we can tackle them once we have done satisfying the bit of specifications
+we are currently working on. Once we are happy with the quality of the code we have just written, we can restart 
+the three steps process. The focus will be either another test for the bit of specification we are focusing on 
+(e.g. adding 2 negative integers) or a test for another bit of the specifications.
+
+Compared to writing tests after the implementation, the main benefit of TDD is that it becomes much harder to write code
+that is not tested. However, be mindful that we can still write buggy code even if we use TDD as described in the 
+[test coverage is not enough](#test-coverage-is-not-enough) section.
+
+[1] [Test-Driven Development: By Example - Kent Beck](https://www.goodreads.com/book/show/387190.Test_Driven_Development)    
+[2] [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)    
+[3] [Shameless green, chapter 1 of 99 bottles of OOP, Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
+[4] [Test contravariance - Robert C. Martin](https://blog.cleancoder.com/uncle-bob/2017/10/03/TestContravariance.html)  
+[5] ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)  
+[6] [London vs Chicago school, contributing-tests wiki - Justin Searls](https://github.com/testdouble/contributing-tests/wiki/London-school-TDD)  
+[7] [Need driven development, Mock Roles, not Objects - Steve Freeman, Nat Pryce, Tim Mackinnon, Joe Walnes](http://jmock.org/oopsla2004.pdf)  
+[8] [London vs Chicago - Robert C. Martin, Sandro Mancuso](https://cleancoders.com/series/comparativeDesign)  
+
+### Test coverage is not enough
 
 # Expresses intent
 ### Naming
@@ -498,8 +595,8 @@ To summarise with a catchphrase, classes should be narrow and deep:
 
 [1] ["Bad programmers worry about the code. Good programmers worry about data structures and their relationships" - Linus Torvalds](https://lwn.net/Articles/193245/)  
 [2] ["Show me your tables, and I won't usually need your flowcharts; they'll be obvious.", chapter 9 of The Mythical Man-Month - Fred Brooks](https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month)  
-[3] [ Java and Unix I/O, section 4.7 of A Philosophy of Software Design - John Ousterhout](https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design)  
-[4] [ A web of objects, chapter 2 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)  
+[3] [ava and Unix I/O, section 4.7 of A Philosophy of Software Design - John Ousterhout](https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design)  
+[4] [A web of objects, chapter 2 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)  
 [5] [Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
 
 
