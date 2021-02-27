@@ -429,6 +429,40 @@ that is not tested. However, be mindful that we can still write buggy code even 
 [8] [London vs Chicago - Robert C. Martin, Sandro Mancuso](https://cleancoders.com/series/comparativeDesign)  
 
 ### Test coverage is not enough
+Test coverage measures how much code in a codebase is invoked when we run all tests. However, it is not a measure of quality
+of the tests. This means a codebase with 100% of coverage can still be plenty of bugs. Let's take as example the following code.
+
+```kotlin
+class Bill(private val amount: Int) {
+
+  fun divide(times: Int): Int {
+    return amount / times
+  }
+}
+
+@Test
+fun `divides the bill in equal parts for 4 people`() {
+  val bill = Bill(100)
+
+  val result = bill.divide(4)
+
+  assertEquals(25, result)
+}
+```
+
+The above code has 100% test coverage. However, we could break it by simply calling `divide(0)` over `Bill`.
+For this reason, it is important to test against as many inputs as possible. For instance, in the above example this means 
+trying different input parameters for the `Bill` constructor and for the `divide` method. Defining one test for each possible
+combination of inputs is not feasible, but there are some testing libraries that let us test for many inputs in very
+little time. They leverage the following testing approaches:
+* Parameterized testing: execute one test multiple times specifying different input parameters
+* Property based testing: execute one test multiple times specifying which kind of inputs are valid and letting a library randomly generate them
+
+
+[1] [Jqwik, a property based testing library in Java](https://jqwik.net/)  
+[2] [Parameterised testing with Junit in Kotlin - Baeldung](https://www.baeldung.com/parameterized-tests-junit-5)  
+[4] [Fuzz testing](https://en.wikipedia.org/wiki/Fuzzing)    
+[3] [Formal verification](https://en.wikipedia.org/wiki/Formal_verification)    
 
 # Expresses intent
 ### Naming
