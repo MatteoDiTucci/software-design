@@ -341,7 +341,9 @@ steps process:
 2. Make the test pass
 3. Refactor
 
-Let's go through each step using the following specification as example: create a calculator that performs the sum of two integers.
+Let's go through each step using the following specifications as example: 
+* I want measure things in meters
+* I want to be able to some two measurements in meters
 
 **Write a failing test**  
 At this step we pick a single aspect of the specification we want to verify: the smallest the better. The common mistake
@@ -352,13 +354,11 @@ and see it failing with the error we expect: we do not want to later discover th
 
 ```kotlin
 @Test
-  fun `summing 1 and 2 returns 3`() {
-    val integerCalculator = IntegerCalculator()
+fun `summing 1 meter and 2 meters returns 3 meters`() {
+  val result = MeasureInMeters(1).add(MeasureInMeters(2))
 
-    val result = integerCalculator.add(1, 2)
-
-    assertEquals(3, result)
-  }
+  assertEquals(MeasureInMeters(3), result)
+}
 ```
 
 
@@ -369,29 +369,32 @@ the third step: just make the test pass, whatever it takes.
 
 
 ```kotlin
-class IntegerCalculator {
-  fun add(firstNumber: Int, secondNumber: Int): Int {
-    return 3
+data class MeasureInMeters(private val amount: Int) {
+
+  fun add(measureInMeters: MeasureInMeters): MeasureInMeters {
+    return MeasureInMeters(3)
   }
 }
 ```
+
+(In Kotlin the `data class` keyword makes sure that two instances of `Meter` are equal if their `amount` is equal).
+
 
 **Refactor**  
 In this step we improve the test and the actual code we have written. Let's start from the naming.
 
 ```kotlin
 @Test
-  fun `summing 1 and 2 returns 3`() {
-    val calculator = Calculator()
+fun `adding 1 meter and 2 meters returns 3 meters`() {
+  val result = Measure(1).add(Measure(2))
 
-    val result = calculator.sum(1, 2)
+  assertEquals(Measure(3), result)
+}
 
-    assertEquals(3, result)
-  }
+data class Measure(private val amount: Int) {
 
-class Calculator {
-  fun sum(firstAddend: Int, secondAddend: Int): Int {
-    return 3
+  fun add(measure: Measure): Measure {
+    return Measure(3)
   }
 }
 ```
@@ -400,9 +403,10 @@ Let's also generalise the body of the method `sum` for all integers as we alread
 pair of numbers.
 
 ```kotlin
-class Calculator {
-  fun sum(firstAddend: Int, secondAddend: Int): Int {
-    return firstAddend + secondAddend
+data class Measure(private val amount: Int) {
+
+  fun add(measure: Measure): Measure {
+    return Measure(amount + measure.amount)
   }
 }
 ```
