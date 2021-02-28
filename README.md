@@ -437,34 +437,35 @@ Test coverage measures how much code in a codebase is invoked when we run all te
 of the tests. This means a codebase with 100% of coverage can still be plenty of bugs. Let's take as example the following code.
 
 ```kotlin
-class Bill(private val amount: Int) {
+data class Bill(private val amount: Int) {
 
-  fun divide(times: Int): Int {
-    return amount / times
+  fun split(parts: Int): Bill {
+    return Bill(amount / parts)
   }
 }
 
 @Test
-fun `divides the bill in equal parts for 4 people`() {
+fun `split the bill in equal parts for 4 people`() {
   val bill = Bill(100)
 
-  val result = bill.divide(4)
+  val result = bill.split(4)
 
-  assertEquals(25, result)
+  assertEquals(Bill(25), result)
 }
 ```
 
-The above code has 100% test coverage. However, we could break it by simply calling `divide(0)` over `Bill`.
+(In Kotlin the `data class` keyword makes sure that two instances of `Bill` are equal if their `amount` is equal).
+
+The above code has 100% test coverage. However, we could break it by simply calling `split(0)` over `Bill`.
 For this reason, it is important to test against as many inputs as possible. For instance, in the above example this means 
-trying different input parameters for the `Bill` constructor and for the `divide` method. Defining one test for each possible
-combination of inputs is not feasible, but there are some testing libraries that let us test for many inputs in very
-little time. They leverage the following testing approaches:
+trying different input parameters for the `Bill` constructor and for the `split` method. Defining one test for each possible
+combination of inputs is not feasible, but there are some testing methodologies that let us test for many inputs in very little time:
 * Parameterized testing: execute one test multiple times specifying different input parameters
 * Property based testing: execute one test multiple times specifying which kind of inputs are valid and letting a library randomly generate them
 
 
-[1] [Jqwik, a property based testing library in Java](https://jqwik.net/)  
-[2] [Parameterised testing with Junit in Kotlin - Baeldung](https://www.baeldung.com/parameterized-tests-junit-5)  
+[1] [Parameterised testing with Junit in Kotlin - Baeldung](https://www.baeldung.com/parameterized-tests-junit-5)  
+[2] [Jqwik, a property based testing library in Java](https://jqwik.net/)  
 [4] [Fuzz testing](https://en.wikipedia.org/wiki/Fuzzing)    
 [3] [Formal verification](https://en.wikipedia.org/wiki/Formal_verification)    
 
