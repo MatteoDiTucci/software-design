@@ -1,0 +1,1085 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Software Design</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="passes_all_tests/introduction.html"><strong aria-hidden="true">2.</strong> Passes all tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="passes_all_tests/test_pyramid.html"><strong aria-hidden="true">2.1.</strong> Test pyramid</a></li><li class="chapter-item expanded "><a href="passes_all_tests/if_testing_is_hard_inject.html"><strong aria-hidden="true">2.2.</strong> If testing is hard, inject what you need to verify</a></li><li class="chapter-item expanded "><a href="passes_all_tests/test_doubles.html"><strong aria-hidden="true">2.3.</strong> Test doubles</a></li><li class="chapter-item expanded "><a href="passes_all_tests/test_driven_development.html"><strong aria-hidden="true">2.4.</strong> Test driven development</a></li><li class="chapter-item expanded "><a href="passes_all_tests/test_coverage_is_not_enough.html"><strong aria-hidden="true">2.5.</strong> Test coverage is not enough</a></li><li class="chapter-item expanded "><a href="passes_all_tests/tests_must_be_reproducible.html"><strong aria-hidden="true">2.6.</strong> Tests must be reproducible</a></li><li class="chapter-item expanded "><a href="passes_all_tests/do_not_test_libraries.html"><strong aria-hidden="true">2.7.</strong> Do not test libraries</a></li><li class="chapter-item expanded "><a href="passes_all_tests/component_tests_vs_end-to-end_tests_vs_monitoring_tradeoffs.html"><strong aria-hidden="true">2.8.</strong> Component tests vs end-to-end tests vs monitoring tradeoffs</a></li><li class="chapter-item expanded "><a href="passes_all_tests/contract_testing.html"><strong aria-hidden="true">2.9.</strong> Contract testing</a></li><li class="chapter-item expanded "><a href="passes_all_tests/do_not_use_production_constants.html"><strong aria-hidden="true">2.10.</strong> Do not use production constants</a></li><li class="chapter-item expanded "><a href="passes_all_tests/performance_tests.html"><strong aria-hidden="true">2.11.</strong> Performance tests</a></li><li class="chapter-item expanded "><a href="passes_all_tests/linting.html"><strong aria-hidden="true">2.12.</strong> Linting</a></li><li class="chapter-item expanded "><a href="passes_all_tests/how_to_test_UI.html"><strong aria-hidden="true">2.13.</strong> How to test UI</a></li></ol></li><li class="chapter-item expanded "><a href="expresses_intent/introduction.html"><strong aria-hidden="true">3.</strong> Expresses intent</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="expresses_intent/naming.html"><strong aria-hidden="true">3.1.</strong> Naming</a></li><li class="chapter-item expanded "><a href="expresses_intent/deep_and_narrow_classes.html"><strong aria-hidden="true">3.2.</strong> Deep and narrow classes</a></li><li class="chapter-item expanded "><a href="expresses_intent/small_classes_and_short_methods.html"><strong aria-hidden="true">3.3.</strong> Small classes and short methods</a></li><li class="chapter-item expanded "><a href="expresses_intent/low_coupling_high_cohesion.html"><strong aria-hidden="true">3.4.</strong> Low coupling, high cohesion</a></li><li class="chapter-item expanded "><a href="expresses_intent/encapsulation.html"><strong aria-hidden="true">3.5.</strong> Encapsulation</a></li><li class="chapter-item expanded "><a href="expresses_intent/test_naming.html"><strong aria-hidden="true">3.6.</strong> Test naming</a></li></ol></li><li class="chapter-item expanded "><a href="does_not_repeat_itself/introduction.html"><strong aria-hidden="true">4.</strong> Does not repeat itself</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="does_not_repeat_itself/one_single_authoritative_representation.html"><strong aria-hidden="true">4.1.</strong> One single authoritative knowledge representation</a></li><li class="chapter-item expanded "><a href="does_not_repeat_itself/do_not_abstract_by_visual_pattern_matching.html"><strong aria-hidden="true">4.2.</strong> Do not abstract by visual pattern matching</a></li></ol></li><li class="chapter-item expanded "><a href="does_not_contain_superfluous_parts/introduction.html"><strong aria-hidden="true">5.</strong> Does not contain superfluous parts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="does_not_contain_superfluous_parts/you_are_not_going_to_need_it.html"><strong aria-hidden="true">5.1.</strong> Does not contain superfluous parts</a></li><li class="chapter-item expanded "><a href="does_not_contain_superfluous_parts/clarify_what_is_superfluous.html"><strong aria-hidden="true">5.2.</strong> Clarify what is superfluous</a></li><li class="chapter-item expanded "><a href="does_not_contain_superfluous_parts/do_not_abuse_design_patterns.html"><strong aria-hidden="true">5.3.</strong> Do not abuse design patterns</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Software Design</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
+<h3><a class="header" href="#why-read-this-book" id="why-read-this-book">Why read this book</a></h3>
+<p>Software design is a craft not a science. To master it you cannot just study a book that explains comprehensively all the theory behind it.
+You have to read the literature of many great developers, looking for advices that repeat: that's what is currently considered good software design.
+However, the literature is vast and it takes much time to get the big picture out of single sources.
+This book makes three promises:</p>
+<ul>
+<li>to be a catalogue of everything that contributes to good software design</li>
+<li>to be very succinct</li>
+<li>to provide trustworthy sources to go deeper</li>
+</ul>
+<h3><a class="header" href="#who-should-read-this-book" id="who-should-read-this-book">Who should read this book</a></h3>
+<p>The book is intended mainly for people who just started their journey into software design or who are in the middle of it.
+If you have being seriously studying the topic for 5+ years, likely you are not going to find big surprises. However, I still
+suggest you to go through the table of contents: you might find one or two things worth a quick read.
+As a last consideration, the book is heavily skewed towards object-oriented programming though many advices apply to all <a href="http://www.cs.albany.edu/%7Esdc/CSI500/Downloads/ProgrammingParadigmsVanRoyChapter.pdf">programming paradigms</a>.
+Code examples are written in Kotlin, but they are very basic so you do not need any prior knowledge (Kotlin enthusiasts will forgive me some syntax choices :) ).</p>
+<h3><a class="header" href="#who-i-am" id="who-i-am">Who I am</a></h3>
+<p>My name is Matteo Di Tucci, I currently work at ThoughtWorks.
+I picked up coding in university because I did not know what to do when growing up.
+I still do not know, but along the way I pleasantly discovered I like software and its design.</p>
+<h3><a class="header" href="#teach-me-back" id="teach-me-back">Teach me back</a></h3>
+<p>I really appreciate any feedback about the book and my current understanding of software design.
+You can share any feedback by creating a pull request.
+If you do not know what a pull request is, take a look <a href="https://guides.github.com/activities/hello-world/#:%7E:text=Pull%20Requests%20are%20the%20heart,merge%20them%20into%20their%20branch.&amp;text=You%20can%20even%20open%20pull,repository%20and%20merge%20them%20yourself.">here</a>.</p>
+<h3><a class="header" href="#simple-code" id="simple-code">Simple code</a></h3>
+<p>It is hard to define what good design looks like: nobody was able to come up with a formal definition so far.
+The thing that came closer to that is the <a href="https://wiki.c2.com/?XpSimplicityRules">C2 Wiki</a> simple code rules.<br />
+Simple code:</p>
+<ul>
+<li>Passes all tests</li>
+<li>Expresses intent</li>
+<li>Does not repeat itself</li>
+<li>Does not contain superfluous parts</li>
+</ul>
+<p>If a piece of code respects all those 4 rules then we can consider it good code.<br />
+This book is divided in 4 sections, one for each the simple code rules.</p>
+<h1><a class="header" href="#passes-all-tests" id="passes-all-tests">Passes all tests</a></h1>
+<h2><a class="header" href="#test-pyramid" id="test-pyramid">Test pyramid</a></h2>
+<p>There are different kinds of tests, each one meant for a different purpose. Before describing the most common ones, let's
+clarify in advance a couple of terms. For <em>service</em> we mean a bunch of code deployed as a whole. For
+<em>external dependencies</em> we mean anything that is reached over the network, like a database, another team REST endpoint, a queue, third party apis, etc.</p>
+<ul>
+<li><strong>Acceptance tests</strong><br />
+Check that a feature behaves as expected across all service layers (e.g. back end and front end) or even
+across different services. External dependencies are replaced through libraries like <a href="https://github.com/localstack/localstack">LocalStack</a>
+or <a href="http://wiremock.org/">Wiremock</a>. In a web application for instance, acceptance tests are defined with tools like <a href="https://www.selenium.dev/">Selenium</a>
+or <a href="https://www.cypress.io/">Cypress</a>.</li>
+<li><strong>Functional tests</strong><br />
+Check that a feature behaves as expected considering a single layer of a service. For example, if a service have both back end and
+front end, there will be distinct functional tests for the back end and front end. External dependencies are replaced either
+by libraries like <a href="https://github.com/localstack/localstack">LocalStack</a> or by <a href="passes_all_tests/test_pyramid.html#test-doubles">doubles</a>.
+Functional tests are also called component tests.</li>
+<li><strong>Integration tests</strong><br />
+Check that a service integrates correctly with external dependencies. External dependencies are replaced by libraries like
+<a href="https://github.com/localstack/localstack">LocalStack</a> or <a href="http://wiremock.org/">Wiremock</a>. If you use code <a href="passes_all_tests/test_pyramid.html#test-doubles">doubles</a>
+for the external dependencies then it is a unit test.</li>
+<li><strong>Unit tests</strong><br />
+Check that code inside one class behaves as expected. Unit tests are most valuable when testing business logic: if a class is just a
+<a href="https://en.wikipedia.org/wiki/Delegation_pattern">delegator</a> or just coordinates other classes, do not use unit tests
+as functional tests already provide coverage. If the class under test uses other classes whose construction is cumbersome,
+those can be replaced with   <a href="passes_all_tests/test_pyramid.html#test-doubles">doubles</a></li>
+</ul>
+<p>The above list is ordered by how much time a test takes to execute, from the slowest (acceptance) to the fastest (unit).
+For this reason, it is recommended to have a pyramid of tests: a handful of acceptance tests, some functional and integration
+tests and many unit tests. In particular:</p>
+<ul>
+<li><strong>Acceptance tests</strong><br />
+Only for default uses of a feature</li>
+<li><strong>Functional tests</strong><br />
+For both default and exceptional-erroneous uses of a feature</li>
+<li><strong>Integration tests</strong><br />
+For both default and exceptional-erroneous integrations with external dependencies</li>
+<li><strong>Unit tests</strong><br />
+For both default and exceptional-erroneous usage of a single class</li>
+</ul>
+<p>[1] <a href="https://martinfowler.com/bliki/TestPyramid.html">Test Pyramid (in short) - Martin Fowler</a><br />
+[2] <a href="https://martinfowler.com/articles/practical-test-pyramid.html">Test Pyramid (in depth) - Ham Vocke</a><br />
+[3] <a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce</a>
+[4] <a href="https://testing.googleblog.com/2020/11/fixing-test-hourglass.html">Fixing a Test Hourglass, Google testing blog - Alan Myrvold</a></p>
+<h2><a class="header" href="#if-testing-is-hard-inject-what-you-need-to-verify" id="if-testing-is-hard-inject-what-you-need-to-verify">If testing is hard, inject what you need to verify</a></h2>
+<p>When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.<br />
+Suppose you have a <code>Car</code> class storing passengers by their name.</p>
+<pre><code class="language-kotlin">class Car {
+  private val passengers: MutableSet&lt;String&gt; = HashSet()
+    
+  fun storePassenger(name: String) {
+    passengers.add(name)
+  }
+}
+</code></pre>
+<p>How to test that the method <code>storePassenger(name: String)</code> stores a name into the <code>passengers</code> set?
+The typical solution is to define another method in <code>Car</code> to check if it contains a passenger.</p>
+<pre><code class="language-kotlin">class Car {
+  private val passengers: MutableSet&lt;String&gt; = HashSet()
+    
+  fun storePassenger(name: String) {
+    passengers.add(name)
+  }
+       
+  fun containsPassenger(name: String): Boolean { 
+    return passengers.contains(name)
+  }
+}
+</code></pre>
+<p>So we can write the following test</p>
+<pre><code class="language-kotlin">@Test
+fun `stores the names of the passengers`() {
+  val car = Car()
+  
+  car.storePassenger(&quot;Andrea&quot;)
+
+  assertTrue(passengers.containsPassenger(&quot;Andrea&quot;))
+}
+</code></pre>
+<p>However, this is already a disappointment because we are forced to write a public method just for the sake of testing.
+Moreover, what if by specifications we must prevent any other code to query <code>Car</code> about its passengers?
+The solution is to inject the <code>passengers</code> set a construction time.</p>
+<pre><code class="language-kotlin">class Car(private val passengers: MutableSet&lt;String&gt;) {
+
+  fun storePassenger(name: String) {
+    passengers.add(name)
+  }
+}
+</code></pre>
+<p>Now we can test like follows.</p>
+<pre><code class="language-kotlin">@Test
+fun `stores the names of the passengers`() {
+  val passengers = HashSet()
+  val car = Car(passengers)
+  
+  car.storePassenger(&quot;Andrea&quot;)
+
+  assertTrue(passengers.contains(&quot;Andrea&quot;))
+}
+</code></pre>
+<p>Injecting the <code>passengers</code> set, we can get rid of the useless <code>containsPassenger</code> method. Furthermore, we have now the
+opportunity to make our code more modular, making <code>Car</code> independent of the data structure used to store the passengers.
+For this, we can use <code>MutableCollection&lt;String&gt;</code> instead of <code>MutableSet&lt;String&gt;</code></p>
+<pre><code class="language-kotlin">class Car(private val passengers: MutableCollection&lt;String&gt;) {
+
+  fun storePassenger(name: String) {
+    passengers.add(name)
+  }
+}
+</code></pre>
+<p>[1] <a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">Context independence section, chapter 6 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce</a></p>
+<h2><a class="header" href="#test-doubles" id="test-doubles">Test doubles</a></h2>
+<p>When testing a class, often we need to create a lot of objects just for the sake of the test. This happens for two reasons:</p>
+<ul>
+<li>All those objects are needed to make the test run (e.g. they are required by the constructor of the class under test)</li>
+<li>We want to verify how the class under test interacts with those objects (e.g. if the class under test calls the public method of another one)</li>
+</ul>
+<p>Because of the above, tests can become time-consuming and tedious, but we can remediate using test doubles. For the sake
+of development speed, test doubles are usually created via testing libraries. For instance, in Kotlin there is
+<a href="https://mockk.io/">MockK</a> among others. Taking the following code as example, let's define the different types of test doubles
+and how they look like in a test when using a library like MockK.</p>
+<pre><code class="language-kotlin">class Greeter(private val validator: Validator) {
+
+  fun greetings(): String {
+    return &quot;Hello&quot;
+  }
+
+  fun personalisedGreetings(name: String): String {
+    if (validator.isValid(name))
+      return &quot;Hello $name&quot;
+    
+    return &quot;Not a valid name&quot;
+  }
+}
+
+class Validator {
+
+  fun isValid(name: String): Boolean {
+    if (name.isEmpty())
+      return false
+    
+    return true
+  }
+}
+</code></pre>
+<p><strong>Stubs</strong><br />
+They return a hardcoded response. In the following test, <code>validator</code> is a stub. Unfortunately mocks
+and stubs in MockK are both defined as <code>mockk&lt;&gt;()</code> which makes it confusing for newcomers.</p>
+<pre><code class="language-kotlin">@Test
+  fun `greets by name`() {
+    val validator = mockk&lt;Validator&gt;()
+    every{ validator.isValid(&quot;Andrea&quot;) } returns true
+    val controller = Greeter(validator)
+  
+    val result = controller.personalisedGreetings(&quot;Andrea&quot;)
+  
+    assertEquals(&quot;Hello Andrea&quot;, result)
+  }
+</code></pre>
+<p><strong>Mocks</strong><br />
+They have two responsibilities:</p>
+<ul>
+<li>they return a hardcoded response</li>
+<li>the test checks that their public methods are called with specific input parameters</li>
+</ul>
+<p>In the following test,
+<code>validator</code> is a mock.</p>
+<pre><code class="language-kotlin">@Test
+  fun `performs successful validation on the name`() {
+    val validator = mockk&lt;Validator&gt;()
+    every{ validator.isValid(&quot;Andrea&quot;) } returns true
+    val controller = Greeter(validator)
+  
+    controller.personalisedGreetings(&quot;Andrea&quot;)
+  
+    verify{ validator.isValid(&quot;Andrea&quot;) }
+  }
+</code></pre>
+<p><strong>Spies</strong><br />
+The test checks that their public methods are called with specific input parameters. In the
+following test, <code>validator</code> is spy.</p>
+<pre><code class="language-kotlin">@Test
+  fun `performs validation on the name`() {
+    val name = &quot;Andrea&quot;
+    val validator = spyk&lt;Validator&gt;()
+    val controller = Greeter(validator)
+
+    controller.personalisedGreetings(name)
+
+    verify{ validator.isValid(name) }
+  }
+</code></pre>
+<p><strong>Dummies</strong><br />
+They are used to run the test but they do not take any part in it, meaning no public method of theirs is called.
+For instance, <code>validator</code> in the following test is a dummy as the method <code>greetings</code> does not interact with <code>validator</code>.</p>
+<pre><code class="language-kotlin">@Test
+  fun `greets by saying Hello`() {
+    val validator = mockk&lt;Validator&gt;()
+    val controller = Greeter(validator)
+
+    val result = controller.greetings()
+
+    assertEquals(&quot;Hello&quot;, result)
+  }
+</code></pre>
+<p><strong>Fakes</strong><br />
+An object with very limited capabilities compared to the real one but much faster to create. The typical example is
+an in memory database (e.g. H2) instead of a production one (e.g. PostgreSQL)</p>
+<p>As a final note, test doubles are not used just for unit tests, but throughout the <a href="passes_all_tests/test_doubles.html#test-pyramid">whole pyramid</a>.</p>
+<p>[1] <a href="https://martinfowler.com/articles/mocksArentStubs.html">Mocks aren't stubs</a><br />
+[2] <a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">Only mock type that you own, chapter 8 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce</a>]</p>
+<h3><a class="header" href="#test-driven-development" id="test-driven-development">Test driven development</a></h3>
+<p>Test driven development (TDD) is an approach to development where tests are written before the actual code. The core of TDD is a three
+steps process:</p>
+<ol>
+<li>Write a failing test</li>
+<li>Make the test pass</li>
+<li>Refactor</li>
+</ol>
+<p>Let's go through each step using the following specifications as example:</p>
+<ul>
+<li>I want measure things in meters</li>
+<li>I want to be able to some two measurements in meters</li>
+</ul>
+<p><strong>Write a failing test</strong><br />
+At this step we pick a single aspect of the specification we want to verify: the smallest the better. The common mistake
+here is to overthink it because we want to take into account all the specifications and their nuances. Don't do it now,
+the third step will take care of it. For now let's just write a test even if it seems silly for how simple it is. Moreover,
+don't focus on writing good code either: the third step will take care of this as well. Finally, remember to run the test
+and see it failing with the error we expect: we do not want to later discover that our code is passing tests by luck.</p>
+<pre><code class="language-kotlin">@Test
+fun `summing 1 meter and 2 meters returns 3 meters`() {
+  val result = MeasureInMeters(1).add(MeasureInMeters(2))
+
+  assertEquals(MeasureInMeters(3), result)
+}
+</code></pre>
+<p><strong>Make the test pass</strong><br />
+Now that we have a failing test we need to make it pass. Be mindful that compilation errors in the test is the same of
+running it and see it fail. At this step as at the previous, let's not focus about writing good code, that's something for
+the third step: just make the test pass, whatever it takes.</p>
+<pre><code class="language-kotlin">data class MeasureInMeters(private val amount: Int) {
+
+  fun add(measureInMeters: MeasureInMeters): MeasureInMeters {
+    return MeasureInMeters(3)
+  }
+}
+</code></pre>
+<p>(In Kotlin the <code>data class</code> keyword makes sure that two instances of <code>Meter</code> are equal if their <code>amount</code> is equal).</p>
+<p><strong>Refactor</strong><br />
+In this step we improve the test and the actual code we have written. Let's start from the naming.</p>
+<pre><code class="language-kotlin">@Test
+fun `adding 1 meter and 2 meters returns 3 meters`() {
+  val result = Measure(1).add(Measure(2))
+
+  assertEquals(Measure(3), result)
+}
+
+data class Measure(private val amount: Int) {
+
+  fun add(measure: Measure): Measure {
+    return Measure(3)
+  }
+}
+</code></pre>
+<p>Let's also generalise the body of the method <code>sum</code> for all integers as we already understand it won't work for another
+pair of numbers.</p>
+<pre><code class="language-kotlin">data class Measure(private val amount: Int) {
+
+  fun add(measure: Measure): Measure {
+    return Measure(amount + measure.amount)
+  }
+}
+</code></pre>
+<p>The third step is also when look at the bigger picture. In this example there is little to do, but usually this is the moment
+when we pay attention on how the new code we are writing fits into the existing codebase (e.g. knowledge
+duplication, edge cases for some other classes we did not think before, etc.). We do not need to address these concerns
+right away, but it is good to note them down so we can tackle them once we have done satisfying the bit of specifications
+we are currently working on. Once we are happy with the quality of the code we have just written, we can restart
+the three steps process. The focus will be either another test for the bit of specification we are focusing on
+(e.g. adding 2 negative integers) or a test for another bit of the specifications.</p>
+<p>Compared to writing tests after the implementation, the main benefit of TDD is that it becomes much harder to write code
+that is not tested. However, be mindful that we can still write buggy code even if we use TDD as described in the
+<a href="passes_all_tests/test_doubles.html#test-coverage-is-not-enough">test coverage is not enough</a> section.</p>
+<p>[1] <a href="https://www.goodreads.com/book/show/387190.Test_Driven_Development">Test-Driven Development: By Example - Kent Beck</a><br />
+[2] <a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce</a><br />
+[3] <a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Shameless green, chapter 1 of 99 bottles of OOP, Sandy Metz</a><br />
+[4] <a href="https://blog.cleancoder.com/uncle-bob/2017/10/03/TestContravariance.html">Test contravariance - Robert C. Martin</a><br />
+[5] <a href="https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html">&quot;Testing shows the presence, not the absence of bugs&quot; - Edsger W. Dijkstra</a><br />
+[6] <a href="https://github.com/testdouble/contributing-tests/wiki/London-school-TDD">London vs Chicago school, contributing-tests wiki - Justin Searls</a><br />
+[7] <a href="http://jmock.org/oopsla2004.pdf">Need driven development, Mock Roles, not Objects - Steve Freeman, Nat Pryce, Tim Mackinnon, Joe Walnes</a><br />
+[8] <a href="https://cleancoders.com/series/comparativeDesign">London vs Chicago - Robert C. Martin, Sandro Mancuso</a>  </p>
+<h2><a class="header" href="#test-driven-development-1" id="test-driven-development-1">Test driven development</a></h2>
+<p>Test driven development (TDD) is an approach to development where tests are written before the actual code. The core of TDD is a three
+steps process:</p>
+<ol>
+<li>Write a failing test</li>
+<li>Make the test pass</li>
+<li>Refactor</li>
+</ol>
+<p>Let's go through each step using the following specifications as example:</p>
+<ul>
+<li>I want measure things in meters</li>
+<li>I want to be able to some two measurements in meters</li>
+</ul>
+<p><strong>Write a failing test</strong><br />
+At this step we pick a single aspect of the specification we want to verify: the smallest the better. The common mistake
+here is to overthink it because we want to take into account all the specifications and their nuances. Don't do it now,
+the third step will take care of it. For now let's just write a test even if it seems silly for how simple it is. Moreover,
+don't focus on writing good code either: the third step will take care of this as well. Finally, remember to run the test
+and see it failing with the error we expect: we do not want to later discover that our code is passing tests by luck.</p>
+<pre><code class="language-kotlin">@Test
+fun `summing 1 meter and 2 meters returns 3 meters`() {
+  val result = MeasureInMeters(1).add(MeasureInMeters(2))
+
+  assertEquals(MeasureInMeters(3), result)
+}
+</code></pre>
+<p><strong>Make the test pass</strong><br />
+Now that we have a failing test we need to make it pass. Be mindful that compilation errors in the test is the same of
+running it and see it fail. At this step as at the previous, let's not focus about writing good code, that's something for
+the third step: just make the test pass, whatever it takes.</p>
+<pre><code class="language-kotlin">data class MeasureInMeters(private val amount: Int) {
+
+  fun add(measureInMeters: MeasureInMeters): MeasureInMeters {
+    return MeasureInMeters(3)
+  }
+}
+</code></pre>
+<p>(In Kotlin the <code>data class</code> keyword makes sure that two instances of <code>Meter</code> are equal if their <code>amount</code> is equal).</p>
+<p><strong>Refactor</strong><br />
+In this step we improve the test and the actual code we have written. Let's start from the naming.</p>
+<pre><code class="language-kotlin">@Test
+fun `adding 1 meter and 2 meters returns 3 meters`() {
+  val result = Measure(1).add(Measure(2))
+
+  assertEquals(Measure(3), result)
+}
+
+data class Measure(private val amount: Int) {
+
+  fun add(measure: Measure): Measure {
+    return Measure(3)
+  }
+}
+</code></pre>
+<p>Let's also generalise the body of the method <code>sum</code> for all integers as we already understand it won't work for another
+pair of numbers.</p>
+<pre><code class="language-kotlin">data class Measure(private val amount: Int) {
+
+  fun add(measure: Measure): Measure {
+    return Measure(amount + measure.amount)
+  }
+}
+</code></pre>
+<p>The third step is also when look at the bigger picture. In this example there is little to do, but usually this is the moment
+when we pay attention on how the new code we are writing fits into the existing codebase (e.g. knowledge
+duplication, edge cases for some other classes we did not think before, etc.). We do not need to address these concerns
+right away, but it is good to note them down so we can tackle them once we have done satisfying the bit of specifications
+we are currently working on. Once we are happy with the quality of the code we have just written, we can restart
+the three steps process. The focus will be either another test for the bit of specification we are focusing on
+(e.g. adding 2 negative integers) or a test for another bit of the specifications.</p>
+<p>Compared to writing tests after the implementation, the main benefit of TDD is that it becomes much harder to write code
+that is not tested. However, be mindful that we can still write buggy code even if we use TDD as described in the
+<a href="passes_all_tests/test_driven_development.html#test-coverage-is-not-enough">test coverage is not enough</a> section.</p>
+<p>[1] <a href="https://www.goodreads.com/book/show/387190.Test_Driven_Development">Test-Driven Development: By Example - Kent Beck</a><br />
+[2] <a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce</a><br />
+[3] <a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Shameless green, chapter 1 of 99 bottles of OOP, Sandy Metz</a><br />
+[4] <a href="https://blog.cleancoder.com/uncle-bob/2017/10/03/TestContravariance.html">Test contravariance - Robert C. Martin</a><br />
+[5] <a href="https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html">&quot;Testing shows the presence, not the absence of bugs&quot; - Edsger W. Dijkstra</a><br />
+[6] <a href="https://github.com/testdouble/contributing-tests/wiki/London-school-TDD">London vs Chicago school, contributing-tests wiki - Justin Searls</a><br />
+[7] <a href="http://jmock.org/oopsla2004.pdf">Need driven development, Mock Roles, not Objects - Steve Freeman, Nat Pryce, Tim Mackinnon, Joe Walnes</a><br />
+[8] <a href="https://cleancoders.com/series/comparativeDesign">London vs Chicago - Robert C. Martin, Sandro Mancuso</a>  </p>
+<h2><a class="header" href="#test-coverage-is-not-enough" id="test-coverage-is-not-enough">Test coverage is not enough</a></h2>
+<p>Test coverage measures how much code in a codebase is invoked when we run all tests. However, it is not a measure of quality
+of the tests. This means a codebase with 100% of coverage can still be plenty of bugs. Let's take as example the following code.</p>
+<pre><code class="language-kotlin">data class Bill(private val amount: Int) {
+
+  fun split(parts: Int): Bill {
+    return Bill(amount / parts)
+  }
+}
+
+@Test
+fun `split the bill in equal parts for 4 people`() {
+  val bill = Bill(100)
+
+  val result = bill.split(4)
+
+  assertEquals(Bill(25), result)
+}
+</code></pre>
+<p>(In Kotlin the <code>data class</code> keyword makes sure that two instances of <code>Bill</code> are equal if their <code>amount</code> is equal).</p>
+<p>The above code has 100% test coverage. However, we could break it by simply calling <code>split(0)</code> over <code>Bill</code>.
+For this reason, it is important to test against as many inputs as possible. For instance, in the above example this means
+trying different input parameters for the <code>Bill</code> constructor and for the <code>split</code> method. Defining one test for each possible
+combination of inputs is not feasible, but there are some testing methodologies that let us test for many inputs in very little time:</p>
+<ul>
+<li>Parameterized testing: execute one test multiple times specifying different input parameters</li>
+<li>Property based testing: execute one test multiple times specifying which kind of inputs are valid and letting a library randomly generate them</li>
+</ul>
+<p>[1] <a href="https://www.baeldung.com/parameterized-tests-junit-5">Parameterised testing with Junit in Kotlin - Baeldung</a><br />
+[2] <a href="https://jqwik.net/">Jqwik, a property based testing library in Java</a><br />
+[4] <a href="https://en.wikipedia.org/wiki/Fuzzing">Fuzz testing</a><br />
+[3] <a href="https://en.wikipedia.org/wiki/Formal_verification">Formal verification</a> </p>
+<p>^ no Math.random() nor LocalDate.now()</p>
+<p>^ Here mention sources to Outside-in vs inside-out TDD and Classical vs mockist TDD</p>
+<h1><a class="header" href="#linting" id="linting">Linting</a></h1>
+<p>screenshot and snapshot testing</p>
+<h1><a class="header" href="#expresses-intent" id="expresses-intent">Expresses intent</a></h1>
+<h2><a class="header" href="#naming" id="naming">Naming</a></h2>
+<p>Great naming let us understand what the code means without inspecting its details. In fact, we should be able
+to understand an entire codebase just reading the names of classes, methods and variables, never looking at what they contain.
+This clarity is reached by naming classes, methods and variables after what they do instead of how they do it.
+The how can be looked up later if more details are needed.<br />
+The benefits are two:</p>
+<ul>
+<li>names do not contain any noise</li>
+<li>if implementation changes, the name remains relevant</li>
+</ul>
+<p>Let's consider the following class</p>
+<pre><code class="language-kotlin">class BiDimensionalCoordinates(private val x: Int, private val y: Int) {
+  
+  fun sumByXandY(addend: BiDimensionalCoordinates): BiDimensionalCoordinates {
+    return BiDimensionalCoordinates(x + addend.x, y + addend.y)
+  }
+}
+</code></pre>
+<p>In the above code, both class and method names leak the how. Given the distinction we made about the what and the how,
+we can ask two questions. The first one is: if we remove the how from the <code>BiDimensionalCoordinates</code> names, does the class
+still express intent? Let's see.</p>
+<pre><code class="language-kotlin">class Coordinates(private val x: Int, private val y: Int) {
+  
+  fun sum(addend: Coordinates): Coordinates {
+    return Coordinates(x + addend.x, y + addend.y)
+  }
+}
+</code></pre>
+<p>The answer is yes, as the above class still expresses clear intent, without even bothering the reader with the noise of the how.
+The second questions is: would the naming in <code>BiDimensionalCoordinates</code> still make sense if we were to switch to three-dimensional
+coordinates? Let's see.</p>
+<pre><code class="language-kotlin">class BiDimensionalCoordinates(private val x: Int, private val y: Int, private val z: Int) {
+  
+  fun sumByXandY(addend: BiDimensionalCoordinates): BiDimensionalCoordinates {
+    return BiDimensionalCoordinates(x + addend.x, y + addend.y, z + addend.z)
+  }
+}
+</code></pre>
+<p>The answer is no. <code>BiDimensionalCoordinates</code> now does not express its intent anymore as it is lying to the reader:
+the names suggest two dimensions coordinates when they are actually three. However, the <code>Coordinates</code> class would still express
+its intent even when using three dimensions as shown below.</p>
+<pre><code class="language-kotlin">class Coordinates(private val x: Int, private val y: Int, private val z: Int) {
+  
+  fun sum(addend: Coordinates): Coordinates {
+    return Coordinates(x + addend.x, y + addend.y, z + addend.z)
+  }
+}
+</code></pre>
+<p>As a final note for typed languages, be mindful that the return type of a method is part of its naming. A method <code>sum</code>
+does not clearly expresses intent if its signature is like the following: <code>fun sum(addend: Coordinates): Int</code></p>
+<p>[1] <a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Names, section 1.1.1 of 99 bottles of OOP - Sandy Metz</a><br />
+[2] <a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz</a><br />
+[3] <a href="https://www.goodreads.com/book/show/3735293-clean-code">Meaningful Names, chapter 2 of Clean Code - Robert C. Martin</a><br />
+[4] <a href="https://www.barnesandnoble.com/w/domain-driven-design-distilled-vaughn-vernon/1124175630">Developing a Ubiquitous Language, chapter 2 of Domain-Driven Design Distilled - Vaughn Vernon</a></p>
+<h2><a class="header" href="#deep-and-narrow-classes" id="deep-and-narrow-classes">Deep and narrow classes</a></h2>
+<p>We are doomed to write convoluted code when interacting with classes that have poor public methods. On the contrary,
+we are brought to write readable code when interacting with classes that have great public methods.<br />
+Let's consider the following <code>play</code> public method for the <a href="https://en.wikipedia.org/wiki/Fizz_buzz">FizzBuzz game</a>.</p>
+<pre><code class="language-kotlin">class FizzBuzz {
+
+  fun play(number: Int): String {
+  
+    if (number % 5 == 0 &amp;&amp; number % 3 == 0)
+      return &quot;fizz buzz&quot;
+  
+    if (number % 5 == 0)
+      return &quot;buzz&quot;
+
+    if (number % 3 == 0)
+      return &quot;fizz&quot;
+
+    return number.toString()
+  }
+}
+</code></pre>
+<p>The above signature of the <code>play</code> method leads to the following code when playing with the numbers between 1 and 100.</p>
+<pre><code class="language-kotlin">class App {
+
+  fun main() {
+ 
+    val fizzBuzz = FizzBuzz()    
+    val result = ArrayList&lt;String&gt;()
+    
+    for (number in 1..100)
+      result.add(fizzBuzz.play(number))
+  }
+}
+</code></pre>
+<p>Now, let's change the signature of the <code>play</code> method like follows.</p>
+<pre><code class="language-kotlin">class FizzBuzz {
+
+  fun play(from: Int, to: Int): List&lt;String&gt; {
+  
+    val result = ArrayList&lt;String&gt;()
+    
+    for (number in from..to)
+      result.add(playSingleNumber(number))
+    
+    return  result
+  }
+
+  private fun playSingleNumber(number: Int): String {
+  
+    if (number % 5 == 0 &amp;&amp; number % 3 == 0)
+      return &quot;fizz buzz&quot;
+    
+    if (number % 5 == 0)
+      return &quot;buzz&quot;
+    
+    if (number % 3 == 0)
+      return &quot;fizz&quot;
+  
+    return number.toString()
+  }
+}
+</code></pre>
+<p>The above signature of the <code>play</code> method leads to the following code when playing with the numbers between 1 and 100.</p>
+<pre><code class="language-kotlin">class App {
+
+  fun main() {
+  
+    val fizzBuzz = FizzBuzz()
+    val result = fizzBuzz.play(1, 100)        
+  }
+}
+</code></pre>
+<p>Now the <code>main</code> method is more readable. The for-loop has not disappeared, it just moved from <code>App</code> to <code>FizzBuzz</code>.<br />
+However, such a shift becomes remarkable if applied to a codebase with many classes:</p>
+<ul>
+<li>In the first approach, the for-cycle is repeated every time a piece of code interacts with <code>FizzBuzz</code>.<br />
+In the second approach, we are guaranteed the for-cycle is written only once: inside <code>FizzBuzz</code>.</li>
+<li>If <code>main</code> interacted with 4 classes each one using the first approach of <code>FizzBuzz</code>, <code>main</code> would contain 4 for-loops.<br />
+If the 4 classes were to use the second approach, <code>main</code> will contain zero for-loops.</li>
+</ul>
+<p>To summarise with a catchphrase, classes should be narrow and deep:</p>
+<ul>
+<li>narrow means few public methods with few input parameters</li>
+<li>deep means public methods get a lot of things done for the caller</li>
+</ul>
+<p>[1] <a href="https://lwn.net/Articles/193245/">&quot;Bad programmers worry about the code. Good programmers worry about data structures and their relationships&quot; - Linus Torvalds</a><br />
+[2] <a href="https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month">&quot;Show me your tables, and I won't usually need your flowcharts; they'll be obvious.&quot;, chapter 9 of The Mythical Man-Month - Fred Brooks</a><br />
+[3] <a href="https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design">ava and Unix I/O, section 4.7 of A Philosophy of Software Design - John Ousterhout</a><br />
+[4] <a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">A web of objects, chapter 2 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce</a><br />
+[5] <a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz</a></p>
+<p>Also tests</p>
+<p>^ Mention [1] Characterization tests, chapter 13 of Working Effectively with Legacy Code - Michael Feathers</p>
+<h1><a class="header" href="#does-not-repeat-itself" id="does-not-repeat-itself">Does not repeat itself</a></h1>
+<h2><a class="header" href="#one-single-authoritative-knowledge-representation" id="one-single-authoritative-knowledge-representation">One single authoritative knowledge representation</a></h2>
+<p>Duplicated knowledge is harmful because it makes changes expensive. Worse than that, it conceals the code intent.
+Let's take a look at the following code.</p>
+<pre><code class="language-kotlin">class Person(private val name: String) {
+
+  fun name(): String {
+    return name
+  }
+}
+
+class Job(private val name:String) {
+
+  fun name(): String {
+    return name
+  }
+}
+
+class App {
+
+  fun main() {
+    val person = Person(&quot;Andrea&quot;)
+    val job = Job(&quot;developer&quot;)
+
+    val result = person.name() + &quot; is a &quot; + job.name() //Andrea is a developer
+  }
+}
+</code></pre>
+<p>Now let's assume we want to have an ellipsis when <code>Person</code> or <code>Job</code> names are longer than 5 characters. One solution
+could be to modify the <code>name</code> method of both <code>Person</code> and <code>Job</code> like follows.</p>
+<pre><code class="language-kotlin">class Person(private val name: String) {
+
+  fun name(): String {
+    if (name.length &gt; 5) {
+      return name.substring(0, 5) + &quot;...&quot;
+    }
+    return name
+  }
+}
+
+class Job(private val name:String) {
+
+  fun name(): String {
+    if (name.length &gt; 5) {
+      return name.substring(0, 5) + &quot;...&quot;
+    }
+    return name
+  }
+}
+
+class App {
+
+  fun main() {
+    val person = Person(&quot;Andrea&quot;)
+    val job = Job(&quot;developer&quot;)
+
+    val result = person.name() + &quot; is a &quot; + job.name() //Andre... is a devel...
+  }
+}
+</code></pre>
+<p>In the above code, changing the ellipsis threshold from 5 to 10 characters will affect the <code>name</code> method of both <code>Person</code>and <code>Job</code> classes.
+Moreover, there is a risk to introduce bugs as changes might not be replicated across both classes by mistake. The problem
+is that the concept of name is spread across <code>Person</code> and <code>Job</code> instead if being a standalone class like follows.</p>
+<pre><code class="language-kotlin">class Name(private val name: String) {
+
+  fun format(): String {
+    if (name.length &gt; 5) {
+      return name.substring(0, 5) + &quot;...&quot;
+    }
+    return name
+  }
+}
+
+class Person(private val name: Name) {
+
+  fun format(): String {
+    return name.format()
+  }
+}
+
+class Job(private val name:Name) {
+
+  fun format(): String {
+    return name.format()
+  }
+}
+
+class App {
+
+  fun main() {
+    val person = Person(Name(&quot;Andrea&quot;))
+    val job = Job(Name(&quot;developer&quot;))
+
+    val result = person.format() + &quot; is a &quot; + job.format() //Andre... is a devel...
+  }
+}
+</code></pre>
+<p>Now the intent is clearer, making it easier to reason about the code.</p>
+<p>As a final note, be mindful that knowledge duplication might be there even if the code looks different. The typical example
+is <a href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping">object-relational mapping libraries</a> and SQL
+initialisation scripts: who of the two represents the knowledge of database tables creation?</p>
+<p>[1] <a href="https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer">DRY, The evils of duplication, topic 9 of The Pragmatic Programmer - David Thomas, Andrew Hunt</a><br />
+[2] <a href="https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained">Once and only once, Extreme Programming Explained - Kent Beck</a><br />
+[3] <a href="https://www.goodreads.com/book/show/7003902-97-things-every-programmer-should-know">Don't Repeat Yourself, chapter 30 of 97 Things Every Programmer Should Know - Kevlin Henney</a></p>
+<h2><a class="header" href="#do-not-abstract-by-visual-pattern-matching" id="do-not-abstract-by-visual-pattern-matching">Do not abstract by visual pattern matching</a></h2>
+<p>Two pieces of code that are identical but represent two distinct concepts should stay separated: they are not duplication.
+Let's consider the example where we are asked to calculate the perimeter of rectangles and rhombuses.</p>
+<pre><code class="language-kotlin">class Rhombus(private val width: Int, private val height: Int) {
+
+  fun perimeter(): Int {
+    return 2 * (width + height)
+  }
+}
+
+class Rectangle(private val width: Int, private val height: Int) {
+
+  fun perimeter(): Int {
+    return 2 * (width + height)
+  }
+}
+</code></pre>
+<p>When seeing a piece of code like the above, one might be tempted to remove the duplication of the <code>perimeter</code> method like follows.</p>
+<pre><code class="language-kotlin">class Shape(private val width: Int, private val height: Int) {
+
+  fun perimeter(): Int {
+    return 2 * (width + height)
+  }
+}
+</code></pre>
+<p>However, what happens if after some time we are asked to calculate the perimeter of a circle? Now the concept represented
+by <code>Shape</code> does not relate to circle, which is definitely a shape though. There are many ways to refactor this situation,
+for instance making shape an interface, but in a large codebase these refactorings are more expensive than leaving duplicated code
+until we understand it is duplicated knowledge. It is hard to build the right knowledge model, especially if specifications
+are not entirely known or the domain is complex. In doubt, the rule of thumb is to remove duplication only after it occurs
+more than two times.</p>
+<p>[1] <a href="https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction">&quot;duplication is far cheaper than the wrong abstraction&quot;, RailsConf 2014, all the little things talk - Sandy Metz</a><br />
+[1] <a href="https://www.goodreads.com/en/book/show/44936.Refactoring">Rule of three, When we should Refactor? chapter 2 of Refactoring - Martin Fowler</a>  </p>
+<h1><a class="header" href="#you-arent-going-to-need-it" id="you-arent-going-to-need-it">You aren't going to need it</a></h1>
+<h2><a class="header" href="#you-arent-going-to-need-it-1" id="you-arent-going-to-need-it-1">You aren't going to need it</a></h2>
+<p>Writing code that is beyond specifications is not only a waste of time, but it also introduces unnecessary complexity.
+This complexity consists mainly in more code and tests to understand and maintain. Worse than that, superfluous code
+makes it harder to change code in the future. Let's consider an example given the following specifications:</p>
+<ul>
+<li>Create a pedestrian traffic light allowing to walk if green, denying it if red</li>
+<li>The traffic light can change color from red to green and vice versa</li>
+</ul>
+<pre><code class="language-kotlin">class TrafficLight(private var colour: TrafficLightColour) {
+
+  fun changeColour() {
+    colour = colour.changeColour()
+  }
+
+  fun possibleToWalk(): Boolean {
+    return colour.possibleToWalk()
+  }
+}
+
+enum class TrafficLightColour {
+  RED {
+    override fun changeColour() = GREEN
+    override fun possibleToWalk() = false
+  },
+  GREEN {
+    override fun changeColour() = RED
+    override fun possibleToWalk() = true
+  };
+
+  abstract fun changeColour(): TrafficLightColour
+  abstract fun possibleToWalk(): Boolean
+}
+</code></pre>
+<p>The above code satisfies the specifications. However, one might say that traffic lights for pedestrians are usually timed: you press
+a button and it will take some seconds before the colour changes. This was not requested, but as it seems to be a more
+faithful representation of a pedestrian traffic light, so one might decide to go ahead like follows.</p>
+<pre><code class="language-kotlin">class TrafficLight(private var colour: TrafficLightColour) {
+
+  fun changeColour(milliSecondsToWait: Long) {
+    waitFor(milliSecondsToWait)
+    colour = colour.changeColour(colour)
+  }
+
+  fun possibleToWalk(): Boolean {
+    return colour.possibleToWalk()
+  }
+
+  private fun waitFor(milliSecondsToWait: Long) {
+    Thread.sleep(milliSecondsToWait)
+  }
+}
+
+enum class TrafficLightColour {
+  RED {
+    override fun changeColour() = GREEN
+    override fun possibleToWalk() = false
+  },
+  GREEN {
+    override fun changeColour() = RED
+    override fun possibleToWalk() = true
+  };
+
+  abstract fun changeColour(): TrafficLightColour
+  abstract fun possibleToWalk(): Boolean
+}
+</code></pre>
+<p>Changing the behaviour of <code>changeColour</code> had no benefits for what we are concerned with the current specifications. However,
+it added useless code inside the <code>TrafficLight</code> class and it forced all callers of <code>changeColour</code> to provide a value for
+<code>milliSecondsToWait</code> which, given the current spec, will always be 0.</p>
+<p>[1] <a href="https://www.goodreads.com/en/book/show/44936.Refactoring">Refactoring, Architecture, and YAGNI, chapter 2 of Refactoring - Martin Fowler</a><br />
+[2] <a href="https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained">Chapter 17 of Extreme Programming Explained - Kent Beck</a><br />
+[3] <a href="https://en.wikipedia.org/wiki/No_Silver_Bullet">Incidental vs accidental complexity, No Silver Bullet paper - Fred Brooks</a>  </p>
+<h2><a class="header" href="#clarify-what-is-superfluous" id="clarify-what-is-superfluous">Clarify what is superfluous</a></h2>
+<p>Sometimes the <a href="does_not_contain_superfluous_parts/clarify_what_is_superfluous.html#You-aren&#x27;t-going-to-need-it">you aren't going to need it</a> principle is abused, leading to code that does
+not pass all tests. This usually happens in the form of assuming specifications. Let's consider the following example where we are required
+to build a piece of code that:</p>
+<ul>
+<li>stores fruits by their names</li>
+<li>does not store a fruit name more than once</li>
+<li>given a fruit name, returns true if it has been previously stored</li>
+</ul>
+<pre><code class="language-kotlin">class FruitInventory {
+  private val fruits = ArrayList&lt;String&gt;()
+
+  fun storeFruit(name: String) {
+    if (contains(name))
+      return
+    
+    fruits.add(name)
+  }
+
+  fun contains(name: String): Boolean {
+    for(fruit in fruits) {
+      if (name == fruit)
+        return true
+    }
+    return false
+  }
+}
+</code></pre>
+<p>The above code works just fine given the specifications. However, we might argue that <code>fruits</code> implemented as a list
+is not very performant and that we could make both <code>contains</code> and <code>storeFruit</code> faster by simply using a set.
+It is a mistake to dismiss such thought appealing to the <a href="does_not_contain_superfluous_parts/clarify_what_is_superfluous.html#You-aren&#x27;t-going-to-need-it">you aren't going to need it</a> principle.
+In fact, we would be assuming a specification about performance that is currently unknown. We should instead clarify the
+expected performance of <code>FruitInventory</code>: if it is irrelevant then the code is as good as it is, otherwise we need
+to change it as follows.</p>
+<pre><code class="language-kotlin">class FruitInventory {
+  private val fruits = HashSet&lt;String&gt;()
+
+  fun storeFruit(name: String) {
+    fruits.add(name)
+  }
+  
+  fun contains(name: String): Boolean {
+    return fruits.contains(name)
+  }
+}
+</code></pre>
+<p>Performance specifications aside, the above code using <code>HashSet</code> is superior as it better expresses intent. We could even
+argue that <code>HashSet</code> approach satisfies the specifications just fine and we aren't going to need all the for-loop complexity
+introduced by the <code>ArrayList</code> approach.</p>
+<p>[1] <a href="https://dl.acm.org/toc/csur/1974/6/4">The full quote from Donald Knuth was: &quot;We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%.&quot;</a></p>
+<h2><a class="header" href="#do-not-abuse-design-patterns" id="do-not-abuse-design-patterns">Do not abuse design patterns</a></h2>
+<p>Design patterns are great to catalogue recurring design problems and their typical solutions. However, design patterns by themselves
+do not guarantee simple code, and actually they can end up pushing in the opposite direction. They are just a tool that
+has to be adapted to the context where they are used, not applied to the letter.</p>
+<p>[1] <a href="https://www.goodreads.com/book/show/58128.Head_First_Design_Patterns">Head First Design Patterns - Eric Freeman, Elisabeth Robson</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
