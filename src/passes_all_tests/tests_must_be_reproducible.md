@@ -1,0 +1,1 @@
+^ no Math.random() nor LocalDate.now()

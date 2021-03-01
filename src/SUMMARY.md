@@ -1,0 +1,35 @@
+# Summary
+
+- [Introduction](introduction/introduction.md)
+
+- [Passes all tests](passes_all_tests/introduction.md)
+    - [Test pyramid](passes_all_tests/test_pyramid.md)
+    - [If testing is hard, inject what you need to verify](passes_all_tests/if_testing_is_hard_inject.md)
+    - [Test doubles](passes_all_tests/test_doubles.md)
+    - [Test driven development](passes_all_tests/test_driven_development.md)
+    - [Test coverage is not enough](passes_all_tests/test_coverage_is_not_enough.md)
+    - [Tests must be reproducible](passes_all_tests/tests_must_be_reproducible.md)
+    - [Do not test libraries](passes_all_tests/do_not_test_libraries.md)
+    - [Component tests vs end-to-end tests vs monitoring tradeoffs](passes_all_tests/component_tests_vs_end-to-end_tests_vs_monitoring_tradeoffs.md)
+    - [Contract testing](passes_all_tests/contract_testing.md)
+    - [Do not use production constants](passes_all_tests/do_not_use_production_constants.md)
+    - [Performance tests](passes_all_tests/performance_tests.md)
+    - [Linting](passes_all_tests/linting.md)
+    - [How to test UI](passes_all_tests/how_to_test_UI.md)
+  
+- [Expresses intent](expresses_intent/introduction.md)
+    - [Naming](expresses_intent/naming.md)
+    - [Deep and narrow classes](expresses_intent/deep_and_narrow_classes.md)
+    - [Small classes and short methods](expresses_intent/small_classes_and_short_methods.md)
+    - [Low coupling, high cohesion](expresses_intent/low_coupling_high_cohesion.md)
+    - [Encapsulation](expresses_intent/encapsulation.md)
+    - [Test naming](expresses_intent/test_naming.md)
+
+- [Does not repeat itself](does_not_repeat_itself/introduction.md)
+    - [One single authoritative knowledge representation](does_not_repeat_itself/one_single_authoritative_representation.md)
+    - [Do not abstract by visual pattern matching](does_not_repeat_itself/do_not_abstract_by_visual_pattern_matching.md)
+  
+- [Does not contain superfluous parts](does_not_contain_superfluous_parts/introduction.md)
+    - [Does not contain superfluous parts](does_not_contain_superfluous_parts/you_are_not_going_to_need_it.md)
+    - [Clarify what is superfluous](does_not_contain_superfluous_parts/clarify_what_is_superfluous.md)
+    - [Do not abuse design patterns](does_not_contain_superfluous_parts/do_not_abuse_design_patterns.md)
