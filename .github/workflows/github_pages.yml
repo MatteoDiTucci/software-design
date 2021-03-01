@@ -21,7 +21,7 @@ jobs:
       - run: mdbook build
 
       - name: Deploy
-        run: mdbook clean && mdbook build
+        run: mdbook clean && mdbook build && mv ./book/* ./
         
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
