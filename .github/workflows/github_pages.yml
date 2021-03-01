@@ -1,4 +1,6 @@
-name: Github Pages
+name: github-pages
+
+# using https://github.com/peaceiris/actions-mdbook
 
 on:
   push:
