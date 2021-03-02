@@ -87,11 +87,14 @@ Compared to writing tests after the implementation, the main benefit of TDD is t
 that is not tested. However, be mindful that we can still write buggy code even if we use TDD as described in the
 [test coverage is not enough](#test-coverage-is-not-enough) section.
 
-[1] [Test-Driven Development: By Example - Kent Beck](https://www.goodreads.com/book/show/387190.Test_Driven_Development)    
-[2] [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)    
-[3] [Shameless green, chapter 1 of 99 bottles of OOP, Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
-[4] [Test contravariance - Robert C. Martin](https://blog.cleancoder.com/uncle-bob/2017/10/03/TestContravariance.html)  
-[5] ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)  
-[6] [London vs Chicago school, contributing-tests wiki - Justin Searls](https://github.com/testdouble/contributing-tests/wiki/London-school-TDD)  
-[7] [Need driven development, Mock Roles, not Objects - Steve Freeman, Nat Pryce, Tim Mackinnon, Joe Walnes](http://jmock.org/oopsla2004.pdf)  
-[8] [London vs Chicago - Robert C. Martin, Sandro Mancuso](https://cleancoders.com/series/comparativeDesign)  
+<br/>  
+
+#### Recommended reads
+* [Test-Driven Development: By Example - Kent Beck](https://www.goodreads.com/book/show/387190.Test_Driven_Development)    
+* [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)    
+* [Shameless green, chapter 1 of 99 bottles of OOP, Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
+* [Test contravariance - Robert C. Martin](https://blog.cleancoder.com/uncle-bob/2017/10/03/TestContravariance.html)  
+* ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)  
+* [London vs Chicago school, contributing-tests wiki - Justin Searls](https://github.com/testdouble/contributing-tests/wiki/London-school-TDD)  
+* [Need driven development, Mock Roles, not Objects - Steve Freeman, Nat Pryce, Tim Mackinnon, Joe Walnes](http://jmock.org/oopsla2004.pdf)  
+* [London vs Chicago - Robert C. Martin, Sandro Mancuso](https://cleancoders.com/series/comparativeDesign)  

@@ -36,5 +36,8 @@ until we understand it is duplicated knowledge. It is hard to build the right kn
 are not entirely known or the domain is complex. In doubt, the rule of thumb is to remove duplication only after it occurs
 more than two times.
 
-[1] ["duplication is far cheaper than the wrong abstraction", RailsConf 2014, all the little things talk - Sandy Metz](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)  
-[1] [Rule of three, When we should Refactor? chapter 2 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  
+<br/>  
+
+#### Recommended reads
+* ["Duplication is far cheaper than the wrong abstraction", RailsConf 2014, all the little things talk - Sandy Metz](https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction)  
+* [Rule of three, When we should Refactor? chapter 2 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  

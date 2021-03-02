@@ -29,8 +29,10 @@ combination of inputs is not feasible, but there are some testing methodologies 
 * Parameterized testing: execute one test multiple times specifying different input parameters
 * Property based testing: execute one test multiple times specifying which kind of inputs are valid and letting a library randomly generate them
 
+<br/>  
 
-[1] [Parameterised testing with Junit in Kotlin - Baeldung](https://www.baeldung.com/parameterized-tests-junit-5)  
-[2] [Jqwik, a property based testing library in Java](https://jqwik.net/)  
-[4] [Fuzz testing](https://en.wikipedia.org/wiki/Fuzzing)    
-[3] [Formal verification](https://en.wikipedia.org/wiki/Formal_verification) 
+#### Recommended reads
+* [Parameterised testing with Junit in Kotlin - Baeldung](https://www.baeldung.com/parameterized-tests-junit-5)  
+* [Jqwik, a property based testing library in Java](https://jqwik.net/)  
+* [Fuzz testing](https://en.wikipedia.org/wiki/Fuzzing)    
+* [Formal verification](https://en.wikipedia.org/wiki/Formal_verification) 

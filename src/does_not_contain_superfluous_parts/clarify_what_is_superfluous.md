@@ -52,4 +52,7 @@ Performance specifications aside, the above code using `HashSet` is superior as 
 argue that `HashSet` approach satisfies the specifications just fine and we aren't going to need all the for-loop complexity
 introduced by the `ArrayList` approach.
 
-[1] [The full quote from Donald Knuth was: "We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%."](https://dl.acm.org/toc/csur/1974/6/4)
+<br/>  
+
+#### Recommended reads
+* [The full quote from Donald Knuth was: "We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%."](https://dl.acm.org/toc/csur/1974/6/4)
