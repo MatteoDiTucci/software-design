@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Do not use production constants 🏗️ - Software Design</title>
+        <title>No production code constants in tests - Software Design</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/introduction.html"><strong aria-hidden="true">2.</strong> Passes all tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../passes_all_tests/test_pyramid.html"><strong aria-hidden="true">2.1.</strong> Test pyramid</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/if_testing_is_hard_inject.html"><strong aria-hidden="true">2.2.</strong> If testing is hard, inject what you need to verify</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/test_doubles.html"><strong aria-hidden="true">2.3.</strong> Test doubles</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/test_driven_development.html"><strong aria-hidden="true">2.4.</strong> Test driven development</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/test_coverage_is_not_enough.html"><strong aria-hidden="true">2.5.</strong> Test coverage is not enough</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/tests_must_be_reproducible.html"><strong aria-hidden="true">2.6.</strong> Tests must be reproducible</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/do_not_test_libraries.html"><strong aria-hidden="true">2.7.</strong> Do not test libraries 🏗️</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/component_tests_vs_end-to-end_tests_vs_monitoring_tradeoffs.html"><strong aria-hidden="true">2.8.</strong> Component tests vs end-to-end tests vs monitoring tradeoffs 🏗️</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/contract_testing.html"><strong aria-hidden="true">2.9.</strong> Contract testing 🏗️</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/do_not_use_production_constants.html" class="active"><strong aria-hidden="true">2.10.</strong> Do not use production constants 🏗️</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/performance_tests.html"><strong aria-hidden="true">2.11.</strong> Performance tests 🏗️</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/linting.html"><strong aria-hidden="true">2.12.</strong> Linting 🏗️</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/how_to_test_ui.html"><strong aria-hidden="true">2.13.</strong> How to test UI 🏗️</a></li></ol></li><li class="chapter-item expanded "><a href="../expresses_intent/introduction.html"><strong aria-hidden="true">3.</strong> Expresses intent</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../expresses_intent/naming.html"><strong aria-hidden="true">3.1.</strong> Naming</a></li><li class="chapter-item expanded "><a href="../expresses_intent/deep_and_narrow_classes.html"><strong aria-hidden="true">3.2.</strong> Deep and narrow classes</a></li><li class="chapter-item expanded "><a href="../expresses_intent/small_classes_and_short_methods.html"><strong aria-hidden="true">3.3.</strong> Small classes and short methods 🏗️</a></li><li class="chapter-item expanded "><a href="../expresses_intent/low_coupling_high_cohesion.html"><strong aria-hidden="true">3.4.</strong> Low coupling, high cohesion 🏗️</a></li><li class="chapter-item expanded "><a href="../expresses_intent/encapsulation.html"><strong aria-hidden="true">3.5.</strong> Encapsulation 🏗️</a></li><li class="chapter-item expanded "><a href="../expresses_intent/test_naming.html"><strong aria-hidden="true">3.6.</strong> Test naming 🏗️</a></li></ol></li><li class="chapter-item expanded "><a href="../does_not_repeat_itself/introduction.html"><strong aria-hidden="true">4.</strong> Does not repeat itself</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../does_not_repeat_itself/one_single_authoritative_representation.html"><strong aria-hidden="true">4.1.</strong> One single authoritative knowledge representation</a></li><li class="chapter-item expanded "><a href="../does_not_repeat_itself/do_not_abstract_by_visual_pattern_matching.html"><strong aria-hidden="true">4.2.</strong> Do not abstract by visual pattern matching</a></li></ol></li><li class="chapter-item expanded "><a href="../does_not_contain_superfluous_parts/introduction.html"><strong aria-hidden="true">5.</strong> Does not contain superfluous parts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../does_not_contain_superfluous_parts/you_are_not_going_to_need_it.html"><strong aria-hidden="true">5.1.</strong> Does not contain superfluous parts</a></li><li class="chapter-item expanded "><a href="../does_not_contain_superfluous_parts/clarify_what_is_superfluous.html"><strong aria-hidden="true">5.2.</strong> Clarify what is superfluous</a></li><li class="chapter-item expanded "><a href="../does_not_contain_superfluous_parts/do_not_abuse_design_patterns.html"><strong aria-hidden="true">5.3.</strong> Do not abuse design patterns</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction/introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/introduction.html"><strong aria-hidden="true">2.</strong> Passes all tests</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../passes_all_tests/test_pyramid.html"><strong aria-hidden="true">2.1.</strong> Test pyramid</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/if_testing_is_hard_inject.html"><strong aria-hidden="true">2.2.</strong> If testing is hard, inject what you need to verify</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/test_doubles.html"><strong aria-hidden="true">2.3.</strong> Test doubles</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/test_driven_development.html"><strong aria-hidden="true">2.4.</strong> Test driven development</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/test_coverage_is_not_enough.html"><strong aria-hidden="true">2.5.</strong> Test coverage is not enough</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/tests_must_be_reproducible.html"><strong aria-hidden="true">2.6.</strong> Tests must be reproducible</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/no_production_code_constants_in_tests.html" class="active"><strong aria-hidden="true">2.7.</strong> No production code constants in tests</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/do_not_test_libraries.html"><strong aria-hidden="true">2.8.</strong> Do not test libraries 🏗️</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/component_tests_vs_end-to-end_tests_vs_monitoring_tradeoffs.html"><strong aria-hidden="true">2.9.</strong> Component tests vs end-to-end tests vs monitoring tradeoffs 🏗️</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/contract_testing.html"><strong aria-hidden="true">2.10.</strong> Contract testing 🏗️</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/performance_tests.html"><strong aria-hidden="true">2.11.</strong> Performance tests 🏗️</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/linting.html"><strong aria-hidden="true">2.12.</strong> Linting 🏗️</a></li><li class="chapter-item expanded "><a href="../passes_all_tests/how_to_test_ui.html"><strong aria-hidden="true">2.13.</strong> How to test UI 🏗️</a></li></ol></li><li class="chapter-item expanded "><a href="../expresses_intent/introduction.html"><strong aria-hidden="true">3.</strong> Expresses intent</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../expresses_intent/naming.html"><strong aria-hidden="true">3.1.</strong> Naming</a></li><li class="chapter-item expanded "><a href="../expresses_intent/deep_and_narrow_classes.html"><strong aria-hidden="true">3.2.</strong> Deep and narrow classes</a></li><li class="chapter-item expanded "><a href="../expresses_intent/small_classes_and_short_methods.html"><strong aria-hidden="true">3.3.</strong> Small classes and short methods 🏗️</a></li><li class="chapter-item expanded "><a href="../expresses_intent/low_coupling_high_cohesion.html"><strong aria-hidden="true">3.4.</strong> Low coupling, high cohesion 🏗️</a></li><li class="chapter-item expanded "><a href="../expresses_intent/encapsulation.html"><strong aria-hidden="true">3.5.</strong> Encapsulation 🏗️</a></li><li class="chapter-item expanded "><a href="../expresses_intent/test_naming.html"><strong aria-hidden="true">3.6.</strong> Test naming 🏗️</a></li></ol></li><li class="chapter-item expanded "><a href="../does_not_repeat_itself/introduction.html"><strong aria-hidden="true">4.</strong> Does not repeat itself</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../does_not_repeat_itself/one_single_authoritative_representation.html"><strong aria-hidden="true">4.1.</strong> One single authoritative knowledge representation</a></li><li class="chapter-item expanded "><a href="../does_not_repeat_itself/do_not_abstract_by_visual_pattern_matching.html"><strong aria-hidden="true">4.2.</strong> Do not abstract by visual pattern matching</a></li></ol></li><li class="chapter-item expanded "><a href="../does_not_contain_superfluous_parts/introduction.html"><strong aria-hidden="true">5.</strong> Does not contain superfluous parts</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../does_not_contain_superfluous_parts/you_are_not_going_to_need_it.html"><strong aria-hidden="true">5.1.</strong> Does not contain superfluous parts</a></li><li class="chapter-item expanded "><a href="../does_not_contain_superfluous_parts/clarify_what_is_superfluous.html"><strong aria-hidden="true">5.2.</strong> Clarify what is superfluous</a></li><li class="chapter-item expanded "><a href="../does_not_contain_superfluous_parts/do_not_abuse_design_patterns.html"><strong aria-hidden="true">5.3.</strong> Do not abuse design patterns</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,19 +163,56 @@
 
                 <div id="content" class="content">
                     <main>
-                        
+                        <h2><a class="header" href="#no-production-code-constants-in-tests" id="no-production-code-constants-in-tests">No production code constants in tests</a></h2>
+<p>When writing tests, we might be tempted to use production code constants to remove duplication. This creates a 
+conflict of interests by which a test is defined using part of the code that is supposed to test. Such a situation 
+can lead to bugs going unnoticed like in the following example.</p>
+<p>(In Kotlin, <code>companion object</code> is the way to define constants known at compile time, the equivalent of <code>static</code> in Java)</p>
+<pre><code class="language-kotlin">class Greeter {
+
+  fun greet(name: String): String {
+    return &quot;$DEFAULT_GREETING $name&quot;
+  }
+
+  companion object {
+    const val DEFAULT_GREETING: String = &quot;Hello&quot;
+  }
+}
+
+@Test
+fun `greet by name`() {
+  val greeter = Greeter()
+
+  val result = greeter.greet(&quot;Andrea&quot;)
+
+  assertEquals(&quot;${Greeter.DEFAULT_GREETING} Andrea&quot;, result)
+}
+</code></pre>
+<p>The problem with the above code is that if by mistake we change the value of <code>DEFAULT_GREETING</code> from <code>&quot;Hello&quot;</code> to <code>&quot;Hellozxhgj&quot;</code>
+the test will still pass as it would be expecting <code>&quot;Hellozxhgj Andrea&quot;</code>. To catch this kind of bugs is 
+enough not to use the production constant <code>DEFAULT_GREETING</code> in the test like follows.</p>
+<pre><code class="language-kotlin">@Test
+  fun `greet by name`() {
+    val greeter = Greeter()
+
+    val result = greeter.greet(&quot;Andrea&quot;)
+
+    assertEquals(&quot;Hello Andrea&quot;, result)
+  }
+</code></pre>
+
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../passes_all_tests/contract_testing.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../passes_all_tests/tests_must_be_reproducible.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../passes_all_tests/performance_tests.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../passes_all_tests/do_not_test_libraries.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -187,13 +224,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../passes_all_tests/contract_testing.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../passes_all_tests/tests_must_be_reproducible.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../passes_all_tests/performance_tests.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../passes_all_tests/do_not_test_libraries.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
