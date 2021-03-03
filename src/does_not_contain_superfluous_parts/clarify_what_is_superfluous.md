@@ -1,5 +1,5 @@
 ## Clarify what is superfluous
-Sometimes the [you aren't going to need it](#You-aren't-going-to-need-it) principle is abused, leading to code that does
+Sometimes the [you aren't going to need it](you_are_not_going_to_need_it.html) principle is abused, leading to code that does
 not pass all tests. This usually happens in the form of assuming specifications. Let's consider the following example where we are required
 to build a piece of code that:
 * stores fruits by their names
@@ -29,7 +29,7 @@ class FruitInventory {
 
 The above code works just fine given the specifications. However, we might argue that `fruits` implemented as a list
 is not very performant and that we could make both `contains` and `storeFruit` faster by simply using a set.
-It is a mistake to dismiss such thought appealing to the [you aren't going to need it](#You-aren't-going-to-need-it) principle.
+It is a mistake to dismiss such thought appealing to the [you aren't going to need it](you_are_not_going_to_need_it.html) principle.
 In fact, we would be assuming a specification about performance that is currently unknown. We should instead clarify the
 expected performance of `FruitInventory`: if it is irrelevant then the code is as good as it is, otherwise we need
 to change it as follows.
