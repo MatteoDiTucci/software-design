@@ -164,7 +164,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2><a class="header" href="#clarify-what-is-superfluous" id="clarify-what-is-superfluous">Clarify what is superfluous</a></h2>
-<p>Sometimes the <a href="you_are_not_going_to_need_it.html">you aren't going to need it</a> principle is abused, leading to code that does
+<p>Sometimes the <a href="you-are-not-going-to-need-it.html">you aren't going to need it</a> principle is abused, leading to code that does
 not pass all tests. This usually happens in the form of assuming specifications. Let's consider the following example where we are required
 to build a piece of code that:</p>
 <ul>
@@ -193,7 +193,7 @@ to build a piece of code that:</p>
 </code></pre>
 <p>The above code works just fine given the specifications. However, we might argue that <code>fruits</code> implemented as a list
 is not very performant and that we could make both <code>contains</code> and <code>storeFruit</code> faster by simply using a set.
-It is a mistake to dismiss such thought appealing to the <a href="you_are_not_going_to_need_it.html">you aren't going to need it</a> principle.
+It is a mistake to dismiss such thought appealing to the <a href="you-are-not-going-to-need-it.html">you aren't going to need it</a> principle.
 In fact, we would be assuming a specification about performance that is currently unknown. We should instead clarify the
 expected performance of <code>FruitInventory</code>: if it is irrelevant then the code is as good as it is, otherwise we need
 to change it as follows.</p>
