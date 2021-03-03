@@ -85,7 +85,7 @@ the three steps process. The focus will be either another test for the bit of sp
 
 Compared to writing tests after the implementation, the main benefit of TDD is that it becomes much harder to write code
 that is not tested. However, be mindful that we can still write buggy code even if we use TDD as described in the
-[test coverage is not enough](test_coverage_is_not_enough.html) section.
+[test coverage is not enough](test-coverage-is-not-enough.html) section.
 
 <br/>  
 
