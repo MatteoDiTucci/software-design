@@ -41,7 +41,7 @@ data class MeasureInMeters(private val amount: Int) {
 }
 ```
 
-(In Kotlin the `data class` keyword makes sure that two instances of `Meter` are equal if their `amount` is equal).
+(In Kotlin, the `data class` keyword makes sure that two instances of `Meter` are equal if their `amount` is equal).
 
 
 **Refactor**  

@@ -20,7 +20,7 @@ fun `split the bill in equal parts for 4 people`() {
 }
 ```
 
-(In Kotlin the `data class` keyword makes sure that two instances of `Bill` are equal if their `amount` is equal).
+(In Kotlin, the `data class` keyword makes sure that two instances of `Bill` are equal if their `amount` is equal).
 
 The above code has 100% test coverage. However, we could break it by simply calling `split(0)` over `Bill`.
 For this reason, it is important to test against as many inputs as possible. For instance, in the above example this means

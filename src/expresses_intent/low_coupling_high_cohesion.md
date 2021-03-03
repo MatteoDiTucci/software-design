@@ -1,0 +1,1 @@
+Define how to split properly the SOLID principles between here and other chapters
