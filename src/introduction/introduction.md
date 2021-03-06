@@ -40,4 +40,5 @@ If a piece of code respects all those 4 rules then we can consider it good code.
 This book is divided in 4 sections, one for each the simple code rules.
 
 ### Reviewers
-[Alberto G. Jácome](https://github.com/agjacome)
+[Alberto G. Jácome](https://github.com/agjacome)  
+[Thomas Page](https://github.com/twp88)
