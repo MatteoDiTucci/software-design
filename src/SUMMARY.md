@@ -26,7 +26,7 @@
     - [Encapsulation 🏗️](expresses-intent/encapsulation.md)
     - [Usually composition is better than inheritance 🏗️](expresses-intent/usually-composition-is-better-than-inheritance.md)
     - [Generalise edge cases 🏗️](expresses-intent/generalise-edge-cases.md)
-    - [Immutability 🏗️](expresses-intent/immutability.md)
+    - [Immutability](expresses-intent/immutability.md)
     - [Comment the why 🏗️](expresses-intent/comment-the-why.md)
     - [Visual indentation 🏗️](expresses-intent/visual-indentation.md)
     - [Folder structure 🏗️](expresses-intent/folder-structure.md)

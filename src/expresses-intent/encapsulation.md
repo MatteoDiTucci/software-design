@@ -1,0 +1,2 @@
+#### Recommended reads
+* [Tell Above, and Ask Below - Michael Feathers](https://michaelfeathers.typepad.com/michael_feathers_blog/2012/03/tell-above-and-ask-below-hybridizing-oo-and-functional-design.html)
