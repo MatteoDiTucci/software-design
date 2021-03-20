@@ -162,4 +162,5 @@ which removes the concept of state as much as possible.
 
 #### Recommended reads
 * [Appreciating Immutability, section 5.3 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
+* [Make defensive copies when needed, chapter 9 of Effective Java second edition - Joshua Bloch](https://www.goodreads.com/book/show/34927404-effective-java)
 * [Practical Function Programming in Scala - Gabriel Volpe](https://leanpub.com/pfp-scala)
