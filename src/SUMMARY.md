@@ -12,6 +12,7 @@
     - [No production code constants in tests](passes-all-tests/no-production-code-constants-in-tests.md)
     - [Do not test libraries 🏗️](passes-all-tests/do-not-test-libraries.md)
     - [Component tests vs end-to-end tests vs monitoring tradeoffs 🏗️](passes-all-tests/component-tests-vs-end-to-end-tests-vs-monitoring-tradeoffs.md)
+    - [Expand and contract 🏗️](passes-all-tests/expand_and_contract.md)
     - [Contract testing 🏗️](passes-all-tests/contract-testing.md)
     - [Performance tests 🏗️](passes-all-tests/performance-tests.md)
     - [Linting 🏗️](passes-all-tests/linting.md)

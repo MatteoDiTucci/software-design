@@ -1,1 +1,2 @@
-Also tests
+- Also tests  
+- Mention that local variables can sometimes hinder readability
