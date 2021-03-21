@@ -164,3 +164,4 @@ which removes the concept of state as much as possible.
 * [Appreciating Immutability, section 5.3 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
 * [Make defensive copies when needed, chapter 9 of Effective Java second edition - Joshua Bloch](https://www.goodreads.com/book/show/34927404-effective-java)
 * [Practical Function Programming in Scala - Gabriel Volpe](https://leanpub.com/pfp-scala)
+* [Domain Modeling Made Functional - Scott Wlaschin](https://www.goodreads.com/book/show/34921689-domain-modeling-made-functional)

@@ -1,1 +1,1 @@
-^ Here mention sources to Outside-in vs inside-out TDD and Classical vs mockist TDD
+Here also mention to not mock what you don't own and to use an adapter pattern instead

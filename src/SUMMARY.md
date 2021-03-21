@@ -15,8 +15,8 @@
     - [Expand and contract 🏗️](passes-all-tests/expand_and_contract.md)
     - [Contract testing 🏗️](passes-all-tests/contract-testing.md)
     - [Performance tests 🏗️](passes-all-tests/performance-tests.md)
-    - [Linting 🏗️](passes-all-tests/linting.md)
     - [How to test UI 🏗️](passes-all-tests/how-to-test-ui.md)
+    - [Linting 🏗️](passes-all-tests/linting.md)
   
 - [Expresses intent](expresses-intent/introduction.md)
     - [Naming](expresses-intent/naming.md)
@@ -39,7 +39,7 @@
     - [Single responsibility principle 🏗️](does-not-repeat-itself/single-responsibility-principle.md)
     - [Open close principle 🏗️](does-not-repeat-itself/open-closed-principle.md)
     - [Interface segregation principle 🏗️](does-not-repeat-itself/interface-segregation-principle.md)
-    - [Dependency inversion principle 🏗️](does-not-repeat-itself/dependency-inversion-principle.md)
+    - [Dependency inversion principle](does-not-repeat-itself/dependency-inversion-principle.md)
     - [Polymorphism 🏗️](does-not-repeat-itself/polymorphism.md)
   
 - [Does not contain superfluous parts](does-not-contain-superfluous-parts/introduction.md)
