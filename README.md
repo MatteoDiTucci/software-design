@@ -3,7 +3,7 @@
 ![CI/CD](https://github.com/matteoditucci/software-design/workflows/github-pages/badge.svg)
 
 ### Where to read the book
-https://matteoditucci.github.io/software-design/
+https://software-design.matteoditucci.com/
 
 ### Feedback
 Feel free to open a pull request if you want to provide any feedback. Thank you for that.
