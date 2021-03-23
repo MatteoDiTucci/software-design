@@ -38,7 +38,7 @@
     - [Do not abstract by visual pattern matching](does-not-repeat-itself/do-not-abstract-by-visual-pattern-matching.md)
     - [Dependency inversion principle](does-not-repeat-itself/dependency-inversion-principle.md)
     - [Single responsibility principle 🏗️](does-not-repeat-itself/single-responsibility-principle.md)
-    - [Open close principle 🏗️](does-not-repeat-itself/open-closed-principle.md)
+    - [Open-closed principle️](does-not-repeat-itself/open-closed-principle.md)
     - [Interface segregation principle 🏗️](does-not-repeat-itself/interface-segregation-principle.md)
     - [Polymorphism 🏗️](does-not-repeat-itself/polymorphism.md)
   
