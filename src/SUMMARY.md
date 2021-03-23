@@ -36,9 +36,9 @@
 - [Does not repeat itself](does-not-repeat-itself/introduction.md)
     - [One single authoritative knowledge representation](does-not-repeat-itself/one-single-authoritative-representation.md)
     - [Do not abstract by visual pattern matching](does-not-repeat-itself/do-not-abstract-by-visual-pattern-matching.md)
+    - [Open-closed principle️](does-not-repeat-itself/open-closed-principle.md)
     - [Dependency inversion principle](does-not-repeat-itself/dependency-inversion-principle.md)
     - [Single responsibility principle 🏗️](does-not-repeat-itself/single-responsibility-principle.md)
-    - [Open-closed principle️](does-not-repeat-itself/open-closed-principle.md)
     - [Interface segregation principle 🏗️](does-not-repeat-itself/interface-segregation-principle.md)
     - [Polymorphism 🏗️](does-not-repeat-itself/polymorphism.md)
   
