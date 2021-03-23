@@ -23,7 +23,7 @@ I still do not know, but along the way I pleasantly discovered I like software a
 
 ### Teach me back
 I really appreciate any feedback about the book and my current understanding of software design.
-You can share any feedback by creating a [pull request](https://github.com/MatteoDiTucci/software-design).
+You can share any feedback by creating a [pull request](https://github.com/MatteoDiTucci/software-design/pulls).
 If you do not know what a pull request is, take a look [here](https://guides.github.com/activities/hello-world/#:~:text=Pull%20Requests%20are%20the%20heart,merge%20them%20into%20their%20branch.&text=You%20can%20even%20open%20pull,repository%20and%20merge%20them%20yourself.).
 
 ### Simple code
