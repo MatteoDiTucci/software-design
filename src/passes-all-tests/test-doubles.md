@@ -110,6 +110,8 @@ an in memory database (e.g. H2) instead of a production one (e.g. PostgreSQL)
 
 As a final note, test doubles are not used just for unit tests, but throughout the [whole pyramid](test-pyramid.html).
 
+<br/>
+
 #### Recommended reads
 * [Mocks aren't stubs](https://martinfowler.com/articles/mocksArentStubs.html)  
 * [Only mock type that you own, chapter 8 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)

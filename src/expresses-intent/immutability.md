@@ -160,6 +160,8 @@ The content of `result` in the `main` method of `App` is now `The shelf contains
 As a final note, reasoning about state is hard and that's why it is worth deepen the paradigm of functional programming
 which removes the concept of state as much as possible. 
 
+<br/>
+
 #### Recommended reads
 * [Appreciating Immutability, section 5.3 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
 * [Make defensive copies when needed, chapter 9 of Effective Java second edition - Joshua Bloch](https://www.goodreads.com/book/show/34927404-effective-java)

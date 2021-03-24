@@ -85,6 +85,8 @@ change.
 As a final note, `TransferStorage` has also become the [single authoritative representation](one-single-authoritative-representation.html)
 of how to store `Transfer`.
 
+<br/>
+
 #### Recommended reads
 * [Depending on abstractions, chapter 4.9 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
 * [The dependency inversion principle, chapter 11 of Clean Architecture - Robert C. Martin](https://www.goodreads.com/book/show/18043011-clean-architecture)
