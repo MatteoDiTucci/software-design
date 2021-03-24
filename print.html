@@ -421,6 +421,7 @@ For instance, <code>validator</code> in the following test is a dummy as the met
 An object with very limited capabilities compared to the real one but much faster to create. The typical example is
 an in memory database (e.g. H2) instead of a production one (e.g. PostgreSQL)</p>
 <p>As a final note, test doubles are not used just for unit tests, but throughout the <a href="passes-all-tests/test-pyramid.html">whole pyramid</a>.</p>
+<br/>
 <h4><a class="header" href="#recommended-reads-2" id="recommended-reads-2">Recommended reads</a></h4>
 <ul>
 <li><a href="https://martinfowler.com/articles/mocksArentStubs.html">Mocks aren't stubs</a></li>
@@ -681,6 +682,7 @@ does not clearly expresses intent if its signature is like the following: <code>
 <li><a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Names, section 1.1.1 of 99 bottles of OOP - Sandy Metz</a></li>
 <li><a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz</a></li>
 <li><a href="https://www.goodreads.com/book/show/3735293-clean-code">Meaningful Names, chapter 2 of Clean Code - Robert C. Martin</a></li>
+<li><a href="https://www.goodreads.com/en/book/show/44936.Refactoring">Replace Magic Number with Symbolic Constant, chapter 8 of Refactoring - Martin Fowler</a></li>
 <li><a href="https://www.barnesandnoble.com/w/domain-driven-design-distilled-vaughn-vernon/1124175630">Developing a Ubiquitous Language, chapter 2 of Domain-Driven Design Distilled - Vaughn Vernon</a></li>
 </ul>
 <h2><a class="header" href="#deep-and-narrow-classes" id="deep-and-narrow-classes">Deep and narrow classes</a></h2>
@@ -928,6 +930,7 @@ class App {
 <p>The content of <code>result</code> in the <code>main</code> method of <code>App</code> is now <code>The shelf contains 2 books</code>.<br />
 As a final note, reasoning about state is hard and that's why it is worth deepen the paradigm of functional programming
 which removes the concept of state as much as possible. </p>
+<br/>
 <h4><a class="header" href="#recommended-reads-8" id="recommended-reads-8">Recommended reads</a></h4>
 <ul>
 <li><a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Appreciating Immutability, section 5.3 of 99 bottles of OOP - Sandy Metz</a></li>
@@ -1220,6 +1223,7 @@ class LightBulb(private val state: LightBulbState) {
   }
 }
 </code></pre>
+<br/>
 <h4><a class="header" href="#recommended-reads-12" id="recommended-reads-12">Recommended reads</a></h4>
 <ul>
 <li><a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Starting With the Open/Closed Principle, chapter 3.2 of 99 bottles of OOP - Sandy Metz</a></li>
@@ -1304,6 +1308,7 @@ On the contrary, <code>TransfersFile</code> now depends on <code>TransferStorage
 change.</p>
 <p>As a final note, <code>TransferStorage</code> has also become the <a href="does-not-repeat-itself/one-single-authoritative-representation.html">single authoritative representation</a>
 of how to store <code>Transfer</code>.</p>
+<br/>
 <h4><a class="header" href="#recommended-reads-13" id="recommended-reads-13">Recommended reads</a></h4>
 <ul>
 <li><a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Depending on abstractions, chapter 4.9 of 99 bottles of OOP - Sandy Metz</a></li>
