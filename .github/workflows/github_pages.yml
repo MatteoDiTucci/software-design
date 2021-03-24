@@ -18,7 +18,7 @@ jobs:
         with: 
           mdbook-version: '0.4.6'
 
-      - run: mdbook clean && mdbook build && cp ./sitemap.txt ./book/sitemap.txt
+      - run: mdbook clean && mdbook build && cp ./sitemap.txt ./book/sitemap.txt && cp ./CNAME ./book/CNAME
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
