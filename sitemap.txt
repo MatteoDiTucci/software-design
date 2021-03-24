@@ -10,7 +10,7 @@ https://software-design.matteoditucci.com/passes-all-tests/tests-must-be-reprodu
 https://software-design.matteoditucci.com/passes-all-tests/no-production-code-constants-in-tests.html
 https://software-design.matteoditucci.com/passes-all-tests/do-not-test-libraries.html
 https://software-design.matteoditucci.com/passes-all-tests/component-tests-vs-end-to-end-tests-vs-monitoring-tradeoffs.html
-https://software-design.matteoditucci.com/passes-all-tests/expand_and_contract.html
+https://software-design.matteoditucci.com/passes-all-tests/expand-and-contract.html
 https://software-design.matteoditucci.com/passes-all-tests/contract-testing.html
 https://software-design.matteoditucci.com/passes-all-tests/performance-tests.html
 https://software-design.matteoditucci.com/passes-all-tests/how-to-test-ui.html
