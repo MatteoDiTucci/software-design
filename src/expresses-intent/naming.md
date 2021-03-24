@@ -66,4 +66,5 @@ does not clearly expresses intent if its signature is like the following: `fun s
 * [Names, section 1.1.1 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
 * [Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)  
 * [Meaningful Names, chapter 2 of Clean Code - Robert C. Martin](https://www.goodreads.com/book/show/3735293-clean-code)  
+* [Replace Magic Number with Symbolic Constant, chapter 8 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  
 * [Developing a Ubiquitous Language, chapter 2 of Domain-Driven Design Distilled - Vaughn Vernon](https://www.barnesandnoble.com/w/domain-driven-design-distilled-vaughn-vernon/1124175630)
