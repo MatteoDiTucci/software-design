@@ -1,1 +1,2 @@
-Define how to split properly the SOLID principles between here and other chapters
+#### Recommended reads
+* [Class-responsibility-collaboration card - Ward Cunningham, Kent Beck](https://en.wikipedia.org/wiki/Class-responsibility-collaboration_card)
