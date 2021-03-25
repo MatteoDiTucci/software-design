@@ -942,7 +942,10 @@ which removes the concept of state as much as possible. </p>
 <ul>
 <li><a href="https://michaelfeathers.typepad.com/michael_feathers_blog/2012/03/tell-above-and-ask-below-hybridizing-oo-and-functional-design.html">Tell Above, and Ask Below - Michael Feathers</a></li>
 </ul>
-<p>Define how to split properly the SOLID principles between here and other chapters</p>
+<h4><a class="header" href="#recommended-reads-10" id="recommended-reads-10">Recommended reads</a></h4>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Class-responsibility-collaboration_card">Class-responsibility-collaboration card - Ward Cunningham, Kent Beck</a></li>
+</ul>
 <ul>
 <li>Also tests</li>
 <li>Mention that local variables can sometimes hinder readability</li>
@@ -1054,7 +1057,7 @@ class App {
 is <a href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping">object-relational mapping libraries</a> and SQL
 initialisation scripts: who of the two represents the knowledge of database tables creation?</p>
 <br/>  
-<h4><a class="header" href="#recommended-reads-10" id="recommended-reads-10">Recommended reads</a></h4>
+<h4><a class="header" href="#recommended-reads-11" id="recommended-reads-11">Recommended reads</a></h4>
 <ul>
 <li><a href="https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer">DRY, The evils of duplication, topic 9 of The Pragmatic Programmer - David Thomas, Andrew Hunt</a></li>
 <li><a href="https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained">Once and only once, Extreme Programming Explained - Kent Beck</a></li>
@@ -1092,7 +1095,7 @@ until we understand it is duplicated knowledge. It is hard to build the right kn
 are not entirely known or the domain is complex. In doubt, the rule of thumb is to remove duplication only after it occurs
 more than two times.</p>
 <br/>  
-<h4><a class="header" href="#recommended-reads-11" id="recommended-reads-11">Recommended reads</a></h4>
+<h4><a class="header" href="#recommended-reads-12" id="recommended-reads-12">Recommended reads</a></h4>
 <ul>
 <li><a href="https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction">&quot;Duplication is far cheaper than the wrong abstraction&quot;, RailsConf 2014, all the little things talk - Sandy Metz</a></li>
 <li><a href="https://www.goodreads.com/en/book/show/44936.Refactoring">Rule of three, When we should Refactor? chapter 2 of Refactoring - Martin Fowler</a>  </li>
@@ -1224,7 +1227,7 @@ class LightBulb(private val state: LightBulbState) {
 }
 </code></pre>
 <br/>
-<h4><a class="header" href="#recommended-reads-12" id="recommended-reads-12">Recommended reads</a></h4>
+<h4><a class="header" href="#recommended-reads-13" id="recommended-reads-13">Recommended reads</a></h4>
 <ul>
 <li><a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Starting With the Open/Closed Principle, chapter 3.2 of 99 bottles of OOP - Sandy Metz</a></li>
 <li><a href="https://www.goodreads.com/book/show/84985.Agile_Software_Development_Principles_Patterns_and_Practices">OCP: The Open-Closed Principle, chapter 9 Agile Software Development, Principles, Patterns, and Practices  - Robert C. Martin</a></li>
@@ -1309,7 +1312,7 @@ change.</p>
 <p>As a final note, <code>TransferStorage</code> has also become the <a href="does-not-repeat-itself/one-single-authoritative-representation.html">single authoritative representation</a>
 of how to store <code>Transfer</code>.</p>
 <br/>
-<h4><a class="header" href="#recommended-reads-13" id="recommended-reads-13">Recommended reads</a></h4>
+<h4><a class="header" href="#recommended-reads-14" id="recommended-reads-14">Recommended reads</a></h4>
 <ul>
 <li><a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Depending on abstractions, chapter 4.9 of 99 bottles of OOP - Sandy Metz</a></li>
 <li><a href="https://www.goodreads.com/book/show/18043011-clean-architecture">The dependency inversion principle, chapter 11 of Clean Architecture - Robert C. Martin</a></li>
@@ -1387,7 +1390,7 @@ enum class TrafficLightColour {
 it added useless code inside the <code>TrafficLight</code> class and it forced all callers of <code>changeColour</code> to provide a value for
 <code>milliSecondsToWait</code> which, given the current spec, will always be 0.</p>
 <br/>  
-<h4><a class="header" href="#recommended-reads-14" id="recommended-reads-14">Recommended reads</a></h4>
+<h4><a class="header" href="#recommended-reads-15" id="recommended-reads-15">Recommended reads</a></h4>
 <ul>
 <li><a href="https://www.goodreads.com/en/book/show/44936.Refactoring">Refactoring, Architecture, and YAGNI, chapter 2 of Refactoring - Martin Fowler</a></li>
 <li><a href="https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained">Chapter 17 of Extreme Programming Explained - Kent Beck</a></li>
@@ -1443,7 +1446,7 @@ to change it as follows.</p>
 argue that <code>HashSet</code> approach satisfies the specifications just fine and we aren't going to need all the for-loop complexity
 introduced by the <code>ArrayList</code> approach.</p>
 <br/>  
-<h4><a class="header" href="#recommended-reads-15" id="recommended-reads-15">Recommended reads</a></h4>
+<h4><a class="header" href="#recommended-reads-16" id="recommended-reads-16">Recommended reads</a></h4>
 <ul>
 <li><a href="https://dl.acm.org/toc/csur/1974/6/4">The full quote from Donald Knuth was: &quot;We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%.&quot;</a></li>
 </ul>
@@ -1452,7 +1455,7 @@ introduced by the <code>ArrayList</code> approach.</p>
 do not guarantee simple code, and actually they can end up pushing in the opposite direction. They are just a tool that
 has to be adapted to the context where they are used, not applied to the letter.</p>
 <br/>  
-<h4><a class="header" href="#recommended-reads-16" id="recommended-reads-16">Recommended reads</a></h4>
+<h4><a class="header" href="#recommended-reads-17" id="recommended-reads-17">Recommended reads</a></h4>
 <ul>
 <li><a href="https://www.goodreads.com/book/show/58128.Head_First_Design_Patterns">Head First Design Patterns - Eric Freeman, Elisabeth Robson</a></li>
 </ul>
