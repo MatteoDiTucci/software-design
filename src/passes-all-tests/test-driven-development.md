@@ -97,4 +97,8 @@ that is not tested. However, be mindful that we can still write buggy code even 
 * ["Testing shows the presence, not the absence of bugs" - Edsger W. Dijkstra](https://blog.cleancoder.com/uncle-bob/2016/06/10/MutationTesting.html)  
 * [London vs Chicago school, contributing-tests wiki - Justin Searls](https://github.com/testdouble/contributing-tests/wiki/London-school-TDD)  
 * [Need driven development, Mock Roles, not Objects - Steve Freeman, Nat Pryce, Tim Mackinnon, Joe Walnes](http://jmock.org/oopsla2004.pdf)  
-* [London vs Chicago - Robert C. Martin, Sandro Mancuso](https://cleancoders.com/series/comparativeDesign)  
+* [London vs Chicago - Robert C. Martin, Sandro Mancuso](https://cleancoders.com/series/comparativeDesign)
+
+<br/>  
+
+[Teach me back ❤️](/introduction/introduction.html#teach-me-back)

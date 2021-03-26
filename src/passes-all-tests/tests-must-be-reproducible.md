@@ -39,3 +39,7 @@ To make the test deterministic we have to replace `LocalDate.now()` with a const
 
 #### Recommended reads
 * [Purely functional random number generation, chapter 6 of Functional Programming in Scala - Rúnar Bjarnason, Paul Chiusano, Tony Morris](https://www.goodreads.com/book/show/13541678-functional-programming-in-scala)
+
+<br/>  
+
+[Teach me back ❤️](/introduction/introduction.html#teach-me-back)

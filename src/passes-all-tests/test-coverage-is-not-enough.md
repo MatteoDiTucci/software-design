@@ -35,4 +35,8 @@ combination of inputs is not feasible, but there are some testing methodologies 
 * [Parameterised testing with Junit in Kotlin - Baeldung](https://www.baeldung.com/parameterized-tests-junit-5)  
 * [Jqwik, a property based testing library in Java](https://jqwik.net/)  
 * [Fuzz testing](https://en.wikipedia.org/wiki/Fuzzing)    
-* [Formal verification](https://en.wikipedia.org/wiki/Formal_verification) 
+* [Formal verification](https://en.wikipedia.org/wiki/Formal_verification)
+
+<br/>  
+
+[Teach me back ❤️](/introduction/introduction.html#teach-me-back)

@@ -86,3 +86,7 @@ class Car(private val passengers: MutableCollection<String>) {
 
 #### Recommended reads
 * [Context independence section, chapter 6 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
+
+<br/>  
+
+[Teach me back ❤️](/introduction/introduction.html#teach-me-back)

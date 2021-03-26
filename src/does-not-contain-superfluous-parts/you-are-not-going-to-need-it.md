@@ -77,4 +77,8 @@ it added useless code inside the `TrafficLight` class and it forced all callers 
 #### Recommended reads
 * [Refactoring, Architecture, and YAGNI, chapter 2 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)    
 * [Chapter 17 of Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)  
-* [Incidental vs accidental complexity, No Silver Bullet paper - Fred Brooks](https://en.wikipedia.org/wiki/No_Silver_Bullet)  
+* [Incidental vs accidental complexity, No Silver Bullet paper - Fred Brooks](https://en.wikipedia.org/wiki/No_Silver_Bullet)
+
+<br/>  
+
+[Teach me back ❤️](/introduction/introduction.html#teach-me-back)
