@@ -71,4 +71,4 @@ does not clearly expresses intent if its signature is like the following: `fun s
 
 <br/>  
 
-[Teach me back ❤️](introduction.html#teach-me-back)
+[Teach me back ❤️](/introduction/introduction.html#teach-me-back)
