@@ -68,3 +68,7 @@ does not clearly expresses intent if its signature is like the following: `fun s
 * [Meaningful Names, chapter 2 of Clean Code - Robert C. Martin](https://www.goodreads.com/book/show/3735293-clean-code)  
 * [Replace Magic Number with Symbolic Constant, chapter 8 of Refactoring - Martin Fowler](https://www.goodreads.com/en/book/show/44936.Refactoring)  
 * [Developing a Ubiquitous Language, chapter 2 of Domain-Driven Design Distilled - Vaughn Vernon](https://www.barnesandnoble.com/w/domain-driven-design-distilled-vaughn-vernon/1124175630)
+
+<br/>  
+
+[Teach me back ❤️](introduction.html#teach-me-back)
