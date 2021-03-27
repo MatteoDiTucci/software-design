@@ -45,6 +45,5 @@ tests and many unit tests. In particular:
 * [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 * [Fixing a Test Hourglass, Google testing blog - Alan Myrvold](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html)
 
-<br/>  
-
-[Teach me back ❤️](/introduction/introduction.html#teach-me-back)
+#### Teach me back
+I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.

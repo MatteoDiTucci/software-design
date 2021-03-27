@@ -117,6 +117,5 @@ As a final note, test doubles are not used just for unit tests, but throughout t
 * [Only mock type that you own, chapter 8 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 * [Don't mock what you don't own, contributing-tests wiki - Justin Searls](https://github.com/testdouble/contributing-tests/wiki/Don%27t-mock-what-you-don%27t-own)
 
-<br/>  
-
-[Teach me back ❤️](/introduction/introduction.html#teach-me-back)
+#### Teach me back
+I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.

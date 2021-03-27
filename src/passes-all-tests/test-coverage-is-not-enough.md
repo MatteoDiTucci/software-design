@@ -37,6 +37,5 @@ combination of inputs is not feasible, but there are some testing methodologies 
 * [Fuzz testing](https://en.wikipedia.org/wiki/Fuzzing)    
 * [Formal verification](https://en.wikipedia.org/wiki/Formal_verification)
 
-<br/>  
-
-[Teach me back ❤️](/introduction/introduction.html#teach-me-back)
+#### Teach me back
+I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.

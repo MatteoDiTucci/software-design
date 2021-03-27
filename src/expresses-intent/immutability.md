@@ -168,6 +168,6 @@ which removes the concept of state as much as possible.
 * [Practical Function Programming in Scala - Gabriel Volpe](https://leanpub.com/pfp-scala)
 * [Domain Modeling Made Functional - Scott Wlaschin](https://www.goodreads.com/book/show/34921689-domain-modeling-made-functional)
 
-<br/>  
 
-[Teach me back ❤️](/introduction/introduction.html#teach-me-back)
+#### Teach me back
+I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.

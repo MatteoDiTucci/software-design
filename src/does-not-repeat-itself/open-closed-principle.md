@@ -139,6 +139,5 @@ class LightBulb(private val state: LightBulbState) {
 * [Starting With the Open/Closed Principle, chapter 3.2 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
 * [OCP: The Open-Closed Principle, chapter 9 Agile Software Development, Principles, Patterns, and Practices  - Robert C. Martin](https://www.goodreads.com/book/show/84985.Agile_Software_Development_Principles_Patterns_and_Practices)
 
-<br/>  
-
-[Teach me back ❤️](/introduction/introduction.html#teach-me-back)
+#### Teach me back
+I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.

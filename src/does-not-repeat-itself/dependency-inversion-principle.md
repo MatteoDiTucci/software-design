@@ -93,6 +93,5 @@ of how to store `Transfer`.
 * [Dependency injection, chapter 11 of Clean Code - Robert C. Martin](https://www.goodreads.com/book/show/3735293-clean-code)
 * [The onion architecture - Jeffrey Palermo](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/)
 
-<br/>  
-
-[Teach me back ❤️](/introduction/introduction.html#teach-me-back)
+#### Teach me back
+I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.
