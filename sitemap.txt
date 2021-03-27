@@ -20,9 +20,8 @@ https://software-design.matteoditucci.com/expresses-intent/naming.html
 https://software-design.matteoditucci.com/expresses-intent/deep-and-narrow-classes.html
 https://software-design.matteoditucci.com/expresses-intent/immutability.html
 https://software-design.matteoditucci.com/expresses-intent/small-classes-and-short-methods.html
-https://software-design.matteoditucci.com/expresses-intent/low-coupling-high-cohesion.html
 https://software-design.matteoditucci.com/expresses-intent/liskov-substitution-principle.html
-https://software-design.matteoditucci.com/expresses-intent/encapsulation.html
+https://software-design.matteoditucci.com/expresses-intent/information-hiding.html
 https://software-design.matteoditucci.com/expresses-intent/usually-composition-is-better-than-inheritance.html
 https://software-design.matteoditucci.com/expresses-intent/generalise-edge-cases.html
 https://software-design.matteoditucci.com/expresses-intent/comment-the-why.html
