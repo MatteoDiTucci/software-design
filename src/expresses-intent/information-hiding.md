@@ -73,7 +73,9 @@ class Game{
 
 We are now free to change the internal implementation of `Die` without interfering with `Game` or any other part of the codebase.
 
-As a final note, leaking information can be subtle and can occur simply by picking the wrong name.
+As a final note, leaking information can be subtle and can occur even at naming level. For instance, there is nothing
+wrong in naming a class `InMemoryResource`. However, if we want to modify it to use the internet, we first need to ask
+ourselves if other code has been written using `InMemoryResource` implicitly assuming that it guarantees high availability.
 
 <br/>
 
