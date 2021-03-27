@@ -1027,7 +1027,9 @@ class Game{
 }
 </code></pre>
 <p>We are now free to change the internal implementation of <code>Die</code> without interfering with <code>Game</code> or any other part of the codebase.</p>
-<p>As a final note, leaking information can be subtle and can occur simply by picking the wrong name.</p>
+<p>As a final note, leaking information can be subtle and can occur even at naming level. For instance, there is nothing
+wrong in naming a class <code>InMemoryResource</code>. However, if we want to modify it to use the internet, we first need to ask
+ourselves if other code has been written using <code>InMemoryResource</code> implicitly assuming that it guarantees high availability.</p>
 <br/>
 <h4><a class="header" href="#recommended-reads-9" id="recommended-reads-9">Recommended reads</a></h4>
 <ul>
