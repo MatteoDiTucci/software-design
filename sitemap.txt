@@ -17,6 +17,7 @@ https://software-design.matteoditucci.com/passes-all-tests/how-to-test-ui.html
 https://software-design.matteoditucci.com/passes-all-tests/linting.html
 https://software-design.matteoditucci.com/expresses-intent/introduction.html
 https://software-design.matteoditucci.com/expresses-intent/naming.html
+https://software-design.matteoditucci.com/expresses-intent/single-responsibility-principle.html
 https://software-design.matteoditucci.com/expresses-intent/deep-and-narrow-classes.html
 https://software-design.matteoditucci.com/expresses-intent/immutability.html
 https://software-design.matteoditucci.com/expresses-intent/small-classes-and-short-methods.html
@@ -28,10 +29,9 @@ https://software-design.matteoditucci.com/expresses-intent/visual-indentation.ht
 https://software-design.matteoditucci.com/expresses-intent/folder-structure.html
 https://software-design.matteoditucci.com/expresses-intent/test-naming.html
 https://software-design.matteoditucci.com/does-not-repeat-itself/introduction.html
-https://software-design.matteoditucci.com/does-not-repeat-itself/one-single-authoritative-representation.html
+https://software-design.matteoditucci.com/expresses-intent/one-single-authoritative-representation.html
 https://software-design.matteoditucci.com/does-not-repeat-itself/do-not-abstract-by-visual-pattern-matching.html
 https://software-design.matteoditucci.com/does-not-repeat-itself/dependency-inversion-principle.html
-https://software-design.matteoditucci.com/does-not-repeat-itself/single-responsibility-principle.html
 https://software-design.matteoditucci.com/does-not-repeat-itself/open-closed-principle.html
 https://software-design.matteoditucci.com/does-not-repeat-itself/interface-segregation-principle.html
 https://software-design.matteoditucci.com/does-not-repeat-itself/information-hiding.html

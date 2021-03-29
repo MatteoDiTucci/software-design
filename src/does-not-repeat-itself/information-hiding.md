@@ -84,6 +84,7 @@ ourselves if other code has been written using `InMemoryResource` implicitly ass
 * [Encapsulate Behavior,Not Just State - chapter 10 of of 97 Things Every Programmer Should Know - Kevlin Henney](https://www.goodreads.com/book/show/7003902-97-things-every-programmer-should-know)
 * [Information Hiding, chapter 5 of A Philosophy of Software Design - John Ousterhout](https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design)
 * [Decoupling and the Law of Demeter, chapter 5 of The Pragmatic Programmer - David Thomas, Andrew Hunt](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer)
+* [Hide the right information, chapter 6 of of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 * [Object Calisthenics, William Durand](https://williamdurand.fr/2013/06/03/object-calisthenics/)
 * [Tell Above, and Ask Below - Michael Feathers](https://michaelfeathers.typepad.com/michael_feathers_blog/2012/03/tell-above-and-ask-below-hybridizing-oo-and-functional-design.html)
 

@@ -38,7 +38,7 @@
     - [Dependency inversion principle](does-not-repeat-itself/dependency-inversion-principle.md)
     - [Information hiding️](does-not-repeat-itself/information-hiding.md)
     - [Polymorphism 🏗️](does-not-repeat-itself/polymorphism.md)
-    - [Single responsibility principle 🏗️](does-not-repeat-itself/single-responsibility-principle.md)
+    - [Single responsibility principle 🏗️](expresses-intent/single-responsibility-principle.md)
     - [Interface segregation principle 🏗️](does-not-repeat-itself/interface-segregation-principle.md)
   
 - [Does not contain superfluous parts](does-not-contain-superfluous-parts/introduction.md)
