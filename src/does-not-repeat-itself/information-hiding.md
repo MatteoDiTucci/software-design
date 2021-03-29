@@ -86,3 +86,6 @@ ourselves if other code has been written using `InMemoryResource` implicitly ass
 * [Decoupling and the Law of Demeter, chapter 5 of The Pragmatic Programmer - David Thomas, Andrew Hunt](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer)
 * [Object Calisthenics, William Durand](https://williamdurand.fr/2013/06/03/object-calisthenics/)
 * [Tell Above, and Ask Below - Michael Feathers](https://michaelfeathers.typepad.com/michael_feathers_blog/2012/03/tell-above-and-ask-below-hybridizing-oo-and-functional-design.html)
+
+#### Teach me back
+I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.
