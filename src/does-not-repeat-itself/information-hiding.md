@@ -72,7 +72,7 @@ class Game{
 ```
 
 `Die` has now become the only class knowing about how a die is made and how it wins over another. This means we are now 
-free to change its internal implementation without interfering with `Game` or any other part of the codebase.
+free to change its internal implementation without interfering with `Game` or any other part of the codebase.  
 
 As a final note, leaking information can be subtle and can occur even at naming level. For instance, there is nothing
 wrong in naming a class `InMemoryResource`. However, if we want to modify it to fetch a resource over the internet,

@@ -1,3 +1,5 @@
+## Visual indentation
+
 Mention that visual spacing sometimes suggests refactoring (e.g.extract responsibilities, separating concerns)
 
 <br/>  

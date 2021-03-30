@@ -1,3 +1,5 @@
+## Single responsibility principle
+
 Mention high cohesion in the context of one reason for a class to change
 
 #### Recommended reads

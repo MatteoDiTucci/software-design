@@ -80,7 +80,7 @@ of any change that might happen to `TransfersFile`. Furthermore, `Transfer` beco
 used to store it: as far as a class implements `TransferStorage`, it can be passed to `Transfer` 
 inside the `main` method of `App`. This means we could be using a new class `TransfersDatabase` and `Transfer` would not know it.
 On the contrary, `TransfersFile` now depends on `TransferStorage` but that's fine as we know `TransferStorage` will rarely
-change.
+change.  
 
 As a final note, `TransferStorage` has also become the [single authoritative representation](one-single-authoritative-representation.html)
 of how to store `Transfer`.

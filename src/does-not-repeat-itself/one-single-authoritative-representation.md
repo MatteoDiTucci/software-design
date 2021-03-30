@@ -104,7 +104,7 @@ class App {
 }
 ```
 
-Now the intent is clearer, making it easier to reason about the code.
+Now the intent is clearer, making it easier to reason about the code.  
 
 As a final note, be mindful that knowledge duplication might be there even if the code looks different. The typical example
 is [object-relational mapping libraries](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping) and SQL

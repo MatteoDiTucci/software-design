@@ -156,7 +156,7 @@ class App {
 }
 ```
 
-The content of `result` in the `main` method of `App` is now `The shelf contains 2 books`.   
+The content of `result` in the `main` method of `App` is now `The shelf contains 2 books`.  
 
 As a final note, reasoning about state is hard and that's why it is worth deepen the paradigm of functional programming
 which removes the concept of state as much as possible. 

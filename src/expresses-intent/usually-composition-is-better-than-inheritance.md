@@ -1,0 +1,1 @@
+## Usually composition is better than inheritance
