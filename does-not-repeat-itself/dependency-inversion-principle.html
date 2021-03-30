@@ -194,7 +194,7 @@ class App {
 <p>In the above code, the class <code>Transfer</code> depends on <code>TransferFile</code> as the former takes the latter as input parameter
 in the <code>save</code> method. Now let's assume we know that the class <code>TransferFile</code> is going to change a lot in the future, 
 for instance because it might become a different class that saves <code>Transfer</code> to a database or because it will connect
-to a third party api over the internet and its <code>save</code> method might change. Even worse, we won't be able to modify <code>TransferFile</code>
+to a third party api over the internet and its <code>save</code> method signature might change. Even worse, we won't be able to modify <code>TransferFile</code>
 in the future as another developer is going to take care of it. In this situation, the risk is that everytime <code>TransferFile</code>
 changes, we will be forced to change our <code>Transfer</code> class as well. We can prevent this by leveraging the dependency inversion
 principle like in the following code.</p>

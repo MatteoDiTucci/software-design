@@ -201,7 +201,7 @@ class Game{
 <li>A die wins over another if the former <code>value</code> is greater than the latter</li>
 </ul>
 <p>If any of the above two change, we will need to adjust <code>Game</code>  as its <code>play</code> method uses that information.
-An example of such changes is a new rule by which the number 3 wins over any other number.<br />
+An example of such changes is a new rule by which the number 3 wins over any other number.
 However, we can prevent those unintended changes in <code>Game</code> by not leaking information out of <code>Die</code> as follows.</p>
 <pre><code class="language-kotlin">class Die {
   private var value = 1
@@ -231,10 +231,11 @@ class Game{
   }
 }
 </code></pre>
-<p>We are now free to change the internal implementation of <code>Die</code> without interfering with <code>Game</code> or any other part of the codebase.</p>
+<p><code>Die</code> has now become the only class knowing about how a die is made and how it wins over another. This means we are now 
+free to change its internal implementation without interfering with <code>Game</code> or any other part of the codebase.</p>
 <p>As a final note, leaking information can be subtle and can occur even at naming level. For instance, there is nothing
-wrong in naming a class <code>InMemoryResource</code>. However, if we want to modify it to use the internet, we first need to ask
-ourselves if other code has been written using <code>InMemoryResource</code> implicitly assuming that it guarantees high availability.</p>
+wrong in naming a class <code>InMemoryResource</code>. However, if we want to modify it to fetch a resource over the internet,
+we first need to ask ourselves if other code has been written using <code>InMemoryResource</code> implicitly assuming that it guarantees high availability.</p>
 <br/>
 <h4><a class="header" href="#recommended-reads" id="recommended-reads">Recommended reads</a></h4>
 <ul>

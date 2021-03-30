@@ -255,7 +255,7 @@ App().main()
 <ul>
 <li>The <code>setState</code> method of <code>LightBulb</code> does not modify the state, instead it returns a brand-new instance of <code>LightBulb</code></li>
 <li>The constructor of <code>Room</code> stores the brand-new <code>LightBulb</code> returned by the invocation of <code>setState</code>, instead of the <code>LightBulb</code> passed as a constructor parameter</li>
-<li>The <code>LightBulb</code> constructor uses <code>val</code> instead of <code>var</code>: in Kotlin a variable defined as <code>val</code> cannot be re-assigned</li>
+<li>The <code>LightBulb</code> constructor uses <code>val</code> instead of <code>var</code> (in Kotlin a variable defined as <code>val</code> cannot be re-assigned)</li>
 </ul>
 <p>Now the content of result in the <code>main</code> method of <code>App</code> is what we would expect from the beginning: <code>The room is bright</code>.
 Immutability makes it easier to reason about a piece of code and it is a game changer when <a href="https://en.wikipedia.org/wiki/Concurrency_(computer_science)">concurrency</a>
@@ -311,8 +311,8 @@ class App {
   }
 }
 </code></pre>
-<p>The content of <code>result</code> in the <code>main</code> method of <code>App</code> is now <code>The shelf contains 2 books</code>.<br />
-As a final note, reasoning about state is hard and that's why it is worth deepen the paradigm of functional programming
+<p>The content of <code>result</code> in the <code>main</code> method of <code>App</code> is now <code>The shelf contains 2 books</code>.</p>
+<p>As a final note, reasoning about state is hard and that's why it is worth deepen the paradigm of functional programming
 which removes the concept of state as much as possible. </p>
 <br/>
 <h4><a class="header" href="#recommended-reads" id="recommended-reads">Recommended reads</a></h4>

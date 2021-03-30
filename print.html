@@ -889,7 +889,7 @@ App().main()
 <ul>
 <li>The <code>setState</code> method of <code>LightBulb</code> does not modify the state, instead it returns a brand-new instance of <code>LightBulb</code></li>
 <li>The constructor of <code>Room</code> stores the brand-new <code>LightBulb</code> returned by the invocation of <code>setState</code>, instead of the <code>LightBulb</code> passed as a constructor parameter</li>
-<li>The <code>LightBulb</code> constructor uses <code>val</code> instead of <code>var</code>: in Kotlin a variable defined as <code>val</code> cannot be re-assigned</li>
+<li>The <code>LightBulb</code> constructor uses <code>val</code> instead of <code>var</code> (in Kotlin a variable defined as <code>val</code> cannot be re-assigned)</li>
 </ul>
 <p>Now the content of result in the <code>main</code> method of <code>App</code> is what we would expect from the beginning: <code>The room is bright</code>.
 Immutability makes it easier to reason about a piece of code and it is a game changer when <a href="https://en.wikipedia.org/wiki/Concurrency_(computer_science)">concurrency</a>
@@ -945,8 +945,8 @@ class App {
   }
 }
 </code></pre>
-<p>The content of <code>result</code> in the <code>main</code> method of <code>App</code> is now <code>The shelf contains 2 books</code>.<br />
-As a final note, reasoning about state is hard and that's why it is worth deepen the paradigm of functional programming
+<p>The content of <code>result</code> in the <code>main</code> method of <code>App</code> is now <code>The shelf contains 2 books</code>.</p>
+<p>As a final note, reasoning about state is hard and that's why it is worth deepen the paradigm of functional programming
 which removes the concept of state as much as possible. </p>
 <br/>
 <h4><a class="header" href="#recommended-reads-8" id="recommended-reads-8">Recommended reads</a></h4>
@@ -1316,7 +1316,7 @@ class App {
 <p>In the above code, the class <code>Transfer</code> depends on <code>TransferFile</code> as the former takes the latter as input parameter
 in the <code>save</code> method. Now let's assume we know that the class <code>TransferFile</code> is going to change a lot in the future, 
 for instance because it might become a different class that saves <code>Transfer</code> to a database or because it will connect
-to a third party api over the internet and its <code>save</code> method might change. Even worse, we won't be able to modify <code>TransferFile</code>
+to a third party api over the internet and its <code>save</code> method signature might change. Even worse, we won't be able to modify <code>TransferFile</code>
 in the future as another developer is going to take care of it. In this situation, the risk is that everytime <code>TransferFile</code>
 changes, we will be forced to change our <code>Transfer</code> class as well. We can prevent this by leveraging the dependency inversion
 principle like in the following code.</p>
@@ -1412,7 +1412,7 @@ class Game{
 <li>A die wins over another if the former <code>value</code> is greater than the latter</li>
 </ul>
 <p>If any of the above two change, we will need to adjust <code>Game</code>  as its <code>play</code> method uses that information.
-An example of such changes is a new rule by which the number 3 wins over any other number.<br />
+An example of such changes is a new rule by which the number 3 wins over any other number.
 However, we can prevent those unintended changes in <code>Game</code> by not leaking information out of <code>Die</code> as follows.</p>
 <pre><code class="language-kotlin">class Die {
   private var value = 1
@@ -1442,10 +1442,11 @@ class Game{
   }
 }
 </code></pre>
-<p>We are now free to change the internal implementation of <code>Die</code> without interfering with <code>Game</code> or any other part of the codebase.</p>
+<p><code>Die</code> has now become the only class knowing about how a die is made and how it wins over another. This means we are now 
+free to change its internal implementation without interfering with <code>Game</code> or any other part of the codebase.</p>
 <p>As a final note, leaking information can be subtle and can occur even at naming level. For instance, there is nothing
-wrong in naming a class <code>InMemoryResource</code>. However, if we want to modify it to use the internet, we first need to ask
-ourselves if other code has been written using <code>InMemoryResource</code> implicitly assuming that it guarantees high availability.</p>
+wrong in naming a class <code>InMemoryResource</code>. However, if we want to modify it to fetch a resource over the internet,
+we first need to ask ourselves if other code has been written using <code>InMemoryResource</code> implicitly assuming that it guarantees high availability.</p>
 <br/>
 <h4><a class="header" href="#recommended-reads-18" id="recommended-reads-18">Recommended reads</a></h4>
 <ul>
