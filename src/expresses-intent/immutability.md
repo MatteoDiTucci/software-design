@@ -95,7 +95,7 @@ App().main()
 The above code differs from the original one for three aspects:
 * The `setState` method of `LightBulb` does not modify the state, instead it returns a brand-new instance of `LightBulb`
 * The constructor of `Room` stores the brand-new `LightBulb` returned by the invocation of `setState`, instead of the `LightBulb` passed as a constructor parameter
-* The `LightBulb` constructor uses `val` instead of `var`: in Kotlin a variable defined as `val` cannot be re-assigned
+* The `LightBulb` constructor uses `val` instead of `var` (in Kotlin a variable defined as `val` cannot be re-assigned)
 
 Now the content of result in the `main` method of `App` is what we would expect from the beginning: `The room is bright`.
 Immutability makes it easier to reason about a piece of code and it is a game changer when [concurrency](https://en.wikipedia.org/wiki/Concurrency_(computer_science))
@@ -156,7 +156,8 @@ class App {
 }
 ```
 
-The content of `result` in the `main` method of `App` is now `The shelf contains 2 books`.  
+The content of `result` in the `main` method of `App` is now `The shelf contains 2 books`.   
+
 As a final note, reasoning about state is hard and that's why it is worth deepen the paradigm of functional programming
 which removes the concept of state as much as possible. 
 

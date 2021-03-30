@@ -33,7 +33,7 @@ class App {
 In the above code, the class `Transfer` depends on `TransferFile` as the former takes the latter as input parameter
 in the `save` method. Now let's assume we know that the class `TransferFile` is going to change a lot in the future, 
 for instance because it might become a different class that saves `Transfer` to a database or because it will connect
-to a third party api over the internet and its `save` method might change. Even worse, we won't be able to modify `TransferFile`
+to a third party api over the internet and its `save` method signature might change. Even worse, we won't be able to modify `TransferFile`
 in the future as another developer is going to take care of it. In this situation, the risk is that everytime `TransferFile`
 changes, we will be forced to change our `Transfer` class as well. We can prevent this by leveraging the dependency inversion
 principle like in the following code.

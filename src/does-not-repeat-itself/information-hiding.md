@@ -38,7 +38,7 @@ In the above code `Die` is leaking two pieces of information:
 * A die wins over another if the former `value` is greater than the latter
 
 If any of the above two change, we will need to adjust `Game`  as its `play` method uses that information.
-An example of such changes is a new rule by which the number 3 wins over any other number.   
+An example of such changes is a new rule by which the number 3 wins over any other number.
 However, we can prevent those unintended changes in `Game` by not leaking information out of `Die` as follows.
 
 ```kotlin
@@ -71,11 +71,12 @@ class Game{
 }
 ```
 
-We are now free to change the internal implementation of `Die` without interfering with `Game` or any other part of the codebase.
+`Die` has now become the only class knowing about how a die is made and how it wins over another. This means we are now 
+free to change its internal implementation without interfering with `Game` or any other part of the codebase.
 
 As a final note, leaking information can be subtle and can occur even at naming level. For instance, there is nothing
-wrong in naming a class `InMemoryResource`. However, if we want to modify it to use the internet, we first need to ask
-ourselves if other code has been written using `InMemoryResource` implicitly assuming that it guarantees high availability.
+wrong in naming a class `InMemoryResource`. However, if we want to modify it to fetch a resource over the internet,
+we first need to ask ourselves if other code has been written using `InMemoryResource` implicitly assuming that it guarantees high availability.
 
 <br/>
 
