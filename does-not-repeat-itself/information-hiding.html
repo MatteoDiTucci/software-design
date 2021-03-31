@@ -234,7 +234,7 @@ class Game{
 <p><code>Die</code> has now become the only class knowing about how a die is made and how it wins over another. This means we are now 
 free to change its internal implementation without interfering with <code>Game</code> or any other part of the codebase.</p>
 <p>As a final note, leaking information can be subtle and can occur even at naming level. For instance, there is nothing
-wrong in naming a class <code>InMemoryResource</code>. However, if we want to modify it to fetch a resource over the internet,
+wrong in naming a class <code>InMemoryResource</code>. However, if we want to modify it to fetch the resource over the internet,
 we first need to ask ourselves if other code has been written using <code>InMemoryResource</code> implicitly assuming that it guarantees high availability.</p>
 <br/>
 <h4><a class="header" href="#recommended-reads" id="recommended-reads">Recommended reads</a></h4>

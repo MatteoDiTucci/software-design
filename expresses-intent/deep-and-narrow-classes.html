@@ -165,8 +165,8 @@
                     <main>
                         <h2><a class="header" href="#deep-and-narrow-classes" id="deep-and-narrow-classes">Deep and narrow classes</a></h2>
 <p>We are doomed to write convoluted code when interacting with classes that have poor public methods. On the contrary,
-we are brought to write readable code when interacting with classes that have great public methods.<br />
-Let's consider the following <code>play</code> public method for the <a href="https://en.wikipedia.org/wiki/Fizz_buzz">FizzBuzz game</a>.</p>
+we are brought to write readable code when interacting with classes that have great public methods. Let's consider 
+the following <code>play</code> public method for the <a href="https://en.wikipedia.org/wiki/Fizz_buzz">FizzBuzz game</a>.</p>
 <pre><code class="language-kotlin">class FizzBuzz {
 
   fun play(number: Int): String {
@@ -238,12 +238,12 @@ Let's consider the following <code>play</code> public method for the <a href="ht
 <p>Now the <code>main</code> method is more readable. The for-loop has not disappeared, it just moved from <code>App</code> to <code>FizzBuzz</code>.<br />
 However, such a shift becomes remarkable if applied to a codebase with many classes:</p>
 <ul>
-<li>In the first approach, the for-cycle is repeated every time a piece of code interacts with <code>FizzBuzz</code>.<br />
-In the second approach, we are guaranteed the for-cycle is written only once: inside <code>FizzBuzz</code>.</li>
-<li>If <code>main</code> interacted with 4 classes each one using the first approach of <code>FizzBuzz</code>, <code>main</code> would contain 4 for-loops.<br />
+<li>In the first approach, the for-cycle is repeated every time a piece of code interacts with <code>FizzBuzz</code>. In the second
+approach, we are guaranteed the for-cycle is written only once: inside <code>FizzBuzz</code>.</li>
+<li>If <code>main</code> interacted with 4 classes each one using the first approach of <code>FizzBuzz</code>, <code>main</code> would contain 4 for-loops.
 If the 4 classes were to use the second approach, <code>main</code> will contain zero for-loops.</li>
 </ul>
-<p>To summarise with a catchphrase, classes should be narrow and deep:</p>
+<p>To summarise with a catchphrase from John Ousterhout, classes should be narrow and deep:</p>
 <ul>
 <li>narrow means few public methods with few input parameters</li>
 <li>deep means public methods get a lot of things done for the caller</li>

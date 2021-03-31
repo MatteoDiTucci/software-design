@@ -164,7 +164,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2><a class="header" href="#open-closed-principle" id="open-closed-principle">Open-closed principle</a></h2>
-<p>A sign of low knowledge duplication is the creation of new classes instead of modifying existing ones when we implement 
+<p>A good sign of low knowledge duplication is the creation of new classes instead of modifying existing ones when we implement 
 new specifications. To give an example, let's assume we need to implement the following:</p>
 <ul>
 <li>A light bulb that returns the message &quot;I am shining&quot;</li>
@@ -253,7 +253,7 @@ class LightBulb(private val state: LightBulbState) {
 }
 </code></pre>
 <p>Now each <code>LightBulbState</code> is responsible for its bit of <code>lightUp</code> knowledge while the <code>LightBulb</code> class remains short and clear to understand.
-This means the following specification can be implemented by adding another <code>LightBulbState</code> without modifying <code>LightBulb</code>:</p>
+This means the following specification can be implemented by adding another <code>LightBulbState</code>, without modifying <code>LightBulb</code>:</p>
 <ul>
 <li>A light bulb that returns the message &quot;I am shining softly&quot; if it is dimmed.</li>
 </ul>

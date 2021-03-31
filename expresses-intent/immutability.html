@@ -253,7 +253,7 @@ App().main()
 </code></pre>
 <p>The above code differs from the original one for three aspects:</p>
 <ul>
-<li>The <code>setState</code> method of <code>LightBulb</code> does not modify the state, instead it returns a brand-new instance of <code>LightBulb</code></li>
+<li>The <code>setState</code> method of <code>LightBulb</code> does not modify its state, instead it returns a brand-new instance of <code>LightBulb</code></li>
 <li>The constructor of <code>Room</code> stores the brand-new <code>LightBulb</code> returned by the invocation of <code>setState</code>, instead of the <code>LightBulb</code> passed as a constructor parameter</li>
 <li>The <code>LightBulb</code> constructor uses <code>val</code> instead of <code>var</code> (in Kotlin a variable defined as <code>val</code> cannot be re-assigned)</li>
 </ul>
@@ -267,7 +267,7 @@ comes into play. To obtain immutability we need to:</p>
 <p>Unfortunately it can be tricky to write immutable code. Let's take a look at the following piece of example.</p>
 <pre><code class="language-kotlin">class Shelf(private val books: List&lt;String&gt;) {
 
-  fun numbersOfBooks(): Int {
+  fun numberOfBooks(): Int {
     return books.size
   }
 }
@@ -280,7 +280,7 @@ class App {
 
     books.add(&quot;Giant's Bread&quot;)
 
-    val result = &quot;The shelf contains ${shelf.numbersOfBooks()} books&quot;
+    val result = &quot;The shelf contains ${shelf.numberOfBooks()} books&quot;
   }
 }
 </code></pre>
@@ -291,10 +291,10 @@ to be immutable, it has to make a local copy of the <code>books</code> list rece
   private val books: List&lt;String&gt;
 
   constructor(booksForShelf: List&lt;String&gt;) {
-    books = booksForShelf.toList() // make an exact copy
+    books = booksForShelf.toList() // toList makes an exact copy
   }
 
-  fun numbersOfBooks(): Int {
+  fun numberOfBooks(): Int {
     return books.size
   }
 }
@@ -307,7 +307,7 @@ class App {
 
     books.add(&quot;Giant's Bread&quot;)
 
-    val result = &quot;The shelf contains ${shelf.numbersOfBooks()} books&quot;
+    val result = &quot;The shelf contains ${shelf.numberOfBooks()} books&quot;
   }
 }
 </code></pre>

@@ -176,17 +176,17 @@ or <a href="https://www.cypress.io/">Cypress</a>.</li>
 <li><strong>Functional tests</strong><br />
 Check that a feature behaves as expected considering a single layer of a service. For example, if a service have both back end and
 front end, there will be distinct functional tests for the back end and front end. External dependencies are replaced either
-by libraries like <a href="https://github.com/localstack/localstack">LocalStack</a> or by <a href="test-doubles.html">doubles</a>.
+by libraries like <a href="https://github.com/localstack/localstack">LocalStack</a> or by <a href="test-doubles.html">test doubles</a>.
 Functional tests are also called component tests.</li>
 <li><strong>Integration tests</strong><br />
 Check that a service integrates correctly with external dependencies. External dependencies are replaced by libraries like
-<a href="https://github.com/localstack/localstack">LocalStack</a> or <a href="http://wiremock.org/">Wiremock</a>. If you use code <a href="test-doubles.html">doubles</a>
-for the external dependencies then it is a unit test.</li>
+<a href="https://github.com/localstack/localstack">LocalStack</a> or <a href="http://wiremock.org/">Wiremock</a>. If <a href="test-doubles.html">test doubles</a>
+are implemented in code without accessing the network then it is a unit test.</li>
 <li><strong>Unit tests</strong><br />
 Check that code inside one class behaves as expected. Unit tests are most valuable when testing business logic: if a class is just a
 <a href="https://en.wikipedia.org/wiki/Delegation_pattern">delegator</a> or just coordinates other classes, do not use unit tests
 as functional tests already provide coverage. If the class under test uses other classes whose construction is cumbersome,
-those can be replaced with   <a href="test_doubles.html">doubles</a></li>
+those can be replaced with <a href="test_doubles.html">test doubles</a></li>
 </ul>
 <p>The above list is ordered by how much time a test takes to execute, from the slowest (acceptance) to the fastest (unit).
 For this reason, it is recommended to have a pyramid of tests: a handful of acceptance tests, some functional and integration

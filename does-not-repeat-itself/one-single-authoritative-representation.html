@@ -259,10 +259,11 @@ class App {
   }
 }
 </code></pre>
-<p>Now the intent is clearer, making it easier to reason about the code.</p>
+<p>Now the intent is clearer, making it easier to reason about the code. Furthermore, whenever we need to change something
+related to the concept of name, only the <code>Name</code> class will be affected.</p>
 <p>As a final note, be mindful that knowledge duplication might be there even if the code looks different. The typical example
 is <a href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping">object-relational mapping libraries</a> and SQL
-initialisation scripts: who of the two represents the knowledge of database tables creation?</p>
+initialisation scripts: who of the two is responsible for the knowledge of database tables creation?</p>
 <br/>  
 <h4><a class="header" href="#recommended-reads" id="recommended-reads">Recommended reads</a></h4>
 <ul>

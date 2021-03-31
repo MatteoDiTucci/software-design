@@ -167,11 +167,10 @@
 <p>Great naming let us understand what the code means without inspecting its details. In fact, we should be able
 to understand an entire codebase just reading the names of classes, methods and variables, never looking at what they contain.
 This clarity is reached by naming classes, methods and variables after what they do instead of how they do it.
-The how can be looked up later if more details are needed.<br />
-The benefits are two:</p>
+The how can be looked up later if more details are needed by inspecting the content. The benefits are two:</p>
 <ul>
 <li>names do not contain any noise</li>
-<li>if implementation changes, the name remains relevant</li>
+<li>if the implementation changes, the name remains relevant</li>
 </ul>
 <p>Let's consider the following class</p>
 <pre><code class="language-kotlin">class BiDimensionalCoordinates(private val x: Int, private val y: Int) {
@@ -182,7 +181,7 @@ The benefits are two:</p>
 }
 </code></pre>
 <p>In the above code, both class and method names leak the how. Given the distinction we made about the what and the how,
-we can ask two questions. The first one is: if we remove the how from the <code>BiDimensionalCoordinates</code> names, does the class
+we can ask ourselves two questions. The first one is: if we remove the how from the <code>BiDimensionalCoordinates</code> names, does the class
 still express intent? Let's see.</p>
 <pre><code class="language-kotlin">class Coordinates(private val x: Int, private val y: Int) {
   

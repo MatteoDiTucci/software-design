@@ -172,7 +172,7 @@ You have to read the literature of many great developers, looking for advices th
 However, the literature is vast and it takes much time to get the big picture out of single sources.
 This book makes three promises:</p>
 <ul>
-<li>to be a comprehensive catalogue of what that contributes to good software design</li>
+<li>to be a comprehensive catalogue of what contributes to good software design</li>
 <li>to be very succinct</li>
 <li>to provide trustworthy sources to go deeper</li>
 </ul>
@@ -192,7 +192,7 @@ You can share any feedback by creating a <a href="https://github.com/MatteoDiTuc
 If you do not know what a pull request is, take a look <a href="https://guides.github.com/activities/hello-world/#:%7E:text=Pull%20Requests%20are%20the%20heart,merge%20them%20into%20their%20branch.&amp;text=You%20can%20even%20open%20pull,repository%20and%20merge%20them%20yourself.">here</a>.</p>
 <h3><a class="header" href="#simple-code" id="simple-code">Simple code</a></h3>
 <p>It is hard to define what good design looks like: nobody was able to come up with a formal definition so far.
-The thing that came closer to that is the <a href="https://wiki.c2.com/?XpSimplicityRules">C2 Wiki</a> simple code rules.<br />
+An approach I personally like is the <a href="https://wiki.c2.com/?XpSimplicityRules">C2 Wiki</a> simple code rules.<br />
 Simple code:</p>
 <ul>
 <li>Passes all tests</li>
@@ -201,7 +201,7 @@ Simple code:</p>
 <li>Does not contain superfluous parts</li>
 </ul>
 <p>If a piece of code respects all those 4 rules then we can consider it good code.<br />
-This book is divided in 4 sections, one for each the simple code rules.</p>
+This book is divided in 4 chapters, one for each of the simple code rules.</p>
 <h3><a class="header" href="#reviewers" id="reviewers">Reviewers</a></h3>
 <p><a href="https://github.com/agjacome">Alberto G. Jácome</a><br />
 <a href="https://github.com/twp88">Thomas Page</a></p>
@@ -219,17 +219,17 @@ or <a href="https://www.cypress.io/">Cypress</a>.</li>
 <li><strong>Functional tests</strong><br />
 Check that a feature behaves as expected considering a single layer of a service. For example, if a service have both back end and
 front end, there will be distinct functional tests for the back end and front end. External dependencies are replaced either
-by libraries like <a href="https://github.com/localstack/localstack">LocalStack</a> or by <a href="passes-all-tests/test-doubles.html">doubles</a>.
+by libraries like <a href="https://github.com/localstack/localstack">LocalStack</a> or by <a href="passes-all-tests/test-doubles.html">test doubles</a>.
 Functional tests are also called component tests.</li>
 <li><strong>Integration tests</strong><br />
 Check that a service integrates correctly with external dependencies. External dependencies are replaced by libraries like
-<a href="https://github.com/localstack/localstack">LocalStack</a> or <a href="http://wiremock.org/">Wiremock</a>. If you use code <a href="passes-all-tests/test-doubles.html">doubles</a>
-for the external dependencies then it is a unit test.</li>
+<a href="https://github.com/localstack/localstack">LocalStack</a> or <a href="http://wiremock.org/">Wiremock</a>. If <a href="passes-all-tests/test-doubles.html">test doubles</a>
+are implemented in code without accessing the network then it is a unit test.</li>
 <li><strong>Unit tests</strong><br />
 Check that code inside one class behaves as expected. Unit tests are most valuable when testing business logic: if a class is just a
 <a href="https://en.wikipedia.org/wiki/Delegation_pattern">delegator</a> or just coordinates other classes, do not use unit tests
 as functional tests already provide coverage. If the class under test uses other classes whose construction is cumbersome,
-those can be replaced with   <a href="passes-all-tests/test_doubles.html">doubles</a></li>
+those can be replaced with <a href="passes-all-tests/test_doubles.html">test doubles</a></li>
 </ul>
 <p>The above list is ordered by how much time a test takes to execute, from the slowest (acceptance) to the fastest (unit).
 For this reason, it is recommended to have a pyramid of tests: a handful of acceptance tests, some functional and integration
@@ -255,8 +255,8 @@ For both default and exceptional-erroneous usage of a single class</li>
 <h4><a class="header" href="#teach-me-back-1" id="teach-me-back-1">Teach me back</a></h4>
 <p>I really appreciate any <a href="passes-all-tests/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#if-testing-is-hard-inject-what-you-need-to-verify" id="if-testing-is-hard-inject-what-you-need-to-verify">If testing is hard, inject what you need to verify</a></h2>
-<p>When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.<br />
-Suppose you have a <code>Car</code> class storing passengers by their name.</p>
+<p>When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.
+Suppose we are starting to implement a <code>Car</code> class that stores passengers by their name.</p>
 <pre><code class="language-kotlin">class Car {
   private val passengers: MutableSet&lt;String&gt; = HashSet()
     
@@ -291,7 +291,7 @@ fun `stores the names of the passengers`() {
 </code></pre>
 <p>However, this is already a disappointment because we are forced to write a public method just for the sake of testing.
 Moreover, what if by specifications we must prevent any other code to query <code>Car</code> about its passengers?
-The solution is to inject the <code>passengers</code> set a construction time.</p>
+The solution can be to inject the <code>passengers</code> set a construction time.</p>
 <pre><code class="language-kotlin">class Car(private val passengers: MutableSet&lt;String&gt;) {
 
   fun storePassenger(name: String) {
@@ -310,7 +310,7 @@ fun `stores the names of the passengers`() {
   assertTrue(passengers.contains(&quot;Andrea&quot;))
 }
 </code></pre>
-<p>Injecting the <code>passengers</code> set, we can get rid of the useless <code>containsPassenger</code> method. Furthermore, we have now the
+<p>By injecting the <code>passengers</code> set we can get rid of the useless <code>containsPassenger</code> method. Furthermore, we have now the
 opportunity to make our code more modular, making <code>Car</code> independent of the data structure used to store the passengers.
 For this, we can use <code>MutableCollection&lt;String&gt;</code> instead of <code>MutableSet&lt;String&gt;</code></p>
 <pre><code class="language-kotlin">class Car(private val passengers: MutableCollection&lt;String&gt;) {
@@ -333,7 +333,7 @@ For this, we can use <code>MutableCollection&lt;String&gt;</code> instead of <co
 <li>All those objects are needed to make the test run (e.g. they are required by the constructor of the class under test)</li>
 <li>We want to verify how the class under test interacts with those objects (e.g. if the class under test calls the public method of another one)</li>
 </ul>
-<p>Because of the above, tests can become time-consuming and tedious, but we can remediate using test doubles. For the sake
+<p>Because of the above, tests can become time-consuming and tedious. Fortunately, we can remediate by using test doubles. For the sake
 of development speed, test doubles are usually created via testing libraries. For instance, in Kotlin there is
 <a href="https://mockk.io/">MockK</a> among others. Taking the following code as example, let's define the different types of test doubles
 and how they look like in a test when using a library like MockK.</p>
@@ -424,11 +424,11 @@ For instance, <code>validator</code> in the following test is a dummy as the met
 <p><strong>Fakes</strong><br />
 An object with very limited capabilities compared to the real one but much faster to create. The typical example is
 an in memory database (e.g. H2) instead of a production one (e.g. PostgreSQL)</p>
-<p>As a final note, test doubles are not used just for unit tests, but throughout the <a href="passes-all-tests/test-pyramid.html">whole pyramid</a>.</p>
+<p>As a final note, test doubles are not used just for unit tests, but throughout the <a href="passes-all-tests/test-pyramid.html">whole testing pyramid</a>.</p>
 <br/>
 <h4><a class="header" href="#recommended-reads-2" id="recommended-reads-2">Recommended reads</a></h4>
 <ul>
-<li><a href="https://martinfowler.com/articles/mocksArentStubs.html">Mocks aren't stubs</a></li>
+<li><a href="https://martinfowler.com/articles/mocksArentStubs.html">Mocks aren't stubs - Martin Fowler</a></li>
 <li><a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">Only mock type that you own, chapter 8 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce</a></li>
 <li><a href="https://github.com/testdouble/contributing-tests/wiki/Don%27t-mock-what-you-don%27t-own">Don't mock what you don't own, contributing-tests wiki - Justin Searls</a></li>
 </ul>
@@ -445,14 +445,14 @@ steps process:</p>
 <p>Let's go through each step using the following specifications as example:</p>
 <ul>
 <li>I want measure things in meters</li>
-<li>I want to be able to some two measurements in meters</li>
+<li>I want to be able to sum two measurements in meters</li>
 </ul>
 <p><strong>Write a failing test</strong><br />
 At this step we pick a single aspect of the specification we want to verify: the smallest the better. The common mistake
 here is to overthink it because we want to take into account all the specifications and their nuances. Don't do it now,
 the third step will take care of it. For now let's just write a test even if it seems silly for how simple it is. Moreover,
 don't focus on writing good code either: the third step will take care of this as well. Finally, remember to run the test
-and see it failing with the error we expect: we do not want to later discover that our code is passing tests by luck.</p>
+and see it failing with the error we expect: we do not want to later discover that our tests are passing by luck.</p>
 <pre><code class="language-kotlin">@Test
 fun `summing 1 meter and 2 meters returns 3 meters`() {
   val result = MeasureInMeters(1).add(MeasureInMeters(2))
@@ -497,7 +497,7 @@ pair of numbers.</p>
   }
 }
 </code></pre>
-<p>The third step is also when look at the bigger picture. In this example there is little to do, but usually this is the moment
+<p>The third step is also when we look at the bigger picture. In this example there is little to do, but usually this is the moment
 when we pay attention on how the new code we are writing fits into the existing codebase (e.g. knowledge
 duplication, edge cases for some other classes we did not think before, etc.). We do not need to address these concerns
 right away, but it is good to note them down so we can tackle them once we have done satisfying the bit of specifications
@@ -650,11 +650,10 @@ enough not to use the production constant <code>DEFAULT_GREETING</code> in the t
 <p>Great naming let us understand what the code means without inspecting its details. In fact, we should be able
 to understand an entire codebase just reading the names of classes, methods and variables, never looking at what they contain.
 This clarity is reached by naming classes, methods and variables after what they do instead of how they do it.
-The how can be looked up later if more details are needed.<br />
-The benefits are two:</p>
+The how can be looked up later if more details are needed by inspecting the content. The benefits are two:</p>
 <ul>
 <li>names do not contain any noise</li>
-<li>if implementation changes, the name remains relevant</li>
+<li>if the implementation changes, the name remains relevant</li>
 </ul>
 <p>Let's consider the following class</p>
 <pre><code class="language-kotlin">class BiDimensionalCoordinates(private val x: Int, private val y: Int) {
@@ -665,7 +664,7 @@ The benefits are two:</p>
 }
 </code></pre>
 <p>In the above code, both class and method names leak the how. Given the distinction we made about the what and the how,
-we can ask two questions. The first one is: if we remove the how from the <code>BiDimensionalCoordinates</code> names, does the class
+we can ask ourselves two questions. The first one is: if we remove the how from the <code>BiDimensionalCoordinates</code> names, does the class
 still express intent? Let's see.</p>
 <pre><code class="language-kotlin">class Coordinates(private val x: Int, private val y: Int) {
   
@@ -709,8 +708,8 @@ does not clearly expresses intent if its signature is like the following: <code>
 <p>I really appreciate any <a href="expresses-intent/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#deep-and-narrow-classes" id="deep-and-narrow-classes">Deep and narrow classes</a></h2>
 <p>We are doomed to write convoluted code when interacting with classes that have poor public methods. On the contrary,
-we are brought to write readable code when interacting with classes that have great public methods.<br />
-Let's consider the following <code>play</code> public method for the <a href="https://en.wikipedia.org/wiki/Fizz_buzz">FizzBuzz game</a>.</p>
+we are brought to write readable code when interacting with classes that have great public methods. Let's consider 
+the following <code>play</code> public method for the <a href="https://en.wikipedia.org/wiki/Fizz_buzz">FizzBuzz game</a>.</p>
 <pre><code class="language-kotlin">class FizzBuzz {
 
   fun play(number: Int): String {
@@ -782,12 +781,12 @@ Let's consider the following <code>play</code> public method for the <a href="ht
 <p>Now the <code>main</code> method is more readable. The for-loop has not disappeared, it just moved from <code>App</code> to <code>FizzBuzz</code>.<br />
 However, such a shift becomes remarkable if applied to a codebase with many classes:</p>
 <ul>
-<li>In the first approach, the for-cycle is repeated every time a piece of code interacts with <code>FizzBuzz</code>.<br />
-In the second approach, we are guaranteed the for-cycle is written only once: inside <code>FizzBuzz</code>.</li>
-<li>If <code>main</code> interacted with 4 classes each one using the first approach of <code>FizzBuzz</code>, <code>main</code> would contain 4 for-loops.<br />
+<li>In the first approach, the for-cycle is repeated every time a piece of code interacts with <code>FizzBuzz</code>. In the second
+approach, we are guaranteed the for-cycle is written only once: inside <code>FizzBuzz</code>.</li>
+<li>If <code>main</code> interacted with 4 classes each one using the first approach of <code>FizzBuzz</code>, <code>main</code> would contain 4 for-loops.
 If the 4 classes were to use the second approach, <code>main</code> will contain zero for-loops.</li>
 </ul>
-<p>To summarise with a catchphrase, classes should be narrow and deep:</p>
+<p>To summarise with a catchphrase from John Ousterhout, classes should be narrow and deep:</p>
 <ul>
 <li>narrow means few public methods with few input parameters</li>
 <li>deep means public methods get a lot of things done for the caller</li>
@@ -893,7 +892,7 @@ App().main()
 </code></pre>
 <p>The above code differs from the original one for three aspects:</p>
 <ul>
-<li>The <code>setState</code> method of <code>LightBulb</code> does not modify the state, instead it returns a brand-new instance of <code>LightBulb</code></li>
+<li>The <code>setState</code> method of <code>LightBulb</code> does not modify its state, instead it returns a brand-new instance of <code>LightBulb</code></li>
 <li>The constructor of <code>Room</code> stores the brand-new <code>LightBulb</code> returned by the invocation of <code>setState</code>, instead of the <code>LightBulb</code> passed as a constructor parameter</li>
 <li>The <code>LightBulb</code> constructor uses <code>val</code> instead of <code>var</code> (in Kotlin a variable defined as <code>val</code> cannot be re-assigned)</li>
 </ul>
@@ -907,7 +906,7 @@ comes into play. To obtain immutability we need to:</p>
 <p>Unfortunately it can be tricky to write immutable code. Let's take a look at the following piece of example.</p>
 <pre><code class="language-kotlin">class Shelf(private val books: List&lt;String&gt;) {
 
-  fun numbersOfBooks(): Int {
+  fun numberOfBooks(): Int {
     return books.size
   }
 }
@@ -920,7 +919,7 @@ class App {
 
     books.add(&quot;Giant's Bread&quot;)
 
-    val result = &quot;The shelf contains ${shelf.numbersOfBooks()} books&quot;
+    val result = &quot;The shelf contains ${shelf.numberOfBooks()} books&quot;
   }
 }
 </code></pre>
@@ -931,10 +930,10 @@ to be immutable, it has to make a local copy of the <code>books</code> list rece
   private val books: List&lt;String&gt;
 
   constructor(booksForShelf: List&lt;String&gt;) {
-    books = booksForShelf.toList() // make an exact copy
+    books = booksForShelf.toList() // toList makes an exact copy
   }
 
-  fun numbersOfBooks(): Int {
+  fun numberOfBooks(): Int {
     return books.size
   }
 }
@@ -947,7 +946,7 @@ class App {
 
     books.add(&quot;Giant's Bread&quot;)
 
-    val result = &quot;The shelf contains ${shelf.numbersOfBooks()} books&quot;
+    val result = &quot;The shelf contains ${shelf.numberOfBooks()} books&quot;
   }
 }
 </code></pre>
@@ -1116,10 +1115,11 @@ class App {
   }
 }
 </code></pre>
-<p>Now the intent is clearer, making it easier to reason about the code.</p>
+<p>Now the intent is clearer, making it easier to reason about the code. Furthermore, whenever we need to change something
+related to the concept of name, only the <code>Name</code> class will be affected.</p>
 <p>As a final note, be mindful that knowledge duplication might be there even if the code looks different. The typical example
 is <a href="https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping">object-relational mapping libraries</a> and SQL
-initialisation scripts: who of the two represents the knowledge of database tables creation?</p>
+initialisation scripts: who of the two is responsible for the knowledge of database tables creation?</p>
 <br/>  
 <h4><a class="header" href="#recommended-reads-14" id="recommended-reads-14">Recommended reads</a></h4>
 <ul>
@@ -1169,7 +1169,7 @@ more than two times.</p>
 <h4><a class="header" href="#teach-me-back-16" id="teach-me-back-16">Teach me back</a></h4>
 <p>I really appreciate any <a href="does-not-repeat-itself/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#open-closed-principle" id="open-closed-principle">Open-closed principle</a></h2>
-<p>A sign of low knowledge duplication is the creation of new classes instead of modifying existing ones when we implement 
+<p>A good sign of low knowledge duplication is the creation of new classes instead of modifying existing ones when we implement 
 new specifications. To give an example, let's assume we need to implement the following:</p>
 <ul>
 <li>A light bulb that returns the message &quot;I am shining&quot;</li>
@@ -1258,7 +1258,7 @@ class LightBulb(private val state: LightBulbState) {
 }
 </code></pre>
 <p>Now each <code>LightBulbState</code> is responsible for its bit of <code>lightUp</code> knowledge while the <code>LightBulb</code> class remains short and clear to understand.
-This means the following specification can be implemented by adding another <code>LightBulbState</code> without modifying <code>LightBulb</code>:</p>
+This means the following specification can be implemented by adding another <code>LightBulbState</code>, without modifying <code>LightBulb</code>:</p>
 <ul>
 <li>A light bulb that returns the message &quot;I am shining softly&quot; if it is dimmed.</li>
 </ul>
@@ -1463,7 +1463,7 @@ class Game{
 <p><code>Die</code> has now become the only class knowing about how a die is made and how it wins over another. This means we are now 
 free to change its internal implementation without interfering with <code>Game</code> or any other part of the codebase.</p>
 <p>As a final note, leaking information can be subtle and can occur even at naming level. For instance, there is nothing
-wrong in naming a class <code>InMemoryResource</code>. However, if we want to modify it to fetch a resource over the internet,
+wrong in naming a class <code>InMemoryResource</code>. However, if we want to modify it to fetch the resource over the internet,
 we first need to ask ourselves if other code has been written using <code>InMemoryResource</code> implicitly assuming that it guarantees high availability.</p>
 <br/>
 <h4><a class="header" href="#recommended-reads-18" id="recommended-reads-18">Recommended reads</a></h4>
@@ -1565,9 +1565,9 @@ enum class TrafficLightColour {
   abstract fun possibleToWalk(): Boolean
 }
 </code></pre>
-<p>Changing the behaviour of <code>changeColour</code> had no benefits for what we are concerned with the current specifications. However,
-it added useless code inside the <code>TrafficLight</code> class and it forced all callers of <code>changeColour</code> to provide a value for
-<code>milliSecondsToWait</code> which, given the current spec, will always be 0.</p>
+<p>Changing the behaviour of <code>changeColour</code> in <code>TrafficLight</code> had no benefits for what we are concerned with the current specifications. However,
+it added useless code inside the <code>TrafficLight</code> class and it forced all callers of the <code>changeColour</code> method to provide a value for
+<code>milliSecondsToWait</code> which, given the current specifications, will always be 0.</p>
 <br/>  
 <h4><a class="header" href="#recommended-reads-22" id="recommended-reads-22">Recommended reads</a></h4>
 <ul>

@@ -164,8 +164,8 @@
                 <div id="content" class="content">
                     <main>
                         <h2><a class="header" href="#if-testing-is-hard-inject-what-you-need-to-verify" id="if-testing-is-hard-inject-what-you-need-to-verify">If testing is hard, inject what you need to verify</a></h2>
-<p>When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.<br />
-Suppose you have a <code>Car</code> class storing passengers by their name.</p>
+<p>When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.
+Suppose we are starting to implement a <code>Car</code> class that stores passengers by their name.</p>
 <pre><code class="language-kotlin">class Car {
   private val passengers: MutableSet&lt;String&gt; = HashSet()
     
@@ -200,7 +200,7 @@ fun `stores the names of the passengers`() {
 </code></pre>
 <p>However, this is already a disappointment because we are forced to write a public method just for the sake of testing.
 Moreover, what if by specifications we must prevent any other code to query <code>Car</code> about its passengers?
-The solution is to inject the <code>passengers</code> set a construction time.</p>
+The solution can be to inject the <code>passengers</code> set a construction time.</p>
 <pre><code class="language-kotlin">class Car(private val passengers: MutableSet&lt;String&gt;) {
 
   fun storePassenger(name: String) {
@@ -219,7 +219,7 @@ fun `stores the names of the passengers`() {
   assertTrue(passengers.contains(&quot;Andrea&quot;))
 }
 </code></pre>
-<p>Injecting the <code>passengers</code> set, we can get rid of the useless <code>containsPassenger</code> method. Furthermore, we have now the
+<p>By injecting the <code>passengers</code> set we can get rid of the useless <code>containsPassenger</code> method. Furthermore, we have now the
 opportunity to make our code more modular, making <code>Car</code> independent of the data structure used to store the passengers.
 For this, we can use <code>MutableCollection&lt;String&gt;</code> instead of <code>MutableSet&lt;String&gt;</code></p>
 <pre><code class="language-kotlin">class Car(private val passengers: MutableCollection&lt;String&gt;) {

@@ -229,9 +229,9 @@ enum class TrafficLightColour {
   abstract fun possibleToWalk(): Boolean
 }
 </code></pre>
-<p>Changing the behaviour of <code>changeColour</code> had no benefits for what we are concerned with the current specifications. However,
-it added useless code inside the <code>TrafficLight</code> class and it forced all callers of <code>changeColour</code> to provide a value for
-<code>milliSecondsToWait</code> which, given the current spec, will always be 0.</p>
+<p>Changing the behaviour of <code>changeColour</code> in <code>TrafficLight</code> had no benefits for what we are concerned with the current specifications. However,
+it added useless code inside the <code>TrafficLight</code> class and it forced all callers of the <code>changeColour</code> method to provide a value for
+<code>milliSecondsToWait</code> which, given the current specifications, will always be 0.</p>
 <br/>  
 <h4><a class="header" href="#recommended-reads" id="recommended-reads">Recommended reads</a></h4>
 <ul>
