@@ -1,7 +1,8 @@
 ## Deep and narrow classes
 We are doomed to write convoluted code when interacting with classes that have poor public methods. On the contrary,
-we are brought to write readable code when interacting with classes that have great public methods.  
-Let's consider the following `play` public method for the [FizzBuzz game](https://en.wikipedia.org/wiki/Fizz_buzz).
+we are brought to write readable code when interacting with classes that have great public methods. Let's consider 
+the following `play` public method for the [FizzBuzz game](https://en.wikipedia.org/wiki/Fizz_buzz).
+
 ```kotlin
 class FizzBuzz {
 
@@ -83,12 +84,12 @@ class App {
 
 Now the `main` method is more readable. The for-loop has not disappeared, it just moved from `App` to `FizzBuzz`.  
 However, such a shift becomes remarkable if applied to a codebase with many classes:
-* In the first approach, the for-cycle is repeated every time a piece of code interacts with `FizzBuzz`.  
-  In the second approach, we are guaranteed the for-cycle is written only once: inside `FizzBuzz`.
-* If `main` interacted with 4 classes each one using the first approach of `FizzBuzz`, `main` would contain 4 for-loops.  
+* In the first approach, the for-cycle is repeated every time a piece of code interacts with `FizzBuzz`. In the second
+  approach, we are guaranteed the for-cycle is written only once: inside `FizzBuzz`.
+* If `main` interacted with 4 classes each one using the first approach of `FizzBuzz`, `main` would contain 4 for-loops.
   If the 4 classes were to use the second approach, `main` will contain zero for-loops.
 
-To summarise with a catchphrase, classes should be narrow and deep:
+To summarise with a catchphrase from John Ousterhout, classes should be narrow and deep:
 * narrow means few public methods with few input parameters
 * deep means public methods get a lot of things done for the caller
 

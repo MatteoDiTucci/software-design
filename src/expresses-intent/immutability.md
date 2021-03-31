@@ -93,7 +93,7 @@ App().main()
 ```
 
 The above code differs from the original one for three aspects:
-* The `setState` method of `LightBulb` does not modify the state, instead it returns a brand-new instance of `LightBulb`
+* The `setState` method of `LightBulb` does not modify its state, instead it returns a brand-new instance of `LightBulb`
 * The constructor of `Room` stores the brand-new `LightBulb` returned by the invocation of `setState`, instead of the `LightBulb` passed as a constructor parameter
 * The `LightBulb` constructor uses `val` instead of `var` (in Kotlin a variable defined as `val` cannot be re-assigned)
 
@@ -108,7 +108,7 @@ Unfortunately it can be tricky to write immutable code. Let's take a look at the
 ```kotlin
 class Shelf(private val books: List<String>) {
 
-  fun numbersOfBooks(): Int {
+  fun numberOfBooks(): Int {
     return books.size
   }
 }
@@ -121,7 +121,7 @@ class App {
 
     books.add("Giant's Bread")
 
-    val result = "The shelf contains ${shelf.numbersOfBooks()} books"
+    val result = "The shelf contains ${shelf.numberOfBooks()} books"
   }
 }
 ```
@@ -135,10 +135,10 @@ class Shelf {
   private val books: List<String>
 
   constructor(booksForShelf: List<String>) {
-    books = booksForShelf.toList() // make an exact copy
+    books = booksForShelf.toList() // toList makes an exact copy
   }
 
-  fun numbersOfBooks(): Int {
+  fun numberOfBooks(): Int {
     return books.size
   }
 }
@@ -151,7 +151,7 @@ class App {
 
     books.add("Giant's Bread")
 
-    val result = "The shelf contains ${shelf.numbersOfBooks()} books"
+    val result = "The shelf contains ${shelf.numberOfBooks()} books"
   }
 }
 ```
