@@ -7,14 +7,14 @@ steps process:
 
 Let's go through each step using the following specifications as example:
 * I want measure things in meters
-* I want to be able to some two measurements in meters
+* I want to be able to sum two measurements in meters
 
 **Write a failing test**  
 At this step we pick a single aspect of the specification we want to verify: the smallest the better. The common mistake
 here is to overthink it because we want to take into account all the specifications and their nuances. Don't do it now,
 the third step will take care of it. For now let's just write a test even if it seems silly for how simple it is. Moreover,
 don't focus on writing good code either: the third step will take care of this as well. Finally, remember to run the test
-and see it failing with the error we expect: we do not want to later discover that our code is passing tests by luck.
+and see it failing with the error we expect: we do not want to later discover that our tests are passing by luck.
 
 ```kotlin
 @Test
@@ -75,7 +75,7 @@ data class Measure(private val amount: Int) {
 }
 ```
 
-The third step is also when look at the bigger picture. In this example there is little to do, but usually this is the moment
+The third step is also when we look at the bigger picture. In this example there is little to do, but usually this is the moment
 when we pay attention on how the new code we are writing fits into the existing codebase (e.g. knowledge
 duplication, edge cases for some other classes we did not think before, etc.). We do not need to address these concerns
 right away, but it is good to note them down so we can tackle them once we have done satisfying the bit of specifications

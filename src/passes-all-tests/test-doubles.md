@@ -3,7 +3,7 @@ When testing a class, often we need to create a lot of objects just for the sake
 * All those objects are needed to make the test run (e.g. they are required by the constructor of the class under test)
 * We want to verify how the class under test interacts with those objects (e.g. if the class under test calls the public method of another one)
 
-Because of the above, tests can become time-consuming and tedious, but we can remediate using test doubles. For the sake
+Because of the above, tests can become time-consuming and tedious. Fortunately, we can remediate by using test doubles. For the sake
 of development speed, test doubles are usually created via testing libraries. For instance, in Kotlin there is
 [MockK](https://mockk.io/) among others. Taking the following code as example, let's define the different types of test doubles
 and how they look like in a test when using a library like MockK.
@@ -108,12 +108,12 @@ An object with very limited capabilities compared to the real one but much faste
 an in memory database (e.g. H2) instead of a production one (e.g. PostgreSQL)
 
 
-As a final note, test doubles are not used just for unit tests, but throughout the [whole pyramid](test-pyramid.html).
+As a final note, test doubles are not used just for unit tests, but throughout the [whole testing pyramid](test-pyramid.html).
 
 <br/>
 
 #### Recommended reads
-* [Mocks aren't stubs](https://martinfowler.com/articles/mocksArentStubs.html)  
+* [Mocks aren't stubs - Martin Fowler](https://martinfowler.com/articles/mocksArentStubs.html)  
 * [Only mock type that you own, chapter 8 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 * [Don't mock what you don't own, contributing-tests wiki - Justin Searls](https://github.com/testdouble/contributing-tests/wiki/Don%27t-mock-what-you-don%27t-own)
 

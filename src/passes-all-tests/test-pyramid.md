@@ -11,17 +11,17 @@ _external dependencies_ we mean anything that is reached over the network, like 
 * **Functional tests**  
   Check that a feature behaves as expected considering a single layer of a service. For example, if a service have both back end and
   front end, there will be distinct functional tests for the back end and front end. External dependencies are replaced either
-  by libraries like [LocalStack](https://github.com/localstack/localstack) or by [doubles](test-doubles.html).
+  by libraries like [LocalStack](https://github.com/localstack/localstack) or by [test doubles](test-doubles.html).
   Functional tests are also called component tests.
 * **Integration tests**  
   Check that a service integrates correctly with external dependencies. External dependencies are replaced by libraries like
-  [LocalStack](https://github.com/localstack/localstack) or [Wiremock](http://wiremock.org/). If you use code [doubles](test-doubles.html)
-  for the external dependencies then it is a unit test.
+  [LocalStack](https://github.com/localstack/localstack) or [Wiremock](http://wiremock.org/). If [test doubles](test-doubles.html)
+  are implemented in code without accessing the network then it is a unit test.
 * **Unit tests**  
   Check that code inside one class behaves as expected. Unit tests are most valuable when testing business logic: if a class is just a
   [delegator](https://en.wikipedia.org/wiki/Delegation_pattern) or just coordinates other classes, do not use unit tests
   as functional tests already provide coverage. If the class under test uses other classes whose construction is cumbersome,
-  those can be replaced with   [doubles](test_doubles.html)
+  those can be replaced with [test doubles](test_doubles.html)
 
 
 The above list is ordered by how much time a test takes to execute, from the slowest (acceptance) to the fastest (unit).

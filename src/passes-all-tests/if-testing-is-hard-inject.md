@@ -1,6 +1,6 @@
 ## If testing is hard, inject what you need to verify
-When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.  
-Suppose you have a `Car` class storing passengers by their name.
+When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.
+Suppose we are starting to implement a `Car` class that stores passengers by their name.
 
 ```kotlin
 class Car {
@@ -44,7 +44,7 @@ fun `stores the names of the passengers`() {
 
 However, this is already a disappointment because we are forced to write a public method just for the sake of testing.
 Moreover, what if by specifications we must prevent any other code to query `Car` about its passengers?
-The solution is to inject the `passengers` set a construction time.
+The solution can be to inject the `passengers` set a construction time.
 
 ```kotlin
 class Car(private val passengers: MutableSet<String>) {
@@ -69,7 +69,7 @@ fun `stores the names of the passengers`() {
 }
 ```
 
-Injecting the `passengers` set, we can get rid of the useless `containsPassenger` method. Furthermore, we have now the
+By injecting the `passengers` set we can get rid of the useless `containsPassenger` method. Furthermore, we have now the
 opportunity to make our code more modular, making `Car` independent of the data structure used to store the passengers.
 For this, we can use `MutableCollection<String>` instead of `MutableSet<String>`
 
