@@ -75,7 +75,7 @@ class Game{
 free to change its internal implementation without interfering with `Game` or any other part of the codebase.  
 
 As a final note, leaking information can be subtle and can occur even at naming level. For instance, there is nothing
-wrong in naming a class `InMemoryResource`. However, if we want to modify it to fetch a resource over the internet,
+wrong in naming a class `InMemoryResource`. However, if we want to modify it to fetch the resource over the internet,
 we first need to ask ourselves if other code has been written using `InMemoryResource` implicitly assuming that it guarantees high availability.
 
 <br/>

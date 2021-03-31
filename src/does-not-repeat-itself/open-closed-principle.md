@@ -1,6 +1,6 @@
 ## Open-closed principle
 
-A sign of low knowledge duplication is the creation of new classes instead of modifying existing ones when we implement 
+A good sign of low knowledge duplication is the creation of new classes instead of modifying existing ones when we implement 
 new specifications. To give an example, let's assume we need to implement the following:
 * A light bulb that returns the message "I am shining"
 
@@ -96,7 +96,7 @@ class LightBulb(private val state: LightBulbState) {
 ```
 
 Now each `LightBulbState` is responsible for its bit of `lightUp` knowledge while the `LightBulb` class remains short and clear to understand.
-This means the following specification can be implemented by adding another `LightBulbState` without modifying `LightBulb`:
+This means the following specification can be implemented by adding another `LightBulbState`, without modifying `LightBulb`:
 * A light bulb that returns the message "I am shining softly" if it is dimmed.
 
 ```kotlin

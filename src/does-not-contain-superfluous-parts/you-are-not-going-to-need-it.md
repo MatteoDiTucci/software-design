@@ -68,9 +68,9 @@ enum class TrafficLightColour {
 }
 ```
 
-Changing the behaviour of `changeColour` had no benefits for what we are concerned with the current specifications. However,
-it added useless code inside the `TrafficLight` class and it forced all callers of `changeColour` to provide a value for
-`milliSecondsToWait` which, given the current spec, will always be 0.
+Changing the behaviour of `changeColour` in `TrafficLight` had no benefits for what we are concerned with the current specifications. However,
+it added useless code inside the `TrafficLight` class and it forced all callers of the `changeColour` method to provide a value for
+`milliSecondsToWait` which, given the current specifications, will always be 0.
 
 <br/>  
 
