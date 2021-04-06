@@ -22,7 +22,7 @@
     - [Naming](expresses-intent/naming.md)
     - [Deep and narrow classes](expresses-intent/deep-and-narrow-classes.md)
     - [Immutability](expresses-intent/immutability.md)
-    - [Generalise edge cases️](expresses-intent/generalise-edge-cases.md)
+    - [Generalise edge cases️ 🏗️](expresses-intent/generalise-edge-cases.md)
     - [Small classes and short methods 🏗️](expresses-intent/small-classes-and-short-methods.md)
     - [Liskov substitution principle 🏗️](expresses-intent/liskov-substitution-principle.md)
     - [Usually composition is better than inheritance 🏗️](expresses-intent/usually-composition-is-better-than-inheritance.md)
