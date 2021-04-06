@@ -168,26 +168,17 @@
 we need to implement the following specifications for an airport check-in application:</p>
 <ul>
 <li>Verify a passenger passport has not expired</li>
-<li>If the passenger is a minor from a national flight, verify in addition one of their parents passport</li>
-<li>If the passenger is a minor from an international flight, verify in addition both parents passports</li>
+<li>If the passenger is a minor, verify that the accompanying parent passport has not expired</li>
 </ul>
 <pre><code class="language-kotlin">class CheckIn(private val today: LocalDate) {
 
-  fun allowBoarding(passport: Passport): Boolean {
+  fun checkPassport(passport: Passport): Boolean {
     return passport.isValid(today)
   }
-
-  fun allowNationalFlightMinorBoarding(passport: Passport,
-                                       parentPassport: Passport): Boolean {
-    return passport.isValid(today) &amp;&amp; parentPassport.isValid(today)
-  }
-
-  fun allowInternationalFlightMinorBoarding(passport: Passport,
-                                            firstParentPassport: Passport,
-                                            secondParentPassport: Passport): Boolean {
+    
+  fun checkMinorPassport(passport: MinorPassport):Boolean {
     return passport.isValid(today)
-        &amp;&amp; firstParentPassport.isValid(today)
-        &amp;&amp; secondParentPassport.isValid(today)
+        &amp;&amp; passport.parentPassport().isValid(today)
   }
 }
 
@@ -199,56 +190,59 @@ class Passport(private val name: String,
     return expirationDate.isBefore(today)
   }
 }
+
+class MinorPassport(private val name: String,
+                    private val lastName: String,
+                    private val expirationDate: LocalDate,
+                    private val parentPassport: Passport) {
+
+  fun isValid(today: LocalDate): Boolean {
+    return expirationDate.isBefore(today)
+  }
+
+  fun parentPassport(): Passport {
+    return parentPassport
+  }
+}
 </code></pre>
-<p>The above <code>CheckIn</code> class can be simplified by collapsing the three methods into one that accepts a list of <code>Passport</code> 
-like follows.</p>
+<p>The above <code>CheckIn</code> class can be simplified by generalising <code>MinorPassport</code> to <code>Passport</code> like follows.</p>
 <pre><code class="language-kotlin">class CheckIn(private val today: LocalDate) {
 
-  fun allowBoarding(passports: List&lt;Passport&gt;): Boolean {
-    if (passports.isEmpty()){
-      return false
-    }
-      
-    // In Kotlin, all() returns true only if all passports are valid
-    return passports.all { passport -&gt; passport.isValid(today) }
+  fun checkPassport(passport: Passport): Boolean {
+    return passport.isValid(today)
   }
 }
 
-class Passport(private val name: String,
-               private val lastName: String,
-               private val expirationDate: LocalDate) {
+open class Passport(private val name: String,
+                    private val lastName: String,
+                    private val expirationDate: LocalDate) {
 
-  fun isValid(today: LocalDate): Boolean {
+  open fun isValid(today: LocalDate): Boolean {
     return expirationDate.isBefore(today)
   }
 }
-</code></pre>
-<p>The above version of <code>CheckIn</code> is easier to understand in terms of both internal implementation and the exposed methods. 
-However, we could argue that the code is not expressing anymore the need to verify extra passports in case of minors. 
-That information is still contained in the unit tests of the <code>CheckIn</code> class, some of which might be as follows.</p>
-<pre><code class="language-kotlin">  @Test
-  fun `blocks national flight boarding of a minor if their parent passport has expired`() {
-    val checkIn = CheckIn(LocalDate.of(2021, 4, 4))
-    val passport = Passport(&quot;Andrea&quot;, &quot;Diga Smith&quot;, LocalDate.of(2025, 1, 1))
-    val parentPassport = Passport(&quot;Michael&quot;, &quot;Diga&quot;, LocalDate.of(2000, 1, 1))
 
+class MinorPassport(private val name: String,
+                    private val lastName: String,
+                    private val expirationDate: LocalDate,
+                    private val parentPassport: Passport) : Passport(name, lastName, expirationDate) {
 
-    assertFalse(checkIn.allowBoarding(listOf(passport, parentPassport)))
+  override fun isValid(today: LocalDate): Boolean {
+    return expirationDate.isBefore(today) &amp;&amp; parentPassport.isValid(today)
   }
-
-  @Test
-  fun `blocks international flight boarding of a minor if one of their parent passport has expired`() {
-    val checkIn = CheckIn(LocalDate.of(2021, 4, 4))
-    val passport = Passport(&quot;Andrea&quot;, &quot;Diga Smith&quot;, LocalDate.of(2025, 1, 1))
-    val firstParentPassport = Passport(&quot;Michael&quot;, &quot;Diga&quot;, LocalDate.of(2000, 1, 1))
-    val secondParentPassport = Passport(&quot;Mark&quot;, &quot;Smith&quot;, LocalDate.of(2035, 1, 1))
-
-    assertFalse(checkIn.allowBoarding(listOf(
-                                        passport,
-                                        firstParentPassport,
-                                        secondParentPassport)))
-  }
+}
 </code></pre>
+<p>The above code differs from the original one for four aspects:</p>
+<ul>
+<li><code>MinorPassport</code> extends <code>Passport</code></li>
+<li><code>MinorPassport</code> overrides the method <code>isValid</code> of <code>Passport</code>, checking the parent passport expiration date as well</li>
+<li><code>CheckIn</code> exposes a single <code>checkPassport</code> method that can be used for both adults and minors passports</li>
+<li><code>MinorPassport</code> does not expose anymore its <code>parentPassport</code> as its expiration date is checked internally inside <code>isValid</code> method</li>
+</ul>
+<p>(In Kotlin you need to mark a class or a method with the keyword <code>open</code> if you want to extend it)</p>
+<p>Now <code>CheckIn</code> is easier to understand and the expiration date check is pushed down to <code>Passport</code> and its variation <code>MinorPassport</code>.
+Inheritance is not the only way to generalise edge cases. Another common one is using a collection instead of handling 
+multiple scenarios that only differ by the number of occurrences.</p>
 <br/>  
 <h4><a class="header" href="#recommended-reads" id="recommended-reads">Recommended reads</a></h4>
 <ul>
