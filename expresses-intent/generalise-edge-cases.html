@@ -229,8 +229,8 @@ That information is still contained in the unit tests of the <code>CheckIn</code
 <pre><code class="language-kotlin">  @Test
   fun `blocks national flight boarding of a minor if their parent passport has expired`() {
     val checkIn = CheckIn(LocalDate.of(2021, 4, 4))
-    val passport = Passport(&quot;Andrea&quot;, &quot;Diga Ford&quot;, LocalDate.of(2025, 1, 1))
-    val parentPassport = Passport(&quot;Michael&quot;, &quot;Ford&quot;, LocalDate.of(2000, 1, 1))
+    val passport = Passport(&quot;Andrea&quot;, &quot;Diga Smith&quot;, LocalDate.of(2025, 1, 1))
+    val parentPassport = Passport(&quot;Michael&quot;, &quot;Diga&quot;, LocalDate.of(2000, 1, 1))
 
 
     assertFalse(checkIn.allowBoarding(listOf(passport, parentPassport)))
@@ -239,9 +239,9 @@ That information is still contained in the unit tests of the <code>CheckIn</code
   @Test
   fun `blocks international flight boarding of a minor if one of their parent passport has expired`() {
     val checkIn = CheckIn(LocalDate.of(2021, 4, 4))
-    val passport = Passport(&quot;Andrea&quot;, &quot;Diga&quot;, LocalDate.of(2025, 1, 1))
-    val secondParentPassport = Passport(&quot;Mark&quot;, &quot;Diga&quot;, LocalDate.of(2035, 1, 1))
-    val firstParentPassport = Passport(&quot;Michael&quot;, &quot;Ford&quot;, LocalDate.of(2000, 1, 1))
+    val passport = Passport(&quot;Andrea&quot;, &quot;Diga Smith&quot;, LocalDate.of(2025, 1, 1))
+    val firstParentPassport = Passport(&quot;Michael&quot;, &quot;Diga&quot;, LocalDate.of(2000, 1, 1))
+    val secondParentPassport = Passport(&quot;Mark&quot;, &quot;Smith&quot;, LocalDate.of(2035, 1, 1))
 
     assertFalse(checkIn.allowBoarding(listOf(
                                         passport,
