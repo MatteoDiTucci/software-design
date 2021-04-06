@@ -35,7 +35,9 @@ The second questions is: would the naming in `BiDimensionalCoordinates` still ma
 coordinates? Let's see.
 
 ```kotlin
-class BiDimensionalCoordinates(private val x: Int, private val y: Int, private val z: Int) {
+class BiDimensionalCoordinates(private val x: Int, 
+                               private val y: Int, 
+                               private val z: Int) {
   
   fun sumByXandY(addend: BiDimensionalCoordinates): BiDimensionalCoordinates {
     return BiDimensionalCoordinates(x + addend.x, y + addend.y, z + addend.z)
@@ -48,7 +50,9 @@ the names suggest two dimensions coordinates when they are actually three. Howev
 its intent even when using three dimensions as shown below.
 
 ```kotlin
-class Coordinates(private val x: Int, private val y: Int, private val z: Int) {
+class Coordinates(private val x: Int,
+                  private val y: Int,
+                  private val z: Int) {
   
   fun sum(addend: Coordinates): Coordinates {
     return Coordinates(x + addend.x, y + addend.y, z + addend.z)
