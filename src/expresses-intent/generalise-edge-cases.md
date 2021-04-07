@@ -11,10 +11,9 @@ class CheckIn(private val today: LocalDate) {
   fun checkPassport(passport: Passport): Boolean {
     return passport.isValid(today)
   }
-    
-  fun checkMinorPassport(passport: MinorPassport):Boolean {
-    return passport.isValid(today)
-        && passport.parentPassport().isValid(today)
+
+  fun checkMinorPassport(minorPpassport: MinorPassport):Boolean {
+    return minorPpassport.isValid(today)
   }
 }
 
@@ -33,11 +32,7 @@ class MinorPassport(private val name: String,
                     private val parentPassport: Passport) {
 
   fun isValid(today: LocalDate): Boolean {
-    return expirationDate.isBefore(today)
-  }
-
-  fun parentPassport(): Passport {
-    return parentPassport
+    return expirationDate.isBefore(today) && parentPassport.isValid(today)
   }
 }
 ```
@@ -67,22 +62,24 @@ class MinorPassport(private val name: String,
                     private val parentPassport: Passport) : Passport(name, lastName, expirationDate) {
 
   override fun isValid(today: LocalDate): Boolean {
-    return expirationDate.isBefore(today) && parentPassport.isValid(today)
+      // The keyword super is used to invoke the isValid method of Passport
+      return super.isValid(today) && parentPassport.isValid(today) 
   }
 }
 ```
 
-The above code differs from the original one for four aspects:
-* `MinorPassport` extends `Passport`
-* `MinorPassport` overrides the method `isValid` of `Passport`, checking the parent passport expiration date as well
-* `CheckIn` exposes a single `checkPassport` method that can be used for both adults and minors passports
-* `MinorPassport` does not expose anymore its `parentPassport` as its expiration date is checked internally inside `isValid` method
-
 (In Kotlin you need to mark a class or a method with the keyword `open` if you want to extend it)
 
-Now `CheckIn` is easier to understand and the expiration date check is pushed down to `Passport` and its variation `MinorPassport`.
-Inheritance is not the only way to generalise edge cases. Another common one is using a collection instead of handling 
-multiple scenarios that only differ by the number of occurrences.
+The above code differs from the original one for three aspects:
+* `MinorPassport` extends `Passport`
+* `MinorPassport` overrides the method `isValid` of `Passport`, checking the parent passport expiration date too
+* `CheckIn` exposes a single `checkPassport` method that can be used for both adults and minors passports
+
+Now the `CheckIn` class is easier to understand as it only deals with checking a passport. Furthermore, we removed 
+knowledge duplication in `MinorPassport`.
+
+Inheritance is not the only way to generalise edge cases. Another common approach is to use a collection 
+instead of handling multiple scenarios that only differ by the occurrences of something.
 
 <br/>  
 
