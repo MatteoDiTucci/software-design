@@ -3,5 +3,5 @@ authors = ["Matteo Di Tucci"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Software Design"
-description = "A catalogue of what contributes to good software design"
+title = "A Cliffs Notes version of Software Design"
+description = "A summary with sources of what contributes to good software design"
