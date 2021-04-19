@@ -206,6 +206,13 @@ This book is divided in 4 chapters, one for each of the simple code rules.</p>
 <p><a href="https://github.com/agjacome">Alberto G. Jácome</a><br />
 <a href="https://github.com/twp88">Thomas Page</a></p>
 <h1><a class="header" href="#passes-all-tests" id="passes-all-tests">Passes all tests</a></h1>
+<p>The most important feature for a piece of software is that it behaves as expected. Tests reduce the likelihood of writing
+buggy code and without them software development becomes an exercise of faith. Although manually checking that everything works 
+still qualifies as testing, the real power resides in automated tests. Writing tests
+little by little as we progress with a codebase, creates a safety net that is always available and provides us with an immediate feedback.
+It really is a super power and it gives us peace of mind.</p>
+<p>Automated tests is one of the three pillars that took anxiety
+out of my work as a developer. The other two are continuous deployment and observability.</p>
 <h2><a class="header" href="#test-pyramid" id="test-pyramid">Test pyramid</a></h2>
 <p>There are different kinds of tests, each one meant for a different purpose. Before describing the most common ones, let's
 clarify in advance a couple of terms. For <em>service</em> we mean a bunch of code deployed as a whole. For
@@ -640,6 +647,8 @@ enough not to use the production constant <code>DEFAULT_GREETING</code> in the t
 <p>Here also mention to not mock what you don't own and to use an adapter pattern instead</p>
 <h2><a class="header" href="#component-tests-vs-end-to-end-tests-vs-monitoring-tradeoffs" id="component-tests-vs-end-to-end-tests-vs-monitoring-tradeoffs">Component tests vs end-to-end tests vs monitoring: tradeoffs</a></h2>
 <h2><a class="header" href="#expand-and-contract" id="expand-and-contract">Expand and contract</a></h2>
+<p>Mention also feature toggles, what are their respective tradeoffs, and what can be achieved only with feature toggles
+(instantaneous rollback, accessing a feature only with ad hoc input like custom http headers)</p>
 <h2><a class="header" href="#contract-testing" id="contract-testing">Contract testing</a></h2>
 <h2><a class="header" href="#performance-tests" id="performance-tests">Performance tests</a></h2>
 <h2><a class="header" href="#how-to-test-ui" id="how-to-test-ui">How to test UI</a></h2>
