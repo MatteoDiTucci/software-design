@@ -30,6 +30,7 @@
     - [Comment the why 🏗️](expresses-intent/comment-the-why.md)
     - [Visual indentation 🏗️](expresses-intent/visual-indentation.md)
     - [Folder structure 🏗️](expresses-intent/folder-structure.md)
+    - [Wishful thinking 🏗️](expresses-intent/wishful-thinking.md)
 
 - [Does not repeat itself](does-not-repeat-itself/introduction.md)
     - [One single authoritative knowledge representation](does-not-repeat-itself/one-single-authoritative-representation.md)
