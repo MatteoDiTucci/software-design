@@ -1,4 +1,4 @@
-# Passes all tests
+# It passes all tests
 
 The most important feature for a piece of software is that it behaves as expected. Tests reduce the likelihood of writing
 buggy code and without them software development becomes an exercise of faith. Although manually checking that everything works 

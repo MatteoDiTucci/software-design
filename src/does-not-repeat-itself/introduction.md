@@ -1,1 +1,1 @@
-# Does not repeat itself
+# It does not repeat itself
