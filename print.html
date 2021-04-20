@@ -205,7 +205,7 @@ This book is divided in 4 chapters, one for each of the simple code rules.</p>
 <h3><a class="header" href="#reviewers" id="reviewers">Reviewers</a></h3>
 <p><a href="https://github.com/agjacome">Alberto G. Jácome</a><br />
 <a href="https://github.com/twp88">Thomas Page</a></p>
-<h1><a class="header" href="#passes-all-tests" id="passes-all-tests">Passes all tests</a></h1>
+<h1><a class="header" href="#it-passes-all-tests" id="it-passes-all-tests">It passes all tests</a></h1>
 <p>The most important feature for a piece of software is that it behaves as expected. Tests reduce the likelihood of writing
 buggy code and without them software development becomes an exercise of faith. Although manually checking that everything works 
 still qualifies as testing, the real power resides in automated tests. Writing tests
@@ -654,7 +654,13 @@ enough not to use the production constant <code>DEFAULT_GREETING</code> in the t
 <h2><a class="header" href="#how-to-test-ui" id="how-to-test-ui">How to test UI</a></h2>
 <p>screenshot and snapshot testing</p>
 <h1><a class="header" href="#linting" id="linting">Linting</a></h1>
-<h1><a class="header" href="#expresses-intent" id="expresses-intent">Expresses intent</a></h1>
+<h1><a class="header" href="#it-expresses-intent" id="it-expresses-intent">It expresses intent</a></h1>
+<p>Before changing a piece of code, we first need to understand its intention, meaning what it is supposed to do. 
+Not understanding code, or even worse misunderstanding it, leads to a great waste of time. Therefore,
+pouring effort in clarifying code intent is a sound investment as code is written once and read many times. </p>
+<p>Software design is a collaborative activity and code intent is the expression of people mental representations.
+This means that clear code intent starts with effective communication: knowledge sharing, visualising mental models,
+using a shared vocabulary.</p>
 <h2><a class="header" href="#naming" id="naming">Naming</a></h2>
 <p>Great naming let us understand what the code means without inspecting its details. In fact, we should be able
 to understand an entire codebase just reading the names of classes, methods and variables, never looking at what they contain.
@@ -1106,7 +1112,7 @@ instead of handling multiple scenarios that only differ by the occurrences of so
 </ul>
 <h4><a class="header" href="#teach-me-back-14" id="teach-me-back-14">Teach me back</a></h4>
 <p>I really appreciate any <a href="expresses-intent/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
-<h1><a class="header" href="#does-not-repeat-itself" id="does-not-repeat-itself">Does not repeat itself</a></h1>
+<h1><a class="header" href="#it-does-not-repeat-itself" id="it-does-not-repeat-itself">It does not repeat itself</a></h1>
 <h2><a class="header" href="#one-single-authoritative-knowledge-representation" id="one-single-authoritative-knowledge-representation">One single authoritative knowledge representation</a></h2>
 <p>Duplicated knowledge is harmful because it makes changes expensive. Worse than that, it conceals the code intent.
 Let's take a look at the following code.</p>
@@ -1586,8 +1592,8 @@ we first need to ask ourselves if other code has been written using <code>InMemo
 </ul>
 <h4><a class="header" href="#teach-me-back-20" id="teach-me-back-20">Teach me back</a></h4>
 <p>I really appreciate any <a href="does-not-repeat-itself/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
-<h1><a class="header" href="#you-arent-going-to-need-it" id="you-arent-going-to-need-it">You aren't going to need it</a></h1>
-<h2><a class="header" href="#you-arent-going-to-need-it-1" id="you-arent-going-to-need-it-1">You aren't going to need it</a></h2>
+<h1><a class="header" href="#it-does-not-contain-superfluous-parts" id="it-does-not-contain-superfluous-parts">It does not contain superfluous parts</a></h1>
+<h2><a class="header" href="#you-arent-going-to-need-it" id="you-arent-going-to-need-it">You aren't going to need it</a></h2>
 <p>Writing code that is beyond specifications is not only a waste of time, but it also introduces unnecessary complexity.
 This complexity consists mainly in more code and tests to understand and maintain. Worse than that, superfluous code
 makes it harder to change code in the future. Let's consider an example given the following specifications:</p>
