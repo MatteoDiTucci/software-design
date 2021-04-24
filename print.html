@@ -1116,6 +1116,9 @@ instead of handling multiple scenarios that only differ by the occurrences of so
 <p>Here mention the practice of sketching public methods to start reasoning about design before implementing the functionality.<br />
 Explain how this can be applied in both trunk based and branch based development.</p>
 <h1><a class="header" href="#it-does-not-repeat-itself" id="it-does-not-repeat-itself">It does not repeat itself</a></h1>
+<p>Complexity is made of two elements: cognitive load and coupling. Cognitive load means how hard is to understand code. 
+Coupling means how many parts of a codebase we need to adjust when we want to change only one thing.</p>
+<p>Isolating concepts in single parts of the code base greatly reduces both cognitive load and coupling.</p>
 <h2><a class="header" href="#one-single-authoritative-knowledge-representation" id="one-single-authoritative-knowledge-representation">One single authoritative knowledge representation</a></h2>
 <p>Duplicated knowledge is harmful because it makes changes expensive. Worse than that, it conceals the code intent.
 Let's take a look at the following code.</p>
@@ -1596,6 +1599,11 @@ we first need to ask ourselves if other code has been written using <code>InMemo
 <h4><a class="header" href="#teach-me-back-20" id="teach-me-back-20">Teach me back</a></h4>
 <p>I really appreciate any <a href="does-not-repeat-itself/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
 <h1><a class="header" href="#it-does-not-contain-superfluous-parts" id="it-does-not-contain-superfluous-parts">It does not contain superfluous parts</a></h1>
+<p>A problem can be solved by many solutions, but the best ones have few moving parts. Less moving part implies less to understand,
+test and maintain.</p>
+<p>Sometimes we write superfluous code because we misunderstand the problem. Other times our experience and anxiety for 
+the future bias us, making us implement requirements which were never asked. Finally, even when everything is clear in our minds,
+we need to take the time to explore different designs and see what works the best.</p>
 <h2><a class="header" href="#you-arent-going-to-need-it" id="you-arent-going-to-need-it">You aren't going to need it</a></h2>
 <p>Writing code that is beyond specifications is not only a waste of time, but it also introduces unnecessary complexity.
 This complexity consists mainly in more code and tests to understand and maintain. Worse than that, superfluous code
