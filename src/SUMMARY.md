@@ -2,7 +2,7 @@
 
 - [Introduction](introduction/introduction.md)
 
-- [Passes all tests](passes-all-tests/introduction.md)
+- [It passes all tests](passes-all-tests/introduction.md)
     - [Test pyramid](passes-all-tests/test-pyramid.md)
     - [If testing is hard, inject what you need to verify](passes-all-tests/if-testing-is-hard-inject.md)
     - [Test doubles](passes-all-tests/test-doubles.md)
@@ -18,7 +18,7 @@
     - [How to test UI 🏗️](passes-all-tests/how-to-test-ui.md)
     - [Linting 🏗️](passes-all-tests/linting.md)
   
-- [Expresses intent](expresses-intent/introduction.md)
+- [It expresses intent](expresses-intent/introduction.md)
     - [Naming](expresses-intent/naming.md)
     - [Deep and narrow classes](expresses-intent/deep-and-narrow-classes.md)
     - [Immutability](expresses-intent/immutability.md)
@@ -32,7 +32,7 @@
     - [Folder structure 🏗️](expresses-intent/folder-structure.md)
     - [Wishful thinking 🏗️](expresses-intent/wishful-thinking.md)
 
-- [Does not repeat itself](does-not-repeat-itself/introduction.md)
+- [It does not repeat itself](does-not-repeat-itself/introduction.md)
     - [One single authoritative knowledge representation](does-not-repeat-itself/one-single-authoritative-representation.md)
     - [Do not abstract by visual pattern matching](does-not-repeat-itself/do-not-abstract-by-visual-pattern-matching.md)
     - [Open-closed principle️](does-not-repeat-itself/open-closed-principle.md)
@@ -42,7 +42,7 @@
     - [Single responsibility principle 🏗️](expresses-intent/single-responsibility-principle.md)
     - [Interface segregation principle 🏗️](does-not-repeat-itself/interface-segregation-principle.md)
   
-- [Does not contain superfluous parts](does-not-contain-superfluous-parts/introduction.md)
+- [It does not contain superfluous parts](does-not-contain-superfluous-parts/introduction.md)
     - [Does not contain superfluous parts](does-not-contain-superfluous-parts/you-are-not-going-to-need-it.md)
     - [Clarify what is superfluous](does-not-contain-superfluous-parts/clarify-what-is-superfluous.md)
     - [Do not abuse design patterns](does-not-contain-superfluous-parts/do-not-abuse-design-patterns.md)
