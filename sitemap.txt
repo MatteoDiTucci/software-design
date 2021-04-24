@@ -27,6 +27,7 @@ https://software-design.matteoditucci.com/expresses-intent/generalise-edge-cases
 https://software-design.matteoditucci.com/expresses-intent/comment-the-why.html
 https://software-design.matteoditucci.com/expresses-intent/visual-indentation.html
 https://software-design.matteoditucci.com/expresses-intent/folder-structure.html
+https://software-design.matteoditucci.com/expresses-intent/wishful-thinking.html
 https://software-design.matteoditucci.com/expresses-intent/test-naming.html
 https://software-design.matteoditucci.com/does-not-repeat-itself/introduction.html
 https://software-design.matteoditucci.com/expresses-intent/one-single-authoritative-representation.html
