@@ -38,6 +38,7 @@
     - [Open-closed principle️](does-not-repeat-itself/open-closed-principle.md)
     - [Dependency inversion principle](does-not-repeat-itself/dependency-inversion-principle.md)
     - [Information hiding️](does-not-repeat-itself/information-hiding.md)
+    - [Wrap libraries into custom classes 🏗️](does-not-repeat-itself/wrap-libraries-into-custom-classes.md)
     - [Polymorphism 🏗️](does-not-repeat-itself/polymorphism.md)
     - [Single responsibility principle 🏗️](expresses-intent/single-responsibility-principle.md)
     - [Interface segregation principle 🏗️](does-not-repeat-itself/interface-segregation-principle.md)
