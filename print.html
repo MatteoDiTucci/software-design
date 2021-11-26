@@ -260,7 +260,7 @@ For both default and exceptional-erroneous usage of a single class</li>
 <li><a href="https://testing.googleblog.com/2020/11/fixing-test-hourglass.html">Fixing a Test Hourglass, Google testing blog - Alan Myrvold</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-1" id="teach-me-back-1">Teach me back</a></h4>
-<p>I really appreciate any <a href="passes-all-tests/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="passes-all-tests/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#if-testing-is-hard-inject-what-you-need-to-verify" id="if-testing-is-hard-inject-what-you-need-to-verify">If testing is hard, inject what you need to verify</a></h2>
 <p>When you have a hard time testing something, the solution is usually to inject the thing you would like to verify.
 Suppose we are starting to implement a <code>Car</code> class that stores passengers by their name.</p>
@@ -333,7 +333,7 @@ For this, we can use <code>MutableCollection&lt;String&gt;</code> instead of <co
 <li><a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">Context independence section, chapter 6 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-2" id="teach-me-back-2">Teach me back</a></h4>
-<p>I really appreciate any <a href="passes-all-tests/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="passes-all-tests/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#test-doubles" id="test-doubles">Test doubles</a></h2>
 <p>When testing a class, often we need to create a lot of objects just for the sake of the test. This happens for two reasons:</p>
 <ul>
@@ -440,7 +440,7 @@ an in memory database (e.g. H2) instead of a production one (e.g. PostgreSQL)</p
 <li><a href="https://github.com/testdouble/contributing-tests/wiki/Don%27t-mock-what-you-don%27t-own">Don't mock what you don't own, contributing-tests wiki - Justin Searls</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-3" id="teach-me-back-3">Teach me back</a></h4>
-<p>I really appreciate any <a href="passes-all-tests/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="passes-all-tests/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#test-driven-development" id="test-driven-development">Test driven development</a></h2>
 <p>Test driven development (TDD) is an approach to development where tests are written before the actual code. The core of TDD is a three
 steps process:</p>
@@ -527,7 +527,7 @@ that is not tested. However, be mindful that we can still write buggy code even 
 <li><a href="https://cleancoders.com/series/comparativeDesign">London vs Chicago - Robert C. Martin, Sandro Mancuso</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-4" id="teach-me-back-4">Teach me back</a></h4>
-<p>I really appreciate any <a href="passes-all-tests/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="passes-all-tests/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#test-coverage-is-not-enough" id="test-coverage-is-not-enough">Test coverage is not enough</a></h2>
 <p>Test coverage measures how much code in a codebase is invoked when we run all tests. However, it is not a measure of quality
 of the tests. This means a codebase with 100% of coverage can still be plenty of bugs. Let's take as example the following code.</p>
@@ -565,7 +565,7 @@ combination of inputs is not feasible, but there are some testing methodologies 
 <li><a href="https://en.wikipedia.org/wiki/Formal_verification">Formal verification</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-5" id="teach-me-back-5">Teach me back</a></h4>
-<p>I really appreciate any <a href="passes-all-tests/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="passes-all-tests/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#test-must-be-reproducible" id="test-must-be-reproducible">Test must be reproducible</a></h2>
 <p>A test must not change throughout different executions, otherwise we would be running a different test every time.
 The risk is ending up with tests that fail without apparent reason or worse with tests passing despite the presence of bugs. 
@@ -603,7 +603,7 @@ To make the test deterministic we have to replace <code>LocalDate.now()</code> w
 <li><a href="https://www.goodreads.com/book/show/13541678-functional-programming-in-scala">Purely functional random number generation, chapter 6 of Functional Programming in Scala - Rúnar Bjarnason, Paul Chiusano, Tony Morris</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-6" id="teach-me-back-6">Teach me back</a></h4>
-<p>I really appreciate any <a href="passes-all-tests/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="passes-all-tests/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#no-production-code-constants-in-tests" id="no-production-code-constants-in-tests">No production code constants in tests</a></h2>
 <p>When writing tests, we might be tempted to use production code constants to remove duplication. This creates a 
 conflict of interests by which a test is defined using part of the code that is supposed to test. Such a situation 
@@ -642,7 +642,7 @@ enough not to use the production constant <code>DEFAULT_GREETING</code> in the t
   }
 </code></pre>
 <h4><a class="header" href="#teach-me-back-7" id="teach-me-back-7">Teach me back</a></h4>
-<p>I really appreciate any <a href="passes-all-tests/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="passes-all-tests/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#do-not-test-libraries" id="do-not-test-libraries">Do not test libraries</a></h2>
 <p>Here also mention to not mock what you don't own and to use an adapter pattern instead</p>
 <h2><a class="header" href="#component-tests-vs-end-to-end-tests-vs-monitoring-tradeoffs" id="component-tests-vs-end-to-end-tests-vs-monitoring-tradeoffs">Component tests vs end-to-end tests vs monitoring: tradeoffs</a></h2>
@@ -724,7 +724,7 @@ does not clearly expresses intent if its signature is like the following: <code>
 <li><a href="https://www.barnesandnoble.com/w/domain-driven-design-distilled-vaughn-vernon/1124175630">Developing a Ubiquitous Language, chapter 2 of Domain-Driven Design Distilled - Vaughn Vernon</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-8" id="teach-me-back-8">Teach me back</a></h4>
-<p>I really appreciate any <a href="expresses-intent/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="expresses-intent/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#deep-and-narrow-classes" id="deep-and-narrow-classes">Deep and narrow classes</a></h2>
 <p>We are doomed to write convoluted code when interacting with classes that have poor public methods. On the contrary,
 we are brought to write readable code when interacting with classes that have great public methods. Let's consider 
@@ -820,7 +820,7 @@ If the 4 classes were to use the second approach, <code>main</code> will contain
 <li><a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-9" id="teach-me-back-9">Teach me back</a></h4>
-<p>I really appreciate any <a href="expresses-intent/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="expresses-intent/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#immutability" id="immutability">Immutability</a></h2>
 <p>Understanding a piece of code is harder if objects can change their state. Let's take a look at the following example.</p>
 <pre><code class="language-kotlin">enum class LightBulbState {
@@ -981,7 +981,7 @@ which removes the concept of state as much as possible. </p>
 <li><a href="https://www.goodreads.com/book/show/34921689-domain-modeling-made-functional">Domain Modeling Made Functional - Scott Wlaschin</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-10" id="teach-me-back-10">Teach me back</a></h4>
-<p>I really appreciate any <a href="expresses-intent/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="expresses-intent/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#generalise-edge-cases" id="generalise-edge-cases">Generalise edge cases</a></h2>
 <p>Generalising edge cases makes code easier to understand as we have a single implementation to reason on. Let's assume
 we need to implement the following specifications for an airport check-in application:</p>
@@ -1064,7 +1064,7 @@ instead of handling multiple scenarios that only differ by the occurrences of so
 <li><a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Following the Flocking Rules, chapter 3.6 of 99 bottles of OOP - Sandy Metz</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-11" id="teach-me-back-11">Teach me back</a></h4>
-<p>I really appreciate any <a href="expresses-intent/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="expresses-intent/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#small-classes-and-short-methods" id="small-classes-and-short-methods">Small classes and short methods</a></h2>
 <ul>
 <li>Also tests</li>
@@ -1093,7 +1093,7 @@ instead of handling multiple scenarios that only differ by the occurrences of so
 <li><a href="https://www.goodreads.com/book/show/3735293-clean-code">Comments, chapter 4 of Clean Code - Robert C. Martin</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-12" id="teach-me-back-12">Teach me back</a></h4>
-<p>I really appreciate any <a href="expresses-intent/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="expresses-intent/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#visual-indentation" id="visual-indentation">Visual indentation</a></h2>
 <p>Mention that visual spacing sometimes suggests refactoring (e.g.extract responsibilities, separating concerns)</p>
 <br/>  
@@ -1103,15 +1103,16 @@ instead of handling multiple scenarios that only differ by the occurrences of so
 <li><a href="https://www.goodreads.com/book/show/3735293-clean-code">Formatting, chapter 5 of Clean Code - Robert C. Martin</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-13" id="teach-me-back-13">Teach me back</a></h4>
-<p>I really appreciate any <a href="expresses-intent/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="expresses-intent/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#folder-structure" id="folder-structure">Folder structure</a></h2>
 <br/>
 <h4><a class="header" href="#recommended-reads-13" id="recommended-reads-13">Recommended reads</a></h4>
 <ul>
 <li><a href="https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/">The onion architecture - Jeffrey Palermo</a></li>
+<li><a href="https://youtu.be/5FtFnBn_dew">The onion architecture - Matteo Di Tucci</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-14" id="teach-me-back-14">Teach me back</a></h4>
-<p>I really appreciate any <a href="expresses-intent/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="expresses-intent/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#wishful-thinking" id="wishful-thinking">Wishful thinking</a></h2>
 <p>Here mention the practice of sketching public methods to start reasoning about design before implementing the functionality.<br />
 Explain how this can be applied in both trunk based and branch based development.</p>
@@ -1228,7 +1229,7 @@ initialisation scripts: who of the two is responsible for the knowledge of datab
 <li><a href="https://www.goodreads.com/book/show/7003902-97-things-every-programmer-should-know">Don't Repeat Yourself, chapter 30 of 97 Things Every Programmer Should Know - Kevlin Henney</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-15" id="teach-me-back-15">Teach me back</a></h4>
-<p>I really appreciate any <a href="does-not-repeat-itself/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="does-not-repeat-itself/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#do-not-abstract-by-visual-pattern-matching" id="do-not-abstract-by-visual-pattern-matching">Do not abstract by visual pattern matching</a></h2>
 <p>Two pieces of code that are identical but represent two distinct concepts should stay separated: they are not duplication.
 Let's consider the example where we are asked to calculate the perimeter of rectangles and rhombuses.</p>
@@ -1267,7 +1268,7 @@ more than two times.</p>
 <li><a href="https://www.goodreads.com/en/book/show/44936.Refactoring">Rule of three, When we should Refactor? chapter 2 of Refactoring - Martin Fowler</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-16" id="teach-me-back-16">Teach me back</a></h4>
-<p>I really appreciate any <a href="does-not-repeat-itself/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="does-not-repeat-itself/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#open-closed-principle" id="open-closed-principle">Open-closed principle</a></h2>
 <p>A good sign of low knowledge duplication is the creation of new classes instead of modifying existing ones when we implement 
 new specifications. To give an example, let's assume we need to implement the following:</p>
@@ -1403,7 +1404,7 @@ class LightBulb(private val state: LightBulbState) {
 <li><a href="https://medium.com/geekculture/why-you-shouldnt-use-booleans-in-rest-apis-2747b187876c">Why you shouldn’t use booleans in REST APIs - Hany Elemary</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-17" id="teach-me-back-17">Teach me back</a></h4>
-<p>I really appreciate any <a href="does-not-repeat-itself/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="does-not-repeat-itself/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#dependency-inversion-principle" id="dependency-inversion-principle">Dependency inversion principle</a></h2>
 <p>Code that changes frequently should depend on code that rarely changes. This is important to minimises the amount of code
 we need to adjust when implementing new specifications. Let's take a look at the following example.</p>
@@ -1492,7 +1493,7 @@ of how to store <code>Transfer</code>.</p>
 <li><a href="https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/">The onion architecture - Jeffrey Palermo</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-18" id="teach-me-back-18">Teach me back</a></h4>
-<p>I really appreciate any <a href="does-not-repeat-itself/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="does-not-repeat-itself/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#information-hiding" id="information-hiding">Information Hiding</a></h2>
 <p>When objects expose their internal implementation, modifying code becomes harder. In fact, a single change can unexpectedly 
 trigger many others across the code base. Let's take a look at the following example.</p>
@@ -1578,14 +1579,14 @@ we first need to ask ourselves if other code has been written using <code>InMemo
 <li><a href="https://michaelfeathers.typepad.com/michael_feathers_blog/2012/03/tell-above-and-ask-below-hybridizing-oo-and-functional-design.html">Tell Above, and Ask Below - Michael Feathers</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-19" id="teach-me-back-19">Teach me back</a></h4>
-<p>I really appreciate any <a href="does-not-repeat-itself/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="does-not-repeat-itself/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#wrap-libraries-into-custom-classes" id="wrap-libraries-into-custom-classes">Wrap libraries into custom classes</a></h2>
 <p>Here mention the importance of wrapping external libraries into custom classes so that replacing a library impacts just one class of the code base.<br />
 Link this section from the &quot;Do not test libraries&quot; one.</p>
 <br/>
 <h4><a class="header" href="#recommended-reads-19" id="recommended-reads-19">Recommended reads</a></h4>
 <h4><a class="header" href="#teach-me-back-20" id="teach-me-back-20">Teach me back</a></h4>
-<p>I really appreciate any <a href="does-not-repeat-itself/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="does-not-repeat-itself/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#polymorphism" id="polymorphism">Polymorphism</a></h2>
 <h4><a class="header" href="#recommended-reads-20" id="recommended-reads-20">Recommended reads</a></h4>
 <ul>
@@ -1605,7 +1606,7 @@ Link this section from the &quot;Do not test libraries&quot; one.</p>
 <li><a href="https://www.goodreads.com/book/show/18043011-clean-architecture">The interface segregation principle, chapter 10 of Clean Architecture - Robert C. Martin</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-21" id="teach-me-back-21">Teach me back</a></h4>
-<p>I really appreciate any <a href="does-not-repeat-itself/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="does-not-repeat-itself/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h1><a class="header" href="#it-does-not-contain-superfluous-parts" id="it-does-not-contain-superfluous-parts">It does not contain superfluous parts</a></h1>
 <p>A problem can be solved by many solutions, but the best ones have few moving parts. Less moving part implies less to understand,
 test and maintain.</p>
@@ -1689,7 +1690,7 @@ it added useless code inside the <code>TrafficLight</code> class and it forced a
 <li><a href="https://en.wikipedia.org/wiki/No_Silver_Bullet">Incidental vs accidental complexity, No Silver Bullet paper - Fred Brooks</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-22" id="teach-me-back-22">Teach me back</a></h4>
-<p>I really appreciate any <a href="does-not-contain-superfluous-parts/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="does-not-contain-superfluous-parts/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#clarify-what-is-superfluous" id="clarify-what-is-superfluous">Clarify what is superfluous</a></h2>
 <p>Sometimes the <a href="does-not-contain-superfluous-parts/you-are-not-going-to-need-it.html">you aren't going to need it</a> principle is abused, leading to code that does
 not pass all tests. This usually happens in the form of assuming specifications. Let's consider the following example where we are required
@@ -1745,7 +1746,7 @@ introduced by the <code>ArrayList</code> approach.</p>
 <li><a href="https://dl.acm.org/toc/csur/1974/6/4">The full quote from Donald Knuth was: &quot;We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%.&quot;</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-23" id="teach-me-back-23">Teach me back</a></h4>
-<p>I really appreciate any <a href="does-not-contain-superfluous-parts/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="does-not-contain-superfluous-parts/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#do-not-abuse-design-patterns" id="do-not-abuse-design-patterns">Do not abuse design patterns</a></h2>
 <p>Design patterns are great to catalogue recurring design problems and their typical solutions. However, design patterns by themselves
 do not guarantee simple code, and actually they can end up pushing in the opposite direction. They are just a tool that
@@ -1756,7 +1757,7 @@ has to be adapted to the context where they are used, not applied to the letter.
 <li><a href="https://www.goodreads.com/book/show/58128.Head_First_Design_Patterns">Head First Design Patterns - Eric Freeman, Elisabeth Robson</a></li>
 </ul>
 <h4><a class="header" href="#teach-me-back-24" id="teach-me-back-24">Teach me back</a></h4>
-<p>I really appreciate any <a href="does-not-contain-superfluous-parts/(/introduction/introduction.html#teach-me-back)">feedback</a> about the book and my current understanding of software design.</p>
+<p>I really appreciate any <a href="does-not-contain-superfluous-parts/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 
                     </main>
 
