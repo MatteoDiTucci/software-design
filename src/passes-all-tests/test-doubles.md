@@ -118,4 +118,4 @@ As a final note, test doubles are not used just for unit tests, but throughout t
 * [Don't mock what you don't own, contributing-tests wiki - Justin Searls](https://github.com/testdouble/contributing-tests/wiki/Don%27t-mock-what-you-don%27t-own)
 
 #### Teach me back
-I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.
+I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.

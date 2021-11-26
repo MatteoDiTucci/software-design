@@ -90,4 +90,4 @@ we first need to ask ourselves if other code has been written using `InMemoryRes
 * [Tell Above, and Ask Below - Michael Feathers](https://michaelfeathers.typepad.com/michael_feathers_blog/2012/03/tell-above-and-ask-below-hybridizing-oo-and-functional-design.html)
 
 #### Teach me back
-I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.
+I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.

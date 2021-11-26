@@ -80,4 +80,4 @@ it added useless code inside the `TrafficLight` class and it forced all callers 
 * [Incidental vs accidental complexity, No Silver Bullet paper - Fred Brooks](https://en.wikipedia.org/wiki/No_Silver_Bullet)
 
 #### Teach me back
-I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.
+I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.

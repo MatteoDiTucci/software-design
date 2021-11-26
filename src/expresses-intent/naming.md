@@ -73,4 +73,4 @@ does not clearly expresses intent if its signature is like the following: `fun s
 * [Developing a Ubiquitous Language, chapter 2 of Domain-Driven Design Distilled - Vaughn Vernon](https://www.barnesandnoble.com/w/domain-driven-design-distilled-vaughn-vernon/1124175630)
 
 #### Teach me back
-I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.
+I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.

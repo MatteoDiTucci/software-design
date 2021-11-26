@@ -44,4 +44,4 @@ enough not to use the production constant `DEFAULT_GREETING` in the test like fo
 
 
 #### Teach me back
-I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.
+I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.

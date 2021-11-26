@@ -9,4 +9,4 @@ Mention that visual spacing sometimes suggests refactoring (e.g.extract responsi
 * [Formatting, chapter 5 of Clean Code - Robert C. Martin](https://www.goodreads.com/book/show/3735293-clean-code)
 
 #### Teach me back
-I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.
+I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.

@@ -142,4 +142,4 @@ class LightBulb(private val state: LightBulbState) {
 * [Why you shouldn’t use booleans in REST APIs - Hany Elemary](https://medium.com/geekculture/why-you-shouldnt-use-booleans-in-rest-apis-2747b187876c)
 
 #### Teach me back
-I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.
+I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.

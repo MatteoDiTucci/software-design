@@ -46,4 +46,4 @@ tests and many unit tests. In particular:
 * [Fixing a Test Hourglass, Google testing blog - Alan Myrvold](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html)
 
 #### Teach me back
-I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.
+I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.

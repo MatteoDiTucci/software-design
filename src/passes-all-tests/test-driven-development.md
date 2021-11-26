@@ -100,4 +100,4 @@ that is not tested. However, be mindful that we can still write buggy code even 
 * [London vs Chicago - Robert C. Martin, Sandro Mancuso](https://cleancoders.com/series/comparativeDesign)
 
 #### Teach me back
-I really appreciate any [feedback]((/introduction/introduction.html#teach-me-back)) about the book and my current understanding of software design.
+I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.
