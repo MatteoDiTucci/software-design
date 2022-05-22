@@ -1601,24 +1601,24 @@ we first need to ask ourselves if other code has been written using <code>InMemo
 swapping a library for another can unexpectedly
 trigger many undesired changes across our codebase.</p>
 <p>Let's take a look at the following code.</p>
-<pre><code class="language-kotlin">class MessageController(private val metrics: ExternalMetricLibrary) {
+<pre><code class="language-kotlin">class MessageController(private val metrics: MetricExternalLibrary) {
 
     fun handleMessage(message: String) {
         metrics.incrementMetric(&quot;total-messages-received&quot;)
     }
 }
 
-class UserController(private val metrics: ExternalMetricLibrary) {
+class UserController(private val metrics: MetricExternalLibrary) {
 
     fun handleLogin(username: String) {
         metrics.incrementMetric(&quot;total-users-logged-in&quot;)
     }
 }
 </code></pre>
-<p>In the above code, <code>ExternalMetricLibrary</code> is an external library that we use for monitoring purposes. 
+<p>In the above code, <code>MetricExternalLibrary</code> is an external library that we use for monitoring purposes. 
 The method <code>incrementMetric</code> takes in input the name of the metric to be incremented by one.
-Let's assume we want to replace <code>ExternalMetricLibrary</code> with another library called <code>FasterExternalMetricLibrary</code> because it has better performance. If that's the case, we would be forced to replace all the occurrences of <code>ExternalMetricLibrary</code>, which in the above example are just two, but in a real life codebase can be many. </p>
-<p>To prevent this we can wrap <code>ExternalMetricLibrary</code> in a custom class so that it does not spread across the codebase.</p>
+Let's assume we want to replace <code>MetricExternalLibrary</code> with another library called <code>FasterMetricExternalLibrary</code> because it has better performance. If that's the case, we would be forced to replace all the occurrences of <code>MetricExternalLibrary</code>, which in the above example are just two, but in a real life codebase can be many. </p>
+<p>To prevent this we can wrap <code>MetricExternalLibrary</code> in a custom class so that it does not spread across the codebase.</p>
 <pre><code class="language-kotlin">class MessageController(private val metrics: Metrics) {
 
     fun handleMessage(message: String) {
@@ -1633,14 +1633,14 @@ class UserController(private val metrics: Metrics) {
     }
 }
 
-class Metrics(private val externalMetricLibrary: ExternalMetricLibrary) {
+class Metrics(private val metricExternalLibrary: MetricExternalLibrary) {
     fun incrementMetric(metricName: String) {
-        this.externalMetricLibrary.incrementMetricOf(metricName)
+        this.metricExternalLibrary.incrementMetricOf(metricName)
     }
 }
 </code></pre>
-<p>Now our class <code>Metrics</code> will be the only place in the codebase that knows about <code>ExternalMetricLibrary</code>. Whenever we
-need to replace <code>ExternalMetricLibrary</code> in favour of <code>FasterExternalMetricLibrary</code>, only <code>Metrics</code> will be affected.
+<p>Now our class <code>Metrics</code> will be the only place in the codebase that knows about <code>MetricExternalLibrary</code>. Whenever we
+need to replace <code>MetricExternalLibrary</code> in favour of <code>FasterMetricExternalLibrary</code>, only <code>Metrics</code> will be affected.
 This ensures our codebase remains stable despite any library change we might have in the future. </p>
 <p>As a final note, wrapping external libraries into custom classes will also simplify testing as explained in the
 <a href="does-not-repeat-itself/passes-all-tests/do-not-test-external-libraries.html">do not test external libraries</a> chapter.</p>
