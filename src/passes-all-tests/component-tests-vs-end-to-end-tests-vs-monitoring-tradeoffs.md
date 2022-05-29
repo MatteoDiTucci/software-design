@@ -1,1 +1,0 @@
-## Component tests vs end-to-end tests vs monitoring: tradeoffs
