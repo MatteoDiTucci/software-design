@@ -9,12 +9,14 @@ https://software-design.matteoditucci.com/passes-all-tests/test-coverage-is-not-
 https://software-design.matteoditucci.com/passes-all-tests/tests-must-be-reproducible.html
 https://software-design.matteoditucci.com/passes-all-tests/no-production-code-constants-in-tests.html
 https://software-design.matteoditucci.com/passes-all-tests/do-not-test-libraries.html
-https://software-design.matteoditucci.com/passes-all-tests/component-tests-vs-end-to-end-tests-vs-monitoring-tradeoffs.html
+https://software-design.matteoditucci.com/passes-all-tests/tests-for-distributed-systems.html
 https://software-design.matteoditucci.com/passes-all-tests/expand-and-contract.html
 https://software-design.matteoditucci.com/passes-all-tests/contract-testing.html
 https://software-design.matteoditucci.com/passes-all-tests/performance-tests.html
 https://software-design.matteoditucci.com/passes-all-tests/how-to-test-ui.html
 https://software-design.matteoditucci.com/passes-all-tests/linting.html
+https://software-design.matteoditucci.com/passes-all-tests/test-for-production.html
+https://software-design.matteoditucci.com/passes-all-tests/test-infrastructure.html
 https://software-design.matteoditucci.com/expresses-intent/introduction.html
 https://software-design.matteoditucci.com/expresses-intent/naming.html
 https://software-design.matteoditucci.com/expresses-intent/single-responsibility-principle.html
