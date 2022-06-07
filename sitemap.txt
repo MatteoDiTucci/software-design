@@ -22,7 +22,6 @@ https://software-design.matteoditucci.com/expresses-intent/single-responsibility
 https://software-design.matteoditucci.com/expresses-intent/deep-and-narrow-classes.html
 https://software-design.matteoditucci.com/expresses-intent/immutability.html
 https://software-design.matteoditucci.com/expresses-intent/small-classes-and-short-methods.html
-https://software-design.matteoditucci.com/expresses-intent/liskov-substitution-principle.html
 https://software-design.matteoditucci.com/expresses-intent/usually-composition-is-better-than-inheritance.html
 https://software-design.matteoditucci.com/expresses-intent/generalise-edge-cases.html
 https://software-design.matteoditucci.com/expresses-intent/comment-the-why.html
@@ -35,7 +34,6 @@ https://software-design.matteoditucci.com/expresses-intent/one-single-authoritat
 https://software-design.matteoditucci.com/does-not-repeat-itself/do-not-abstract-by-visual-pattern-matching.html
 https://software-design.matteoditucci.com/does-not-repeat-itself/dependency-inversion-principle.html
 https://software-design.matteoditucci.com/does-not-repeat-itself/open-closed-principle.html
-https://software-design.matteoditucci.com/does-not-repeat-itself/interface-segregation-principle.html
 https://software-design.matteoditucci.com/does-not-repeat-itself/information-hiding.html
 https://software-design.matteoditucci.com/does-not-repeat-itself/polymorphism.html
 https://software-design.matteoditucci.com/does-not-contain-superfluous-parts/introduction.html
