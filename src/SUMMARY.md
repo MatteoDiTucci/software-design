@@ -15,7 +15,7 @@
     - [Performance tests 🏗️](passes-all-tests/performance-tests.md)
     - [How to test UI 🏗️](passes-all-tests/how-to-test-ui.md)
     - [Linting 🏗️](passes-all-tests/linting.md)
-    - [Test for production 🏗️](passes-all-tests/test-for-production.md)
+    - [Test for production](passes-all-tests/test-for-production.md)
     - [Tests for distributed systems](passes-all-tests/tests-for-distributed-systems.md)
     - [Test infrastructure 🏗️](passes-all-tests/test-infrastructure.md)
   
