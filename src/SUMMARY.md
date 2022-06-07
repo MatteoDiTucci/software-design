@@ -25,7 +25,6 @@
     - [Immutability](expresses-intent/immutability.md)
     - [Generalise edge cases️](expresses-intent/generalise-edge-cases.md)
     - [Small classes and short methods 🏗️](expresses-intent/small-classes-and-short-methods.md)
-    - [Liskov substitution principle 🏗️](expresses-intent/liskov-substitution-principle.md)
     - [Usually composition is better than inheritance 🏗️](expresses-intent/usually-composition-is-better-than-inheritance.md)
     - [Test naming 🏗️](expresses-intent/test-naming.md)
     - [Comment the why 🏗️](expresses-intent/comment-the-why.md)
@@ -42,7 +41,6 @@
     - [Wrap external libraries into custom classes️](does-not-repeat-itself/wrap-external-libraries-into-custom-classes.md)
     - [Polymorphism 🏗️](does-not-repeat-itself/polymorphism.md)
     - [Single responsibility principle 🏗️](expresses-intent/single-responsibility-principle.md)
-    - [Interface segregation principle 🏗️](does-not-repeat-itself/interface-segregation-principle.md)
   
 - [It does not contain superfluous parts](does-not-contain-superfluous-parts/introduction.md)
     - [Does not contain superfluous parts](does-not-contain-superfluous-parts/you-are-not-going-to-need-it.md)

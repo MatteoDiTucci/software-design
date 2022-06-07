@@ -117,6 +117,7 @@ initialisation scripts: who of the two is responsible for the knowledge of datab
 * [DRY, The evils of duplication, chapter 2 of The Pragmatic Programmer - David Thomas, Andrew Hunt](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer)  
 * [Once and only once, Extreme Programming Explained - Kent Beck](https://www.goodreads.com/book/show/67833.Extreme_Programming_Explained)  
 * [Don't Repeat Yourself, chapter 30 of 97 Things Every Programmer Should Know - Kevlin Henney](https://www.goodreads.com/book/show/7003902-97-things-every-programmer-should-know)
+* [The Liskov substitution principle, chapter 9 of Clean Architecture - Robert C. Martin](https://www.goodreads.com/book/show/18043011-clean-architecture)
 
 #### Teach me back
 I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.
