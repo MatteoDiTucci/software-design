@@ -88,6 +88,8 @@ we first need to ask ourselves if other code has been written using `InMemoryRes
 * [Hide the right information, chapter 6 of of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 * [Object Calisthenics, William Durand](https://williamdurand.fr/2013/06/03/object-calisthenics/)
 * [Tell Above, and Ask Below - Michael Feathers](https://michaelfeathers.typepad.com/michael_feathers_blog/2012/03/tell-above-and-ask-below-hybridizing-oo-and-functional-design.html)
+* [Majestic Modular Monoliths - Lukas Hajdu](https://lukashajdu.com/post/majestic-modular-monolith/)
+* [Deconstructing the Monolith - Kirsten Westeinde, Shopify](https://shopify.engineering/deconstructing-monolith-designing-software-maximizes-developer-productivity)
 
 #### Teach me back
 I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.
