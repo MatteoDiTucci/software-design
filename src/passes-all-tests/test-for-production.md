@@ -29,6 +29,7 @@ The following approaches help to mitigate its impact:
 * [Fault Tolerance in a High Volume, Distributed System - Ben Christensen](https://netflixtechblog.com/fault-tolerance-in-a-high-volume-distributed-system-91ab4faae74a)
 * [Circuit breaker pattern - Microsoft](https://docs.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker)
 * [Bulkhead pattern - Microsoft](https://docs.microsoft.com/en-us/azure/architecture/patterns/bulkhead)
+* [Fuzz testing - Gitlab](https://about.gitlab.com/topics/devsecops/what-is-fuzz-testing/)
 
 #### Teach me back
 I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.
