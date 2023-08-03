@@ -44,6 +44,8 @@ tests and many unit tests. In particular:
 * [Test Pyramid (in depth) - Ham Vocke](https://martinfowler.com/articles/practical-test-pyramid.html)  
 * [Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)
 * [Fixing a Test Hourglass, Google testing blog - Alan Myrvold](https://testing.googleblog.com/2020/11/fixing-test-hourglass.html)
+* [Test Pyramid vs Test Trophy - Martin Fowler](https://martinfowler.com/articles/2021-test-shapes.html)
+* [The Practical Test Pyramid - Ham Vocke](https://martinfowler.com/articles/practical-test-pyramid.html)
 
 #### Teach me back
 I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.
