@@ -1,6 +1,6 @@
 ## Wrap external libraries into custom classes
 
-[Information hiding️](does-not-repeat-itself/information-hiding.md) also applies to external libraries. In fact,
+[Information hiding](../does-not-repeat-itself/information-hiding.html) also applies to external libraries. In fact,
 swapping a library for another can unexpectedly
 trigger many undesired changes across our codebase.
 
@@ -55,7 +55,7 @@ need to replace `MetricExternalLibrary` in favour of `FasterMetricExternalLibrar
 This ensures our codebase remains stable despite any library change we might have in the future. 
 
 As a final note, wrapping external libraries into custom classes will also simplify testing as explained in the
-[do not test external libraries](passes-all-tests/do-not-test-external-libraries.md) chapter.
+[do not test external libraries](../passes-all-tests/do-not-test-external-libraries.html) chapter.
 
 <br/>
 
