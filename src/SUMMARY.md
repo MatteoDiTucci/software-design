@@ -11,7 +11,7 @@
     - [Tests must be reproducible](passes-all-tests/tests-must-be-reproducible.md)
     - [No production code constants in tests](passes-all-tests/no-production-code-constants-in-tests.md)
     - [Do not test external libraries 🏗️](passes-all-tests/do-not-test-external-libraries.md)
-    - [Expand and contract 🏗️](passes-all-tests/expand-and-contract.md)
+    - [Expand and contract](passes-all-tests/expand-and-contract.md)
     - [Performance tests 🏗️](passes-all-tests/performance-tests.md)
     - [How to test UI 🏗️](passes-all-tests/how-to-test-ui.md)
     - [Linting 🏗️](passes-all-tests/linting.md)
