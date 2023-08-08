@@ -22,6 +22,7 @@ https://software-design.matteoditucci.com/expresses-intent/single-responsibility
 https://software-design.matteoditucci.com/expresses-intent/deep-and-narrow-classes.html
 https://software-design.matteoditucci.com/expresses-intent/immutability.html
 https://software-design.matteoditucci.com/expresses-intent/small-classes-and-short-methods.html
+https://software-design.matteoditucci.com/expresses-intent/homogeneity.html
 https://software-design.matteoditucci.com/expresses-intent/usually-composition-is-better-than-inheritance.html
 https://software-design.matteoditucci.com/expresses-intent/generalise-edge-cases.html
 https://software-design.matteoditucci.com/expresses-intent/comment-the-why.html
