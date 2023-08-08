@@ -26,6 +26,7 @@
     - [Generalise edge cases️](expresses-intent/generalise-edge-cases.md)
     - [Usually composition is better than inheritance](expresses-intent/usually-composition-is-better-than-inheritance.md)
     - [Small classes and short methods 🏗️](expresses-intent/small-classes-and-short-methods.md)
+    - [Homogeneity 🏗️](expresses-intent/homogeneity.md)
     - [Test naming 🏗️](expresses-intent/test-naming.md)
     - [Comment the why 🏗️](expresses-intent/comment-the-why.md)
     - [Visual indentation 🏗️](expresses-intent/visual-indentation.md)
