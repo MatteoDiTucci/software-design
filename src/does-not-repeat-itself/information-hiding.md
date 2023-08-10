@@ -90,6 +90,9 @@ we first need to ask ourselves if other code has been written using `InMemoryRes
 * [Tell Above, and Ask Below - Michael Feathers](https://michaelfeathers.typepad.com/michael_feathers_blog/2012/03/tell-above-and-ask-below-hybridizing-oo-and-functional-design.html)
 * [Majestic Modular Monoliths - Lukas Hajdu](https://lukashajdu.com/post/majestic-modular-monolith/)
 * [Deconstructing the Monolith - Kirsten Westeinde, Shopify](https://shopify.engineering/deconstructing-monolith-designing-software-maximizes-developer-productivity)
+* [Effective aggregate design part I: modelling a single aggregate - Vaughn Vernon](https://www.dddcommunity.org/wp-content/uploads/files/pdf_articles/Vernon_2011_1.pdf)
+* [Effective aggregate design part I: making aggregates work together - Vaughn Vernon](https://www.dddcommunity.org/wp-content/uploads/files/pdf_articles/Vernon_2011_2.pdf)
+* [Effective aggregate design part I: gaining insights through discovery - Vaughn Vernon](https://www.dddcommunity.org/wp-content/uploads/files/pdf_articles/Vernon_2011_3.pdf)
 
 #### Teach me back
 I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.
