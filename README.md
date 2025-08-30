@@ -1,4 +1,4 @@
-# Software design
+# A Compendium of Software design
 
 ![CI/CD](https://github.com/matteoditucci/software-design/workflows/github-pages/badge.svg)
 
