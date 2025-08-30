@@ -5,3 +5,8 @@
 * Mention "should" keyword   
 * Mention multiple assertions  
 * Make a case against generic terms like "correct" in favour of specificity
+
+#### Recommended reads
+
+#### Teach me back
+I really appreciate any [feedback](../introduction/introduction.html#teach-me-back) about the book and my current understanding of software design.
