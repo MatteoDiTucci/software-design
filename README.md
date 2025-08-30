@@ -9,7 +9,8 @@ https://software-design.matteoditucci.com/
 Feel free to open a pull request if you want to provide any feedback. Thank you for that.
 
 ### Current status
-Work in progress. Expected to be finished by Fall 2021.
+Half of the chapters have been written, but I have been focusing on other projects.
+Ideally, one day I would like to finish the remaining chapters and write a sibling book from the perspective of functional programming.
 
 ### Tech stack
 * Layout: [mdBook](https://github.com/rust-lang/mdBook)
