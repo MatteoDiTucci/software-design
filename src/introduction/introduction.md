@@ -1,5 +1,9 @@
 # Introduction
 
+### Current status
+On pause: half of the chapters are finished, the remaining only contain the recommended reads.
+No plan to resume in the near future as for October 2025.
+
 ### Why read this book
 Software design is a craft not a science. To master it you cannot just study a book that explains comprehensively all the theory behind it.
 You have to read the literature of many great developers, looking for advices that repeat: that's what is currently considered good software design.
