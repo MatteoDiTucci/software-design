@@ -1,4 +1,4 @@
-## Test must be reproducible
+## Tests must be reproducible
 A test must not change throughout different executions, otherwise we would be running a different test every time.
 The risk is ending up with tests that fail without apparent reason or worse with tests passing despite the presence of bugs. 
 Let's consider the following example.
@@ -22,7 +22,7 @@ fun `is valid during the year the subscription was made`() {
 ```
 
 The above test always passes during 2021. However, it will start failing from the 1st of January 2022 because of `LocalDate.now()`.
-To make the test deterministic we have to replace `LocalDate.now()` with a constant date like follows.
+To make the test deterministic we have to replace `LocalDate.now()` with a constant date as follows.
 
 ```kotlin
 @Test

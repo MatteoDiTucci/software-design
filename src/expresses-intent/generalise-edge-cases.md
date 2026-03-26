@@ -37,7 +37,7 @@ class MinorPassport(private val name: String,
 }
 ```
 
-The above `CheckIn` class can be simplified by generalising `MinorPassport` to `Passport` like follows.
+The above `CheckIn` class can be simplified by generalising `MinorPassport` to `Passport` as follows.
 
 ```kotlin
 class CheckIn(private val today: LocalDate) {

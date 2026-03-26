@@ -24,10 +24,10 @@ we should run performance tests to measure the current value of the metrics we a
 by running again the same performance tests, we measure the magnitude of the improvement and how much is still left to do.
 
 ### Theory of constraints
-When performance tests highlight a low performing metric, it is important to identify what is its main contributor. 
+When performance tests highlight a low performing metric, it is important to identify what its main contributor is. 
 For instance, if response time is low, we need to identify how the time is spent across the system at different granularity.
 By this, we mean not only narrowing down macro components like front-end or database, but also architectural layers like
-domain or presentation, up to class of function level if necessary.
+domain or presentation, up to class or function level if necessary.
 
 We should spend all our efforts on the single main contributor of the low performing metric. Once solved, move to the new main contributor.
 

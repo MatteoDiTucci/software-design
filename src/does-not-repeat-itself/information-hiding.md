@@ -37,7 +37,7 @@ In the above code `Die` is leaking two pieces of information:
 * The die faces are modelled as integer numbers
 * A die wins over another if the former `value` is greater than the latter
 
-If any of the above two change, we will need to adjust `Game`  as its `play` method uses that information.
+If either of the above two changes, we will need to adjust `Game` as its `play` method uses that information.
 An example of such changes is a new rule by which the number 3 wins over any other number.
 However, we can prevent those unintended changes in `Game` by not leaking information out of `Die` as follows.
 

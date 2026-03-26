@@ -43,8 +43,8 @@ fun `stores the names of the passengers`() {
 ```
 
 However, this is already a disappointment because we are forced to write a public method just for the sake of testing.
-Moreover, what if by specifications we must prevent any other code to query `Car` about its passengers?
-The solution can be to inject the `passengers` set a construction time.
+Moreover, what if by specifications we must prevent any other code from querying `Car` about its passengers?
+The solution can be to inject the `passengers` set at construction time.
 
 ```kotlin
 class Car(private val passengers: MutableSet<String>) {
@@ -55,7 +55,7 @@ class Car(private val passengers: MutableSet<String>) {
 }
 ```
 
-Now we can test like follows.
+Now we can test as follows.
 
 ```kotlin
 @Test

@@ -29,7 +29,7 @@ class App {
 ```
 
 Now let's assume we want to have an ellipsis when `Person` or `Job` names are longer than 5 characters. One solution
-could be to modify the `name` method of both `Person` and `Job` like follows.
+could be to modify the `name` method of both `Person` and `Job` as follows.
 
 ```kotlin
 class Person(private val name: String) {
@@ -65,8 +65,8 @@ class App {
 
 
 In the above code, changing the ellipsis threshold from 5 to 10 characters will affect the `name` method of both `Person`and `Job` classes.
-Moreover, there is a risk to introduce bugs as changes might not be replicated across both classes by mistake. The problem
-is that the concept of name is spread across `Person` and `Job` instead if being a standalone class like follows.
+Moreover, there is a risk of introducing bugs as changes might not be replicated across both classes by mistake. The problem
+is that the concept of name is spread across `Person` and `Job` instead of being a standalone class as follows.
 
 ```kotlin
 class Name(private val name: String) {

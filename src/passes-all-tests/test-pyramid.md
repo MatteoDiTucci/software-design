@@ -1,6 +1,6 @@
 ## Test pyramid
 There are different kinds of tests, each one meant for a different purpose. Before describing the most common ones, let's
-clarify in advance a couple of terms. For _service_ we mean a bunch of code deployed as a whole. For
+clarify in advance a couple of terms. By _service_ we mean a bunch of code deployed as a whole. By
 _external dependencies_ we mean anything that is reached over the network, like a database, another team REST endpoint, a queue, third party apis, etc.
 
 * **Acceptance tests**  
@@ -9,7 +9,7 @@ _external dependencies_ we mean anything that is reached over the network, like 
   or [Wiremock](http://wiremock.org/). In a web application for instance, acceptance tests are defined with tools like [Selenium](https://www.selenium.dev/)
   or [Cypress](https://www.cypress.io/).
 * **Functional tests**  
-  Check that a feature behaves as expected considering a single layer of a service. For example, if a service have both back end and
+  Check that a feature behaves as expected considering a single layer of a service. For example, if a service has both back end and
   front end, there will be distinct functional tests for the back end and front end. External dependencies are replaced either
   by libraries like [LocalStack](https://github.com/localstack/localstack) or by [test doubles](test-doubles.html).
   Functional tests are also called component tests.

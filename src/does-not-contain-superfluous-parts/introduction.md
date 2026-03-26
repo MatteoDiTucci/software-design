@@ -1,6 +1,6 @@
 # It does not contain superfluous parts
 
-A problem can be solved by many solutions, but the best ones have few moving parts. Less moving part implies less to understand,
+A problem can be solved by many solutions, but the best ones have few moving parts. Fewer moving parts means less to understand,
 test and maintain.
 
 Sometimes we write superfluous code because we misunderstand the problem. Other times we end up implementing requirements 

@@ -4,6 +4,6 @@ Before changing a piece of code, we first need to understand its intention, mean
 Not understanding code, or even worse misunderstanding it, leads to a great waste of time. Therefore,
 pouring effort in clarifying code intent is a sound investment as code is written once and read many times. 
 
-Software design is a collaborative activity and code intent is the expression of people mental representations.
+Software design is a collaborative activity and code intent is the expression of people's mental representations.
 This means that clear code intent starts with effective communication: knowledge sharing, visualising mental models,
 using a shared vocabulary.

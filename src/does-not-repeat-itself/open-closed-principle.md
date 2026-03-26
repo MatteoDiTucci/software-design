@@ -64,7 +64,7 @@ class LightBulb(private val state: LightBulbState) {
 If this trend of specifications continues, we will end up having a very long `lightUp` method and many unit tests just 
 for it. The result will be `LightBulb` not clearly expressing its intent as well as being a hot spot containing too much
 knowledge. To prevent this we can spread the `lightUp` knowledge across the different values of `LightBulbState`
-like follows.
+as follows.
 
 ```kotlin
 enum class LightBulbState {

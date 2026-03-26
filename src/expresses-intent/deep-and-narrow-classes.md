@@ -38,7 +38,7 @@ class App {
 }
 ```
 
-Now, let's change the signature of the `play` method like follows.
+Now, let's change the signature of the `play` method as follows.
 
 ```kotlin
 class FizzBuzz {
@@ -98,7 +98,7 @@ To summarise with a catchphrase from John Ousterhout, classes should be narrow a
 #### Recommended reads
 * ["Bad programmers worry about the code. Good programmers worry about data structures and their relationships" - Linus Torvalds](https://lwn.net/Articles/193245/)  
 * ["Show me your tables, and I won't usually need your flowcharts; they'll be obvious.", chapter 9 of The Mythical Man-Month - Fred Brooks](https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month)  
-* [ava and Unix I/O, section 4.7 of A Philosophy of Software Design - John Ousterhout](https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design)  
+* [Java and Unix I/O, section 4.7 of A Philosophy of Software Design - John Ousterhout](https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design)  
 * [A web of objects, chapter 2 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce](https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests)  
 * [Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz](https://www.goodreads.com/book/show/31183020-99-bottles-of-oop)
 * [The interface segregation principle, chapter 10 of Clean Architecture - Robert C. Martin](https://www.goodreads.com/book/show/18043011-clean-architecture)

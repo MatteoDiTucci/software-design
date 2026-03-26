@@ -6,7 +6,7 @@ We are responsible for the Price microservice only, while other teams take care 
 ![distributed-systems-example.png](images/distributed-systems-example.png)
 
 Let's assume we want to write an acceptance test to verify the functionality of calculating a price.
-For this purpose, we need also the other three microservices to be up running while the acceptance test runs.
+For this purpose, we need also the other three microservices to be up and running while the acceptance test runs.
 Usually there are four ways to achieve this. Each one has pros and cons, but in my experience, the first has proved to be superior.  
 In all four alternatives, when we say locally, we mean both the developers laptops and the [continuous integration](https://martinfowler.com/articles/continuousIntegration.html) machine.
 
@@ -18,7 +18,7 @@ This means that despite the integration with the three microservices might happe
 Regarding the smoke test, it triggers the real integration between the four microservices, as a production shopper request would do.  
 
 Pros:
-* The smoke test verifies the real logic for both 4 microservices
+* The smoke test verifies the real logic for all 4 microservices
 * No extra infrastructure needed locally
 * No powerful hardware needed locally
 * Chance of writing many functional tests in exchange for the acceptance test as the former is faster to run, write and maintain than the latter
@@ -33,11 +33,11 @@ Cons:
 This implies that the acceptance test reaches out to the dev environment where Inventory, Discount and Membership microservices are deployed.   
 
 Pros:
-* The acceptance test verifies the real logic for both 4 microservices, nothing is stubbed
+* The acceptance test verifies the real logic for all 4 microservices, nothing is stubbed
 * No extra infrastructure needed locally
 * No powerful hardware needed  
 
-Cons
+Cons:
 * Network connectivity is needed
 * Extra network configuration (e.g. VPN, firewall rules)
 * Risk of race conditions on test data related to the three microservices as multiple devs and continuous integration machine might run tests simultaneously
@@ -48,10 +48,10 @@ Cons
 This implies fetching the executables of the other three microservices (e.g. Docker images, jar, etc.) and running them locally while the acceptance test is executed.  
 
 Pros:
-* The acceptance test verifies the real logic for both 4 microservices, nothing is stubbed  
+* The acceptance test verifies the real logic for all 4 microservices, nothing is stubbed  
 
 Cons:
-* Acceptance test is slow as all fours microservices have to startup first
+* Acceptance test is slow as all four microservices have to start up first
 * More powerful hardware is needed (usually ram and cpu) locally
 * Extra infrastructure is needed to make available the Inventory, Discount and Membership microservices executables (e.g. VPN, access policies configuration, firewall rules, etc.)
 * Extra setup is needed locally to run the acceptance tests (e.g. install Docker)

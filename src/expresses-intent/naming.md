@@ -1,8 +1,8 @@
 ## Naming
-Great naming let us understand what the code means without inspecting its details. In fact, we should be able
+Great naming lets us understand what the code means without inspecting its details. In fact, we should be able
 to understand an entire codebase just reading the names of classes, methods and variables, never looking at what they contain.
 This clarity is reached by naming classes, methods and variables after what they do instead of how they do it.
-The how can be looked up later if more details are needed by inspecting the content. The benefits are two:
+The how can be looked up later if more details are needed by inspecting the content. There are two benefits:
 * names do not contain any noise
 * if the implementation changes, the name remains relevant
 
@@ -31,7 +31,7 @@ class Coordinates(private val x: Int, private val y: Int) {
 ```
 
 The answer is yes, as the above class still expresses clear intent, without even bothering the reader with the noise of the how.
-The second questions is: would the naming in `BiDimensionalCoordinates` still make sense if we were to switch to three-dimensional
+The second question is: would the naming in `BiDimensionalCoordinates` still make sense if we were to switch to three-dimensional
 coordinates? Let's see.
 
 ```kotlin
@@ -61,7 +61,7 @@ class Coordinates(private val x: Int,
 ```
 
 As a final note for typed languages, be mindful that the return type of a method is part of its naming. A method `sum`
-does not clearly expresses intent if its signature is like the following: `fun sum(addend: Coordinates): Int`
+does not clearly express intent if its signature is like the following: `fun sum(addend: Coordinates): Int`
 
 <br/>  
 

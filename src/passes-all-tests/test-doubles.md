@@ -6,7 +6,7 @@ When testing a class, often we need to create a lot of objects just for the sake
 Because of the above, tests can become time-consuming and tedious. Fortunately, we can remediate by using test doubles. For the sake
 of development speed, test doubles are usually created via testing libraries. For instance, in Kotlin there is
 [MockK](https://mockk.io/) among others. Taking the following code as example, let's define the different types of test doubles
-and how they look like in a test when using a library like MockK.
+and what they look like in a test when using a library like MockK.
 
 ```kotlin
 class Greeter(private val validator: Validator) {
@@ -74,7 +74,7 @@ In the following test,
 
 **Spies**  
 The test checks that their public methods are called with specific input parameters. In the
-following test, `validator` is spy.
+following test, `validator` is a spy.
 
 ```kotlin
 @Test

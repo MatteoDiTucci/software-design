@@ -1,6 +1,6 @@
 ## Dependency inversion principle
 
-Code that changes frequently should depend on code that rarely changes. This is important to minimises the amount of code
+Code that changes frequently should depend on code that rarely changes. This is important to minimise the amount of code
 we need to adjust when implementing new specifications. Let's take a look at the following example.
 
 ```kotlin
@@ -34,7 +34,7 @@ In the above code, the class `Transfer` depends on `TransferFile` as the former 
 in the `save` method. Now let's assume we know that the class `TransferFile` is going to change a lot in the future, 
 for instance because it might become a different class that saves `Transfer` to a database or because it will connect
 to a third party api over the internet and its `save` method signature might change. Even worse, we won't be able to modify `TransferFile`
-in the future as another developer is going to take care of it. In this situation, the risk is that everytime `TransferFile`
+in the future as another developer is going to take care of it. In this situation, the risk is that every time `TransferFile`
 changes, we will be forced to change our `Transfer` class as well. We can prevent this by leveraging the dependency inversion
 principle like in the following code.
 
@@ -77,7 +77,7 @@ The above code differs from the original one for three aspects:
 
 With this, we have inverted the dependency we had from `Transfer` to `TransfersFile`. In fact, `Transfer` has become unaware
 of any change that might happen to `TransfersFile`. Furthermore, `Transfer` becomes in general unaware of the technology
-used to store it: as far as a class implements `TransferStorage`, it can be passed to `Transfer` 
+used to store it: as long as a class implements `TransferStorage`, it can be passed to `Transfer` 
 inside the `main` method of `App`. This means we could be using a new class `TransfersDatabase` and `Transfer` would not know it.
 On the contrary, `TransfersFile` now depends on `TransferStorage` but that's fine as we know `TransferStorage` will rarely
 change.  

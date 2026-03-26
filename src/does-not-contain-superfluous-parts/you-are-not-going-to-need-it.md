@@ -34,7 +34,7 @@ enum class TrafficLightColour {
 
 The above code satisfies the specifications. However, one might say that traffic lights for pedestrians are usually timed: you press
 a button and it will take some seconds before the colour changes. This was not requested, but as it seems to be a more
-faithful representation of a pedestrian traffic light, so one might decide to go ahead like follows.
+faithful representation of a pedestrian traffic light, one might decide to go ahead as follows.
 
 ```kotlin
 class TrafficLight(private var colour: TrafficLightColour) {
@@ -68,7 +68,7 @@ enum class TrafficLightColour {
 }
 ```
 
-Changing the behaviour of `changeColour` in `TrafficLight` had no benefits for what we are concerned with the current specifications. However,
+Changing the behaviour of `changeColour` in `TrafficLight` had no benefits given the current specifications. However,
 it added useless code inside the `TrafficLight` class and it forced all callers of the `changeColour` method to provide a value for
 `milliSecondsToWait` which, given the current specifications, will always be 0.
 

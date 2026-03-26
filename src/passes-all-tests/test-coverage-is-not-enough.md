@@ -1,6 +1,6 @@
 ## Test coverage is not enough
 Test coverage measures how much code in a codebase is invoked when we run all tests. However, it is not a measure of quality
-of the tests. This means a codebase with 100% of coverage can still be plenty of bugs. Let's take as example the following code.
+of the tests. This means a codebase with 100% of coverage can still be full of bugs. Let's take as example the following code.
 
 ```kotlin
 data class Bill(private val amount: Int) {

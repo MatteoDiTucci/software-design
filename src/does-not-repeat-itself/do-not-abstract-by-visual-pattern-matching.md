@@ -18,7 +18,7 @@ class Rectangle(private val width: Int, private val height: Int) {
 }
 ```
 
-When seeing a piece of code like the above, one might be tempted to remove the duplication of the `perimeter` method like follows.
+When seeing a piece of code like the above, one might be tempted to remove the duplication of the `perimeter` method as follows.
 
 ```kotlin
 class Shape(private val width: Int, private val height: Int) {

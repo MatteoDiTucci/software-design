@@ -53,7 +53,7 @@ class Percentage(private val percentage: BigDecimal) {
 }
 ```
 
-At this point for the client code nothing has changed: everybody still use the method `discountedOf` while `newDiscountedOf`
+At this point for the client code nothing has changed: everybody still uses the method `discountedOf` while `newDiscountedOf`
 is dead code.
 
 ### 2. Migrate clients one by one
@@ -90,14 +90,14 @@ class Percentage(private val percentage: BigDecimal) {
 }
 ```
 
-The end result is the same as we would have done it in one shot. However, we made the refactoring more maneageable by
+The end result is the same as we would have done it in one shot. However, we made the refactoring more manageable by
 breaking it down into smaller steps.
 
 ### Further applications
 Expand and contract is very useful to avoid merge conflicts, no matter if you are using [trunk base development or feature branches](https://martinfowler.com/articles/branching-patterns.html).
 Especially with trunk based development, it plays very well with the use of [feature toggles](https://martinfowler.com/articles/feature-toggles.html).
 
-Furthermore, despite the above example is about a class method, the same approach is applicable to api contracts.
+Furthermore, despite the above example being about a class method, the same approach is applicable to api contracts.
 Let's assume for instance a POST REST API with the following body:
 
 ```json

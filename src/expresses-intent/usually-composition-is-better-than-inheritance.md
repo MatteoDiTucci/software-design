@@ -50,9 +50,9 @@ fun main() {
 
 You can see above that the method `minHourlyWageInEur` is a problem for `Student` as it is not supposed to have a wage.
 That's why we are forced to override it to throw an Exception in case it is invoked by mistake.
-Ideally, we would like to avoid for `Student` to implement `minHourlyWageInEur`, but because of inheritance, we are stuck with it.
+Ideally, we would like to avoid having `Student` implement `minHourlyWageInEur`, but because of inheritance, we are stuck with it.
 
-Let's see instead how things would look like if we were to use composition:
+Let's see instead what things would look like if we were to use composition:
 ```kotlin
 import java.math.BigDecimal
 
@@ -95,7 +95,7 @@ public methods of the class we inherited from.
 
 
 Be mindful that inheritance is not intrinsically bad. Like any other tool it is just the way we use it which can be troublesome.
-Despite inheritance usually being not great to share state or behaviour across classes, it is very useful to establish [is-a](https://en.wikipedia.org/wiki/Is-a) 
+Despite inheritance not usually being great to share state or behaviour across classes, it is very useful to establish [is-a](https://en.wikipedia.org/wiki/Is-a) 
 relationships which is one way to leverage [polymorphism](../does-not-repeat-itself/polymorphism.html)
 
 

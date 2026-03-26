@@ -2,12 +2,12 @@
 
 ### Current status
 On pause: half of the chapters are finished, the remaining only contain the recommended reads.
-No plan to resume in the near future as for October 2025.
+No plan to resume in the near future as of October 2025.
 
 ### Why read this book
 Software design is a craft not a science. To master it you cannot just study a book that explains comprehensively all the theory behind it.
-You have to read the literature of many great developers, looking for advices that repeat: that's what is currently considered good software design.
-However, the literature is vast, and it takes much time to get the big picture out of single sources.
+You have to read the literature of many great developers, looking for advice that repeats: that's what is currently considered good software design.
+However, the literature is vast, and it takes a lot of time to get the big picture out of single sources.
 This book makes three promises:
 * to be a compendium of what contributes to good software design
 * to be very succinct
@@ -15,9 +15,9 @@ This book makes three promises:
 
 ### Who should read this book
 The book is intended mainly for people who just started their journey into software design or who are in the middle of it.
-If you have being seriously studying the topic for 5+ years, likely you are not going to find big surprises. However, I still
-suggest you to go through the table of contents: you might find one or two things worth a quick read.
-As a last consideration, the book is heavily skewed towards object-oriented programming though many advices apply to all [programming paradigms](http://www.cs.albany.edu/~sdc/CSI500/Downloads/ProgrammingParadigmsVanRoyChapter.pdf).
+If you have been seriously studying the topic for 5+ years, likely you are not going to find big surprises. However, I still
+suggest you go through the table of contents: you might find one or two things worth a quick read.
+As a last consideration, the book is heavily skewed towards object-oriented programming though many pieces of advice apply to all [programming paradigms](http://www.cs.albany.edu/~sdc/CSI500/Downloads/ProgrammingParadigmsVanRoyChapter.pdf).
 Code examples are written in Kotlin, but they are very basic so you do not need any prior knowledge (Kotlin enthusiasts will forgive me some syntax choices :) ).
 
 ### Who I am

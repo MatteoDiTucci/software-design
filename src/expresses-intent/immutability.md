@@ -46,7 +46,7 @@ class App {
 
 Just looking at the `main` method of `App`, we would expect `result` to be `The room is bright`. However, because of the
 `Room` constructor, the actual content of `result` is `The room is dark`. To avoid this bad surprise, `LightBulb` can become 
-immutable, meaning its state cannot be modified. Let's take a look how we can achieve this.
+immutable, meaning its state cannot be modified. Let's take a look at how we can achieve this.
 
 ```kotlin
 enum class LightBulbState {
@@ -97,13 +97,13 @@ The above code differs from the original one for three aspects:
 * The constructor of `Room` stores the brand-new `LightBulb` returned by the invocation of `setState`, instead of the `LightBulb` passed as a constructor parameter
 * The `LightBulb` constructor uses `val` instead of `var` (in Kotlin a variable defined as `val` cannot be re-assigned)
 
-Now the content of result in the `main` method of `App` is what we would expect from the beginning: `The room is bright`.
+Now the content of `result` in the `main` method of `App` is what we would expect from the beginning: `The room is bright`.
 Immutability makes it easier to reason about a piece of code and it is a game changer when [concurrency](https://en.wikipedia.org/wiki/Concurrency_(computer_science))
 comes into play. To obtain immutability we need to:
 * return a new instance of an object instead of modifying its state
 * prevent the re-assignment of variables
 
-Unfortunately it can be tricky to write immutable code. Let's take a look at the following piece of example.
+Unfortunately it can be tricky to write immutable code. Let's take a look at the following example.
 
 ```kotlin
 class Shelf(private val books: List<String>) {
@@ -158,7 +158,7 @@ class App {
 
 The content of `result` in the `main` method of `App` is now `The shelf contains 2 books`.  
 
-As a final note, reasoning about state is hard and that's why it is worth deepen the paradigm of functional programming
+As a final note, reasoning about state is hard and that's why it is worth deepening the paradigm of functional programming
 which removes the concept of state as much as possible. 
 
 <br/>
