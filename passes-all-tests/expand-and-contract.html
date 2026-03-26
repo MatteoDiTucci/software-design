@@ -210,7 +210,7 @@ class Percentage(private val percentage: BigDecimal) {
     }
 }
 </code></pre>
-<p>At this point for the client code nothing has changed: everybody still use the method <code>discountedOf</code> while <code>newDiscountedOf</code>
+<p>At this point for the client code nothing has changed: everybody still uses the method <code>discountedOf</code> while <code>newDiscountedOf</code>
 is dead code.</p>
 <h3><a class="header" href="#2-migrate-clients-one-by-one" id="2-migrate-clients-one-by-one">2. Migrate clients one by one</a></h3>
 <p>Now we can migrate the client code. However, instead of doing it all at once, we can refactor one client at a time.
@@ -242,12 +242,12 @@ class Percentage(private val percentage: BigDecimal) {
     }
 }
 </code></pre>
-<p>The end result is the same as we would have done it in one shot. However, we made the refactoring more maneageable by
+<p>The end result is the same as we would have done it in one shot. However, we made the refactoring more manageable by
 breaking it down into smaller steps.</p>
 <h3><a class="header" href="#further-applications" id="further-applications">Further applications</a></h3>
 <p>Expand and contract is very useful to avoid merge conflicts, no matter if you are using <a href="https://martinfowler.com/articles/branching-patterns.html">trunk base development or feature branches</a>.
 Especially with trunk based development, it plays very well with the use of <a href="https://martinfowler.com/articles/feature-toggles.html">feature toggles</a>.</p>
-<p>Furthermore, despite the above example is about a class method, the same approach is applicable to api contracts.
+<p>Furthermore, despite the above example being about a class method, the same approach is applicable to api contracts.
 Let's assume for instance a POST REST API with the following body:</p>
 <pre><code class="language-json">{
   &quot;price&quot; : 72.9,

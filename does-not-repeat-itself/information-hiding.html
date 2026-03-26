@@ -200,7 +200,7 @@ class Game{
 <li>The die faces are modelled as integer numbers</li>
 <li>A die wins over another if the former <code>value</code> is greater than the latter</li>
 </ul>
-<p>If any of the above two change, we will need to adjust <code>Game</code>  as its <code>play</code> method uses that information.
+<p>If either of the above two changes, we will need to adjust <code>Game</code> as its <code>play</code> method uses that information.
 An example of such changes is a new rule by which the number 3 wins over any other number.
 However, we can prevent those unintended changes in <code>Game</code> by not leaking information out of <code>Die</code> as follows.</p>
 <pre><code class="language-kotlin">class Die {

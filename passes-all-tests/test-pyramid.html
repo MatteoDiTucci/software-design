@@ -165,7 +165,7 @@
                     <main>
                         <h2><a class="header" href="#test-pyramid" id="test-pyramid">Test pyramid</a></h2>
 <p>There are different kinds of tests, each one meant for a different purpose. Before describing the most common ones, let's
-clarify in advance a couple of terms. For <em>service</em> we mean a bunch of code deployed as a whole. For
+clarify in advance a couple of terms. By <em>service</em> we mean a bunch of code deployed as a whole. By
 <em>external dependencies</em> we mean anything that is reached over the network, like a database, another team REST endpoint, a queue, third party apis, etc.</p>
 <ul>
 <li><strong>Acceptance tests</strong><br />
@@ -174,7 +174,7 @@ across different services. External dependencies are replaced through libraries 
 or <a href="http://wiremock.org/">Wiremock</a>. In a web application for instance, acceptance tests are defined with tools like <a href="https://www.selenium.dev/">Selenium</a>
 or <a href="https://www.cypress.io/">Cypress</a>.</li>
 <li><strong>Functional tests</strong><br />
-Check that a feature behaves as expected considering a single layer of a service. For example, if a service have both back end and
+Check that a feature behaves as expected considering a single layer of a service. For example, if a service has both back end and
 front end, there will be distinct functional tests for the back end and front end. External dependencies are replaced either
 by libraries like <a href="https://github.com/localstack/localstack">LocalStack</a> or by <a href="test-doubles.html">test doubles</a>.
 Functional tests are also called component tests.</li>

@@ -208,7 +208,7 @@ class App {
 </code></pre>
 <p>Just looking at the <code>main</code> method of <code>App</code>, we would expect <code>result</code> to be <code>The room is bright</code>. However, because of the
 <code>Room</code> constructor, the actual content of <code>result</code> is <code>The room is dark</code>. To avoid this bad surprise, <code>LightBulb</code> can become 
-immutable, meaning its state cannot be modified. Let's take a look how we can achieve this.</p>
+immutable, meaning its state cannot be modified. Let's take a look at how we can achieve this.</p>
 <pre><code class="language-kotlin">enum class LightBulbState {
     ON {
         override fun lightUp(): String = &quot;bright&quot;
@@ -257,14 +257,14 @@ App().main()
 <li>The constructor of <code>Room</code> stores the brand-new <code>LightBulb</code> returned by the invocation of <code>setState</code>, instead of the <code>LightBulb</code> passed as a constructor parameter</li>
 <li>The <code>LightBulb</code> constructor uses <code>val</code> instead of <code>var</code> (in Kotlin a variable defined as <code>val</code> cannot be re-assigned)</li>
 </ul>
-<p>Now the content of result in the <code>main</code> method of <code>App</code> is what we would expect from the beginning: <code>The room is bright</code>.
+<p>Now the content of <code>result</code> in the <code>main</code> method of <code>App</code> is what we would expect from the beginning: <code>The room is bright</code>.
 Immutability makes it easier to reason about a piece of code and it is a game changer when <a href="https://en.wikipedia.org/wiki/Concurrency_(computer_science)">concurrency</a>
 comes into play. To obtain immutability we need to:</p>
 <ul>
 <li>return a new instance of an object instead of modifying its state</li>
 <li>prevent the re-assignment of variables</li>
 </ul>
-<p>Unfortunately it can be tricky to write immutable code. Let's take a look at the following piece of example.</p>
+<p>Unfortunately it can be tricky to write immutable code. Let's take a look at the following example.</p>
 <pre><code class="language-kotlin">class Shelf(private val books: List&lt;String&gt;) {
 
   fun numberOfBooks(): Int {
@@ -312,7 +312,7 @@ class App {
 }
 </code></pre>
 <p>The content of <code>result</code> in the <code>main</code> method of <code>App</code> is now <code>The shelf contains 2 books</code>.</p>
-<p>As a final note, reasoning about state is hard and that's why it is worth deepen the paradigm of functional programming
+<p>As a final note, reasoning about state is hard and that's why it is worth deepening the paradigm of functional programming
 which removes the concept of state as much as possible. </p>
 <br/>
 <h4><a class="header" href="#recommended-reads" id="recommended-reads">Recommended reads</a></h4>

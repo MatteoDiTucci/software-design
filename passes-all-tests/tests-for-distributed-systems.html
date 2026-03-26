@@ -169,7 +169,7 @@ As an example, let's take a Price microservice which needs to contact three othe
 We are responsible for the Price microservice only, while other teams take care of Membership, Discount and Inventory microservices respectively.<br />
 <img src="images/distributed-systems-example.png" alt="distributed-systems-example.png" /></p>
 <p>Let's assume we want to write an acceptance test to verify the functionality of calculating a price.
-For this purpose, we need also the other three microservices to be up running while the acceptance test runs.
+For this purpose, we need also the other three microservices to be up and running while the acceptance test runs.
 Usually there are four ways to achieve this. Each one has pros and cons, but in my experience, the first has proved to be superior.<br />
 In all four alternatives, when we say locally, we mean both the developers laptops and the <a href="https://martinfowler.com/articles/continuousIntegration.html">continuous integration</a> machine.</p>
 <h3><a class="header" href="#stub-the-three-microservices-integration-locally-and-use-in-depth-smoke-tests" id="stub-the-three-microservices-integration-locally-and-use-in-depth-smoke-tests">Stub the three microservices integration locally and use in depth smoke tests</a></h3>
@@ -179,7 +179,7 @@ This means that despite the integration with the three microservices might happe
 <p>Regarding the smoke test, it triggers the real integration between the four microservices, as a production shopper request would do.</p>
 <p>Pros:</p>
 <ul>
-<li>The smoke test verifies the real logic for both 4 microservices</li>
+<li>The smoke test verifies the real logic for all 4 microservices</li>
 <li>No extra infrastructure needed locally</li>
 <li>No powerful hardware needed locally</li>
 <li>Chance of writing many functional tests in exchange for the acceptance test as the former is faster to run, write and maintain than the latter</li>
@@ -195,11 +195,11 @@ This late feedback loop around integration can be fixed by using contract testin
 <p>This implies that the acceptance test reaches out to the dev environment where Inventory, Discount and Membership microservices are deployed.</p>
 <p>Pros:</p>
 <ul>
-<li>The acceptance test verifies the real logic for both 4 microservices, nothing is stubbed</li>
+<li>The acceptance test verifies the real logic for all 4 microservices, nothing is stubbed</li>
 <li>No extra infrastructure needed locally</li>
 <li>No powerful hardware needed</li>
 </ul>
-<p>Cons</p>
+<p>Cons:</p>
 <ul>
 <li>Network connectivity is needed</li>
 <li>Extra network configuration (e.g. VPN, firewall rules)</li>
@@ -210,11 +210,11 @@ This late feedback loop around integration can be fixed by using contract testin
 <p>This implies fetching the executables of the other three microservices (e.g. Docker images, jar, etc.) and running them locally while the acceptance test is executed.</p>
 <p>Pros:</p>
 <ul>
-<li>The acceptance test verifies the real logic for both 4 microservices, nothing is stubbed</li>
+<li>The acceptance test verifies the real logic for all 4 microservices, nothing is stubbed</li>
 </ul>
 <p>Cons:</p>
 <ul>
-<li>Acceptance test is slow as all fours microservices have to startup first</li>
+<li>Acceptance test is slow as all four microservices have to start up first</li>
 <li>More powerful hardware is needed (usually ram and cpu) locally</li>
 <li>Extra infrastructure is needed to make available the Inventory, Discount and Membership microservices executables (e.g. VPN, access policies configuration, firewall rules, etc.)</li>
 <li>Extra setup is needed locally to run the acceptance tests (e.g. install Docker)</li>

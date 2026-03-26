@@ -200,7 +200,7 @@ class MinorPassport(private val name: String,
   }
 }
 </code></pre>
-<p>The above <code>CheckIn</code> class can be simplified by generalising <code>MinorPassport</code> to <code>Passport</code> like follows.</p>
+<p>The above <code>CheckIn</code> class can be simplified by generalising <code>MinorPassport</code> to <code>Passport</code> as follows.</p>
 <pre><code class="language-kotlin">class CheckIn(private val today: LocalDate) {
 
   fun checkPassport(passport: Passport): Boolean {

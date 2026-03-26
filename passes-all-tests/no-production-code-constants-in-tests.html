@@ -165,7 +165,7 @@
                     <main>
                         <h2><a class="header" href="#no-production-code-constants-in-tests" id="no-production-code-constants-in-tests">No production code constants in tests</a></h2>
 <p>When writing tests, we might be tempted to use production code constants to remove duplication. This creates a 
-conflict of interests by which a test is defined using part of the code that is supposed to test. Such a situation 
+conflict of interests by which a test is defined using part of the code it is supposed to test. Such a situation 
 can lead to bugs going unnoticed like in the following example.</p>
 <p>(In Kotlin, <code>companion object</code> is the way to define constants known at compile time, the equivalent of <code>static</code> in Java)</p>
 <pre><code class="language-kotlin">class Greeter {
@@ -189,8 +189,8 @@ fun `greet by name`() {
 }
 </code></pre>
 <p>The problem with the above code is that if by mistake we change the value of <code>DEFAULT_GREETING</code> from <code>&quot;Hello&quot;</code> to <code>&quot;Hellozxhgj&quot;</code>
-the test will still pass as it would be expecting <code>&quot;Hellozxhgj Andrea&quot;</code>. To catch this kind of bugs is 
-enough not to use the production constant <code>DEFAULT_GREETING</code> in the test like follows.</p>
+the test will still pass as it would be expecting <code>&quot;Hellozxhgj Andrea&quot;</code>. To catch this kind of bug it is
+enough not to use the production constant <code>DEFAULT_GREETING</code> in the test as follows.</p>
 <pre><code class="language-kotlin">@Test
   fun `greet by name`() {
     val greeter = Greeter()

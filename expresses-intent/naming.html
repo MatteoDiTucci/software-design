@@ -164,10 +164,10 @@
                 <div id="content" class="content">
                     <main>
                         <h2><a class="header" href="#naming" id="naming">Naming</a></h2>
-<p>Great naming let us understand what the code means without inspecting its details. In fact, we should be able
+<p>Great naming lets us understand what the code means without inspecting its details. In fact, we should be able
 to understand an entire codebase just reading the names of classes, methods and variables, never looking at what they contain.
 This clarity is reached by naming classes, methods and variables after what they do instead of how they do it.
-The how can be looked up later if more details are needed by inspecting the content. The benefits are two:</p>
+The how can be looked up later if more details are needed by inspecting the content. There are two benefits:</p>
 <ul>
 <li>names do not contain any noise</li>
 <li>if the implementation changes, the name remains relevant</li>
@@ -191,7 +191,7 @@ still express intent? Let's see.</p>
 }
 </code></pre>
 <p>The answer is yes, as the above class still expresses clear intent, without even bothering the reader with the noise of the how.
-The second questions is: would the naming in <code>BiDimensionalCoordinates</code> still make sense if we were to switch to three-dimensional
+The second question is: would the naming in <code>BiDimensionalCoordinates</code> still make sense if we were to switch to three-dimensional
 coordinates? Let's see.</p>
 <pre><code class="language-kotlin">class BiDimensionalCoordinates(private val x: Int, 
                                private val y: Int, 
@@ -215,7 +215,7 @@ its intent even when using three dimensions as shown below.</p>
 }
 </code></pre>
 <p>As a final note for typed languages, be mindful that the return type of a method is part of its naming. A method <code>sum</code>
-does not clearly expresses intent if its signature is like the following: <code>fun sum(addend: Coordinates): Int</code></p>
+does not clearly express intent if its signature is like the following: <code>fun sum(addend: Coordinates): Int</code></p>
 <br/>  
 <h4><a class="header" href="#recommended-reads" id="recommended-reads">Recommended reads</a></h4>
 <ul>

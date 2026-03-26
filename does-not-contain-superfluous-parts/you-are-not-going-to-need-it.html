@@ -198,7 +198,7 @@ enum class TrafficLightColour {
 </code></pre>
 <p>The above code satisfies the specifications. However, one might say that traffic lights for pedestrians are usually timed: you press
 a button and it will take some seconds before the colour changes. This was not requested, but as it seems to be a more
-faithful representation of a pedestrian traffic light, so one might decide to go ahead like follows.</p>
+faithful representation of a pedestrian traffic light, one might decide to go ahead as follows.</p>
 <pre><code class="language-kotlin">class TrafficLight(private var colour: TrafficLightColour) {
 
   fun changeColour(milliSecondsToWait: Long) {
@@ -229,7 +229,7 @@ enum class TrafficLightColour {
   abstract fun possibleToWalk(): Boolean
 }
 </code></pre>
-<p>Changing the behaviour of <code>changeColour</code> in <code>TrafficLight</code> had no benefits for what we are concerned with the current specifications. However,
+<p>Changing the behaviour of <code>changeColour</code> in <code>TrafficLight</code> had no benefits given the current specifications. However,
 it added useless code inside the <code>TrafficLight</code> class and it forced all callers of the <code>changeColour</code> method to provide a value for
 <code>milliSecondsToWait</code> which, given the current specifications, will always be 0.</p>
 <br/>  

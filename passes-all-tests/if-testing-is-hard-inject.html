@@ -199,8 +199,8 @@ fun `stores the names of the passengers`() {
 }
 </code></pre>
 <p>However, this is already a disappointment because we are forced to write a public method just for the sake of testing.
-Moreover, what if by specifications we must prevent any other code to query <code>Car</code> about its passengers?
-The solution can be to inject the <code>passengers</code> set a construction time.</p>
+Moreover, what if by specifications we must prevent any other code from querying <code>Car</code> about its passengers?
+The solution can be to inject the <code>passengers</code> set at construction time.</p>
 <pre><code class="language-kotlin">class Car(private val passengers: MutableSet&lt;String&gt;) {
 
   fun storePassenger(name: String) {
@@ -208,7 +208,7 @@ The solution can be to inject the <code>passengers</code> set a construction tim
   }
 }
 </code></pre>
-<p>Now we can test like follows.</p>
+<p>Now we can test as follows.</p>
 <pre><code class="language-kotlin">@Test
 fun `stores the names of the passengers`() {
   val passengers = HashSet()

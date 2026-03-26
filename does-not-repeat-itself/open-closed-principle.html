@@ -224,7 +224,7 @@ class LightBulb(private val state: LightBulbState) {
 <p>If this trend of specifications continues, we will end up having a very long <code>lightUp</code> method and many unit tests just 
 for it. The result will be <code>LightBulb</code> not clearly expressing its intent as well as being a hot spot containing too much
 knowledge. To prevent this we can spread the <code>lightUp</code> knowledge across the different values of <code>LightBulbState</code>
-like follows.</p>
+as follows.</p>
 <pre><code class="language-kotlin">enum class LightBulbState {
   ON {
       override fun lightUp(): String {

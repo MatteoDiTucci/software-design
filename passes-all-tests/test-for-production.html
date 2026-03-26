@@ -166,9 +166,9 @@
                         <h2><a class="header" href="#test-for-production" id="test-for-production">Test for production</a></h2>
 <p>Correct code which passes all tests can still fail once deployed in production.
 This happens because tests do not account for failures.<br />
-Example of failures are external apis being slow to respond or a spike of user requests saturating hardware resources.
+Examples of failures are external apis being slow to respond or a spike of user requests saturating hardware resources.
 To make our code resilient we need to embrace failure and mitigate its impact.</p>
-<p>Failure usually happen where our code accesses the network (e.g. database, external api, etc.).
+<p>Failures usually happen where our code accesses the network (e.g. database, external api, etc.).
 The following approaches help to mitigate its impact:</p>
 <ul>
 <li><strong>Fail fast</strong><br />
@@ -181,7 +181,7 @@ Use bulkheads.</li>
 Improve availability by absorbing load in buffers.
 Use queues and user notifications instead of synchronous responses.</li>
 <li><strong>Test error scenarios</strong><br />
-Use integration tests that simulates error cases like server timeout, connection error, slow responses, etc.</li>
+Use integration tests that simulate error cases like server timeout, connection error, slow responses, etc.</li>
 </ul>
 <br/>  
 <h4><a class="header" href="#recommended-reads" id="recommended-reads">Recommended reads</a></h4>

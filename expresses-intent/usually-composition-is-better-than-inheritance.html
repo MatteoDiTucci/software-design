@@ -209,8 +209,8 @@ fun main() {
 </code></pre>
 <p>You can see above that the method <code>minHourlyWageInEur</code> is a problem for <code>Student</code> as it is not supposed to have a wage.
 That's why we are forced to override it to throw an Exception in case it is invoked by mistake.
-Ideally, we would like to avoid for <code>Student</code> to implement <code>minHourlyWageInEur</code>, but because of inheritance, we are stuck with it.</p>
-<p>Let's see instead how things would look like if we were to use composition:</p>
+Ideally, we would like to avoid having <code>Student</code> implement <code>minHourlyWageInEur</code>, but because of inheritance, we are stuck with it.</p>
+<p>Let's see instead what things would look like if we were to use composition:</p>
 <pre><code class="language-kotlin">import java.math.BigDecimal
 
 class Person(private val name: String) {
@@ -248,7 +248,7 @@ of <code>Person</code>, among which the problematic <code>minHourlyWageInEur</co
 by a different team or even worse when they are part of an external library. We will be forced to handle any future change on the
 public methods of the class we inherited from.</p>
 <p>Be mindful that inheritance is not intrinsically bad. Like any other tool it is just the way we use it which can be troublesome.
-Despite inheritance usually being not great to share state or behaviour across classes, it is very useful to establish <a href="https://en.wikipedia.org/wiki/Is-a">is-a</a> 
+Despite inheritance not usually being great to share state or behaviour across classes, it is very useful to establish <a href="https://en.wikipedia.org/wiki/Is-a">is-a</a> 
 relationships which is one way to leverage <a href="../does-not-repeat-itself/polymorphism.html">polymorphism</a></p>
 <h4><a class="header" href="#recommended-reads" id="recommended-reads">Recommended reads</a></h4>
 <ul>

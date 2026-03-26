@@ -172,7 +172,7 @@
 <p>Because of the above, tests can become time-consuming and tedious. Fortunately, we can remediate by using test doubles. For the sake
 of development speed, test doubles are usually created via testing libraries. For instance, in Kotlin there is
 <a href="https://mockk.io/">MockK</a> among others. Taking the following code as example, let's define the different types of test doubles
-and how they look like in a test when using a library like MockK.</p>
+and what they look like in a test when using a library like MockK.</p>
 <pre><code class="language-kotlin">class Greeter(private val validator: Validator) {
 
   fun greetings(): String {
@@ -232,7 +232,7 @@ They have two responsibilities:</p>
 </code></pre>
 <p><strong>Spies</strong><br />
 The test checks that their public methods are called with specific input parameters. In the
-following test, <code>validator</code> is spy.</p>
+following test, <code>validator</code> is a spy.</p>
 <pre><code class="language-kotlin">@Test
   fun `performs validation on the name`() {
     val name = &quot;Andrea&quot;

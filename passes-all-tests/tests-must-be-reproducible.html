@@ -163,7 +163,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2><a class="header" href="#test-must-be-reproducible" id="test-must-be-reproducible">Test must be reproducible</a></h2>
+                        <h2><a class="header" href="#tests-must-be-reproducible" id="tests-must-be-reproducible">Tests must be reproducible</a></h2>
 <p>A test must not change throughout different executions, otherwise we would be running a different test every time.
 The risk is ending up with tests that fail without apparent reason or worse with tests passing despite the presence of bugs. 
 Let's consider the following example.</p>
@@ -184,7 +184,7 @@ fun `is valid during the year the subscription was made`() {
 }
 </code></pre>
 <p>The above test always passes during 2021. However, it will start failing from the 1st of January 2022 because of <code>LocalDate.now()</code>.
-To make the test deterministic we have to replace <code>LocalDate.now()</code> with a constant date like follows.</p>
+To make the test deterministic we have to replace <code>LocalDate.now()</code> with a constant date as follows.</p>
 <pre><code class="language-kotlin">@Test
   fun `is valid during the year the subscription was made`() {
     val book = AnnualSubscription(2021)

@@ -185,10 +185,10 @@ This is important because it helps us understand how to shape the load of the te
 we should run performance tests to measure the current value of the metrics we are interested in. After every refactoring,
 by running again the same performance tests, we measure the magnitude of the improvement and how much is still left to do.</p>
 <h3><a class="header" href="#theory-of-constraints" id="theory-of-constraints">Theory of constraints</a></h3>
-<p>When performance tests highlight a low performing metric, it is important to identify what is its main contributor. 
+<p>When performance tests highlight a low performing metric, it is important to identify what its main contributor is. 
 For instance, if response time is low, we need to identify how the time is spent across the system at different granularity.
 By this, we mean not only narrowing down macro components like front-end or database, but also architectural layers like
-domain or presentation, up to class of function level if necessary.</p>
+domain or presentation, up to class or function level if necessary.</p>
 <p>We should spend all our efforts on the single main contributor of the low performing metric. Once solved, move to the new main contributor.</p>
 <h3><a class="header" href="#continuous-testing" id="continuous-testing">Continuous testing</a></h3>
 <p>Performance tests should happen continuously, to immediately catch any degradation introduced by new code revisions. 

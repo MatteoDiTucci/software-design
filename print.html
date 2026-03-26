@@ -168,11 +168,11 @@
                         <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
 <h3><a class="header" href="#current-status" id="current-status">Current status</a></h3>
 <p>On pause: half of the chapters are finished, the remaining only contain the recommended reads.
-No plan to resume in the near future as for October 2025.</p>
+No plan to resume in the near future as of October 2025.</p>
 <h3><a class="header" href="#why-read-this-book" id="why-read-this-book">Why read this book</a></h3>
 <p>Software design is a craft not a science. To master it you cannot just study a book that explains comprehensively all the theory behind it.
-You have to read the literature of many great developers, looking for advices that repeat: that's what is currently considered good software design.
-However, the literature is vast, and it takes much time to get the big picture out of single sources.
+You have to read the literature of many great developers, looking for advice that repeats: that's what is currently considered good software design.
+However, the literature is vast, and it takes a lot of time to get the big picture out of single sources.
 This book makes three promises:</p>
 <ul>
 <li>to be a compendium of what contributes to good software design</li>
@@ -181,9 +181,9 @@ This book makes three promises:</p>
 </ul>
 <h3><a class="header" href="#who-should-read-this-book" id="who-should-read-this-book">Who should read this book</a></h3>
 <p>The book is intended mainly for people who just started their journey into software design or who are in the middle of it.
-If you have being seriously studying the topic for 5+ years, likely you are not going to find big surprises. However, I still
-suggest you to go through the table of contents: you might find one or two things worth a quick read.
-As a last consideration, the book is heavily skewed towards object-oriented programming though many advices apply to all <a href="http://www.cs.albany.edu/%7Esdc/CSI500/Downloads/ProgrammingParadigmsVanRoyChapter.pdf">programming paradigms</a>.
+If you have been seriously studying the topic for 5+ years, likely you are not going to find big surprises. However, I still
+suggest you go through the table of contents: you might find one or two things worth a quick read.
+As a last consideration, the book is heavily skewed towards object-oriented programming though many pieces of advice apply to all <a href="http://www.cs.albany.edu/%7Esdc/CSI500/Downloads/ProgrammingParadigmsVanRoyChapter.pdf">programming paradigms</a>.
 Code examples are written in Kotlin, but they are very basic so you do not need any prior knowledge (Kotlin enthusiasts will forgive me some syntax choices :) ).</p>
 <h3><a class="header" href="#who-i-am" id="who-i-am">Who I am</a></h3>
 <p>My name is Matteo Di Tucci, I currently work at ThoughtWorks.
@@ -212,13 +212,13 @@ This book is divided in 4 chapters, one for each of the simple code rules.</p>
 <p>The most important feature for a piece of software is that it behaves as expected. Tests reduce the likelihood of writing
 buggy code and without them software development becomes an exercise of faith. Although manually checking that everything works 
 still qualifies as testing, the real power resides in automated tests. Writing tests
-little by little as we progress with a codebase, creates a safety net that is always available and provides us with an immediate feedback.
+little by little as we progress with a codebase, creates a safety net that is always available and provides us with immediate feedback.
 It really is a super power and it gives us peace of mind.</p>
-<p>Automated tests is one of the three pillars that took anxiety away from my work as a developer. 
+<p>Automated tests are one of the three pillars that took anxiety away from my work as a developer. 
 The other two are continuous deployment and observability.</p>
 <h2><a class="header" href="#test-pyramid" id="test-pyramid">Test pyramid</a></h2>
 <p>There are different kinds of tests, each one meant for a different purpose. Before describing the most common ones, let's
-clarify in advance a couple of terms. For <em>service</em> we mean a bunch of code deployed as a whole. For
+clarify in advance a couple of terms. By <em>service</em> we mean a bunch of code deployed as a whole. By
 <em>external dependencies</em> we mean anything that is reached over the network, like a database, another team REST endpoint, a queue, third party apis, etc.</p>
 <ul>
 <li><strong>Acceptance tests</strong><br />
@@ -227,7 +227,7 @@ across different services. External dependencies are replaced through libraries 
 or <a href="http://wiremock.org/">Wiremock</a>. In a web application for instance, acceptance tests are defined with tools like <a href="https://www.selenium.dev/">Selenium</a>
 or <a href="https://www.cypress.io/">Cypress</a>.</li>
 <li><strong>Functional tests</strong><br />
-Check that a feature behaves as expected considering a single layer of a service. For example, if a service have both back end and
+Check that a feature behaves as expected considering a single layer of a service. For example, if a service has both back end and
 front end, there will be distinct functional tests for the back end and front end. External dependencies are replaced either
 by libraries like <a href="https://github.com/localstack/localstack">LocalStack</a> or by <a href="passes-all-tests/test-doubles.html">test doubles</a>.
 Functional tests are also called component tests.</li>
@@ -302,8 +302,8 @@ fun `stores the names of the passengers`() {
 }
 </code></pre>
 <p>However, this is already a disappointment because we are forced to write a public method just for the sake of testing.
-Moreover, what if by specifications we must prevent any other code to query <code>Car</code> about its passengers?
-The solution can be to inject the <code>passengers</code> set a construction time.</p>
+Moreover, what if by specifications we must prevent any other code from querying <code>Car</code> about its passengers?
+The solution can be to inject the <code>passengers</code> set at construction time.</p>
 <pre><code class="language-kotlin">class Car(private val passengers: MutableSet&lt;String&gt;) {
 
   fun storePassenger(name: String) {
@@ -311,7 +311,7 @@ The solution can be to inject the <code>passengers</code> set a construction tim
   }
 }
 </code></pre>
-<p>Now we can test like follows.</p>
+<p>Now we can test as follows.</p>
 <pre><code class="language-kotlin">@Test
 fun `stores the names of the passengers`() {
   val passengers = HashSet()
@@ -348,7 +348,7 @@ For this, we can use <code>MutableCollection&lt;String&gt;</code> instead of <co
 <p>Because of the above, tests can become time-consuming and tedious. Fortunately, we can remediate by using test doubles. For the sake
 of development speed, test doubles are usually created via testing libraries. For instance, in Kotlin there is
 <a href="https://mockk.io/">MockK</a> among others. Taking the following code as example, let's define the different types of test doubles
-and how they look like in a test when using a library like MockK.</p>
+and what they look like in a test when using a library like MockK.</p>
 <pre><code class="language-kotlin">class Greeter(private val validator: Validator) {
 
   fun greetings(): String {
@@ -408,7 +408,7 @@ They have two responsibilities:</p>
 </code></pre>
 <p><strong>Spies</strong><br />
 The test checks that their public methods are called with specific input parameters. In the
-following test, <code>validator</code> is spy.</p>
+following test, <code>validator</code> is a spy.</p>
 <pre><code class="language-kotlin">@Test
   fun `performs validation on the name`() {
     val name = &quot;Andrea&quot;
@@ -447,8 +447,8 @@ an in memory database (e.g. H2) instead of a production one (e.g. PostgreSQL)</p
 <h4><a class="header" href="#teach-me-back-3" id="teach-me-back-3">Teach me back</a></h4>
 <p>I really appreciate any <a href="passes-all-tests/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#test-driven-development" id="test-driven-development">Test driven development</a></h2>
-<p>Test driven development (TDD) is an approach to development where tests are written before the actual code. The core of TDD is a three
-steps process:</p>
+<p>Test driven development (TDD) is an approach to development where tests are written before the actual code. The core of TDD is a three-step
+process:</p>
 <ol>
 <li>Write a failing test</li>
 <li>Make the test pass</li>
@@ -456,11 +456,11 @@ steps process:</p>
 </ol>
 <p>Let's go through each step using the following specifications as example:</p>
 <ul>
-<li>I want measure things in meters</li>
+<li>I want to measure things in meters</li>
 <li>I want to be able to sum two measurements in meters</li>
 </ul>
 <p><strong>Write a failing test</strong><br />
-At this step we pick a single aspect of the specification we want to verify: the smallest the better. The common mistake
+At this step we pick a single aspect of the specification we want to verify: the smaller, the better. The common mistake
 here is to overthink it because we want to take into account all the specifications and their nuances. Don't do it now,
 the third step will take care of it. For now let's just write a test even if it seems silly for how simple it is. Moreover,
 don't focus on writing good code either: the third step will take care of this as well. Finally, remember to run the test
@@ -473,8 +473,8 @@ fun `summing 1 meter and 2 meters returns 3 meters`() {
 }
 </code></pre>
 <p><strong>Make the test pass</strong><br />
-Now that we have a failing test we need to make it pass. Be mindful that compilation errors in the test is the same of
-running it and see it fail. At this step as at the previous, let's not focus about writing good code, that's something for
+Now that we have a failing test we need to make it pass. Be mindful that compilation errors in the test are the same as
+running it and seeing it fail. At this step as at the previous, let's not focus on writing good code, that's something for
 the third step: just make the test pass, whatever it takes.</p>
 <pre><code class="language-kotlin">data class MeasureInMeters(private val amount: Int) {
 
@@ -510,9 +510,9 @@ pair of numbers.</p>
 }
 </code></pre>
 <p>The third step is also when we look at the bigger picture. In this example there is little to do, but usually this is the moment
-when we pay attention on how the new code we are writing fits into the existing codebase (e.g. knowledge
+when we pay attention to how the new code we are writing fits into the existing codebase (e.g. knowledge
 duplication, edge cases for some other classes we did not think before, etc.). We do not need to address these concerns
-right away, but it is good to note them down so we can tackle them once we have done satisfying the bit of specifications
+right away, but it is good to note them down so we can tackle them once we have finished satisfying the bit of specifications
 we are currently working on. Once we are happy with the quality of the code we have just written, we can restart
 the three steps process. The focus will be either another test for the bit of specification we are focusing on
 (e.g. adding 2 negative integers) or a test for another bit of the specifications.</p>
@@ -535,7 +535,7 @@ that is not tested. However, be mindful that we can still write buggy code even 
 <p>I really appreciate any <a href="passes-all-tests/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#test-coverage-is-not-enough" id="test-coverage-is-not-enough">Test coverage is not enough</a></h2>
 <p>Test coverage measures how much code in a codebase is invoked when we run all tests. However, it is not a measure of quality
-of the tests. This means a codebase with 100% of coverage can still be plenty of bugs. Let's take as example the following code.</p>
+of the tests. This means a codebase with 100% of coverage can still be full of bugs. Let's take as example the following code.</p>
 <pre><code class="language-kotlin">data class Bill(private val amount: Int) {
 
   fun split(parts: Int): Bill {
@@ -571,7 +571,7 @@ combination of inputs is not feasible, but there are some testing methodologies 
 </ul>
 <h4><a class="header" href="#teach-me-back-5" id="teach-me-back-5">Teach me back</a></h4>
 <p>I really appreciate any <a href="passes-all-tests/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
-<h2><a class="header" href="#test-must-be-reproducible" id="test-must-be-reproducible">Test must be reproducible</a></h2>
+<h2><a class="header" href="#tests-must-be-reproducible" id="tests-must-be-reproducible">Tests must be reproducible</a></h2>
 <p>A test must not change throughout different executions, otherwise we would be running a different test every time.
 The risk is ending up with tests that fail without apparent reason or worse with tests passing despite the presence of bugs. 
 Let's consider the following example.</p>
@@ -592,7 +592,7 @@ fun `is valid during the year the subscription was made`() {
 }
 </code></pre>
 <p>The above test always passes during 2021. However, it will start failing from the 1st of January 2022 because of <code>LocalDate.now()</code>.
-To make the test deterministic we have to replace <code>LocalDate.now()</code> with a constant date like follows.</p>
+To make the test deterministic we have to replace <code>LocalDate.now()</code> with a constant date as follows.</p>
 <pre><code class="language-kotlin">@Test
   fun `is valid during the year the subscription was made`() {
     val book = AnnualSubscription(2021)
@@ -611,7 +611,7 @@ To make the test deterministic we have to replace <code>LocalDate.now()</code> w
 <p>I really appreciate any <a href="passes-all-tests/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#no-production-code-constants-in-tests" id="no-production-code-constants-in-tests">No production code constants in tests</a></h2>
 <p>When writing tests, we might be tempted to use production code constants to remove duplication. This creates a 
-conflict of interests by which a test is defined using part of the code that is supposed to test. Such a situation 
+conflict of interests by which a test is defined using part of the code it is supposed to test. Such a situation 
 can lead to bugs going unnoticed like in the following example.</p>
 <p>(In Kotlin, <code>companion object</code> is the way to define constants known at compile time, the equivalent of <code>static</code> in Java)</p>
 <pre><code class="language-kotlin">class Greeter {
@@ -635,8 +635,8 @@ fun `greet by name`() {
 }
 </code></pre>
 <p>The problem with the above code is that if by mistake we change the value of <code>DEFAULT_GREETING</code> from <code>&quot;Hello&quot;</code> to <code>&quot;Hellozxhgj&quot;</code>
-the test will still pass as it would be expecting <code>&quot;Hellozxhgj Andrea&quot;</code>. To catch this kind of bugs is 
-enough not to use the production constant <code>DEFAULT_GREETING</code> in the test like follows.</p>
+the test will still pass as it would be expecting <code>&quot;Hellozxhgj Andrea&quot;</code>. To catch this kind of bug it is
+enough not to use the production constant <code>DEFAULT_GREETING</code> in the test as follows.</p>
 <pre><code class="language-kotlin">@Test
   fun `greet by name`() {
     val greeter = Greeter()
@@ -695,7 +695,7 @@ class Percentage(private val percentage: BigDecimal) {
     }
 }
 </code></pre>
-<p>At this point for the client code nothing has changed: everybody still use the method <code>discountedOf</code> while <code>newDiscountedOf</code>
+<p>At this point for the client code nothing has changed: everybody still uses the method <code>discountedOf</code> while <code>newDiscountedOf</code>
 is dead code.</p>
 <h3><a class="header" href="#2-migrate-clients-one-by-one" id="2-migrate-clients-one-by-one">2. Migrate clients one by one</a></h3>
 <p>Now we can migrate the client code. However, instead of doing it all at once, we can refactor one client at a time.
@@ -727,12 +727,12 @@ class Percentage(private val percentage: BigDecimal) {
     }
 }
 </code></pre>
-<p>The end result is the same as we would have done it in one shot. However, we made the refactoring more maneageable by
+<p>The end result is the same as we would have done it in one shot. However, we made the refactoring more manageable by
 breaking it down into smaller steps.</p>
 <h3><a class="header" href="#further-applications" id="further-applications">Further applications</a></h3>
 <p>Expand and contract is very useful to avoid merge conflicts, no matter if you are using <a href="https://martinfowler.com/articles/branching-patterns.html">trunk base development or feature branches</a>.
 Especially with trunk based development, it plays very well with the use of <a href="https://martinfowler.com/articles/feature-toggles.html">feature toggles</a>.</p>
-<p>Furthermore, despite the above example is about a class method, the same approach is applicable to api contracts.
+<p>Furthermore, despite the above example being about a class method, the same approach is applicable to api contracts.
 Let's assume for instance a POST REST API with the following body:</p>
 <pre><code class="language-json">{
   &quot;price&quot; : 72.9,
@@ -767,9 +767,9 @@ Using the expand and contract approach, we would first expand:</p>
 <h2><a class="header" href="#test-for-production" id="test-for-production">Test for production</a></h2>
 <p>Correct code which passes all tests can still fail once deployed in production.
 This happens because tests do not account for failures.<br />
-Example of failures are external apis being slow to respond or a spike of user requests saturating hardware resources.
+Examples of failures are external apis being slow to respond or a spike of user requests saturating hardware resources.
 To make our code resilient we need to embrace failure and mitigate its impact.</p>
-<p>Failure usually happen where our code accesses the network (e.g. database, external api, etc.).
+<p>Failures usually happen where our code accesses the network (e.g. database, external api, etc.).
 The following approaches help to mitigate its impact:</p>
 <ul>
 <li><strong>Fail fast</strong><br />
@@ -782,7 +782,7 @@ Use bulkheads.</li>
 Improve availability by absorbing load in buffers.
 Use queues and user notifications instead of synchronous responses.</li>
 <li><strong>Test error scenarios</strong><br />
-Use integration tests that simulates error cases like server timeout, connection error, slow responses, etc.</li>
+Use integration tests that simulate error cases like server timeout, connection error, slow responses, etc.</li>
 </ul>
 <br/>  
 <h4><a class="header" href="#recommended-reads-7" id="recommended-reads-7">Recommended reads</a></h4>
@@ -803,7 +803,7 @@ As an example, let's take a Price microservice which needs to contact three othe
 We are responsible for the Price microservice only, while other teams take care of Membership, Discount and Inventory microservices respectively.<br />
 <img src="passes-all-tests/images/distributed-systems-example.png" alt="distributed-systems-example.png" /></p>
 <p>Let's assume we want to write an acceptance test to verify the functionality of calculating a price.
-For this purpose, we need also the other three microservices to be up running while the acceptance test runs.
+For this purpose, we need also the other three microservices to be up and running while the acceptance test runs.
 Usually there are four ways to achieve this. Each one has pros and cons, but in my experience, the first has proved to be superior.<br />
 In all four alternatives, when we say locally, we mean both the developers laptops and the <a href="https://martinfowler.com/articles/continuousIntegration.html">continuous integration</a> machine.</p>
 <h3><a class="header" href="#stub-the-three-microservices-integration-locally-and-use-in-depth-smoke-tests" id="stub-the-three-microservices-integration-locally-and-use-in-depth-smoke-tests">Stub the three microservices integration locally and use in depth smoke tests</a></h3>
@@ -813,7 +813,7 @@ This means that despite the integration with the three microservices might happe
 <p>Regarding the smoke test, it triggers the real integration between the four microservices, as a production shopper request would do.</p>
 <p>Pros:</p>
 <ul>
-<li>The smoke test verifies the real logic for both 4 microservices</li>
+<li>The smoke test verifies the real logic for all 4 microservices</li>
 <li>No extra infrastructure needed locally</li>
 <li>No powerful hardware needed locally</li>
 <li>Chance of writing many functional tests in exchange for the acceptance test as the former is faster to run, write and maintain than the latter</li>
@@ -829,11 +829,11 @@ This late feedback loop around integration can be fixed by using contract testin
 <p>This implies that the acceptance test reaches out to the dev environment where Inventory, Discount and Membership microservices are deployed.</p>
 <p>Pros:</p>
 <ul>
-<li>The acceptance test verifies the real logic for both 4 microservices, nothing is stubbed</li>
+<li>The acceptance test verifies the real logic for all 4 microservices, nothing is stubbed</li>
 <li>No extra infrastructure needed locally</li>
 <li>No powerful hardware needed</li>
 </ul>
-<p>Cons</p>
+<p>Cons:</p>
 <ul>
 <li>Network connectivity is needed</li>
 <li>Extra network configuration (e.g. VPN, firewall rules)</li>
@@ -844,11 +844,11 @@ This late feedback loop around integration can be fixed by using contract testin
 <p>This implies fetching the executables of the other three microservices (e.g. Docker images, jar, etc.) and running them locally while the acceptance test is executed.</p>
 <p>Pros:</p>
 <ul>
-<li>The acceptance test verifies the real logic for both 4 microservices, nothing is stubbed</li>
+<li>The acceptance test verifies the real logic for all 4 microservices, nothing is stubbed</li>
 </ul>
 <p>Cons:</p>
 <ul>
-<li>Acceptance test is slow as all fours microservices have to startup first</li>
+<li>Acceptance test is slow as all four microservices have to start up first</li>
 <li>More powerful hardware is needed (usually ram and cpu) locally</li>
 <li>Extra infrastructure is needed to make available the Inventory, Discount and Membership microservices executables (e.g. VPN, access policies configuration, firewall rules, etc.)</li>
 <li>Extra setup is needed locally to run the acceptance tests (e.g. install Docker)</li>
@@ -899,10 +899,10 @@ This is important because it helps us understand how to shape the load of the te
 we should run performance tests to measure the current value of the metrics we are interested in. After every refactoring,
 by running again the same performance tests, we measure the magnitude of the improvement and how much is still left to do.</p>
 <h3><a class="header" href="#theory-of-constraints" id="theory-of-constraints">Theory of constraints</a></h3>
-<p>When performance tests highlight a low performing metric, it is important to identify what is its main contributor. 
+<p>When performance tests highlight a low performing metric, it is important to identify what its main contributor is. 
 For instance, if response time is low, we need to identify how the time is spent across the system at different granularity.
 By this, we mean not only narrowing down macro components like front-end or database, but also architectural layers like
-domain or presentation, up to class of function level if necessary.</p>
+domain or presentation, up to class or function level if necessary.</p>
 <p>We should spend all our efforts on the single main contributor of the low performing metric. Once solved, move to the new main contributor.</p>
 <h3><a class="header" href="#continuous-testing" id="continuous-testing">Continuous testing</a></h3>
 <p>Performance tests should happen continuously, to immediately catch any degradation introduced by new code revisions. 
@@ -962,14 +962,14 @@ replicate their triggering conditions inside our performance tests so that they 
 <p>Before changing a piece of code, we first need to understand its intention, meaning what it is supposed to do. 
 Not understanding code, or even worse misunderstanding it, leads to a great waste of time. Therefore,
 pouring effort in clarifying code intent is a sound investment as code is written once and read many times. </p>
-<p>Software design is a collaborative activity and code intent is the expression of people mental representations.
+<p>Software design is a collaborative activity and code intent is the expression of people's mental representations.
 This means that clear code intent starts with effective communication: knowledge sharing, visualising mental models,
 using a shared vocabulary.</p>
 <h2><a class="header" href="#naming" id="naming">Naming</a></h2>
-<p>Great naming let us understand what the code means without inspecting its details. In fact, we should be able
+<p>Great naming lets us understand what the code means without inspecting its details. In fact, we should be able
 to understand an entire codebase just reading the names of classes, methods and variables, never looking at what they contain.
 This clarity is reached by naming classes, methods and variables after what they do instead of how they do it.
-The how can be looked up later if more details are needed by inspecting the content. The benefits are two:</p>
+The how can be looked up later if more details are needed by inspecting the content. There are two benefits:</p>
 <ul>
 <li>names do not contain any noise</li>
 <li>if the implementation changes, the name remains relevant</li>
@@ -993,7 +993,7 @@ still express intent? Let's see.</p>
 }
 </code></pre>
 <p>The answer is yes, as the above class still expresses clear intent, without even bothering the reader with the noise of the how.
-The second questions is: would the naming in <code>BiDimensionalCoordinates</code> still make sense if we were to switch to three-dimensional
+The second question is: would the naming in <code>BiDimensionalCoordinates</code> still make sense if we were to switch to three-dimensional
 coordinates? Let's see.</p>
 <pre><code class="language-kotlin">class BiDimensionalCoordinates(private val x: Int, 
                                private val y: Int, 
@@ -1017,7 +1017,7 @@ its intent even when using three dimensions as shown below.</p>
 }
 </code></pre>
 <p>As a final note for typed languages, be mindful that the return type of a method is part of its naming. A method <code>sum</code>
-does not clearly expresses intent if its signature is like the following: <code>fun sum(addend: Coordinates): Int</code></p>
+does not clearly express intent if its signature is like the following: <code>fun sum(addend: Coordinates): Int</code></p>
 <br/>  
 <h4><a class="header" href="#recommended-reads-13" id="recommended-reads-13">Recommended reads</a></h4>
 <ul>
@@ -1063,7 +1063,7 @@ the following <code>play</code> public method for the <a href="https://en.wikipe
   }
 }
 </code></pre>
-<p>Now, let's change the signature of the <code>play</code> method like follows.</p>
+<p>Now, let's change the signature of the <code>play</code> method as follows.</p>
 <pre><code class="language-kotlin">class FizzBuzz {
 
   fun play(from: Int, to: Int): List&lt;String&gt; {
@@ -1119,7 +1119,7 @@ If the 4 classes were to use the second approach, <code>main</code> will contain
 <ul>
 <li><a href="https://lwn.net/Articles/193245/">&quot;Bad programmers worry about the code. Good programmers worry about data structures and their relationships&quot; - Linus Torvalds</a></li>
 <li><a href="https://www.goodreads.com/book/show/13629.The_Mythical_Man_Month">&quot;Show me your tables, and I won't usually need your flowcharts; they'll be obvious.&quot;, chapter 9 of The Mythical Man-Month - Fred Brooks</a></li>
-<li><a href="https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design">ava and Unix I/O, section 4.7 of A Philosophy of Software Design - John Ousterhout</a></li>
+<li><a href="https://www.goodreads.com/en/book/show/39996759-a-philosophy-of-software-design">Java and Unix I/O, section 4.7 of A Philosophy of Software Design - John Ousterhout</a></li>
 <li><a href="https://www.goodreads.com/book/show/4268826-growing-object-oriented-software-guided-by-tests">A web of objects, chapter 2 of Growing Object-Oriented Software, Guided by Tests - Steve Freeman, Nat Pryce</a></li>
 <li><a href="https://www.goodreads.com/book/show/31183020-99-bottles-of-oop">Choosing Names, section 2.8 of 99 bottles of OOP - Sandy Metz</a></li>
 <li><a href="https://www.goodreads.com/book/show/18043011-clean-architecture">The interface segregation principle, chapter 10 of Clean Architecture - Robert C. Martin</a></li>
@@ -1171,7 +1171,7 @@ class App {
 </code></pre>
 <p>Just looking at the <code>main</code> method of <code>App</code>, we would expect <code>result</code> to be <code>The room is bright</code>. However, because of the
 <code>Room</code> constructor, the actual content of <code>result</code> is <code>The room is dark</code>. To avoid this bad surprise, <code>LightBulb</code> can become 
-immutable, meaning its state cannot be modified. Let's take a look how we can achieve this.</p>
+immutable, meaning its state cannot be modified. Let's take a look at how we can achieve this.</p>
 <pre><code class="language-kotlin">enum class LightBulbState {
     ON {
         override fun lightUp(): String = &quot;bright&quot;
@@ -1220,14 +1220,14 @@ App().main()
 <li>The constructor of <code>Room</code> stores the brand-new <code>LightBulb</code> returned by the invocation of <code>setState</code>, instead of the <code>LightBulb</code> passed as a constructor parameter</li>
 <li>The <code>LightBulb</code> constructor uses <code>val</code> instead of <code>var</code> (in Kotlin a variable defined as <code>val</code> cannot be re-assigned)</li>
 </ul>
-<p>Now the content of result in the <code>main</code> method of <code>App</code> is what we would expect from the beginning: <code>The room is bright</code>.
+<p>Now the content of <code>result</code> in the <code>main</code> method of <code>App</code> is what we would expect from the beginning: <code>The room is bright</code>.
 Immutability makes it easier to reason about a piece of code and it is a game changer when <a href="https://en.wikipedia.org/wiki/Concurrency_(computer_science)">concurrency</a>
 comes into play. To obtain immutability we need to:</p>
 <ul>
 <li>return a new instance of an object instead of modifying its state</li>
 <li>prevent the re-assignment of variables</li>
 </ul>
-<p>Unfortunately it can be tricky to write immutable code. Let's take a look at the following piece of example.</p>
+<p>Unfortunately it can be tricky to write immutable code. Let's take a look at the following example.</p>
 <pre><code class="language-kotlin">class Shelf(private val books: List&lt;String&gt;) {
 
   fun numberOfBooks(): Int {
@@ -1275,7 +1275,7 @@ class App {
 }
 </code></pre>
 <p>The content of <code>result</code> in the <code>main</code> method of <code>App</code> is now <code>The shelf contains 2 books</code>.</p>
-<p>As a final note, reasoning about state is hard and that's why it is worth deepen the paradigm of functional programming
+<p>As a final note, reasoning about state is hard and that's why it is worth deepening the paradigm of functional programming
 which removes the concept of state as much as possible. </p>
 <br/>
 <h4><a class="header" href="#recommended-reads-15" id="recommended-reads-15">Recommended reads</a></h4>
@@ -1325,7 +1325,7 @@ class MinorPassport(private val name: String,
   }
 }
 </code></pre>
-<p>The above <code>CheckIn</code> class can be simplified by generalising <code>MinorPassport</code> to <code>Passport</code> like follows.</p>
+<p>The above <code>CheckIn</code> class can be simplified by generalising <code>MinorPassport</code> to <code>Passport</code> as follows.</p>
 <pre><code class="language-kotlin">class CheckIn(private val today: LocalDate) {
 
   fun checkPassport(passport: Passport): Boolean {
@@ -1417,8 +1417,8 @@ fun main() {
 </code></pre>
 <p>You can see above that the method <code>minHourlyWageInEur</code> is a problem for <code>Student</code> as it is not supposed to have a wage.
 That's why we are forced to override it to throw an Exception in case it is invoked by mistake.
-Ideally, we would like to avoid for <code>Student</code> to implement <code>minHourlyWageInEur</code>, but because of inheritance, we are stuck with it.</p>
-<p>Let's see instead how things would look like if we were to use composition:</p>
+Ideally, we would like to avoid having <code>Student</code> implement <code>minHourlyWageInEur</code>, but because of inheritance, we are stuck with it.</p>
+<p>Let's see instead what things would look like if we were to use composition:</p>
 <pre><code class="language-kotlin">import java.math.BigDecimal
 
 class Person(private val name: String) {
@@ -1456,7 +1456,7 @@ of <code>Person</code>, among which the problematic <code>minHourlyWageInEur</co
 by a different team or even worse when they are part of an external library. We will be forced to handle any future change on the
 public methods of the class we inherited from.</p>
 <p>Be mindful that inheritance is not intrinsically bad. Like any other tool it is just the way we use it which can be troublesome.
-Despite inheritance usually being not great to share state or behaviour across classes, it is very useful to establish <a href="https://en.wikipedia.org/wiki/Is-a">is-a</a> 
+Despite inheritance not usually being great to share state or behaviour across classes, it is very useful to establish <a href="https://en.wikipedia.org/wiki/Is-a">is-a</a> 
 relationships which is one way to leverage <a href="expresses-intent/../does-not-repeat-itself/polymorphism.html">polymorphism</a></p>
 <h4><a class="header" href="#recommended-reads-17" id="recommended-reads-17">Recommended reads</a></h4>
 <ul>
@@ -1519,7 +1519,7 @@ Mention that local variables can sometimes hinder readability</p>
 <p>Here mention the practice of sketching public methods to start reasoning about design before implementing the functionality.<br />
 Explain how this can be applied in both trunk based and branch based development.</p>
 <h1><a class="header" href="#it-does-not-repeat-itself" id="it-does-not-repeat-itself">It does not repeat itself</a></h1>
-<p>Complexity is made of two elements: cognitive load and coupling. Cognitive load means how hard is to understand code. 
+<p>Complexity is made of two elements: cognitive load and coupling. Cognitive load means how hard it is to understand code. 
 Coupling means how many parts of a codebase we need to adjust when we want to change only one thing.</p>
 <p>Isolating concepts in single parts of the code base greatly reduces both cognitive load and coupling.</p>
 <h2><a class="header" href="#one-single-authoritative-knowledge-representation" id="one-single-authoritative-knowledge-representation">One single authoritative knowledge representation</a></h2>
@@ -1550,7 +1550,7 @@ class App {
 }
 </code></pre>
 <p>Now let's assume we want to have an ellipsis when <code>Person</code> or <code>Job</code> names are longer than 5 characters. One solution
-could be to modify the <code>name</code> method of both <code>Person</code> and <code>Job</code> like follows.</p>
+could be to modify the <code>name</code> method of both <code>Person</code> and <code>Job</code> as follows.</p>
 <pre><code class="language-kotlin">class Person(private val name: String) {
 
   fun name(): String {
@@ -1582,8 +1582,8 @@ class App {
 }
 </code></pre>
 <p>In the above code, changing the ellipsis threshold from 5 to 10 characters will affect the <code>name</code> method of both <code>Person</code>and <code>Job</code> classes.
-Moreover, there is a risk to introduce bugs as changes might not be replicated across both classes by mistake. The problem
-is that the concept of name is spread across <code>Person</code> and <code>Job</code> instead if being a standalone class like follows.</p>
+Moreover, there is a risk of introducing bugs as changes might not be replicated across both classes by mistake. The problem
+is that the concept of name is spread across <code>Person</code> and <code>Job</code> instead of being a standalone class as follows.</p>
 <pre><code class="language-kotlin">class Name(private val name: String) {
 
   fun format(): String {
@@ -1650,7 +1650,7 @@ class Rectangle(private val width: Int, private val height: Int) {
   }
 }
 </code></pre>
-<p>When seeing a piece of code like the above, one might be tempted to remove the duplication of the <code>perimeter</code> method like follows.</p>
+<p>When seeing a piece of code like the above, one might be tempted to remove the duplication of the <code>perimeter</code> method as follows.</p>
 <pre><code class="language-kotlin">class Shape(private val width: Int, private val height: Int) {
 
   fun perimeter(): Int {
@@ -1733,7 +1733,7 @@ class LightBulb(private val state: LightBulbState) {
 <p>If this trend of specifications continues, we will end up having a very long <code>lightUp</code> method and many unit tests just 
 for it. The result will be <code>LightBulb</code> not clearly expressing its intent as well as being a hot spot containing too much
 knowledge. To prevent this we can spread the <code>lightUp</code> knowledge across the different values of <code>LightBulbState</code>
-like follows.</p>
+as follows.</p>
 <pre><code class="language-kotlin">enum class LightBulbState {
   ON {
       override fun lightUp(): String {
@@ -1809,7 +1809,7 @@ class LightBulb(private val state: LightBulbState) {
 <h4><a class="header" href="#teach-me-back-28" id="teach-me-back-28">Teach me back</a></h4>
 <p>I really appreciate any <a href="does-not-repeat-itself/../introduction/introduction.html#teach-me-back">feedback</a> about the book and my current understanding of software design.</p>
 <h2><a class="header" href="#dependency-inversion-principle" id="dependency-inversion-principle">Dependency inversion principle</a></h2>
-<p>Code that changes frequently should depend on code that rarely changes. This is important to minimises the amount of code
+<p>Code that changes frequently should depend on code that rarely changes. This is important to minimise the amount of code
 we need to adjust when implementing new specifications. Let's take a look at the following example.</p>
 <pre><code class="language-kotlin">class Transfer(private val sender: String,
                private val receiver: String,
@@ -1840,7 +1840,7 @@ class App {
 in the <code>save</code> method. Now let's assume we know that the class <code>TransferFile</code> is going to change a lot in the future, 
 for instance because it might become a different class that saves <code>Transfer</code> to a database or because it will connect
 to a third party api over the internet and its <code>save</code> method signature might change. Even worse, we won't be able to modify <code>TransferFile</code>
-in the future as another developer is going to take care of it. In this situation, the risk is that everytime <code>TransferFile</code>
+in the future as another developer is going to take care of it. In this situation, the risk is that every time <code>TransferFile</code>
 changes, we will be forced to change our <code>Transfer</code> class as well. We can prevent this by leveraging the dependency inversion
 principle like in the following code.</p>
 <pre><code class="language-kotlin">interface TransferStorage {
@@ -1881,7 +1881,7 @@ class App {
 </ul>
 <p>With this, we have inverted the dependency we had from <code>Transfer</code> to <code>TransfersFile</code>. In fact, <code>Transfer</code> has become unaware
 of any change that might happen to <code>TransfersFile</code>. Furthermore, <code>Transfer</code> becomes in general unaware of the technology
-used to store it: as far as a class implements <code>TransferStorage</code>, it can be passed to <code>Transfer</code> 
+used to store it: as long as a class implements <code>TransferStorage</code>, it can be passed to <code>Transfer</code> 
 inside the <code>main</code> method of <code>App</code>. This means we could be using a new class <code>TransfersDatabase</code> and <code>Transfer</code> would not know it.
 On the contrary, <code>TransfersFile</code> now depends on <code>TransferStorage</code> but that's fine as we know <code>TransferStorage</code> will rarely
 change.</p>
@@ -1934,7 +1934,7 @@ class Game{
 <li>The die faces are modelled as integer numbers</li>
 <li>A die wins over another if the former <code>value</code> is greater than the latter</li>
 </ul>
-<p>If any of the above two change, we will need to adjust <code>Game</code>  as its <code>play</code> method uses that information.
+<p>If either of the above two changes, we will need to adjust <code>Game</code> as its <code>play</code> method uses that information.
 An example of such changes is a new rule by which the number 3 wins over any other number.
 However, we can prevent those unintended changes in <code>Game</code> by not leaking information out of <code>Die</code> as follows.</p>
 <pre><code class="language-kotlin">class Die {
@@ -2057,7 +2057,7 @@ understanding of software design.</p>
 <li><a href="https://www.goodreads.com/book/show/18043011-clean-architecture">The single responsibility principle, chapter 7 of Clean Architecture - Robert C. Martin</a></li>
 </ul>
 <h1><a class="header" href="#it-does-not-contain-superfluous-parts" id="it-does-not-contain-superfluous-parts">It does not contain superfluous parts</a></h1>
-<p>A problem can be solved by many solutions, but the best ones have few moving parts. Less moving part implies less to understand,
+<p>A problem can be solved by many solutions, but the best ones have few moving parts. Fewer moving parts means less to understand,
 test and maintain.</p>
 <p>Sometimes we write superfluous code because we misunderstand the problem. Other times we end up implementing requirements 
 which were never asked because our experience or anxiety for the future biased us. Finally, even when everything is clear 
@@ -2097,7 +2097,7 @@ enum class TrafficLightColour {
 </code></pre>
 <p>The above code satisfies the specifications. However, one might say that traffic lights for pedestrians are usually timed: you press
 a button and it will take some seconds before the colour changes. This was not requested, but as it seems to be a more
-faithful representation of a pedestrian traffic light, so one might decide to go ahead like follows.</p>
+faithful representation of a pedestrian traffic light, one might decide to go ahead as follows.</p>
 <pre><code class="language-kotlin">class TrafficLight(private var colour: TrafficLightColour) {
 
   fun changeColour(milliSecondsToWait: Long) {
@@ -2128,7 +2128,7 @@ enum class TrafficLightColour {
   abstract fun possibleToWalk(): Boolean
 }
 </code></pre>
-<p>Changing the behaviour of <code>changeColour</code> in <code>TrafficLight</code> had no benefits for what we are concerned with the current specifications. However,
+<p>Changing the behaviour of <code>changeColour</code> in <code>TrafficLight</code> had no benefits given the current specifications. However,
 it added useless code inside the <code>TrafficLight</code> class and it forced all callers of the <code>changeColour</code> method to provide a value for
 <code>milliSecondsToWait</code> which, given the current specifications, will always be 0.</p>
 <br/>  
